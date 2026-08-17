@@ -1,0 +1,826 @@
+/* ==========================================================================
+   IMPACT SECTION
+   ========================================================================== */
+
+.impact-section {
+  width: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #f4fdfc;
+
+  padding: 92px 0;
+}
+
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.impact-container {
+  width: calc(100% - 80px);
+
+  max-width: 1120px;
+
+  margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   MAIN GRID
+   ========================================================================== */
+
+.impact-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 520px)
+    410px;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  column-gap: 90px;
+}
+
+
+/* ==========================================================================
+   LEFT
+   ========================================================================== */
+
+.impact-content {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* ==========================================================================
+   HEADING
+   ========================================================================== */
+
+.impact-heading {
+  width: 100%;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  font-family: var(--font-site) !important;
+
+  font-size: 44px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.13 !important;
+
+  letter-spacing: -0.045em !important;
+}
+
+
+/* ==========================================================================
+   FIRST HEADING LINE
+   ========================================================================== */
+
+.impact-heading-first {
+  width: max-content;
+
+  max-width: 100%;
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   "WHAT THE" GRADIENT
+   ========================================================================== */
+
+.impact-heading-gradient-top {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #202020 0%,
+    #292727 46%,
+    #615d5e 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ==========================================================================
+   RIGHT DIGITAL HIGHLIGHT
+   ========================================================================== */
+
+.impact-highlight {
+  display: inline-block;
+  padding: 1px 6px 2px;
+  background: #1bdbba;
+  color: #1f2221 !important;
+  -webkit-text-fill-color: #1f2221 !important;
+  font-family: var(--font-site) !important;
+  font-size: 1.03em;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  border-radius: 0;
+  font-weight: 700 !important;
+
+}
+
+
+/* ==========================================================================
+   SECOND HEADING LINE
+   ========================================================================== */
+
+.impact-heading-second {
+  display: block;
+
+  width: max-content;
+
+  max-width: 100%;
+
+  margin-top: 7px;
+
+  white-space: nowrap;
+
+  background: linear-gradient(
+    90deg,
+    #1d1d1d 0%,
+    #222222 27%,
+    #5d595a 55%,
+    #696566 67%,
+    #383536 83%,
+    #211f1f 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ==========================================================================
+   INTRO
+   ========================================================================== */
+
+.impact-intro {
+  margin:
+    24px
+    0
+    22px !important;
+
+  padding: 0 !important;
+
+  max-width: 430px;
+
+  font-family: var(--font-site) !important;
+
+  font-size: 16px !important;
+
+  font-weight: 600 !important;
+
+  font-style: italic;
+
+  line-height: 1.4 !important;
+
+  letter-spacing: -0.015em;
+
+  color: #252525 !important;
+}
+
+
+/* ==========================================================================
+   LIST
+   ========================================================================== */
+
+.impact-list {
+  list-style: none;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   LIST ITEM
+   ========================================================================== */
+
+.impact-item {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   NUMBER
+   ========================================================================== */
+
+.impact-number {
+  width: 19px;
+
+  flex: 0 0 19px;
+
+  font-family: var(--font-site) !important;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #565b5b;
+}
+
+
+/* ==========================================================================
+   LIST TEXT
+   ========================================================================== */
+
+.impact-text {
+  font-family: var(--font-site) !important;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  letter-spacing: -0.01em;
+
+  color: #555a5a;
+}
+
+
+/* ==========================================================================
+   RIGHT MEDIA
+   ========================================================================== */
+
+.impact-media {
+  width: 410px;
+
+  max-width: 100%;
+
+  min-width: 0;
+
+  justify-self: end;
+}
+
+
+/* ==========================================================================
+   IMAGE CARD
+   ========================================================================== */
+
+.impact-image-card {
+  width: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 1.08 / 1;
+
+  border-radius: 11px;
+
+  background: #dbe6e3;
+
+  box-shadow:
+    0 18px 45px
+    rgba(46, 66, 61, 0.09);
+
+  isolation: isolate;
+}
+
+
+/* ==========================================================================
+   IMAGE
+   ========================================================================== */
+
+.impact-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition:
+    transform 0.75s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ==========================================================================
+   IMAGE HOVER
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .impact-image-card:hover
+  .impact-image {
+    transform: scale(1.035);
+  }
+
+}
+
+
+/* ==========================================================================
+   IMAGE OVERLAY
+   ========================================================================== */
+
+.impact-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(25, 31, 30, 0) 45%,
+    rgba(57, 46, 39, 0.025) 64%,
+    rgba(58, 45, 36, 0.16) 100%
+  );
+}
+
+
+/* ==========================================================================
+   QUOTE
+   ========================================================================== */
+
+.impact-quote {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+
+  min-height: 59px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    10px
+    14px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(151, 135, 123, 0.64);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 8px 25px
+    rgba(33, 27, 24, 0.08);
+}
+
+
+/* ==========================================================================
+   QUOTE TEXT
+   ========================================================================== */
+
+.impact-quote p {
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  font-family: var(--font-site) !important;
+
+  font-size: 14px !important;
+
+  font-weight: 600 !important;
+
+  font-style: italic;
+
+  line-height: 1.38 !important;
+
+  letter-spacing: -0.015em;
+
+  color: #ffffff !important;
+
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   LARGE DESKTOP
+   ========================================================================== */
+
+@media (min-width: 1500px) {
+
+  .impact-container {
+    max-width: 1160px;
+  }
+
+
+  .impact-grid {
+    grid-template-columns:
+      minmax(0, 535px)
+      425px;
+
+    column-gap: 100px;
+  }
+
+
+  .impact-media {
+    width: 425px;
+  }
+
+
+  .impact-heading {
+    font-size: 46px !important;
+  }
+
+
+  .impact-text,
+  .impact-number {
+    font-size: 15.5px;
+  }
+
+}
+
+
+/* ==========================================================================
+   LAPTOP
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+
+  .impact-section {
+    padding:
+      82px
+      0;
+  }
+
+
+  .impact-container {
+    width:
+      calc(100% - 64px);
+
+    max-width: 940px;
+  }
+
+
+  .impact-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      370px;
+
+    column-gap: 60px;
+  }
+
+
+  .impact-media {
+    width: 370px;
+  }
+
+
+  .impact-heading {
+    font-size: 39px !important;
+  }
+
+
+  .impact-text,
+  .impact-number {
+    font-size: 14.5px;
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 850px) {
+
+  .impact-section {
+    padding:
+      70px
+      0;
+  }
+
+
+  .impact-container {
+    width:
+      calc(100% - 48px);
+
+    max-width: 680px;
+  }
+
+
+  .impact-grid {
+    grid-template-columns:
+      1fr;
+
+    row-gap: 48px;
+  }
+
+
+  .impact-content {
+    max-width: 570px;
+  }
+
+
+  .impact-heading {
+    font-size:
+      clamp(
+        35px,
+        6vw,
+        42px
+      ) !important;
+  }
+
+
+  .impact-media {
+    width: 100%;
+
+    max-width: 500px;
+
+    justify-self: start;
+  }
+
+
+  .impact-image-card {
+    aspect-ratio: 1.12 / 1;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+  .impact-section {
+    padding:
+      56px
+      0;
+  }
+
+
+  .impact-container {
+    width:
+      calc(100% - 32px);
+  }
+
+
+  .impact-grid {
+    row-gap: 36px;
+  }
+
+
+  .impact-heading {
+    font-size:
+      clamp(
+        29px,
+        8vw,
+        34px
+      ) !important;
+
+    line-height:
+      1.16 !important;
+  }
+
+
+  .impact-heading-first {
+    display: block;
+
+    width: 100%;
+
+    white-space: normal;
+  }
+
+
+  .impact-heading-gradient-top,
+  .impact-highlight {
+    display: inline;
+  }
+
+
+  .impact-highlight {
+    margin-left: 3px;
+
+    padding:
+      0
+      4px
+      1px;
+
+    -webkit-box-decoration-break:
+      clone;
+
+    box-decoration-break:
+      clone;
+  }
+
+
+  .impact-heading-second {
+    width: 100%;
+
+    white-space: normal;
+
+    margin-top: 5px;
+  }
+
+
+  .impact-intro {
+    margin:
+      20px
+      0
+      20px !important;
+
+    font-size:
+      14px !important;
+  }
+
+
+  .impact-intro-break {
+    display: none;
+  }
+
+
+  .impact-list {
+    gap: 14px;
+  }
+
+
+  .impact-number {
+    width: 18px;
+
+    flex-basis: 18px;
+
+    font-size: 13.5px;
+  }
+
+
+  .impact-text {
+    font-size: 13.5px;
+
+    line-height: 1.45;
+  }
+
+
+  .impact-media {
+    width: 100%;
+
+    max-width: none;
+  }
+
+
+  .impact-image-card {
+    aspect-ratio: 1.04 / 1;
+
+    border-radius: 9px;
+  }
+
+
+  .impact-quote {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    min-height: 52px;
+
+    padding:
+      8px
+      10px;
+
+    border-radius: 7px;
+  }
+
+
+  .impact-quote p {
+    font-size:
+      12.5px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 400px) {
+
+  .impact-section {
+    padding:
+      48px
+      0;
+  }
+
+
+  .impact-container {
+    width:
+      calc(100% - 26px);
+  }
+
+
+  .impact-heading {
+    font-size:
+      27px !important;
+  }
+
+
+  .impact-intro {
+    font-size:
+      13px !important;
+  }
+
+
+  .impact-number,
+  .impact-text {
+    font-size:
+      12.5px;
+  }
+
+
+  .impact-image-card {
+    aspect-ratio:
+      1 / 1;
+  }
+
+
+  .impact-quote p {
+    font-size:
+      11.5px !important;
+  }
+
+
+  .impact-quote-break {
+    display: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .impact-image {
+    transition: none !important;
+  }
+
+}

@@ -1,0 +1,1522 @@
+@import "tailwindcss";
+
+
+/* ==========================================================================
+   LOCAL LUFGА FONT
+
+   IMPORTANT:
+   We intentionally keep the family name "Lufga Regular"
+   because all existing components already use that name.
+
+   But the actual font file being loaded is LufgaMedium.ttf.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaMedium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+@theme {
+  --color-teal: #00d4aa;
+  --color-teal-hover: #00b894;
+  --color-teal-dark: #008f73;
+  --color-teal-light: #e6f9f5;
+  --color-bg-dark: #0d131a;
+
+  --color-text-dark: #0f172a;
+  --color-text-body: #334155;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+
+  --font-h: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-b: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sora: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-dmsans: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+:root {
+  /* Brand */
+  --teal: #00d4aa;
+  --teal-hover: #00b894;
+  --teal-dark: #008f73;
+  --teal-light: #e6f9f5;
+  --teal-glow: rgba(0, 212, 170, 0.35);
+
+  /* Backgrounds */
+  --bg: #f2f9f6;
+
+  /* 5% card background — keep this for cards */
+  --bg-card: rgba(76, 78, 79, 0.05);
+
+  --bg-dark: #0d131a;
+  --bg-section: #f8fdfb;
+
+  /* Solid/glass white surface */
+  --surface-glass: rgba(255, 255, 255, 0.95);
+
+  /* Text */
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  /* Borders */
+  --border-light: rgba(0, 212, 170, 0.15);
+  --border-subtle: #e2e8f0;
+  --border-card: rgba(0, 212, 170, 0.12);
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.10);
+  --shadow-xl: 0 30px 70px rgba(15, 23, 42, 0.14);
+  --shadow-teal: 0 10px 30px rgba(0, 212, 170, 0.25);
+
+  /* Motion */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* ================================================================
+     FONT
+
+     Components written previously use:
+     var(--font-site, "Lufga Regular", sans-serif)
+
+     So we define --font-site here as well.
+     ================================================================ */
+
+  --font-site:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-h:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-b:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-sora:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-dmsans:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+/* ==========================================================================
+   CORE RESETS & BASE
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-body);
+
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    font-size: 1rem;
+    line-height: 1.65;
+
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    color: var(--text-dark);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+
+    font-weight: 700;
+  }
+
+
+  p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+
+  a {
+    color: inherit;
+
+    text-decoration: none;
+
+    transition:
+      color
+      var(--transition-fast);
+  }
+
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+  }
+
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    font-size: inherit;
+  }
+
+
+  ::selection {
+    background: var(--teal);
+    color: #ffffff;
+  }
+
+
+  /* Custom scrollbar */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--teal);
+
+    border-radius:
+      var(--radius-full);
+  }
+
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--teal-hover);
+  }
+}
+
+
+/* ==========================================================================
+   LAYOUT — CONTAINERS & SECTION WRAPPERS
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+
+@media (min-width: 640px) {
+  .wrap {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+
+.wrap-full {
+  width: 100%;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+
+/* Section with light teal tint background */
+
+.section-alt {
+  background-color: var(--bg-section);
+}
+
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
+}
+
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0
+      rgba(0, 212, 170, 0.4);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 14px
+      rgba(0, 212, 170, 0);
+  }
+}
+
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.animate-float {
+  animation:
+    floatSlow
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+.animate-pulse-glow {
+  animation:
+    pulseGlow
+    2.5s
+    infinite;
+}
+
+
+.animate-fade-up {
+  animation:
+    fadeUp
+    0.6s
+    ease-out
+    both;
+}
+
+
+/* ==========================================================================
+   LEGACY / UNASSIGNED — ACHIEVE / OUTCOMES
+   ========================================================================== */
+
+.achieve-section {
+  background: var(--bg);
+
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+
+.achieve-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 3rem;
+
+  align-items: center;
+}
+
+
+@media (min-width: 1024px) {
+  .achieve-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap: 5rem;
+  }
+}
+
+
+.achieve-list {
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.875rem;
+
+  margin-top: 1.5rem;
+}
+
+
+.achieve-list li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.75rem;
+
+  font-size: 0.9375rem;
+
+  color: var(--text-body);
+
+  line-height: 1.6;
+}
+
+
+.achieve-check {
+  width: 22px;
+  height: 22px;
+
+  min-width: 22px;
+
+  background: var(--teal);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1px;
+}
+
+
+.achieve-check svg {
+  width: 12px;
+  height: 12px;
+
+  color: #ffffff;
+}
+
+
+.achieve-img-wrap {
+  border-radius:
+    var(--radius-xl);
+
+  overflow: hidden;
+
+  box-shadow:
+    var(--shadow-xl);
+
+  aspect-ratio:
+    4 / 3;
+}
+
+
+.achieve-img-wrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn-teal {
+  background-color: var(--teal);
+
+  color: #ffffff;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  font-weight: 600;
+
+  font-size: 0.9375rem;
+
+  padding:
+    0.85rem
+    1.75rem;
+
+  border-radius:
+    var(--radius-full);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  box-shadow:
+    var(--shadow-teal);
+
+  transition:
+    all
+    var(--transition-smooth);
+
+  cursor: pointer;
+
+  border: none;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+.btn-teal:hover {
+  background-color:
+    var(--teal-hover);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0
+    12px
+    35px
+    rgba(
+      0,
+      212,
+      170,
+      0.35
+    );
+
+  color: #ffffff;
+}
+
+
+.btn-teal:active {
+  transform: translateY(0);
+}
+
+
+.btn-outline {
+  background-color: transparent;
+
+  color: var(--text-dark);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  font-weight: 600;
+
+  font-size: 0.9375rem;
+
+  padding:
+    0.8rem
+    1.65rem;
+
+  border-radius:
+    var(--radius-full);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  border:
+    1.5px
+    solid
+    var(--border-subtle);
+
+  transition:
+    all
+    var(--transition-smooth);
+
+  cursor: pointer;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+.btn-outline:hover {
+  border-color:
+    var(--teal);
+
+  color:
+    var(--teal);
+
+  transform:
+    translateY(-2px);
+
+  background:
+    var(--teal-light);
+}
+
+
+.btn-sm {
+  padding:
+    0.55rem
+    1.1rem;
+
+  font-size:
+    0.8125rem;
+}
+
+
+.btn-lg {
+  padding:
+    1.05rem
+    2.25rem;
+
+  font-size:
+    1rem;
+}
+
+
+/* ==========================================================================
+   GLASS / CARD UTILITIES
+   ========================================================================== */
+
+.glass-card {
+  background:
+    var(--surface-glass)
+    !important;
+
+  backdrop-filter:
+    blur(16px)
+    !important;
+
+  -webkit-backdrop-filter:
+    blur(16px)
+    !important;
+
+  border:
+    1px
+    solid
+    var(--border-light)
+    !important;
+
+  box-shadow:
+    var(--shadow-md)
+    !important;
+
+  border-radius:
+    var(--radius-lg)
+    !important;
+
+  transition:
+    transform
+      var(--transition-smooth),
+    box-shadow
+      var(--transition-smooth),
+    border-color
+      var(--transition-smooth)
+    !important;
+}
+
+
+.glass-card:hover {
+  transform:
+    translateY(-4px)
+    !important;
+
+  box-shadow:
+    var(--shadow-lg)
+    !important;
+
+  border-color:
+    rgba(
+      0,
+      212,
+      170,
+      0.35
+    )
+    !important;
+}
+
+
+/* ==========================================================================
+   BADGE / PILL UTILITIES
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.375rem;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  padding:
+    0.3rem
+    0.75rem;
+
+  border-radius:
+    var(--radius-full);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  letter-spacing:
+    0.02em;
+}
+
+
+.badge-teal {
+  background:
+    var(--teal-light);
+
+  color:
+    var(--teal-dark);
+
+  border:
+    1px
+    solid
+    rgba(
+      0,
+      212,
+      170,
+      0.2
+    );
+}
+
+
+.badge-dark {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+}
+
+
+/* ==========================================================================
+   STATS / NUMBERS ROW
+   ========================================================================== */
+
+.stats-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+}
+
+
+@media (min-width: 640px) {
+  .stats-row {
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
+  }
+}
+
+
+.stat-item {
+  text-align: center;
+
+  padding:
+    1.5rem
+    1rem;
+
+  background:
+    var(--bg-card);
+
+  border:
+    1px
+    solid
+    var(--border-subtle);
+
+  border-radius:
+    var(--radius-lg);
+}
+
+
+.stat-value {
+  font-size:
+    clamp(
+      1.75rem,
+      3vw,
+      2.5rem
+    );
+
+  font-weight: 800;
+
+  color:
+    var(--teal);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  line-height: 1;
+
+  margin-bottom:
+    0.375rem;
+}
+
+
+.stat-label {
+  font-size:
+    0.8125rem;
+
+  color:
+    var(--text-muted);
+}
+
+
+/* ==========================================================================
+   VIDEO MODAL OVERLAY
+   ========================================================================== */
+
+.video-modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  background-color:
+    rgba(
+      13,
+      19,
+      26,
+      0.85
+    );
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  animation:
+    fadeUp
+    0.3s
+    ease-out;
+}
+
+
+.video-modal-inner {
+  width: 100%;
+
+  max-width: 960px;
+
+  border-radius:
+    var(--radius-xl);
+
+  overflow: hidden;
+
+  box-shadow:
+    0
+    40px
+    100px
+    rgba(
+      0,
+      0,
+      0,
+      0.6
+    );
+
+  position: relative;
+}
+
+
+.video-modal-close {
+  position: absolute;
+
+  top: 1rem;
+
+  right: 1rem;
+
+  z-index: 10;
+
+  width: 36px;
+
+  height: 36px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.5
+    );
+
+  border: none;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background
+    var(--transition-fast);
+}
+
+
+.video-modal-close:hover {
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.8
+    );
+}
+
+
+/* ==========================================================================
+   DIVIDER
+   ========================================================================== */
+
+.divider {
+  width: 100%;
+
+  height: 1px;
+
+  background:
+    var(--border-subtle);
+
+  margin: 0;
+}
+
+
+.divider-teal {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--teal),
+      transparent
+    );
+
+  opacity: 0.3;
+}
+
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.375rem;
+}
+
+
+.form-label {
+  font-size:
+    0.8125rem;
+
+  font-weight: 600;
+
+  color:
+    var(--text-dark);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+
+  background:
+    var(--bg);
+
+  border:
+    1.5px
+    solid
+    var(--border-subtle);
+
+  border-radius:
+    var(--radius-md);
+
+  padding:
+    0.75rem
+    1rem;
+
+  font-size:
+    0.9375rem;
+
+  color:
+    var(--text-dark);
+
+  transition:
+    border-color
+      var(--transition-fast),
+    box-shadow
+      var(--transition-fast);
+
+  outline: none;
+
+  appearance: none;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color:
+    var(--teal);
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      0,
+      212,
+      170,
+      0.12
+    );
+}
+
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color:
+    var(--text-light);
+}
+
+
+/* ==========================================================================
+   UTILITY HELPERS
+   ========================================================================== */
+
+.text-teal {
+  color:
+    var(--teal)
+    !important;
+}
+
+
+.text-dark {
+  color:
+    var(--text-dark)
+    !important;
+}
+
+
+.text-muted {
+  color:
+    var(--text-muted)
+    !important;
+}
+
+
+.text-white {
+  color:
+    #ffffff
+    !important;
+}
+
+
+.text-light {
+  color:
+    var(--text-light)
+    !important;
+}
+
+
+.bg-teal {
+  background-color:
+    var(--teal)
+    !important;
+}
+
+
+.bg-teal-light {
+  background-color:
+    var(--teal-light)
+    !important;
+}
+
+
+.bg-dark {
+  background-color:
+    var(--bg-dark)
+    !important;
+}
+
+
+.bg-card {
+  background-color:
+    var(--bg-card)
+    !important;
+}
+
+
+.bg-section {
+  background-color:
+    var(--bg-section)
+    !important;
+}
+
+
+.flex-center {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.flex-between {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.flex-col {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.mt-section {
+  margin-top: 5rem;
+}
+
+
+.mb-section {
+  margin-bottom: 5rem;
+}
+
+
+.font-sora {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+}
+
+
+.font-dmsans {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+}
+
+
+/* ==========================================================================
+   FORCE OVERRIDE
+   ========================================================================== */
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6,
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+
+  color:
+    var(--text-dark);
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4,
+.bg-dark h5,
+.bg-dark h6,
+.industries-section h1,
+.industries-section h2,
+.industries-section h3,
+.footer h1,
+.footer h2,
+.footer h3 {
+  color:
+    #ffffff
+    !important;
+}
+
+
+section p,
+section li,
+main p,
+main li {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+button.btn-teal,
+a.btn-teal,
+[class*="btn-primary"] {
+  background-color:
+    var(--teal)
+    !important;
+
+  color:
+    #ffffff
+    !important;
+
+  border-radius:
+    var(--radius-full)
+    !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+
+  font-weight:
+    600
+    !important;
+
+  box-shadow:
+    var(--shadow-teal)
+    !important;
+}
+
+
+button.btn-teal:hover,
+a.btn-teal:hover,
+[class*="btn-primary"]:hover {
+  background-color:
+    var(--teal-hover)
+    !important;
+
+  transform:
+    translateY(-2px)
+    !important;
+}
+
+
+.service-card,
+.testimonial-card,
+.why-card,
+.work-card {
+  background-color:
+    var(--bg-card)
+    !important;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE TYPOGRAPHY SCALE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size:
+      clamp(
+        1.875rem,
+        6vw,
+        2.5rem
+      );
+  }
+
+
+  .section-title {
+    font-size:
+      clamp(
+        1.5rem,
+        5vw,
+        2rem
+      );
+  }
+
+
+  .section-padding {
+    padding-top:
+      3.5rem;
+
+    padding-bottom:
+      3.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  .navbar,
+  .footer {
+    display: none;
+  }
+
+
+  body {
+    background:
+      #ffffff;
+  }
+}

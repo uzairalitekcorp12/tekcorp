@@ -1,0 +1,1002 @@
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--border-subtle);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================================================
+   NAVBAR CONTAINER
+   ========================================================================== */
+
+.navbar-container {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 0.95rem 5rem;
+}
+
+
+/* ==========================================================================
+   NAVBAR INNER
+   ========================================================================== */
+
+.navbar-inner {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 1.5rem;
+}
+
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+
+.navbar-logo-link {
+  justify-self: start;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo-link:hover {
+  transform: scale(1.01);
+}
+
+.navbar-logo-image {
+  position: relative;
+
+  width: 155px;
+  height: 45px;
+}
+
+.navbar-logo-img {
+  object-fit: contain;
+  object-position: left center;
+}
+
+
+/* ==========================================================================
+   DESKTOP NAVIGATION
+   ========================================================================== */
+
+.navbar-nav {
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 38px;
+
+  padding: 3px;
+
+  gap: 2px;
+
+  border: 1px solid rgba(15, 23, 42, 0.35);
+
+  border-radius: var(--radius-full);
+
+  background: transparent;
+}
+
+
+/* ==========================================================================
+   NAVIGATION LINKS
+   ========================================================================== */
+
+.navbar-nav-link {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 16px;
+
+  border: none;
+  border-radius: var(--radius-full);
+
+  background: transparent;
+
+  font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  color: var(--text-dark);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.navbar-nav-link:hover {
+  color: var(--teal);
+  background: var(--teal-light);
+}
+
+.navbar-nav-link.active {
+  color: #ffffff;
+  background: var(--teal);
+
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   SOLUTIONS DROPDOWN
+   ========================================================================== */
+
+.navbar-dropdown {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.navbar-solutions-trigger {
+  appearance: none;
+  font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.navbar-chevron {
+  flex-shrink: 0;
+
+  transition: transform 0.2s ease;
+}
+
+.navbar-chevron.open {
+  transform: rotate(180deg);
+}
+
+
+/* ==========================================================================
+   DESKTOP DROPDOWN
+   ========================================================================== */
+
+.navbar-dropdown-menu {
+  position: absolute;
+
+  top: calc(100% + 9px);
+  left: 50%;
+
+  width: 390px;
+
+  padding-top: 8px;
+
+  transform: translateX(-50%);
+
+  z-index: 1001;
+}
+
+.navbar-dropdown-inner {
+  width: 100%;
+  padding: 8px;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ==========================================================================
+   SOLUTION ITEMS
+   ========================================================================== */
+
+.navbar-solution-item {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+.navbar-solution-item:hover {
+  background: var(--teal-light);
+}
+
+.navbar-solution-icon {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: var(--teal-light);
+
+  color: var(--teal-dark);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar-solution-item:hover .navbar-solution-icon {
+  background: var(--teal);
+  color: #ffffff;
+}
+
+.navbar-solution-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-solution-title {
+  font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.25;
+
+  color: var(--text-dark);
+
+  transition: color 0.2s ease;
+}
+
+.navbar-solution-item:hover .navbar-solution-title {
+  color: var(--teal-dark);
+}
+
+.navbar-solution-description {
+  margin-top: 3px;
+
+  font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  font-size: 11px;
+
+  line-height: 1.45;
+
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   RIGHT SIDE ACTIONS
+   ========================================================================== */
+
+.navbar-actions {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* ==========================================================================
+   DESKTOP CTA
+   ========================================================================== */
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 38px;
+
+  padding: 0 23px;
+
+  border: 1px solid #0f172a;
+
+  border-radius: var(--radius-full);
+
+  background: transparent;
+
+  font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  color: #0f172a;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar-cta:hover {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   MOBILE TOGGLE
+   ========================================================================== */
+
+.nav-toggle {
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 7px;
+
+  border: 1px solid rgba(15, 23, 42, 0.25);
+
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background: var(--teal-light);
+  border-color: var(--teal);
+}
+
+.nav-toggle span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 2px;
+
+  background: var(--text-dark);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* Hamburger -> X */
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   MOBILE MENU
+   ========================================================================== */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* ==========================================================================
+   LARGE LAPTOP
+   1280px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  .navbar-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  .navbar-inner {
+    gap: 1.2rem;
+  }
+
+  .navbar-logo-image {
+    width: 145px;
+    height: 43px;
+  }
+
+  .navbar-nav-link {
+    padding-left: 13px;
+    padding-right: 13px;
+
+    font-size: 11.5px;
+  }
+
+  .navbar-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    font-size: 11.5px;
+  }
+
+  .navbar-dropdown-menu {
+    width: 370px;
+  }
+}
+
+
+/* ==========================================================================
+   TABLET / SMALL LAPTOP
+   1023px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .navbar-container {
+    padding: 0.8rem 2rem;
+  }
+
+  .navbar-inner {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+  }
+
+  /* Hide desktop navigation */
+
+  .navbar-nav {
+    display: none;
+  }
+
+  /* Hide desktop CTA */
+
+  .navbar-cta {
+    display: none;
+  }
+
+  /* Show hamburger */
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .navbar-logo-image {
+    width: 145px;
+    height: 43px;
+  }
+
+  /* Mobile menu becomes available */
+
+  .mobile-menu {
+    display: block;
+
+    max-height: 0;
+
+    margin: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    overflow: hidden;
+
+    transform: translateY(-8px);
+
+    transition:
+      max-height 0.3s ease,
+      opacity 0.2s ease,
+      transform 0.3s ease,
+      margin 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 700px;
+
+    margin-top: 0.75rem;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .mobile-menu-inner {
+    padding: 8px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-subtle);
+
+    border-radius: 16px;
+
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mobile-nav-link {
+    width: 100%;
+
+    min-height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    color: var(--text-dark);
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover {
+    background: var(--teal-light);
+  }
+
+  .mobile-nav-link.active {
+    background: var(--teal);
+
+    color: #ffffff;
+
+    font-weight: 600;
+  }
+
+  .mobile-solutions {
+    width: 100%;
+  }
+
+  .mobile-solutions-trigger {
+    appearance: none;
+  }
+
+  .mobile-solutions-list {
+    margin: 2px 0 5px 12px;
+
+    padding: 4px 0 4px 10px;
+
+    border-left: 2px solid var(--teal);
+  }
+
+  .mobile-solution-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 8px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+  }
+
+  .mobile-solution-item:hover {
+    background: var(--teal-light);
+  }
+
+  .mobile-solution-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: var(--teal-light);
+
+    color: var(--teal-dark);
+  }
+
+  .mobile-solution-content {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  .mobile-solution-title {
+    font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    color: var(--text-dark);
+  }
+
+  .mobile-solution-description {
+    margin-top: 2px;
+
+    font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-size: 10.5px;
+
+    line-height: 1.4;
+
+    color: var(--text-muted);
+  }
+
+  .mobile-cta {
+    width: 100%;
+
+    height: 44px;
+
+    margin-top: 7px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-full);
+
+    background: var(--teal);
+
+    font-family: 'Lufga Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+  }
+
+  .mobile-cta:hover {
+    background: var(--teal-hover);
+  }
+}
+
+
+/* ==========================================================================
+   TABLET PORTRAIT
+   768px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .navbar-container {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .navbar-logo-image {
+    width: 138px;
+    height: 41px;
+  }
+
+  .nav-toggle {
+    width: 39px;
+    height: 39px;
+  }
+
+  .mobile-menu.open {
+    margin-top: 0.65rem;
+  }
+}
+
+
+/* ==========================================================================
+   MOBILE
+   640px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  .navbar-container {
+    padding: 0.7rem 1.25rem;
+  }
+
+  .navbar-logo-image {
+    width: 132px;
+    height: 40px;
+  }
+
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobile-menu.open {
+    margin-top: 0.55rem;
+  }
+
+  .mobile-menu-inner {
+    padding: 8px;
+  }
+
+  .mobile-nav-link {
+    min-height: 44px;
+
+    padding: 10px 13px;
+
+    font-size: 14px;
+  }
+
+  .mobile-solution-item {
+    padding: 8px 7px;
+  }
+
+  .mobile-solution-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .mobile-solution-title {
+    font-size: 11.5px;
+  }
+
+  .mobile-solution-description {
+    font-size: 10px;
+  }
+
+  .mobile-cta {
+    height: 43px;
+
+    font-size: 12.5px;
+  }
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   480px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0.65rem 1rem;
+  }
+
+  .navbar-logo-image {
+    width: 125px;
+    height: 38px;
+  }
+
+  .nav-toggle {
+    width: 37px;
+    height: 37px;
+  }
+
+  .mobile-menu.open {
+    margin-top: 0.5rem;
+  }
+
+  .mobile-menu-inner {
+    padding: 7px;
+  }
+
+  .mobile-nav-link {
+    min-height: 42px;
+
+    padding: 9px 11px;
+
+    font-size: 13px;
+  }
+
+  .mobile-solution-item {
+    padding: 7px 6px;
+  }
+
+  .mobile-solution-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobile-solution-title {
+    font-size: 11.5px;
+  }
+
+  .mobile-solution-description {
+    font-size: 10px;
+  }
+
+  .mobile-cta {
+    height: 43px;
+
+    font-size: 12.5px;
+  }
+}
+
+
+/* ==========================================================================
+   EXTRA SMALL DEVICES
+   375px AND BELOW
+   ========================================================================== */
+
+@media (max-width: 375px) {
+  .navbar-container {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .navbar-logo-image {
+    width: 115px;
+    height: 36px;
+  }
+
+  .nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-menu.open {
+    margin-top: 0.45rem;
+  }
+
+  .mobile-nav-link {
+    min-height: 40px;
+
+    padding: 8px 10px;
+
+    font-size: 12.5px;
+  }
+
+  .mobile-solution-item {
+    gap: 8px;
+  }
+
+  .mobile-solution-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mobile-solution-title {
+    font-size: 11px;
+  }
+
+  .mobile-solution-description {
+    font-size: 9.5px;
+  }
+
+  .mobile-cta {
+    height: 41px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+.navbar-nav-link:focus-visible,
+.navbar-cta:focus-visible,
+.navbar-logo-link:focus-visible,
+.nav-toggle:focus-visible,
+.mobile-nav-link:focus-visible,
+.mobile-solution-item:focus-visible,
+.mobile-cta:focus-visible,
+.navbar-solution-item:focus-visible {
+  outline: 2px solid var(--teal);
+
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-logo-link,
+  .navbar-nav-link,
+  .navbar-chevron,
+  .navbar-solution-item,
+  .navbar-solution-icon,
+  .navbar-solution-title,
+  .navbar-cta,
+  .nav-toggle,
+  .nav-toggle span,
+  .mobile-menu,
+  .mobile-nav-link,
+  .mobile-solution-item,
+  .mobile-cta {
+    transition: none;
+  }
+}
