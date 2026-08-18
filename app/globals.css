@@ -13,9 +13,25 @@
 
 @font-face {
   font-family: "Lufga Regular";
-  src: url("/fonts/LufgaMedium.ttf") format("truetype");
+  src: url("/fonts/LufgaRegular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaMedium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
   font-display: swap;
 }
 
@@ -1519,4 +1535,585 @@ a.btn-teal:hover,
     background:
       #ffffff;
   }
+}
+
+/* ==========================================================================
+   LANDINGPAGE1 — GLOBAL DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  --lp1-teal: #1bdbba;
+  --lp1-teal-bright: #22e6c4;
+  --lp1-teal-dark: #149c85;
+  --lp1-teal-soft: rgba(27, 219, 186, 0.12);
+
+  --lp1-ink: #151515;
+  --lp1-ink-soft: #252525;
+  --lp1-ink-muted: #505050;
+
+  --lp1-paper: #ffffff;
+  --lp1-paper-soft: #fbfbfa;
+  --lp1-paper-muted: #f5f5f4;
+
+  --lp1-heading-gradient:
+    linear-gradient(
+      252deg,
+      #151515 0%,
+      #252525 45%,
+      #505050 100%
+    );
+
+  --lp1-shadow-soft:
+    0 18px 50px rgba(19, 41, 35, 0.08);
+
+  --lp1-shadow-medium:
+    0 24px 65px rgba(19, 41, 35, 0.12);
+
+  --lp1-ease:
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Shared container used by the new main-website components */
+
+.lp1-shell {
+  width:
+    min(
+      calc(100% - 56px),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* Landingpage1 page isolation */
+
+.landingpage1 {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #ffffff;
+}
+
+
+/*
+ * Existing globals.css applies heading colors globally.
+ * These scoped rules make sure Landingpage1 intentional
+ * dark surfaces and gradient headings are not overridden.
+ */
+
+.landingpage1 .lp1-display-heading {
+  background:
+    var(--lp1-heading-gradient)
+    !important;
+
+  -webkit-background-clip:
+    text
+    !important;
+
+  background-clip:
+    text
+    !important;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+}
+
+
+.landingpage1 .lp1-hero__title,
+.landingpage1 .lp1-contact__copy h2,
+.landingpage1 .lp1-solution-card--featured h3 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+/* ==========================================================================
+   PREMIUM SITE SCROLLBAR
+   ========================================================================== */
+
+html {
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    var(--lp1-teal)
+    #111715;
+}
+
+
+::-webkit-scrollbar {
+  width:
+    11px;
+
+  height:
+    11px;
+}
+
+
+::-webkit-scrollbar-track {
+  background:
+    linear-gradient(
+      180deg,
+      #111715,
+      #18201e
+    );
+}
+
+
+::-webkit-scrollbar-thumb {
+  min-height:
+    70px;
+
+  border:
+    3px
+    solid
+    transparent;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--lp1-teal-bright),
+      var(--lp1-teal),
+      var(--lp1-teal-dark)
+    );
+
+  background-clip:
+    padding-box;
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255,255,255,.28);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #42edd0,
+      var(--lp1-teal)
+    );
+
+  background-clip:
+    padding-box;
+}
+
+
+::-webkit-scrollbar-corner {
+  background:
+    #111715;
+}
+
+
+/* ==========================================================================
+   LANDINGPAGE1 RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .lp1-shell {
+    width:
+      min(
+        calc(100% - 30px),
+        1180px
+      );
+  }
+}
+
+
+/* ==========================================================================
+   LANDINGPAGE1 REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .landingpage1 *,
+  .landingpage1 *::before,
+  .landingpage1 *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+}
+
+/* ==========================================================================
+   TEKCORP — MAIN WEBSITE ROUTING SHELL
+   ========================================================================== */
+
+.tekcorp-main {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    hidden;
+}
+
+
+/* ==========================================================================
+   HOME PAGE — GLOBAL DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------
+     HOME BRAND COLORS
+     --------------------------------------------------------------- */
+
+  --home-teal:
+    #1bdbba;
+
+  --home-teal-bright:
+    #22e6c4;
+
+  --home-teal-dark:
+    #149c85;
+
+  --home-teal-soft:
+    rgba(
+      27,
+      219,
+      186,
+      0.12
+    );
+
+
+  /* ---------------------------------------------------------------
+     HOME DARK COLORS
+     --------------------------------------------------------------- */
+
+  --home-black:
+    #040605;
+
+  --home-dark:
+    #151817;
+
+  --home-dark-soft:
+    #242625;
+
+
+  /* ---------------------------------------------------------------
+     HOME LIGHT COLORS
+     --------------------------------------------------------------- */
+
+  --home-white:
+    #ffffff;
+
+  --home-paper:
+    #fbfbfa;
+
+  --home-paper-muted:
+    #f6f6f5;
+
+
+  /* ---------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------- */
+
+  --home-heading-gradient:
+    linear-gradient(
+      90deg,
+      #151515 0%,
+      #252525 45%,
+      #505050 100%
+    );
+
+
+  /* ---------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------- */
+
+  --home-shadow-soft:
+    0
+    18px
+    45px
+    rgba(
+      20,
+      44,
+      39,
+      0.08
+    );
+
+
+  --home-shadow-medium:
+    0
+    24px
+    65px
+    rgba(
+      20,
+      44,
+      39,
+      0.12
+    );
+
+
+  /* ---------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------- */
+
+  --home-ease:
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    );
+}
+
+
+/* ==========================================================================
+   HOME PAGE ROOT
+   ========================================================================== */
+
+.tek-home-page {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    clip;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   HOME SHARED CONTAINER
+
+   Used by all new Home components.
+   ========================================================================== */
+
+.tek-home-shell {
+  width:
+    min(
+      calc(
+        100% - 56px
+      ),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* ==========================================================================
+   HOME — GRADIENT HEADING UTILITY
+   ========================================================================== */
+
+.tek-home-gradient-heading {
+  background:
+    var(
+      --home-heading-gradient
+    );
+
+  background-clip:
+    text;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+}
+
+
+/* ==========================================================================
+   GLOBAL HEADING OVERRIDE COMPATIBILITY
+
+   Your older globals contain:
+
+   section h1,
+   section h2,
+   ...
+
+   These scoped rules guarantee that intentional Home dark surfaces
+   always keep white typography.
+   ========================================================================== */
+
+.tek-home-page
+.tek-home-contact__copy
+h2 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+.tek-home-page
+.tek-home-about__value-card
+h3 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+/* ==========================================================================
+   ANCHOR SCROLL OFFSET
+
+   Prevents the fixed Navbar from covering section headings when
+   clicking navigation links.
+   ========================================================================== */
+
+html {
+  scroll-padding-top:
+    90px;
+}
+
+
+.tek-home-page section[id] {
+  scroll-margin-top:
+    90px;
+  padding: 20px 0px 20px
+
+}
+
+
+/* ==========================================================================
+   HOME LINKS / INTERACTIONS
+   ========================================================================== */
+
+.tek-home-page a,
+.tek-home-page button {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+/* ==========================================================================
+   HOME IMAGE QUALITY
+   ========================================================================== */
+
+.tek-home-page img {
+  backface-visibility:
+    hidden;
+
+  transform-style:
+    preserve-3d;
+}
+
+
+/* ==========================================================================
+   HOME RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (max-width: 760px) {
+
+  .tek-home-shell {
+    width:
+      min(
+        calc(
+          100% - 30px
+        ),
+        1180px
+      );
+  }
+
+
+  html {
+    scroll-padding-top:
+      78px;
+  }
+
+
+  .tek-home-page section[id] {
+    scroll-margin-top:
+      78px;
+   padding: 0px 0px 20px
+  }
+
+}
+
+
+/* ==========================================================================
+   HOME — ACCESSIBILITY / REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .tek-home-page *,
+  .tek-home-page *::before,
+  .tek-home-page *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+
+  .footer2 {
+    display:
+      none
+      !important;
+  }
+
 }

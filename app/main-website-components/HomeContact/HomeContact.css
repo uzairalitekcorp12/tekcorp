@@ -1,0 +1,302 @@
+/* ==========================================================================
+   HOME — CONTACT
+   ========================================================================== */
+
+.tek-home-contact {
+  padding: 88px 0 96px;
+  background: #fff;
+}
+
+.tek-home-contact__panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(320px,.62fr);
+  align-items: center;
+  gap: 70px;
+  padding: 62px;
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 12% 20%,
+      rgba(27,219,186,.08),
+      transparent 25%
+    ),
+    #040605;
+  color: #fff;
+  box-shadow: 0 24px 64px rgba(9,18,15,.10);
+}
+
+.tek-home-contact__orb {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(255,255,255,.055);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.tek-home-contact__orb--one {
+  left: -135px;
+  bottom: -155px;
+  width: 330px;
+  height: 330px;
+}
+
+.tek-home-contact__orb--two {
+  top: -135px;
+  right: 24%;
+  width: 285px;
+  height: 285px;
+  border-color: rgba(27,219,186,.11);
+}
+
+.tek-home-contact__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px !important;
+  color: #1bdbba !important;
+  font-size: .6rem !important;
+  font-weight: 600;
+  -webkit-text-fill-color: #1bdbba !important;
+}
+
+.tek-home-contact__kicker > span {
+  width: 29px;
+  height: 1px;
+  background: currentColor;
+}
+
+.tek-home-contact__copy h2 {
+  max-width: 620px;
+  margin: 0 !important;
+  color: #fff !important;
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif) !important;
+  font-size: clamp(2.05rem,4vw,3.5rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.051em !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.tek-home-contact__description,
+.tek-home-contact__note {
+  max-width: 520px;
+  color: rgba(255,255,255,.55) !important;
+  font-size: .67rem !important;
+  line-height: 1.64 !important;
+  -webkit-text-fill-color: rgba(255,255,255,.55) !important;
+}
+
+.tek-home-contact__description {
+  margin: 18px 0 0 !important;
+}
+
+.tek-home-contact__note {
+  margin: 48px 0 0 !important;
+}
+
+.tek-home-contact__note strong {
+  color: #1bdbba;
+}
+
+.tek-home-contact__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 24px;
+}
+
+.tek-home-contact__details a,
+.tek-home-contact__details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,.72);
+  font-size: .58rem;
+  text-decoration: none;
+}
+
+.tek-home-contact__details svg {
+  color: #1bdbba;
+}
+
+.tek-home-contact__socials {
+  display: flex;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.tek-home-contact__socials a {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50%;
+  color: rgba(255,255,255,.74);
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.tek-home-contact__socials a svg {
+  width: 13px;
+  height: 13px;
+}
+
+.tek-home-contact__socials a:hover {
+  border-color: #1bdbba;
+  background: #1bdbba;
+  color: #07110f;
+  transform: translateY(-2px);
+}
+
+.tek-home-contact__form {
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,.84);
+  border-radius: 7px;
+  background: #fff;
+  color: #171918;
+  box-shadow: 0 24px 60px rgba(0,0,0,.24);
+}
+
+.tek-home-contact__form-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.tek-home-contact__form-head > div > span {
+  color: #8e9391;
+  font-size: .5rem;
+}
+
+.tek-home-contact__form-head h3 {
+  margin: 2px 0 0 !important;
+  color: #171918 !important;
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  -webkit-text-fill-color: #171918 !important;
+}
+
+.tek-home-contact__form-head svg {
+  color: #149c85;
+}
+
+.tek-home-contact__form label {
+  display: grid;
+  gap: 6px;
+  margin-top: 13px;
+}
+
+.tek-home-contact__form label > span {
+  color: #6a6f6d;
+  font-size: .53rem;
+  font-weight: 600;
+}
+
+.tek-home-contact__form input,
+.tek-home-contact__form textarea {
+  width: 100%;
+  border: 1px solid #d9dddb;
+  border-radius: 4px;
+  outline: 0;
+  background: #fff;
+  color: #171918;
+  font: inherit;
+  font-size: .67rem;
+  resize: vertical;
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.tek-home-contact__form input {
+  min-height: 40px;
+  padding: 0 11px;
+}
+
+.tek-home-contact__form textarea {
+  min-height: 112px;
+  padding: 10px 11px;
+}
+
+.tek-home-contact__form input:focus,
+.tek-home-contact__form textarea:focus {
+  border-color: #1bdbba;
+  box-shadow: 0 0 0 3px rgba(27,219,186,.1);
+}
+
+.tek-home-contact__form button {
+  display: flex;
+  width: 100%;
+  min-height: 43px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      90deg,
+      #1bdbba,
+      #21e2c1
+    );
+  color: #07110f;
+  cursor: pointer;
+  font: inherit;
+  font-size: .62rem;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(27,219,186,.18);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.tek-home-contact__form button:hover {
+  box-shadow: 0 15px 28px rgba(27,219,186,.26);
+  transform: translateY(-2px);
+}
+
+.tek-home-contact__success {
+  margin: 10px 0 0 !important;
+  color: #149c85 !important;
+  font-size: .53rem !important;
+  line-height: 1.45 !important;
+  -webkit-text-fill-color: #149c85 !important;
+}
+
+@media (max-width: 850px) {
+  .tek-home-contact__panel {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .tek-home-contact {
+    padding: 72px 0 76px;
+  }
+
+  .tek-home-contact__panel {
+    padding: 29px 20px;
+  }
+
+  .tek-home-contact__note {
+    margin-top: 32px !important;
+  }
+}

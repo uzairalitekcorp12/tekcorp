@@ -1,0 +1,1836 @@
+/* ==========================================================================
+   TEKCORP
+   HOME — TEAM
+   ==========================================================================
+
+   BUILT FOR:
+
+   Transparent person assets approximately:
+
+   250px – 350px wide
+   250px – 350px high
+
+
+   KEY ARCHITECTURE
+   ----------------
+
+   CIRCLE:
+   CSS creates it.
+
+   PERSON:
+   Transparent PNG / WebP sits independently on top.
+
+   NORMAL:
+          ○
+         person
+
+   FEATURED:
+             ┌──────────────┐
+             │ Jenny Wilson │
+             │ CEO          │
+             └──────┬───────┘
+                    ▼
+
+                    ◎
+                BIG PERSON
+
+
+   HOVER:
+   Any member becomes featured temporarily.
+
+   CLICK:
+   That member stays featured.
+
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION / THEME
+   ========================================================================== */
+
+.tek-home-team {
+  /* ------------------------------------------------------------------------
+     MAIN WEBSITE COLORS
+
+     You can later move these into globals.css.
+     ------------------------------------------------------------------------ */
+
+  --tek-team-bg:
+    #ffffff;
+
+  --tek-team-title:
+    #090a14;
+
+  --tek-team-copy:
+    #666a72;
+
+
+  /* Normal circle backgrounds */
+
+  --tek-team-circle:
+    #e4eaf2;
+
+  --tek-team-circle-alt:
+    #dfe6ef;
+
+
+  /* Active TekCorp circle */
+
+  --tek-team-active:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+
+  /* Active shadow */
+
+  --tek-team-active-shadow:
+    rgba(
+      27,
+      219,
+      186,
+      0.17
+    );
+
+
+  /* Floating label */
+
+  --tek-team-label-bg:
+    #ffffff;
+
+  --tek-team-label-title:
+    #111219;
+
+  --tek-team-label-role:
+    #858a91;
+
+
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding:
+    70px
+    0
+    0;
+
+  background:
+    var(
+      --tek-team-bg
+    );
+}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.tek-home-team__header {
+  position: relative;
+
+  z-index: 30;
+
+  width:
+    min(
+      100%,
+      650px
+    );
+
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+
+.tek-home-team__header h2 {
+  margin:
+    0 !important;
+
+  color:
+    var(
+      --tek-team-title
+    ) !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    ) !important;
+
+  font-size:
+    clamp(
+      2.35rem,
+      4vw,
+      3.45rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1 !important;
+
+  letter-spacing:
+    -0.058em !important;
+
+  -webkit-text-fill-color:
+    var(
+      --tek-team-title
+    ) !important;
+}
+
+
+/* ==========================================================================
+   HEADER COPY
+   ========================================================================== */
+
+.tek-home-team__header p {
+  width:
+    min(
+      100%,
+      535px
+    );
+
+  margin:
+    19px
+    auto
+    0 !important;
+
+  color:
+    var(
+      --tek-team-copy
+    ) !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    ) !important;
+
+  font-size:
+    0.72rem !important;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.62 !important;
+
+  -webkit-text-fill-color:
+    var(
+      --tek-team-copy
+    ) !important;
+}
+
+/* ==========================================================================
+   TEAM STAGE
+   ========================================================================== */
+
+.tek-home-team__stage-wrap {
+  position: relative;
+
+  width: 100%;
+
+  height: clamp(
+    340px,
+    28vw,
+    430px
+  );
+
+  margin-top: 38px;
+
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   TEAM GRID
+   ========================================================================== */
+
+.tek-home-team__stage {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  display: grid;
+
+  width: min(
+    1500px,
+    96vw
+  );
+
+  height: 100%;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  align-items: end;
+  justify-items: center;
+
+  transform: translateX(-50%);
+}
+
+
+/* ==========================================================================
+   MEMBER
+   ========================================================================== */
+
+.tek-home-team-member {
+  --team-circle-size:
+    clamp(
+      180px,
+      15.2vw,
+      260px
+    );
+
+  /*
+   * The bottom of every circle is identical.
+   * This creates one clean visual baseline.
+   */
+  --team-circle-bottom:
+    -48px;
+
+  /*
+   * Critical:
+   *
+   * Person size follows circle size BUT never exceeds
+   * the native 350px source size.
+   */
+  --team-person-size:
+    min(
+      350px,
+      calc(
+        var(--team-circle-size)
+        * 1.04
+      )
+    );
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+
+  animation:
+    tekTeamMemberReveal
+    700ms
+    var(--tek-team-delay, 0ms)
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    )
+    both;
+}
+
+
+/* ==========================================================================
+   FEATURED MEMBER
+   ========================================================================== */
+
+.tek-home-team-member--featured {
+  --team-circle-size:
+    clamp(
+      260px,
+      21.5vw,
+      380px
+    );
+
+  /*
+   * Still capped at 350px.
+   *
+   * The circle is allowed to become larger than the source
+   * image without stretching the image itself.
+   */
+  --team-person-size:
+    min(
+      350px,
+      calc(
+        var(--team-circle-size)
+        * 0.96
+      )
+    );
+
+  z-index: 20;
+}
+
+
+/* ==========================================================================
+   BUTTON
+   ========================================================================== */
+
+.tek-home-team-member__visual {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==========================================================================
+   CIRCLE
+   ========================================================================== */
+
+.tek-home-team-member__circle {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  bottom: var(--team-circle-bottom);
+
+  display: block;
+
+  width: var(--team-circle-size);
+  height: var(--team-circle-size);
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf1f6 0%,
+      #dfe6ef 100%
+    );
+
+  box-shadow:
+    inset
+      0
+      0
+      0
+      1px
+      rgba(16, 25, 31, 0.025);
+
+  transform:
+    translate3d(
+      -50%,
+      0,
+      0
+    );
+
+  transform-origin: center bottom;
+
+  transition:
+    width
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    height
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    background
+      450ms
+      ease,
+    box-shadow
+      450ms
+      ease,
+    transform
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+
+  will-change:
+    width,
+    height,
+    transform;
+}
+
+
+/* Alternate neutral background */
+
+.tek-home-team-member:nth-child(even)
+.tek-home-team-member__circle {
+  background:
+    linear-gradient(
+      145deg,
+      #e8edf4 0%,
+      #dbe3ed 100%
+    );
+}
+
+
+/* ==========================================================================
+   FEATURED CIRCLE
+   ========================================================================== */
+
+.tek-home-team-member--featured
+.tek-home-team-member__circle {
+  background:
+    linear-gradient(
+      145deg,
+      #16dfbd 0%,
+      #20cdb1 100%
+    );
+
+  box-shadow:
+    0
+    24px
+    70px
+    rgba(
+      27,
+      219,
+      186,
+      0.18
+    ),
+    inset
+    0
+    0
+    0
+    1px
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+}
+
+
+/* ==========================================================================
+   CIRCLE LIGHT
+   ========================================================================== */
+
+.tek-home-team-member__circle-light {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      circle
+      at
+      50%
+      25%,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.28
+      ),
+
+      transparent
+      58%
+    );
+
+  opacity: 0.45;
+
+  pointer-events: none;
+}
+
+
+.tek-home-team-member--featured
+.tek-home-team-member__circle-light {
+  opacity: 0.75;
+}
+
+
+/* ==========================================================================
+   INNER RING
+   ========================================================================== */
+
+.tek-home-team-member__circle-ring {
+  position: absolute;
+
+  inset: 10px;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  border-radius: inherit;
+
+  opacity: 0;
+
+  transform: scale(0.94);
+
+  transition:
+    opacity 400ms ease,
+    transform
+      600ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+.tek-home-team-member--featured
+.tek-home-team-member__circle-ring {
+  opacity: 0.6;
+
+  transform: scale(1);
+}
+
+
+/* ==========================================================================
+   PERSON
+   ========================================================================== */
+
+.tek-home-team-member__person {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+
+  /*
+   * Much less aggressive than the original -29px.
+   *
+   * This is one of the main fixes for the chopped portrait look.
+   */
+  bottom: -8px;
+
+  display: block;
+
+  width: var(--team-person-size);
+  height: var(--team-person-size);
+
+  max-width: 350px;
+  max-height: 350px;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  image-rendering: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  backface-visibility: hidden;
+
+  filter:
+    drop-shadow(
+      0
+      10px
+      15px
+      rgba(
+        10,
+        27,
+        22,
+        0.05
+      )
+    );
+
+  transform:
+    translate3d(
+      calc(
+        -50%
+        +
+        var(--person-x, 0px)
+      ),
+      var(--person-y, 0px),
+      0
+    )
+    scale(
+      var(
+        --person-scale,
+        1
+      )
+    );
+
+  transform-origin: center bottom;
+
+  transition:
+    width
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    height
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    transform
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    filter
+      400ms
+      ease;
+
+  will-change:
+    width,
+    height,
+    transform;
+}
+
+
+/* ==========================================================================
+   FEATURED PERSON
+   ========================================================================== */
+
+.tek-home-team-member--featured
+.tek-home-team-member__person {
+  filter:
+    drop-shadow(
+      0
+      16px
+      24px
+      rgba(
+        7,
+        34,
+        26,
+        0.1
+      )
+    );
+}
+
+
+/* ==========================================================================
+   LABEL
+   ========================================================================== */
+
+.tek-home-team-member__label {
+  position: absolute;
+
+  z-index: 40;
+
+  left: 50%;
+
+  /*
+   * Label position now understands where the circle really is.
+   */
+  bottom:
+    calc(
+      var(--team-circle-size)
+      +
+      var(--team-circle-bottom)
+      +
+      18px
+    );
+
+  display: grid;
+
+  min-width: 150px;
+
+  gap: 4px;
+
+  padding:
+    14px
+    19px;
+
+  border:
+    1px
+    solid
+    rgba(
+      18,
+      27,
+      32,
+      0.045
+    );
+
+  border-radius: 15px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
+
+  box-shadow:
+    0
+    18px
+    50px
+    rgba(
+      13,
+      26,
+      21,
+      0.12
+    );
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  text-align: center;
+
+  transform:
+    translate3d(
+      -50%,
+      12px,
+      0
+    )
+    scale(0.94);
+
+  transition:
+    bottom
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    opacity
+      250ms
+      ease,
+    visibility
+      250ms
+      ease,
+    transform
+      480ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+/* Label arrow */
+
+.tek-home-team-member__label::after {
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 12px;
+  height: 12px;
+
+  background: #fff;
+
+  content: "";
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+}
+
+
+/* Visible label */
+
+.tek-home-team-member--featured
+.tek-home-team-member__label {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translate3d(
+      -50%,
+      0,
+      0
+    )
+    scale(1);
+}
+
+
+/* Label typography */
+
+.tek-home-team-member__label strong {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  color: #111219;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+
+  font-size: 0.72rem;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+.tek-home-team-member__label span {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  color: #858a91;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+
+  font-size: 0.56rem;
+
+  font-weight: 400;
+
+  line-height: 1.3;
+}
+
+
+/* ==========================================================================
+   SHINE
+   ========================================================================== */
+
+.tek-home-team-member__shine {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 50%;
+
+  bottom:
+    var(
+      --team-circle-bottom
+    );
+
+  width:
+    var(
+      --team-circle-size
+    );
+
+  height:
+    var(
+      --team-circle-size
+    );
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform:
+    translateX(-50%);
+
+  transition:
+    width
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    height
+      650ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    opacity
+      300ms
+      ease;
+}
+
+
+.tek-home-team-member__shine::before {
+  position: absolute;
+
+  top: -20%;
+  left: -60%;
+
+  width: 26%;
+  height: 145%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        255,
+        255,
+        255,
+        0.2
+      ),
+      transparent
+    );
+
+  content: "";
+
+  transform: rotate(15deg);
+
+  transition:
+    left
+      800ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+/* ==========================================================================
+   DESKTOP HOVER
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .tek-home-team-member:hover
+  .tek-home-team-member__shine {
+    opacity: 1;
+  }
+
+
+  .tek-home-team-member:hover
+  .tek-home-team-member__shine::before {
+    left: 135%;
+  }
+
+
+  .tek-home-team-member--featured:hover
+  .tek-home-team-member__circle {
+    transform:
+      translate3d(
+        -50%,
+        -4px,
+        0
+      );
+
+    box-shadow:
+      0
+      30px
+      75px
+      rgba(
+        27,
+        219,
+        186,
+        0.22
+      );
+  }
+
+
+  .tek-home-team-member--featured:hover
+  .tek-home-team-member__person {
+    filter:
+      drop-shadow(
+        0
+        19px
+        28px
+        rgba(
+          7,
+          34,
+          26,
+          0.13
+        )
+      );
+
+    transform:
+      translate3d(
+        calc(
+          -50%
+          +
+          var(--person-x, 0px)
+        ),
+        calc(
+          var(--person-y, 0px)
+          -
+          5px
+        ),
+        0
+      )
+      scale(
+        calc(
+          var(--person-scale, 1)
+          *
+          1.018
+        )
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   CLICK
+   ========================================================================== */
+
+.tek-home-team-member__visual:active
+.tek-home-team-member__person {
+  transform:
+    translate3d(
+      calc(
+        -50%
+        +
+        var(--person-x, 0px)
+      ),
+      var(--person-y, 0px),
+      0
+    )
+    scale(
+      calc(
+        var(--person-scale, 1)
+        *
+        0.985
+      )
+    );
+}
+
+
+/* ==========================================================================
+   KEYBOARD
+   ========================================================================== */
+
+.tek-home-team-member__visual:focus-visible {
+  outline: none;
+}
+
+
+.tek-home-team-member__visual:focus-visible
+.tek-home-team-member__circle {
+  box-shadow:
+    0
+    0
+    0
+    4px
+    rgba(
+      27,
+      219,
+      186,
+      0.22
+    );
+}
+
+
+/* ==========================================================================
+   RESPONSIVE TEAM SYSTEM
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  .tek-home-team {
+    /*
+     * Responsive design tokens.
+     *
+     * Most tablet/mobile sizing now comes from these
+     * instead of scattered magic numbers.
+     */
+    --team-stage-height:
+      clamp(
+        305px,
+        40vw,
+        335px
+      );
+
+    --team-column-width:
+      clamp(
+        158px,
+        21vw,
+        184px
+      );
+
+    --team-column-gap:
+      clamp(
+        6px,
+        1.2vw,
+        14px
+      );
+
+    --team-normal-circle:
+      clamp(
+        150px,
+        19vw,
+        174px
+      );
+
+    --team-featured-circle:
+      clamp(
+        228px,
+        29vw,
+        260px
+      );
+
+    --team-circle-responsive-bottom:
+      -34px;
+
+    padding-top:
+      clamp(
+        52px,
+        7vw,
+        60px
+      );
+  }
+
+
+  /* ==========================================================================
+     HEADER
+     ========================================================================== */
+
+  .tek-home-team__header {
+    width:
+      min(
+        calc(
+          100%
+          -
+          48px
+        ),
+        620px
+      );
+  }
+
+
+  .tek-home-team__header h2 {
+    font-size:
+      clamp(
+        2.3rem,
+        7vw,
+        3.15rem
+      ) !important;
+
+    line-height:
+      1.02 !important;
+  }
+
+
+  .tek-home-team__header p {
+    width:
+      min(
+        100%,
+        520px
+      );
+
+    margin-top:
+      17px !important;
+
+    font-size:
+      0.74rem !important;
+  }
+
+
+  /* ==========================================================================
+     SCROLL CONTAINER
+     ========================================================================== */
+
+  .tek-home-team__stage-wrap {
+    position: relative;
+
+    width: 100%;
+
+    height:
+      var(
+        --team-stage-height
+      );
+
+    margin-top:
+      30px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type:
+      x proximity;
+
+    scroll-padding-inline:
+      calc(
+        (
+          100vw
+          -
+          var(
+            --team-column-width
+          )
+        )
+        /
+        2
+      );
+
+    overscroll-behavior-x:
+      contain;
+
+    -webkit-overflow-scrolling:
+      touch;
+  }
+
+
+  .tek-home-team__stage-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* ==========================================================================
+     TRACK
+     ========================================================================== */
+
+  .tek-home-team__stage {
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    display: grid;
+
+    width: max-content;
+    min-width: max-content;
+
+    height: 100%;
+
+    grid-template-columns:
+      repeat(
+        5,
+        var(
+          --team-column-width
+        )
+      );
+
+    column-gap:
+      var(
+        --team-column-gap
+      );
+
+    align-items: end;
+
+    padding-inline:
+      max(
+        40px,
+        calc(
+          (
+            100vw
+            -
+            var(
+              --team-column-width
+            )
+          )
+          /
+          2
+        )
+      );
+
+    box-sizing:
+      content-box;
+
+    transform: none;
+  }
+
+
+  /* ==========================================================================
+     MEMBER
+     ========================================================================== */
+
+  .tek-home-team-member {
+    --team-circle-size:
+      var(
+        --team-normal-circle
+      );
+
+    --team-circle-bottom:
+      var(
+        --team-circle-responsive-bottom
+      );
+
+    --team-person-size:
+      calc(
+        var(
+          --team-circle-size
+        )
+        *
+        1.04
+      );
+
+    scroll-snap-align:
+      center;
+
+    scroll-snap-stop:
+      normal;
+
+    user-select: none;
+  }
+
+
+  .tek-home-team-member--featured {
+    --team-circle-size:
+      var(
+        --team-featured-circle
+      );
+
+    --team-person-size:
+      calc(
+        var(
+          --team-circle-size
+        )
+        *
+        0.95
+      );
+  }
+
+
+  .tek-home-team-member__person {
+    bottom: -6px;
+  }
+
+
+  .tek-home-team-member__label {
+    min-width: 138px;
+
+    padding:
+      12px
+      16px;
+  }
+
+
+  /*
+   * Keep horizontal gestures natural when the finger
+   * starts directly over a portrait.
+   */
+  .tek-home-team-member__visual {
+    touch-action:
+      pan-x pinch-zoom;
+  }
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+  .tek-home-team {
+    --team-stage-height:
+      clamp(
+        285px,
+        76vw,
+        310px
+      );
+
+    --team-column-width:
+      clamp(
+        138px,
+        41vw,
+        164px
+      );
+
+    --team-column-gap:
+      clamp(
+        4px,
+        1.5vw,
+        8px
+      );
+
+    --team-normal-circle:
+      clamp(
+        120px,
+        35vw,
+        146px
+      );
+
+    --team-featured-circle:
+      clamp(
+        184px,
+        52vw,
+        214px
+      );
+
+    --team-circle-responsive-bottom:
+      -27px;
+
+    padding-top:
+      clamp(
+        44px,
+        12vw,
+        50px
+      );
+  }
+
+
+  /* ==========================================================================
+     HEADER
+     ========================================================================== */
+
+  .tek-home-team__header {
+    width:
+      min(
+        calc(
+          100%
+          -
+          36px
+        ),
+        440px
+      );
+  }
+
+
+  .tek-home-team__header h2 {
+    font-size:
+      clamp(
+        2.1rem,
+        10vw,
+        2.7rem
+      ) !important;
+
+    line-height:
+      1.02 !important;
+
+    letter-spacing:
+      -0.05em !important;
+  }
+
+
+  .tek-home-team__header p {
+    width:
+      min(
+        100%,
+        380px
+      );
+
+    margin-top:
+      14px !important;
+
+    font-size:
+      clamp(
+        0.7rem,
+        2.8vw,
+        0.74rem
+      ) !important;
+
+    line-height:
+      1.65 !important;
+  }
+
+
+  /* ==========================================================================
+     TEAM
+     ========================================================================== */
+
+  .tek-home-team__stage-wrap {
+    margin-top:
+      20px;
+
+    scroll-snap-type:
+      x mandatory;
+  }
+
+
+  .tek-home-team__stage {
+    padding-inline:
+      calc(
+        (
+          100vw
+          -
+          var(
+            --team-column-width
+          )
+        )
+        /
+        2
+      );
+  }
+
+
+  /* ==========================================================================
+     LABEL
+     ========================================================================== */
+
+  .tek-home-team-member__label {
+    bottom:
+      calc(
+        var(
+          --team-circle-size
+        )
+        +
+        var(
+          --team-circle-bottom
+        )
+        +
+        13px
+      );
+
+    min-width:
+      126px;
+
+    gap: 3px;
+
+    padding:
+      10px
+      14px;
+
+    border-radius:
+      12px;
+
+    box-shadow:
+      0
+      14px
+      38px
+      rgba(
+        13,
+        26,
+        21,
+        0.11
+      );
+  }
+
+
+  .tek-home-team-member__label strong {
+    font-size:
+      0.64rem;
+  }
+
+
+  .tek-home-team-member__label span {
+    font-size:
+      0.51rem;
+  }
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 390px) {
+
+  .tek-home-team {
+    --team-stage-height:
+      286px;
+
+    --team-column-width:
+      clamp(
+        128px,
+        40vw,
+        148px
+      );
+
+    --team-normal-circle:
+      clamp(
+        112px,
+        34vw,
+        130px
+      );
+
+    --team-featured-circle:
+      clamp(
+        168px,
+        50vw,
+        192px
+      );
+
+    --team-circle-responsive-bottom:
+      -25px;
+  }
+
+
+  .tek-home-team__header {
+    width:
+      calc(
+        100%
+        -
+        30px
+      );
+  }
+
+
+  .tek-home-team__header h2 {
+    font-size:
+      clamp(
+        2rem,
+        10.5vw,
+        2.4rem
+      ) !important;
+  }
+
+
+  .tek-home-team__header p {
+    font-size:
+      0.7rem !important;
+  }
+
+
+  .tek-home-team__stage-wrap {
+    margin-top:
+      17px;
+  }
+
+
+  .tek-home-team-member__label {
+    min-width:
+      116px;
+
+    padding:
+      9px
+      12px;
+  }
+
+
+  .tek-home-team-member__label strong {
+    font-size:
+      0.61rem;
+  }
+
+
+  .tek-home-team-member__label span {
+    font-size:
+      0.49rem;
+  }
+}
+
+
+/* ==========================================================================
+   VERY SMALL DEVICES
+   ========================================================================== */
+
+@media (max-width: 340px) {
+
+  .tek-home-team {
+    --team-stage-height:
+      275px;
+
+    --team-column-width:
+      130px;
+
+    --team-normal-circle:
+      110px;
+
+    --team-featured-circle:
+      166px;
+  }
+}
+
+
+/* ==========================================================================
+   TOUCH / COARSE POINTER
+   ========================================================================== */
+
+@media (hover: none),
+       (pointer: coarse) {
+
+  /*
+   * Shine is specifically a desktop hover treatment.
+   * Don't base this on viewport width because large tablets
+   * can still be touch devices.
+   */
+  .tek-home-team-member__shine {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   ENTRANCE
+   ========================================================================== */
+
+@keyframes tekTeamMemberReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        24px,
+        0
+      );
+  }
+
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tek-home-team-member,
+  .tek-home-team-member__circle,
+  .tek-home-team-member__person,
+  .tek-home-team-member__label,
+  .tek-home-team-member__shine,
+  .tek-home-team-member__shine::before {
+    animation: none !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+}

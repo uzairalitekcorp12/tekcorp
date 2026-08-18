@@ -1,36 +1,128 @@
 import "./globals.css";
 
-import Navbar from "./_shared/Navbar/Navbar";
-import Footer from "./_shared/Footer/Footer";
-import SiteEffects from "./_shared/SiteEffects/SiteEffects";
+import SiteEffects from
+  "./_shared/SiteEffects/SiteEffects";
+
+
+/*
+ * ==========================================================================
+ * GLOBAL METADATA
+ * ==========================================================================
+ */
 
 export const metadata = {
+
   title: {
-    default: "TekCorp - Empowering Innovation",
-    template: "%s | TekCorp",
+
+    default:
+      "TekCorp - Empowering Innovation",
+
+    template:
+      "%s | TekCorp",
+
   },
-  description: "Digital Systems That Power Business Growth",
+
+
+  description:
+    "Digital Systems That Power Business Growth",
+
 };
 
-export default function RootLayout({ children }) {
+
+/*
+ * ==========================================================================
+ * VIEWPORT
+ * ==========================================================================
+ */
+
+export const viewport = {
+
+  width:
+    "device-width",
+
+  initialScale:
+    1,
+
+};
+
+
+/*
+ * ==========================================================================
+ * ROOT LAYOUT
+ * ==========================================================================
+ *
+ * IMPORTANT ARCHITECTURE:
+ *
+ * Navbar is NOT global anymore.
+ *
+ * Every main page decides which Navbar style it needs.
+ *
+ *
+ * /
+ *
+ * LandingPage.jsx
+ *
+ *     <Navbar variant="default" />
+ *
+ *
+ * /home
+ *
+ * Home.jsx
+ *
+ *     <Navbar variant="default" />
+ *
+ *
+ * /landing1
+ *
+ * Landingpage1.jsx
+ *
+ *     <Navbar
+ *       variant="adaptive"
+ *       transparentTargetId="landingpage1-hero"
+ *     />
+ *
+ *
+ * This lets us reuse one Navbar while still supporting different
+ * Hero designs.
+ * ==========================================================================
+ */
+
+
+export default function RootLayout({
+  children,
+}) {
+
   return (
+
     <html lang="en">
+
       <body>
-        <Navbar />
+
+        {/* ================================================================
+            MAIN PAGE CONTENT
+            ================================================================ */}
 
         <main
-          style={{
-            width: "100%",
-            overflowX: "hidden",
-          }}
+          className="tekcorp-main"
         >
+
           {children}
+
         </main>
 
-        <Footer />
+
+        {/* ================================================================
+            GLOBAL SITE EFFECTS
+
+            One instance only for the whole website.
+            ================================================================ */}
 
         <SiteEffects />
+
       </body>
+
     </html>
+
   );
+
 }
