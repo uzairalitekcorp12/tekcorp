@@ -271,12 +271,43 @@
 
   padding: 0;
 
+  /*
+   * Premium white/silver text gradient.
+   *
+   * The heading text itself must stay transparent so the
+   * background gradient can show through the letter shapes.
+   */
+  background:
+    linear-gradient(
+      84.4deg,
+      #ffffff 1.6%,
+      rgba(
+        255,
+        255,
+        255,
+        0.65
+      ) 31.82%,
+      #ffffff 67.87%,
+      rgba(
+        255,
+        255,
+        255,
+        0.55
+      ) 103.4%
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
   color:
-    #dedede
+    transparent
     !important;
 
   -webkit-text-fill-color:
-    #dedede
+    transparent
     !important;
 
   font-family:
@@ -1273,10 +1304,10 @@
 
 .footer2__socials a svg {
   width:
-    13px;
+    15px;
 
   height:
-    13px;
+    15px;
 
   transition:
     transform
@@ -1294,74 +1325,6 @@
   transform:
     scale(
       1.08
-    );
-}
-
-
-/* ==========================================================================
-   CUSTOM BRAND TEXT
-   ========================================================================== */
-
-.footer2__brand-text {
-  position: relative;
-
-  z-index: 2;
-
-  display: grid;
-
-  place-items: center;
-
-  color: currentColor;
-
-  line-height: 1;
-
-  transition:
-    transform
-      0.3s
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
-}
-
-
-.footer2__brand-text--upwork {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:
-    10px;
-
-  font-weight:
-    700;
-
-  letter-spacing:
-    -0.07em;
-}
-
-
-.footer2__brand-text--wordpress {
-  font-family:
-    Georgia,
-    serif;
-
-  font-size:
-    14px;
-
-  font-weight:
-    700;
-}
-
-
-.footer2__socials a:hover
-.footer2__brand-text {
-  transform:
-    scale(
-      1.07
     );
 }
 
@@ -2060,8 +2023,7 @@
   .footer2__link > span,
   .footer2__socials a,
   .footer2__socials a::before,
-  .footer2__socials a svg,
-  .footer2__brand-text {
+  .footer2__socials a svg {
     transition:
       none
       !important;

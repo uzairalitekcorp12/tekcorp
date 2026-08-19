@@ -22,6 +22,55 @@ const PHONE_IMAGE =
    SOCIAL ICONS
    ========================================================================== */
 
+function FacebookIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M13.5 22v-9h3l.5-3.5h-3.5V7.25c0-1.01.28-1.7 1.75-1.7H17.1V2.42c-.32-.04-1.42-.14-2.7-.14-2.67 0-4.5 1.63-4.5 4.63V9.5H7V13h2.9v9h3.6Z" />
+    </svg>
+  );
+}
+
+
+function InstagramIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.9"
+      />
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        stroke="currentColor"
+        strokeWidth="1.9"
+      />
+
+      <circle
+        cx="17.4"
+        cy="6.7"
+        r="1.1"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+
 function LinkedInIcon() {
   return (
     <svg
@@ -31,30 +80,6 @@ function LinkedInIcon() {
     >
       <path d="M5.372 3.5A2.372 2.372 0 1 1 .628 3.5a2.372 2.372 0 0 1 4.744 0ZM.96 7.286h4.824V22H.96V7.286Zm7.83 0h4.626v2.012h.066c.644-1.22 2.22-2.506 4.57-2.506C22.94 6.792 24 10.008 24 14.19V22h-4.82v-6.922c0-1.65-.03-3.774-2.3-3.774-2.303 0-2.655 1.798-2.655 3.654V22H8.79V7.286Z" />
     </svg>
-  );
-}
-
-
-function UpworkIcon() {
-  return (
-    <span
-      className="footer2__brand-text footer2__brand-text--upwork"
-      aria-hidden="true"
-    >
-      Up
-    </span>
-  );
-}
-
-
-function WordPressIcon() {
-  return (
-    <span
-      className="footer2__brand-text footer2__brand-text--wordpress"
-      aria-hidden="true"
-    >
-      W
-    </span>
   );
 }
 
@@ -128,6 +153,7 @@ export default function Footer2() {
                   <ArrowUpRight
                     size={15}
                     strokeWidth={1.8}
+                    aria-hidden="true"
                   />
 
                 </span>
@@ -323,30 +349,32 @@ export default function Footer2() {
 
 
               <div className="footer2__socials">
+                <a
+                  href="https://web.facebook.com/profile.php?id=61563448207086"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TekCorp Facebook"
+                >
+                  <FacebookIcon />
+                </a>
 
                 <a
-                  href="#"
-                  aria-label="LinkedIn"
+                  href="https://www.instagram.com/tekcorpllc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TekCorp Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/tekcorpllc/?viewAsMember=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TekCorp LinkedIn"
                 >
                   <LinkedInIcon />
                 </a>
-
-
-                <a
-                  href="#"
-                  aria-label="Upwork"
-                >
-                  <UpworkIcon />
-                </a>
-
-
-                <a
-                  href="#"
-                  aria-label="WordPress"
-                >
-                  <WordPressIcon />
-                </a>
-
               </div>
 
             </div>

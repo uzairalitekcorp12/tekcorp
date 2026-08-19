@@ -7,7 +7,7 @@
  *
  * Happy coding lol : (
  *
- * TOTAL HOURS WASTED = 572
+ * TOTAL HOURS WASTED = 573
  */
 
 
@@ -16,55 +16,52 @@
  * TEKCORP — MAIN WEBSITE PAGE CONTROLLER
  * ==========================================================================
  *
- * IMPORTANT:
+ * MAIN WEBSITE ROUTES
  *
- * We intentionally use ONE:
+ * /
+ *      -> Existing/current website page
+ *
+ * /Home
+ *      -> New Home page
+ *
+ * /About
+ *      -> About page
+ *
+ *
+ * We intentionally continue using one central:
  *
  * app/page.js
  *
- * to control the main website pages.
+ * /Home and /About are internally rewritten by next.config.mjs.
  *
  *
- * CURRENT ROUTES
- * --------------------------------------------------------------------------
+ * Browser:
  *
- * /
- *      -> Existing LandingPage
+ * /Home
  *
- * /home
- *      -> New Home page
- *
- * /landing1
- *      -> Landingpage1
- *
- *
- * next.config.mjs performs internal rewrites:
- *
- * /home
- *      -> /?view=home
- *
- * /landing1
- *      -> /?view=landing1
- *
- *
- * The browser URL stays clean.
- *
- * Example:
- *
- * User sees:
- *
- * /home
- *
- * not:
+ * Internal:
  *
  * /?view=home
  *
+ *
+ * Browser:
+ *
+ * /About
+ *
+ * Internal:
+ *
+ * /?view=about
+ *
+ *
+ * IMPORTANT:
+ *
+ * There is NO Landingpage1 page or route anymore.
  * ==========================================================================
  */
 
 
 /* ==========================================================================
-   EXISTING WEBSITE
+   CURRENT ROOT WEBSITE
    ========================================================================== */
 
 import LandingPage from
@@ -72,7 +69,7 @@ import LandingPage from
 
 
 /* ==========================================================================
-   NEW HOME PAGE
+   HOME PAGE
    ========================================================================== */
 
 import Home from
@@ -80,47 +77,23 @@ import Home from
 
 
 /* ==========================================================================
-   LANDING PAGE 1
+   ABOUT PAGE
    ========================================================================== */
 
-import Landingpage1 from
-  "./main-website-pages/Landingpage1/Landingpage1";
+import About from
+  "./main-website-pages/About/About";
 
 
 /* ==========================================================================
    MAIN WEBSITE PAGE REGISTRY
-   ==========================================================================
-
-   Every future website page should be registered here.
-
-   Example later:
-
-   import ServicesPage from
-     "./main-website-pages/ServicesPage/ServicesPage";
-
-   import CompanyPage from
-     "./main-website-pages/CompanyPage/CompanyPage";
-
-
-   Then add:
-
-   services:
-     ServicesPage,
-
-   company:
-     CompanyPage,
-
    ========================================================================== */
 
 const MAIN_WEBSITE_PAGES = {
-
   home:
     Home,
 
-
-  landing1:
-    Landingpage1,
-
+  about:
+    About,
 };
 
 
@@ -129,28 +102,22 @@ const MAIN_WEBSITE_PAGES = {
    ========================================================================== */
 
 const PAGE_METADATA = {
-
   home: {
-
     title:
       "Home",
 
     description:
-      "TekCorp empowers businesses with scalable, efficient and innovative technology solutions.",
-
+      "TekCorp delivers digital transformation, software engineering, product development and scalable technology solutions.",
   },
 
 
-  landing1: {
-
+  about: {
     title:
-      "Digital Transformation",
+      "About Us",
 
     description:
-      "TekCorp digital transformation, engineering, product design, strategic partnerships and software development services.",
-
+      "Learn about TekCorp, our mission, ambition, team, technology partnerships and approach to building scalable digital solutions.",
   },
-
 };
 
 
@@ -161,7 +128,6 @@ const PAGE_METADATA = {
 export async function generateMetadata({
   searchParams,
 }) {
-
   const params =
     await searchParams;
 
@@ -171,29 +137,24 @@ export async function generateMetadata({
 
 
   /* ------------------------------------------------------------------------
-     REGISTERED PAGE
+     HOME / ABOUT
      ------------------------------------------------------------------------ */
 
   if (
     view &&
     PAGE_METADATA[view]
   ) {
-
     return {
-
       title:
         PAGE_METADATA[
           view
         ].title,
 
-
       description:
         PAGE_METADATA[
           view
         ].description,
-
     };
-
   }
 
 
@@ -202,31 +163,24 @@ export async function generateMetadata({
      ------------------------------------------------------------------------ */
 
   return {
-
     title: {
-
       absolute:
         "TekCorp - Empowering Innovation",
-
     },
-
 
     description:
       "Digital Systems That Power Business Growth",
-
   };
-
 }
 
 
 /* ==========================================================================
-   MAIN PAGE RENDERER
+   PAGE RENDERER
    ========================================================================== */
 
 export default async function Page({
   searchParams,
 }) {
-
   const params =
     await searchParams;
 
@@ -236,10 +190,14 @@ export default async function Page({
 
 
   /*
-   * If the requested page exists inside MAIN_WEBSITE_PAGES,
-   * render it.
+   * If /Home or /About is requested,
+   * render its registered page.
    *
-   * Otherwise we fall back to your existing LandingPage.
+   * Otherwise:
+   *
+   * /
+   *
+   * renders the existing current LandingPage.
    */
 
   const SelectedPage =
@@ -252,5 +210,4 @@ export default async function Page({
   return (
     <SelectedPage />
   );
-
 }

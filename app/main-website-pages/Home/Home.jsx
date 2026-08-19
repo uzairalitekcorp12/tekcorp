@@ -6,32 +6,28 @@ import Footer2 from
   "@/app/_shared/Footer/Footer2";
 
 
-import HomeHero from
+import Landingpage1Hero from
   "@/app/main-website-components/HomeHero/HomeHero";
 
 
-import HomeAbout from
-  "@/app/main-website-components/HomeAbout/HomeAbout";
+import Landingpage1Solutions from
+  "@/app/main-website-components/HomeSolutions/HomeSolutions";
 
 
-import HomeBrands from
-  "@/app/main-website-components/HomeBrands/HomeBrands";
+import Landingpage1Partners from
+  "@/app/main-website-components/HomePartners/HomePartners";
 
 
-import HomeCaseStudy from
-  "@/app/main-website-components/HomeCaseStudy/HomeCaseStudy";
+import Landingpage1Portfolio from
+  "@/app/main-website-components/HomePortfolio/HomePortfolio";
 
 
-import HomeTestimonials from
-  "@/app/main-website-components/HomeTestimonials/HomeTestimonials";
+import Landingpage1Articles from
+  "@/app/main-website-components/HomeArticles/HomeArticles";
 
 
-import HomeTeam from
-  "@/app/main-website-components/HomeTeam/HomeTeam";
-
-
-import Landingpage1Contact from
-  "@/app/main-website-components/Landingpage1Contact/Landingpage1Contact";
+import ContactSection from
+  "@/app/_shared/ContactSection/ContactSection";
 
 
 export default function Home() {
@@ -39,39 +35,52 @@ export default function Home() {
   return (
 
     <div
-      className="tek-home-page"
-      data-page="home"
+      className="landingpage1"
+      data-page="landingpage1"
     >
 
-      {/* ============================================================
-          NORMAL WHITE NAVBAR
-          ============================================================ */}
+      {/*
+       * ============================================================
+       * ADAPTIVE NAVBAR
+       * ============================================================
+       *
+       * While the Navbar overlaps:
+       *
+       * #landingpage1-hero
+       *
+       * it is transparent.
+       *
+       * When the Hero passes above the Navbar,
+       * it automatically returns to its normal white appearance.
+       *
+       * Scrolling back into the Hero reverses the transition.
+       */}
 
       <Navbar
-        variant="default"
+        variant="adaptive"
+        transparentTargetId="landingpage1-hero"
         initialActiveTab="Home"
+        homeHref="/home"
+        ctaHref="#contact-lp1"
       />
 
 
-      <HomeHero />
+      <Landingpage1Hero />
 
 
-      <HomeAbout />
+      <Landingpage1Solutions />
 
 
-      <HomeBrands />
+      <Landingpage1Partners />
 
 
-      <HomeCaseStudy />
+      <Landingpage1Portfolio />
 
 
-      <HomeTestimonials />
+      <Landingpage1Articles />
 
 
-      <HomeTeam />
-
-
-      <Landingpage1Contact />
+      <ContactSection />
 
 
       <Footer2 />

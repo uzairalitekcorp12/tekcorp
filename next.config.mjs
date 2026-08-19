@@ -5,8 +5,6 @@ const nextConfig = {
    * ============================================================
    * REACT COMPILER
    * ============================================================
-   *
-   * Keep React Compiler enabled.
    */
 
   reactCompiler: true,
@@ -17,168 +15,64 @@ const nextConfig = {
    * MAIN WEBSITE ROUTING
    * ============================================================
    *
-   * IMPORTANT:
+   * /
    *
-   * We are intentionally using ONE central:
+   * is handled directly by:
    *
    * app/page.js
    *
-   * We are NOT creating route folders like:
    *
-   * app/home/page.js
-   * app/landing1/page.js
+   * /Home
    *
-   *
-   * Instead, Next.js rewrites clean browser URLs into
-   * internal query-based routes handled by app/page.js.
-   *
-   *
-   * Browser URL:
-   *
-   * /home
-   *
-   * Internally becomes:
+   * internally becomes:
    *
    * /?view=home
    *
    *
-   * Browser URL:
+   * /About
    *
-   * /landing1
+   * internally becomes:
    *
-   * Internally becomes:
-   *
-   * /?view=landing1
+   * /?view=about
    *
    *
-   * IMPORTANT:
+   * The browser continues showing:
    *
-   * The visitor still sees the clean URL:
-   *
-   * /home
+   * /Home
    *
    * or:
    *
-   * /landing1
-   *
-   * They will NOT see:
-   *
-   * /?view=home
-   *
-   * or:
-   *
-   * /?view=landing1
+   * /About
    */
 
   async rewrites() {
     return [
 
-      /*
-       * --------------------------------------------------------
-       * HOME PAGE
-       * --------------------------------------------------------
-       *
-       * Browser:
-       *
-       * /home
-       *
-       * Internal:
-       *
-       * /?view=home
-       *
-       * app/page.js then renders:
-       *
-       * Home.jsx
-       */
+      /* --------------------------------------------------------
+         HOME
+         -------------------------------------------------------- */
 
       {
-        source: "/home",
+        source:
+          "/Home",
 
-        destination: "/?view=home",
+        destination:
+          "/?view=home",
       },
 
 
-      /*
-       * --------------------------------------------------------
-       * LANDING PAGE 1
-       * --------------------------------------------------------
-       *
-       * Browser:
-       *
-       * /landing1
-       *
-       * Internal:
-       *
-       * /?view=landing1
-       *
-       * app/page.js then renders:
-       *
-       * Landingpage1.jsx
-       */
+      /* --------------------------------------------------------
+         ABOUT
+         -------------------------------------------------------- */
 
       {
-        source: "/landing1",
+        source:
+          "/About",
 
-        destination: "/?view=landing1",
+        destination:
+          "/?view=about",
       },
 
-
-      /*
-       * --------------------------------------------------------
-       * FUTURE MAIN WEBSITE PAGES
-       * --------------------------------------------------------
-       *
-       * Add future routes here using the exact same pattern.
-       *
-       *
-       * Example:
-       *
-       * {
-       *   source: "/about",
-       *   destination: "/?view=about",
-       * },
-       *
-       *
-       * {
-       *   source: "/services",
-       *   destination: "/?view=services",
-       * },
-       *
-       *
-       * {
-       *   source: "/portfolio",
-       *   destination: "/?view=portfolio",
-       * },
-       *
-       *
-       * {
-       *   source: "/contact",
-       *   destination: "/?view=contact",
-       * },
-       *
-       *
-       * Then register those pages inside:
-       *
-       * app/page.js
-       *
-       * Example:
-       *
-       * const MAIN_WEBSITE_PAGES = {
-       *
-       *   home: Home,
-       *
-       *   landing1: Landingpage1,
-       *
-       *   about: AboutPage,
-       *
-       *   services: ServicesPage,
-       *
-       *   portfolio: PortfolioPage,
-       *
-       *   contact: ContactPage,
-       *
-       * };
-       */
     ];
   },
 };

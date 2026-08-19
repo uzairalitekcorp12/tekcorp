@@ -1,68 +1,31 @@
 /* ==========================================================================
    TEKCORP
-   REUSABLE PAGE HERO
+   LANDINGPAGE 1 HERO
    ==========================================================================
 
-   DESIGN REFERENCE
-   ----------------
+   TARGET DESIGN
 
-                 LEADING THE WAY IN IT SOLUTIONS
+   - Full-screen video background
+   - Dark professional overlay
+   - Content aligned left
+   - Small teal eyebrow
+   - Large white heading
+   - Compact white/grey paragraph
+   - One minimal "Contact Now" CTA
+   - Small "Scroll Down" at bottom-left
 
-                   Empowering Innovation
-                        with TekCorp
-
-                       TekCorp > Company ↗
-
-
-   This component is deliberately minimal.
-
-   No:
-   - background grid
-   - glowing orbs
-   - scroll pill
-   - large decorative graphics
-   - unnecessary cards
-
-   This makes it reusable across:
-   - Company
-   - Services
-   - Solutions
-   - Case Studies
-   - Insights
-   - Contact
-   - future pages
+   No extra hero buttons.
+   No micro KPIs.
+   No video pause button.
 
    ========================================================================== */
 
 
 /* ==========================================================================
-   HERO-SPECIFIC VARIABLES
-
-   If desired, these can later be moved into globals.css
-   with the rest of your website theme variables.
-
+   HERO ROOT
    ========================================================================== */
 
-.tek-home-hero {
-  --tek-page-hero-bg:
-    #f9f9f9;
-
-  --tek-page-hero-title:
-    #262323;
-
-  --tek-page-hero-title-soft:
-    #666363;
-
-  --tek-page-hero-text:
-    #171918;
-
-  --tek-page-hero-teal:
-    var(
-      --lp1-teal,
-      #1bdbba
-    );
-
-
+.lp1-hero {
   position: relative;
 
   isolation: isolate;
@@ -70,28 +33,278 @@
   width: 100%;
 
   min-height:
-    clamp(
-      300px,
-      31vw,
-      390px
+    max(
+      640px,
+      100svh
     );
 
   overflow: hidden;
 
   background:
-    var(
-      --tek-page-hero-bg
+    #09100f;
+
+  color:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   BACKGROUND MEDIA
+   ========================================================================== */
+
+.lp1-hero__media,
+.lp1-hero__overlay,
+.lp1-hero__noise {
+  position: absolute;
+
+  inset: 0;
+}
+
+
+.lp1-hero__media {
+  z-index: -5;
+
+  overflow: hidden;
+
+  background:
+    #0b1110;
+}
+
+
+/* ==========================================================================
+   VIDEO / FALLBACK IMAGE
+   ========================================================================== */
+
+.lp1-hero__video,
+.lp1-hero__fallback {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.lp1-hero__video {
+  object-position:
+    center center;
+
+  transform:
+    scale(1.015);
+}
+
+
+.lp1-hero__fallback {
+  object-position:
+    center center;
+}
+
+
+/* ==========================================================================
+   YOUTUBE BACKGROUND
+   ========================================================================== */
+
+.lp1-hero__video--embed {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width:
+    max(
+      100%,
+      177.7778vh
+    );
+
+  height:
+    max(
+      100%,
+      56.25vw
+    );
+
+  border: 0;
+
+  pointer-events: none;
+
+  transform:
+    translate(
+      -50%,
+      -50%
     );
 }
 
 
 /* ==========================================================================
-   SITE SHELL
+   VIDEO OVERLAY
 
-   Keep this synchronized with the rest of the TekCorp website.
+   Stronger on the left where the text sits.
+
+   The right side remains visible so the actual
+   video/image subject is still clear.
    ========================================================================== */
 
-.tek-home-shell {
+.lp1-hero__overlay {
+  z-index: -4;
+
+  background:
+
+    linear-gradient(
+      90deg,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.86
+      )
+      0%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.74
+      )
+      29%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.53
+      )
+      49%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.24
+      )
+      72%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.27
+      )
+      100%
+    ),
+
+    linear-gradient(
+      180deg,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.14
+      )
+      0%,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.05
+      )
+      55%,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.54
+      )
+      100%
+    );
+}
+
+
+/* ==========================================================================
+   SUBTLE FILM TEXTURE
+   ========================================================================== */
+
+.lp1-hero__noise {
+  z-index: -3;
+
+  pointer-events: none;
+
+  opacity: 0.075;
+
+  background-image:
+    radial-gradient(
+      rgba(
+        255,
+        255,
+        255,
+        0.42
+      )
+      0.45px,
+
+      transparent
+      0.45px
+    );
+
+  background-size:
+    5px
+    5px;
+
+  mix-blend-mode:
+    soft-light;
+}
+
+
+/* ==========================================================================
+   LIGHT BRAND AURA
+
+   Very subtle.
+   The reference does not need large glowing decorations.
+   ========================================================================== */
+
+.lp1-hero__aura {
+  position: absolute;
+
+  z-index: -2;
+
+  bottom: -260px;
+
+  left: -190px;
+
+  width: 470px;
+  height: 470px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+
+      rgba(
+        23,
+        211,
+        190,
+        0.13
+      ),
+
+      transparent
+      68%
+    );
+
+  filter:
+    blur(18px);
+}
+
+
+/* ==========================================================================
+   SITE SHELL
+   ========================================================================== */
+
+.lp1-shell {
   width:
     min(
       calc(
@@ -108,224 +321,185 @@
 
 
 /* ==========================================================================
-   INNER
+   HERO INNER
    ========================================================================== */
 
-.tek-home-hero__inner {
+.lp1-hero__inner {
   display: flex;
 
-  min-height: inherit;
+  min-height:
+    inherit;
 
   align-items: center;
-  justify-content: center;
 
-  padding:
+  padding-top:
     clamp(
-      45px,
-      6vw,
-      72px
-    )
-    0
-    clamp(
-      44px,
-      6vw,
-      66px
+      130px,
+      17vh,
+      170px
     );
+
+  padding-bottom:
+    110px;
 }
 
 
 /* ==========================================================================
    CONTENT
+
+   Approximate width follows the reference screenshot.
    ========================================================================== */
 
-.tek-home-hero__content {
+.lp1-hero__content {
   position: relative;
-
-  display: flex;
 
   width: 100%;
 
-  flex-direction: column;
-
-  align-items: center;
-
-  text-align: center;
+  max-width:
+    600px;
 }
 
 
 /* ==========================================================================
    EYEBROW
-
-   Matches the small teal heading in the supplied design.
    ========================================================================== */
 
-.tek-home-hero__eyebrow {
+.lp1-hero__eyebrow {
   margin:
     0
     0
-    18px !important;
+    12px;
 
   color:
     var(
-      --tek-page-hero-teal
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
+      --lp1-teal,
+      #18d5c0
+    );
 
   font-size:
     clamp(
-      0.65rem,
-      0.85vw,
-      0.79rem
-    ) !important;
+      0.66rem,
+      0.9vw,
+      0.78rem
+    );
 
   font-weight:
-    500 !important;
+    500;
 
   line-height:
-    1.25;
+    1.3;
 
   letter-spacing:
     -0.015em;
 
   text-transform:
     uppercase;
-
-  -webkit-text-fill-color:
-    var(
-      --tek-page-hero-teal
-    ) !important;
 }
 
 
 /* ==========================================================================
-   TITLE
+   MAIN TITLE
    ========================================================================== */
 
-.tek-home-hero__title {
-  display: flex;
+.lp1-hero__title {
+  display: grid;
+
+  gap: 0;
 
   max-width:
-    820px;
+    590px;
 
-  flex-direction: column;
-
-  align-items: center;
-
-  margin: 0 !important;
+  margin: 0;
 
   color:
-    var(
-      --tek-page-hero-title
-    ) !important;
+    #ffffff !important;
 
   font-family:
     var(
       --font-site,
       "Lufga Regular",
       sans-serif
-    ) !important;
+    );
 
   font-size:
     clamp(
-      3rem,
+      3.55rem,
       5vw,
-      4.65rem
-    ) !important;
+      4.9rem
+    );
 
   font-weight:
-    600 !important;
+    600;
 
   line-height:
-    0.98 !important;
+    1.01;
 
   letter-spacing:
-    -0.058em !important;
-
-  text-align: center;
-
-  -webkit-text-fill-color:
-    initial !important;
+    -0.055em;
 }
 
 
 /* ==========================================================================
-   TITLE LINE
-
-   Each title line is separated so future pages can reuse
-   the component without inserting <br /> manually.
+   TITLE LINES
    ========================================================================== */
 
-.tek-home-hero__title-line {
+.lp1-hero__title > span {
   display: block;
 
   width:
     fit-content;
+}
 
-  max-width: 100%;
 
-  /*
-   * Dark → softer grey similar to the reference screenshot.
-   */
+/* ==========================================================================
+   SUPPORTING COPY
 
-  background:
-    linear-gradient(
-      90deg,
+   Kept compact like the supplied reference.
+   ========================================================================== */
 
-      var(
-        --tek-page-hero-title
-      )
-      0%,
+.lp1-hero__copy {
+  max-width:
+    535px;
 
-      #363333
-      55%,
-
-      var(
-        --tek-page-hero-title-soft
-      )
-      100%
-    );
-
-  background-clip:
-    text;
+  margin:
+    18px
+    0
+    0;
 
   color:
-    transparent !important;
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
 
-  -webkit-background-clip:
-    text;
+  font-size:
+    clamp(
+      0.71rem,
+      0.9vw,
+      0.82rem
+    );
 
-  -webkit-text-fill-color:
-    transparent !important;
+  font-weight:
+    400;
+
+  line-height:
+    1.63;
+
+  letter-spacing:
+    -0.012em;
 }
 
 
 /* ==========================================================================
-   SECOND LINE
+   CONTACT NOW
 
-   The reference's second line is visually just as strong but slightly
-   narrower because of the wording.
-
-   No different font size is applied so future pages remain consistent.
+   Reference uses a very simple text CTA rather than
+   a large capsule button.
    ========================================================================== */
 
-.tek-home-hero__title-line
-+ .tek-home-hero__title-line {
-  margin-top:
-    3px;
-}
-
-
-/* ==========================================================================
-   BREADCRUMB
-   ========================================================================== */
-
-.tek-home-hero__breadcrumb {
+.lp1-hero__contact {
   position: relative;
 
   display: inline-flex;
@@ -335,30 +509,163 @@
   gap: 5px;
 
   margin-top:
-    24px;
+    25px;
 
   padding-bottom:
-    2px;
+    3px;
 
   color:
-    var(
-      --tek-page-hero-text
-    );
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    );
+    #ffffff;
 
   font-size:
-    0.62rem;
+    0.72rem;
 
   font-weight:
     600;
 
-  line-height: 1;
+  text-decoration:
+    none;
+
+  transition:
+    color
+      220ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CONTACT UNDERLINE
+   ========================================================================== */
+
+.lp1-hero__contact::after {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 0;
+
+  left: 0;
+
+  height: 1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.65
+    );
+
+  content: "";
+
+  transform:
+    scaleX(1);
+
+  transform-origin:
+    right;
+
+  transition:
+    background
+      240ms
+      ease,
+    transform
+      240ms
+      ease;
+}
+
+
+.lp1-hero__contact svg {
+  transition:
+    transform
+      240ms
+      ease;
+}
+
+
+.lp1-hero__contact:hover {
+  color:
+    var(
+      --lp1-teal,
+      #18d5c0
+    );
+}
+
+
+.lp1-hero__contact:hover::after {
+  background:
+    var(
+      --lp1-teal,
+      #18d5c0
+    );
+
+  transform:
+    scaleX(0.72);
+}
+
+
+.lp1-hero__contact:hover svg {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* ==========================================================================
+   SCROLL DOWN
+
+   Positioned bottom-left like the supplied design.
+   ========================================================================== */
+
+.lp1-hero__scroll {
+  position: absolute;
+
+  z-index: 5;
+
+  bottom:
+    25px;
+
+  left:
+    max(
+      28px,
+      calc(
+        (
+          100vw
+          -
+          min(
+            calc(
+              100vw
+              -
+              56px
+            ),
+            1180px
+          )
+        )
+        /
+        2
+      )
+    );
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    400;
 
   text-decoration:
     none;
@@ -370,210 +677,49 @@
 }
 
 
-/* ==========================================================================
-   UNDERLINE
-
-   Reference contains a small underline below the breadcrumb.
-   ========================================================================== */
-
-.tek-home-hero__breadcrumb::after {
-  position: absolute;
-
-  right: 0;
-
-  bottom: -2px;
-
-  left: 0;
-
-  height: 1px;
-
-  background:
-    currentColor;
-
-  content: "";
-
-  transform:
-    scaleX(1);
-
-  transform-origin:
-    left center;
-
+.lp1-hero__scroll svg {
   transition:
-    background
-      250ms
-      ease,
     transform
-      350ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
+      280ms
+      ease;
 }
 
 
-/* ==========================================================================
-   BREADCRUMB ARROW
-   ========================================================================== */
-
-.tek-home-hero__breadcrumb svg {
-  flex: 0 0 auto;
-
-  transition:
-    color
-      240ms
-      ease,
-    transform
-      320ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
-}
-
-
-/* ==========================================================================
-   BREADCRUMB HOVER
-   ========================================================================== */
-
-.tek-home-hero__breadcrumb:hover {
+.lp1-hero__scroll:hover {
   color:
-    var(
-      --tek-page-hero-teal
-    );
+    #ffffff;
 }
 
 
-.tek-home-hero__breadcrumb:hover::after {
+.lp1-hero__scroll:hover svg {
   transform:
-    scaleX(0.72);
-}
-
-
-.tek-home-hero__breadcrumb:hover
-svg {
-  transform:
-    translate(
-      2px,
-      -2px
+    translateY(
+      3px
     );
 }
 
 
 /* ==========================================================================
-   SUBTLE CONTENT ENTRANCE
-
-   This works independently of SiteEffects.
-   If data-reveal is already handling the animation,
-   this is subtle enough not to fight with it.
-   ========================================================================== */
-
-.tek-home-hero__eyebrow {
-  animation:
-    tekPageHeroEyebrow
-    650ms
-    cubic-bezier(
-      0.16,
-      1,
-      0.3,
-      1
-    )
-    both;
-}
-
-
-.tek-home-hero__title-line {
-  animation:
-    tekPageHeroTitle
-    780ms
-    cubic-bezier(
-      0.16,
-      1,
-      0.3,
-      1
-    )
-    both;
-}
-
-
-.tek-home-hero__title-line:nth-child(2) {
-  animation-delay:
-    70ms;
-}
-
-
-.tek-home-hero__title-line:nth-child(3) {
-  animation-delay:
-    120ms;
-}
-
-
-.tek-home-hero__breadcrumb {
-  animation:
-    tekPageHeroBreadcrumb
-    700ms
-    160ms
-    cubic-bezier(
-      0.16,
-      1,
-      0.3,
-      1
-    )
-    both;
-}
-
-
-/* ==========================================================================
-   COMPACT VERSION
-
-   Example:
-
-   <HomeHero compact />
-
-   Useful for pages where you want a shorter hero.
-   ========================================================================== */
-
-.tek-home-hero--compact {
-  min-height:
-    clamp(
-      270px,
-      27vw,
-      340px
-    );
-}
-
-
-.tek-home-hero--compact
-.tek-home-hero__inner {
-  padding:
-    42px
-    0;
-}
-
-
-/* ==========================================================================
-   LARGE SCREENS
+   LARGE LAPTOP
    ========================================================================== */
 
 @media (
-  min-width: 1500px
+  max-width: 1200px
 ) {
 
-  .tek-home-hero {
-    min-height:
-      380px;
+  .lp1-hero__content {
+    max-width:
+      560px;
   }
 
 
-  .tek-home-hero__title {
-    max-width:
-      900px;
-
+  .lp1-hero__title {
     font-size:
-      4.7rem !important;
+      clamp(
+        3.45rem,
+        5.25vw,
+        4.45rem
+      );
   }
 
 }
@@ -587,30 +733,101 @@ svg {
   max-width: 900px
 ) {
 
-  .tek-home-hero {
+  .lp1-hero {
     min-height:
-      350px;
+      max(
+        660px,
+        100svh
+      );
   }
 
 
-  .tek-home-hero__inner {
-    padding:
-      62px
-      0
-      58px;
+  .lp1-hero__inner {
+    padding-top:
+      140px;
+
+    padding-bottom:
+      100px;
   }
 
 
-  .tek-home-hero__title {
+  .lp1-hero__content {
     max-width:
-      680px;
+      540px;
+  }
+
+
+  .lp1-hero__title {
+    max-width:
+      540px;
 
     font-size:
       clamp(
-        3rem,
+        3.2rem,
         7vw,
         4rem
-      ) !important;
+      );
+  }
+
+
+  .lp1-hero__copy {
+    max-width:
+      490px;
+  }
+
+
+  /*
+   * Slightly stronger tablet overlay.
+   */
+
+  .lp1-hero__overlay {
+    background:
+
+      linear-gradient(
+        90deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.91
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.77
+        )
+        48%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.36
+        )
+        100%
+      ),
+
+      linear-gradient(
+        180deg,
+
+        rgba(
+          2,
+          8,
+          7,
+          0.16
+        ),
+
+        rgba(
+          2,
+          8,
+          7,
+          0.58
+        )
+      );
   }
 
 }
@@ -624,7 +841,7 @@ svg {
   max-width: 760px
 ) {
 
-  .tek-home-shell {
+  .lp1-shell {
     width:
       min(
         calc(
@@ -637,68 +854,163 @@ svg {
   }
 
 
-  .tek-home-hero {
+  .lp1-hero {
     min-height:
-      340px;
+      max(
+        640px,
+        100svh
+      );
   }
 
 
-  .tek-home-hero__inner {
-    padding:
-      58px
-      0
-      54px;
+  .lp1-hero__inner {
+    align-items:
+      center;
+
+    padding-top:
+      118px;
+
+    padding-bottom:
+      92px;
+  }
+
+
+  .lp1-hero__content {
+    max-width:
+      100%;
   }
 
 
   /* ======================================================================
-     EYEBROW
+     MOBILE BACKGROUND READABILITY
      ====================================================================== */
 
-  .tek-home-hero__eyebrow {
+  .lp1-hero__overlay {
+    background:
+
+      linear-gradient(
+        90deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.89
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.69
+        )
+        100%
+      ),
+
+      linear-gradient(
+        180deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.27
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.25
+        )
+        48%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.75
+        )
+        100%
+      );
+  }
+
+
+  /* ======================================================================
+     MOBILE EYEBROW
+     ====================================================================== */
+
+  .lp1-hero__eyebrow {
+    max-width:
+      90%;
+
     margin-bottom:
-      16px !important;
+      11px;
 
     font-size:
-      0.63rem !important;
+      0.62rem;
+
+    line-height:
+      1.45;
   }
 
 
   /* ======================================================================
-     TITLE
+     MOBILE TITLE
      ====================================================================== */
 
-  .tek-home-hero__title {
-    width: 100%;
-
+  .lp1-hero__title {
     max-width:
-      600px;
+      100%;
 
     font-size:
       clamp(
-        2.65rem,
-        10vw,
-        3.7rem
-      ) !important;
+        2.8rem,
+        11.7vw,
+        4rem
+      );
 
     line-height:
-      0.99 !important;
+      1;
 
     letter-spacing:
-      -0.052em !important;
+      -0.052em;
   }
 
 
   /* ======================================================================
-     BREADCRUMB
+     MOBILE COPY
      ====================================================================== */
 
-  .tek-home-hero__breadcrumb {
+  .lp1-hero__copy {
+    max-width:
+      94%;
+
     margin-top:
-      22px;
+      18px;
 
     font-size:
-      0.59rem;
+      0.73rem;
+
+    line-height:
+      1.65;
+  }
+
+
+  .lp1-hero__contact {
+    margin-top:
+      22px;
+  }
+
+
+  .lp1-hero__scroll {
+    bottom:
+      22px;
+
+    left:
+      15px;
   }
 
 }
@@ -712,169 +1024,78 @@ svg {
   max-width: 480px
 ) {
 
-  .tek-home-hero {
-    min-height:
-      315px;
-  }
+  /*
+   * On narrow phones, allowing the individual title spans
+   * to wrap naturally avoids overflowing horizontally.
+   */
 
+  .lp1-hero__title {
+    display: block;
 
-  .tek-home-hero__inner {
-    padding:
-      48px
-      0;
-  }
-
-
-  .tek-home-hero__eyebrow {
-    max-width:
-      92%;
-
-    font-size:
-      0.58rem !important;
-
-    line-height:
-      1.4;
-  }
-
-
-  .tek-home-hero__title {
     font-size:
       clamp(
-        2.35rem,
-        11vw,
-        3rem
-      ) !important;
+        2.55rem,
+        12.3vw,
+        3.45rem
+      );
+  }
 
-    line-height:
-      1 !important;
+
+  .lp1-hero__title > span {
+    width: auto;
+  }
+
+
+  .lp1-hero__copy {
+    max-width:
+      100%;
   }
 
 
   /*
-   * Allow long custom titles to wrap safely.
+   * Position video more centrally for portrait screens.
    */
 
-  .tek-home-hero__title-line {
-    width: auto;
+  .lp1-hero__video,
+  .lp1-hero__fallback {
+    object-position:
+      center center;
   }
 
 }
 
 
 /* ==========================================================================
-   VERY SMALL MOBILE
+   VERY SMALL DEVICES
    ========================================================================== */
 
 @media (
   max-width: 360px
 ) {
 
-  .tek-home-hero {
-    min-height:
-      300px;
+  .lp1-hero__inner {
+    padding-top:
+      105px;
   }
 
 
-  .tek-home-hero__title {
+  .lp1-hero__title {
     font-size:
-      2.18rem !important;
+      2.5rem;
   }
 
 
-  .tek-home-hero__breadcrumb {
+  .lp1-hero__eyebrow {
     font-size:
-      0.56rem;
+      0.57rem;
   }
 
-}
 
-
-/* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-@keyframes tekPageHeroEyebrow {
-
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(
-        8px
-      );
+  .lp1-hero__copy {
+    font-size:
+      0.69rem;
   }
 
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(
-        0
-      );
-  }
-
-}
-
-
-@keyframes tekPageHeroTitle {
-
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(
-        18px
-      );
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(
-        0
-      );
-  }
-
-}
-
-
-@keyframes tekPageHeroBreadcrumb {
-
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(
-        8px
-      );
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(
-        0
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   ACCESSIBILITY
-   ========================================================================== */
-
-.tek-home-hero__breadcrumb:focus-visible {
-  outline:
-    2px solid
-    var(
-      --tek-page-hero-teal
-    );
-
-  outline-offset:
-    5px;
 }
 
 
@@ -887,17 +1108,11 @@ svg {
     reduce
 ) {
 
-  .tek-home-hero__eyebrow,
-  .tek-home-hero__title-line,
-  .tek-home-hero__breadcrumb {
-    animation:
-      none !important;
-  }
-
-
-  .tek-home-hero__breadcrumb,
-  .tek-home-hero__breadcrumb::after,
-  .tek-home-hero__breadcrumb svg {
+  .lp1-hero__contact,
+  .lp1-hero__contact::after,
+  .lp1-hero__contact svg,
+  .lp1-hero__scroll,
+  .lp1-hero__scroll svg {
     transition-duration:
       0.01ms !important;
   }

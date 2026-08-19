@@ -1,193 +1,312 @@
+"use client";
+
 import "./HomeHero.css";
 
 import {
   ArrowUpRight,
+  ChevronDown,
 } from "lucide-react";
 
 
 /* ==========================================================================
-   REUSABLE TEKCORP PAGE HERO
+   HERO MEDIA
 
-   DEFAULT OUTPUT
-   --------------
-
-   LEADING THE WAY IN IT SOLUTIONS
-
-   Empowering Innovation
-   with TekCorp
-
-   TekCorp > Company ↗
-
-
-   REUSABLE EXAMPLES
-   -----------------
-
-   <HomeHero
-     eyebrow="OUR DIGITAL CAPABILITIES"
-     titleLines={[
-       "Engineering Digital",
-       "Experiences That Scale",
-     ]}
-     breadcrumb="TekCorp > Solutions"
-     breadcrumbHref="/solutions"
-   />
-
-
-   <HomeHero
-     eyebrow="REAL WORK. REAL IMPACT."
-     titleLines={[
-       "Digital Products",
-       "Built for Growth",
-     ]}
-     breadcrumb="TekCorp > Case Studies"
-     breadcrumbHref="/case-studies"
-   />
-
-
-   PROPS
-   -----
-
-   id
-     Section id.
-
-   eyebrow
-     Small teal text above title.
-
-   titleLines
-     Array of title lines.
-     Recommended: 1–3 lines.
-
-   breadcrumb
-     Small bottom navigation label.
-
-   breadcrumbHref
-     Destination of breadcrumb.
-
-   showArrow
-     Show/hide external-style arrow.
-
-   className
-     Additional section class if another page needs
-     a modifier.
-
-   compact
-     Makes the hero slightly shorter.
+   Keep your existing video.
    ========================================================================== */
 
-export default function HomeHero({
-  id = "home",
+const HERO_VIDEO_URL =
+  "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/video-skyline-2.mp4";
 
-  eyebrow =
-    "LEADING THE WAY IN IT SOLUTIONS",
 
-  titleLines = [
-    "Empowering Innovation",
-    "with TekCorp",
-  ],
+const HERO_FALLBACK_IMAGE =
+  "/assets/landing/metahero.png";
 
-  breadcrumb =
-    "TekCorp > Company",
 
-  breadcrumbHref =
-    "#about-company",
+/* ==========================================================================
+   YOUTUBE HELPER
 
-  showArrow = true,
+   Allows the same component to support:
+   - Direct MP4 video
+   - YouTube URL
+   - Fallback image
+   ========================================================================== */
 
-  className = "",
+function getYouTubeEmbedUrl(url) {
+  if (!url) {
+    return "";
+  }
 
-  compact = false,
-}) {
-  const normalizedTitleLines =
-    Array.isArray(titleLines)
-      ? titleLines
-      : [titleLines];
+
+  try {
+    const parsed =
+      new URL(url);
+
+    let videoId =
+      "";
+
+
+    if (
+      parsed.hostname.includes(
+        "youtu.be",
+      )
+    ) {
+      videoId =
+        parsed.pathname.replace(
+          "/",
+          "",
+        );
+    }
+
+
+    if (
+      parsed.hostname.includes(
+        "youtube.com",
+      )
+    ) {
+      videoId =
+        parsed.searchParams.get(
+          "v",
+        ) ||
+        parsed.pathname
+          .split("/")
+          .filter(Boolean)
+          .pop();
+    }
+
+
+    if (!videoId) {
+      return "";
+    }
+
+
+    return (
+      `https://www.youtube.com/embed/${videoId}` +
+      `?autoplay=1` +
+      `&mute=1` +
+      `&loop=1` +
+      `&playlist=${videoId}` +
+      `&controls=0` +
+      `&modestbranding=1` +
+      `&rel=0` +
+      `&playsinline=1`
+    );
+  } catch {
+    return "";
+  }
+}
+
+
+/* ==========================================================================
+   COMPONENT
+   ========================================================================== */
+
+export default function Landingpage1Hero() {
+  const youtubeEmbed =
+    getYouTubeEmbedUrl(
+      HERO_VIDEO_URL,
+    );
+
+
+  const hasDirectVideo =
+    Boolean(
+      HERO_VIDEO_URL &&
+      !youtubeEmbed,
+    );
 
 
   return (
     <section
-      className={[
-        "tek-home-hero",
-
-        compact
-          ? "tek-home-hero--compact"
-          : "",
-
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      id={id}
-      aria-labelledby={`${id}-title`}
+      className="lp1-hero"
+      id="landingpage1-hero"
+      data-navbar-transparent-target="true"
     >
-      <div className="tek-home-shell tek-home-hero__inner">
+
+      {/* ====================================================================
+          BACKGROUND MEDIA
+          ==================================================================== */}
+
+      <div
+        className="lp1-hero__media"
+        aria-hidden="true"
+      >
+
+        {youtubeEmbed ? (
+          <iframe
+            className="lp1-hero__video lp1-hero__video--embed"
+            src={youtubeEmbed}
+            title=""
+            tabIndex="-1"
+            allow="autoplay; encrypted-media; picture-in-picture"
+          />
+        ) : hasDirectVideo ? (
+          <video
+            className="lp1-hero__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={
+              HERO_FALLBACK_IMAGE
+            }
+          >
+            <source
+              src={
+                HERO_VIDEO_URL
+              }
+            />
+          </video>
+        ) : (
+          <img
+            className="lp1-hero__fallback"
+            src={
+              HERO_FALLBACK_IMAGE
+            }
+            alt=""
+          />
+        )}
+
+      </div>
+
+
+      {/* ====================================================================
+          DARK VIDEO OVERLAY
+          ==================================================================== */}
+
+      <div
+        className="lp1-hero__overlay"
+        aria-hidden="true"
+      />
+
+
+      {/* ====================================================================
+          SUBTLE TEXTURE
+          ==================================================================== */}
+
+      <div
+        className="lp1-hero__noise"
+        aria-hidden="true"
+      />
+
+
+      {/* ====================================================================
+          VERY LIGHT BRAND AURA
+          ==================================================================== */}
+
+      <div
+        className="lp1-hero__aura"
+        aria-hidden="true"
+      />
+
+
+      {/* ====================================================================
+          MAIN HERO CONTENT
+          ==================================================================== */}
+
+      <div className="lp1-shell lp1-hero__inner">
 
         <div
-          className="tek-home-hero__content"
-          data-reveal="up"
+          className="lp1-hero__content"
+          data-reveal="left"
         >
 
           {/* ================================================================
               EYEBROW
               ================================================================ */}
 
-          {eyebrow ? (
-            <p className="tek-home-hero__eyebrow">
-              {eyebrow}
-            </p>
-          ) : null}
+          <p className="lp1-hero__eyebrow">
+            CRAFTING SOLUTIONS, FUELLING COLLABORATIONS.
+          </p>
 
 
           {/* ================================================================
               MAIN TITLE
+
+              Wording and line structure closely follows
+              the supplied design reference.
               ================================================================ */}
 
-          <h1
-            className="tek-home-hero__title"
-            id={`${id}-title`}
-          >
-            {normalizedTitleLines.map(
-              (
-                line,
-                index,
-              ) => (
-                <span
-                  className="tek-home-hero__title-line"
-                  key={`${line}-${index}`}
-                >
-                  {line}
-                </span>
-              ),
-            )}
+          <h1 className="lp1-hero__title">
+
+            <span>
+              Tekcorp - Your
+            </span>
+
+            <span>
+              Partner in Digital
+            </span>
+
+            <span>
+              Transformation
+            </span>
+
           </h1>
 
 
           {/* ================================================================
-              BREADCRUMB / PAGE LINK
+              SUPPORTING COPY
               ================================================================ */}
 
-          {breadcrumb ? (
-            <a
-              className="tek-home-hero__breadcrumb"
-              href={breadcrumbHref}
-            >
-              <span>
-                {breadcrumb}
-              </span>
+          <p className="lp1-hero__copy">
+
+            Explore Services, Products, and Integrations
+            for a Future-Ready Business Ecosystem.
+            Tailored Services, Proven Products, Seamless
+            Integrations – Elevating Your Business,
+            Empowering Your Growth.
+
+          </p>
 
 
-              {showArrow ? (
-                <ArrowUpRight
-                  size={11}
-                  strokeWidth={1.8}
-                  aria-hidden="true"
-                />
-              ) : null}
-            </a>
-          ) : null}
+          {/* ================================================================
+              SINGLE CTA
+
+              No extra buttons.
+              No proof statistics.
+              No video-control button.
+              ================================================================ */}
+
+          <a
+            className="lp1-hero__contact"
+            href="#contact"
+          >
+            <span>
+              Contact Now
+            </span>
+
+            <ArrowUpRight
+              size={12}
+              strokeWidth={2}
+            />
+          </a>
 
         </div>
 
       </div>
+
+
+      {/* ====================================================================
+          SCROLL DOWN
+
+          Matches the small bottom-left text treatment
+          in the supplied reference.
+          ==================================================================== */}
+
+      <a
+        className="lp1-hero__scroll"
+        href="#digital-solutions"
+        aria-label="Scroll to next section"
+      >
+        <span>
+          Scroll Down
+        </span>
+
+        <ChevronDown
+          size={13}
+          strokeWidth={1.7}
+        />
+      </a>
+
     </section>
   );
 }

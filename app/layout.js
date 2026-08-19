@@ -11,21 +11,16 @@ import SiteEffects from
  */
 
 export const metadata = {
-
   title: {
-
     default:
       "TekCorp - Empowering Innovation",
 
     template:
       "%s | TekCorp",
-
   },
-
 
   description:
     "Digital Systems That Power Business Growth",
-
 };
 
 
@@ -36,13 +31,11 @@ export const metadata = {
  */
 
 export const viewport = {
-
   width:
     "device-width",
 
   initialScale:
     1,
-
 };
 
 
@@ -51,78 +44,58 @@ export const viewport = {
  * ROOT LAYOUT
  * ==========================================================================
  *
- * IMPORTANT ARCHITECTURE:
- *
- * Navbar is NOT global anymore.
- *
- * Every main page decides which Navbar style it needs.
+ * Navbar and Footer remain page-owned.
  *
  *
  * /
  *
- * LandingPage.jsx
- *
- *     <Navbar variant="default" />
+ * Existing/current website page
  *
  *
- * /home
+ * /Home
  *
  * Home.jsx
  *
- *     <Navbar variant="default" />
+ *     -> Adaptive Navbar
+ *     -> Home sections
+ *     -> Contact
+ *     -> Footer
  *
  *
- * /landing1
+ * /About
  *
- * Landingpage1.jsx
+ * About.jsx
  *
- *     <Navbar
- *       variant="adaptive"
- *       transparentTargetId="landingpage1-hero"
- *     />
+ *     -> Standard Navbar
+ *     -> About sections
+ *     -> Contact
+ *     -> Footer
  *
  *
- * This lets us reuse one Navbar while still supporting different
- * Hero designs.
+ * SiteEffects stays global because only one instance
+ * is required across the application.
  * ==========================================================================
  */
-
 
 export default function RootLayout({
   children,
 }) {
-
   return (
-
     <html lang="en">
 
       <body>
 
-        {/* ================================================================
-            MAIN PAGE CONTENT
-            ================================================================ */}
-
         <main
           className="tekcorp-main"
         >
-
           {children}
-
         </main>
 
-
-        {/* ================================================================
-            GLOBAL SITE EFFECTS
-
-            One instance only for the whole website.
-            ================================================================ */}
 
         <SiteEffects />
 
       </body>
 
     </html>
-
   );
-
 }
