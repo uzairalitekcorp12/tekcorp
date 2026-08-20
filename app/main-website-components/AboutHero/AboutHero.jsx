@@ -22,7 +22,7 @@ import {
    REUSABLE EXAMPLES
    -----------------
 
-   <HomeHero
+   <AboutHero
      eyebrow="OUR DIGITAL CAPABILITIES"
      titleLines={[
        "Engineering Digital",
@@ -33,7 +33,7 @@ import {
    />
 
 
-   <HomeHero
+   <AboutHero
      eyebrow="REAL WORK. REAL IMPACT."
      titleLines={[
        "Digital Products",
@@ -75,7 +75,7 @@ import {
    ========================================================================== */
 
 export default function AboutHero({
-  id = "home",
+  id = "About",
 
   eyebrow =
     "LEADING THE WAY IN IT SOLUTIONS",
@@ -106,10 +106,10 @@ export default function AboutHero({
   return (
     <section
       className={[
-        "tek-home-hero",
+        "tek-About-hero",
 
         compact
-          ? "tek-home-hero--compact"
+          ? "tek-About-hero--compact"
           : "",
 
         className,
@@ -119,10 +119,10 @@ export default function AboutHero({
       id={id}
       aria-labelledby={`${id}-title`}
     >
-      <div className="tek-home-shell tek-home-hero__inner">
+      <div className="tek-About-shell tek-About-hero__inner">
 
         <div
-          className="tek-home-hero__content"
+          className="tek-About-hero__content"
           data-reveal="up"
         >
 
@@ -131,7 +131,7 @@ export default function AboutHero({
               ================================================================ */}
 
           {eyebrow ? (
-            <p className="tek-home-hero__eyebrow">
+            <p className="tek-About-hero__eyebrow">
               {eyebrow}
             </p>
           ) : null}
@@ -142,7 +142,7 @@ export default function AboutHero({
               ================================================================ */}
 
           <h1
-            className="tek-home-hero__title"
+            className="tek-About-hero__title"
             id={`${id}-title`}
           >
             {normalizedTitleLines.map(
@@ -151,7 +151,7 @@ export default function AboutHero({
                 index,
               ) => (
                 <span
-                  className="tek-home-hero__title-line"
+                  className="tek-About-hero__title-line"
                   key={`${line}-${index}`}
                 >
                   {line}
@@ -167,7 +167,7 @@ export default function AboutHero({
 
           {breadcrumb ? (
             <a
-              className="tek-home-hero__breadcrumb"
+              className="tek-About-hero__breadcrumb"
               href={breadcrumbHref}
             >
               <span>

@@ -1,8 +1,8 @@
 /* ==========================================================================
-   HOME — ABOUT TEKCORP
+   About — ABOUT TEKCORP
    ========================================================================== */
 
-.tek-home-about {
+.tek-About-about {
   position: relative;
 
   width: 100%;
@@ -23,7 +23,7 @@
    MAIN GRID
    ========================================================================== */
 
-.tek-home-about__layout {
+.tek-About-about__layout {
   display: grid;
 
   grid-template-columns:
@@ -41,7 +41,7 @@
    LEFT COLUMN
    ========================================================================== */
 
-.tek-home-about__primary {
+.tek-About-about__primary {
   min-width: 0;
 }
 
@@ -50,7 +50,7 @@
    SECTION KICKER
    ========================================================================== */
 
-.tek-home-about__kicker {
+.tek-About-about__kicker {
   display: flex;
 
   align-items: center;
@@ -102,7 +102,7 @@
 }
 
 
-.tek-home-about__kicker > span {
+.tek-About-about__kicker > span {
   display: block;
 
   width:
@@ -124,7 +124,7 @@
    MAIN HEADING
    ========================================================================== */
 
-.tek-home-about__headline {
+.tek-About-about__headline {
   max-width:
     720px;
 
@@ -190,7 +190,7 @@
    INTRO ROW
    ========================================================================== */
 
-.tek-home-about__intro {
+.tek-About-about__intro {
   display: grid;
 
   grid-template-columns:
@@ -211,7 +211,7 @@
    INTRO TEXT
    ========================================================================== */
 
-.tek-home-about__intro p {
+.tek-About-about__intro p {
   max-width:
     615px;
 
@@ -256,7 +256,7 @@
    CONTACT CTA
    ========================================================================== */
 
-.tek-home-about__cta {
+.tek-About-about__cta {
   display: inline-flex;
 
   min-width:
@@ -336,14 +336,14 @@
 }
 
 
-.tek-home-about__cta svg {
+.tek-About-about__cta svg {
   transition:
     transform .3s
     cubic-bezier(.16, 1, .3, 1);
 }
 
 
-.tek-home-about__cta:hover {
+.tek-About-about__cta:hover {
   border-color:
     var(
       --lp1-teal,
@@ -372,7 +372,7 @@
 }
 
 
-.tek-home-about__cta:hover svg {
+.tek-About-about__cta:hover svg {
   transform:
     translate(2px, -2px);
 }
@@ -382,7 +382,7 @@
    MAIN IMAGE
    ========================================================================== */
 
-.tek-home-about__media {
+.tek-About-about__media {
   position: relative;
 
   width: 100%;
@@ -409,7 +409,7 @@
    IMAGE
    ========================================================================== */
 
-.tek-home-about__media img {
+.tek-About-about__media img {
   display: block;
 
   width: 100%;
@@ -440,7 +440,7 @@
    VERY SUBTLE IMAGE TREATMENT
    ========================================================================== */
 
-.tek-home-about__media-overlay {
+.tek-About-about__media-overlay {
   position: absolute;
 
   inset: 0;
@@ -469,7 +469,7 @@
   fine
 ) {
 
-  .tek-home-about__media:hover img {
+  .tek-About-about__media:hover img {
     filter:
       saturate(1.01)
       contrast(1.025);
@@ -485,7 +485,7 @@
    RIGHT CARDS CONTAINER
    ========================================================================== */
 
-.tek-home-about__cards {
+.tek-About-about__cards {
   display: grid;
 
   grid-template-rows:
@@ -503,7 +503,7 @@
    DARK CARD
    ========================================================================== */
 
-.tek-home-about-card {
+.tek-About-about-card {
   position: relative;
 
   display: flex;
@@ -549,7 +549,7 @@
 
   transition-delay:
     var(
-      --tek-home-card-delay,
+      --tek-About-card-delay,
       0ms
     );
 }
@@ -559,7 +559,7 @@
    SUBTLE CARD BACKGROUND ACCENT
    ========================================================================== */
 
-.tek-home-about-card::before {
+.tek-About-about-card::before {
   position: absolute;
 
   top:
@@ -608,7 +608,7 @@
    CARD CONTENT
    ========================================================================== */
 
-.tek-home-about-card__content {
+.tek-About-about-card__content {
   position: relative;
 
   z-index:
@@ -620,7 +620,7 @@
    CARD HEADING
    ========================================================================== */
 
-.tek-home-about-card h3 {
+.tek-About-about-card h3 {
   margin:
     0
     0
@@ -667,7 +667,7 @@
    CARD DESCRIPTION
    ========================================================================== */
 
-.tek-home-about-card p {
+.tek-About-about-card p {
   max-width:
     275px;
 
@@ -719,7 +719,7 @@
    LEARN MORE BUTTON
    ========================================================================== */
 
-.tek-home-about-card__link {
+.tek-About-about-card__link {
   position: relative;
 
   z-index:
@@ -792,7 +792,7 @@
    ROUND BUTTON ICON
    ========================================================================== */
 
-.tek-home-about-card__link-icon {
+.tek-About-about-card__link-icon {
   display: grid;
 
   width:
@@ -836,7 +836,7 @@
   fine
 ) {
 
-  .tek-home-about-card:hover {
+  .tek-About-about-card:hover {
     border-color:
       rgba(
         27,
@@ -864,13 +864,13 @@
   }
 
 
-  .tek-home-about-card:hover::before {
+  .tek-About-about-card:hover::before {
     opacity:
       1;
   }
 
 
-  .tek-home-about-card__link:hover {
+  .tek-About-about-card__link:hover {
     border-color:
       var(
         --lp1-teal,
@@ -887,8 +887,8 @@
   }
 
 
-  .tek-home-about-card__link:hover
-  .tek-home-about-card__link-icon {
+  .tek-About-about-card__link:hover
+  .tek-About-about-card__link-icon {
     background:
       var(
         --lp1-teal,
@@ -914,14 +914,14 @@
   1100px
 ) {
 
-  .tek-home-about__layout {
+  .tek-About-about__layout {
     grid-template-columns:
       minmax(0, 1.72fr)
       minmax(260px, .8fr);
   }
 
 
-  .tek-home-about__headline {
+  .tek-About-about__headline {
     font-size:
       clamp(
         24px,
@@ -932,19 +932,19 @@
   }
 
 
-  .tek-home-about__media {
+  .tek-About-about__media {
     height:
       330px;
   }
 
 
-  .tek-home-about-card {
+  .tek-About-about-card {
     padding:
       17px;
   }
 
 
-  .tek-home-about-card p {
+  .tek-About-about-card p {
     font-size:
       9.6px
       !important;
@@ -962,7 +962,7 @@
   900px
 ) {
 
-  .tek-home-about {
+  .tek-About-about {
     padding:
       76px
       0
@@ -970,7 +970,7 @@
   }
 
 
-  .tek-home-about__layout {
+  .tek-About-about__layout {
     grid-template-columns:
       1fr;
 
@@ -979,19 +979,19 @@
   }
 
 
-  .tek-home-about__primary {
+  .tek-About-about__primary {
     width:
       100%;
   }
 
 
-  .tek-home-about__headline {
+  .tek-About-about__headline {
     max-width:
       730px;
   }
 
 
-  .tek-home-about__cards {
+  .tek-About-about__cards {
     grid-template-columns:
       repeat(
         2,
@@ -1006,7 +1006,7 @@
   }
 
 
-  .tek-home-about-card {
+  .tek-About-about-card {
     min-height:
       260px;
   }
@@ -1023,7 +1023,7 @@
   650px
 ) {
 
-  .tek-home-about {
+  .tek-About-about {
     padding:
       68px
       0
@@ -1031,13 +1031,13 @@
   }
 
 
-  .tek-home-about__headline-break {
+  .tek-About-about__headline-break {
     display:
       none;
   }
 
 
-  .tek-home-about__intro {
+  .tek-About-about__intro {
     grid-template-columns:
       1fr;
 
@@ -1049,13 +1049,13 @@
   }
 
 
-  .tek-home-about__cta {
+  .tek-About-about__cta {
     width:
       max-content;
   }
 
 
-  .tek-home-about__media {
+  .tek-About-about__media {
     height:
       300px;
 
@@ -1064,19 +1064,19 @@
   }
 
 
-  .tek-home-about__cards {
+  .tek-About-about__cards {
     grid-template-columns:
       1fr;
   }
 
 
-  .tek-home-about-card {
+  .tek-About-about-card {
     min-height:
       250px;
   }
 
 
-  .tek-home-about-card p {
+  .tek-About-about-card p {
     max-width:
       100%;
   }
@@ -1093,7 +1093,7 @@
   480px
 ) {
 
-  .tek-home-about {
+  .tek-About-about {
     padding:
       62px
       0
@@ -1101,7 +1101,7 @@
   }
 
 
-  .tek-home-about__headline {
+  .tek-About-about__headline {
     font-size:
       clamp(
         23px,
@@ -1112,20 +1112,20 @@
   }
 
 
-  .tek-home-about__intro p {
+  .tek-About-about__intro p {
     font-size:
       10px
       !important;
   }
 
 
-  .tek-home-about__media {
+  .tek-About-about__media {
     height:
       260px;
   }
 
 
-  .tek-home-about-card {
+  .tek-About-about-card {
     min-height:
       245px;
 
@@ -1140,8 +1140,8 @@
    ACCESSIBILITY
    ========================================================================== */
 
-.tek-home-about__cta:focus-visible,
-.tek-home-about-card__link:focus-visible {
+.tek-About-about__cta:focus-visible,
+.tek-About-about-card__link:focus-visible {
   outline:
     2px solid
     var(
@@ -1163,13 +1163,13 @@
   reduce
 ) {
 
-  .tek-home-about__cta,
-  .tek-home-about__cta svg,
-  .tek-home-about__media img,
-  .tek-home-about-card,
-  .tek-home-about-card::before,
-  .tek-home-about-card__link,
-  .tek-home-about-card__link-icon {
+  .tek-About-about__cta,
+  .tek-About-about__cta svg,
+  .tek-About-about__media img,
+  .tek-About-about-card,
+  .tek-About-about-card::before,
+  .tek-About-about-card__link,
+  .tek-About-about-card__link-icon {
     transition:
       none
       !important;

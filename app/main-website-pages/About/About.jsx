@@ -10,23 +10,23 @@ import AboutHero from
   "@/app/main-website-components/AboutHero/AboutHero";
 
 
-import HomeAbout from
+import AboutAbout from
   "@/app/main-website-components/AboutOverview/AboutOverview";
 
 
-import HomeBrands from
+import AboutBrands from
   "@/app/main-website-components/AboutBrands/AboutBrands";
 
 
-import HomeCaseStudy from
+import AboutCaseStudy from
   "@/app/main-website-components/AboutCaseStudy/AboutCaseStudy";
 
 
-import HomeTestimonials from
+import AboutTestimonials from
   "@/app/main-website-components/AboutTestimonials/AboutTestimonials";
 
 
-import HomeTeam from
+import AboutTeam from
   "@/app/main-website-components/AboutTeam/AboutTeam";
 
 
@@ -39,8 +39,8 @@ export default function About() {
   return (
 
     <div
-      className="tek-home-page"
-      data-page="home"
+      className="tek-About-page"
+      data-page="About"
     >
 
       {/* ============================================================
@@ -49,26 +49,26 @@ export default function About() {
 
       <Navbar
         variant="default"
-        initialActiveTab="Home"
+        initialActiveTab="About"
       />
 
 
       <AboutHero />
 
 
-      <HomeAbout />
+      <AboutAbout />
 
 
-      <HomeBrands />
+      <AboutBrands />
 
 
-      <HomeCaseStudy />
+      <AboutCaseStudy />
 
 
-      <HomeTestimonials />
+      <AboutTestimonials />
 
 
-      <HomeTeam />
+      <AboutTeam />
 
 
       <ContactSection />

@@ -1,6 +1,6 @@
 /* ==========================================================================
    TEKCORP
-   HOME — TEAM
+   About — TEAM
    ==========================================================================
 
    BUILT FOR:
@@ -52,7 +52,7 @@
    SECTION / THEME
    ========================================================================== */
 
-.tek-home-team {
+.tek-About-team {
   /* ------------------------------------------------------------------------
      MAIN WEBSITE COLORS
 
@@ -132,7 +132,7 @@
    HEADER
    ========================================================================== */
 
-.tek-home-team__header {
+.tek-About-team__header {
   position: relative;
 
   z-index: 30;
@@ -153,7 +153,7 @@
    TITLE
    ========================================================================== */
 
-.tek-home-team__header h2 {
+.tek-About-team__header h2 {
   margin:
     0 !important;
 
@@ -196,7 +196,7 @@
    HEADER COPY
    ========================================================================== */
 
-.tek-home-team__header p {
+.tek-About-team__header p {
   width:
     min(
       100%,
@@ -239,7 +239,7 @@
    TEAM STAGE
    ========================================================================== */
 
-.tek-home-team__stage-wrap {
+.tek-About-team__stage-wrap {
   position: relative;
 
   width: 100%;
@@ -260,7 +260,7 @@
    TEAM GRID
    ========================================================================== */
 
-.tek-home-team__stage {
+.tek-About-team__stage {
   position: absolute;
 
   left: 50%;
@@ -296,7 +296,7 @@
    MEMBER
    ========================================================================== */
 
-.tek-home-team-member {
+.tek-About-team-member {
   --team-circle-size:
     clamp(
       148px,
@@ -357,7 +357,7 @@
    large featured portrait immediately on first render.
    ========================================================================== */
 
-.tek-home-team-member:nth-child(4) {
+.tek-About-team-member:nth-child(4) {
   z-index: 4;
 }
 
@@ -366,7 +366,7 @@
    FEATURED MEMBER
    ========================================================================== */
 
-.tek-home-team-member--featured {
+.tek-About-team-member--featured {
   --team-circle-size:
     clamp(
       236px,
@@ -397,7 +397,7 @@
    BUTTON
    ========================================================================== */
 
-.tek-home-team-member__visual {
+.tek-About-team-member__visual {
   position: relative;
 
   display: block;
@@ -424,7 +424,7 @@
    CIRCLE
    ========================================================================== */
 
-.tek-home-team-member__circle {
+.tek-About-team-member__circle {
   position: absolute;
 
   z-index: 1;
@@ -506,8 +506,8 @@
 
 /* Alternate neutral background */
 
-.tek-home-team-member:nth-child(even)
-.tek-home-team-member__circle {
+.tek-About-team-member:nth-child(even)
+.tek-About-team-member__circle {
   background:
     linear-gradient(
       145deg,
@@ -521,8 +521,8 @@
    FEATURED CIRCLE
    ========================================================================== */
 
-.tek-home-team-member--featured
-.tek-home-team-member__circle {
+.tek-About-team-member--featured
+.tek-About-team-member__circle {
   background:
     linear-gradient(
       145deg,
@@ -558,7 +558,7 @@
    CIRCLE LIGHT
    ========================================================================== */
 
-.tek-home-team-member__circle-light {
+.tek-About-team-member__circle-light {
   position: absolute;
 
   inset: 0;
@@ -589,8 +589,8 @@
 }
 
 
-.tek-home-team-member--featured
-.tek-home-team-member__circle-light {
+.tek-About-team-member--featured
+.tek-About-team-member__circle-light {
   opacity: 0.75;
 }
 
@@ -599,7 +599,7 @@
    INNER RING
    ========================================================================== */
 
-.tek-home-team-member__circle-ring {
+.tek-About-team-member__circle-ring {
   position: absolute;
 
   inset: 10px;
@@ -633,8 +633,8 @@
 }
 
 
-.tek-home-team-member--featured
-.tek-home-team-member__circle-ring {
+.tek-About-team-member--featured
+.tek-About-team-member__circle-ring {
   opacity: 0.6;
 
   transform: scale(1);
@@ -645,7 +645,7 @@
    PERSON
    ========================================================================== */
 
-.tek-home-team-member__person {
+.tek-About-team-member__person {
   position: absolute;
 
   z-index: 5;
@@ -752,8 +752,8 @@
    FEATURED PERSON
    ========================================================================== */
 
-.tek-home-team-member--featured
-.tek-home-team-member__person {
+.tek-About-team-member--featured
+.tek-About-team-member__person {
   filter:
     drop-shadow(
       0
@@ -773,7 +773,7 @@
    LABEL
    ========================================================================== */
 
-.tek-home-team-member__label {
+.tek-About-team-member__label {
   position: absolute;
 
   z-index: 40;
@@ -877,7 +877,7 @@
 
 /* Label arrow */
 
-.tek-home-team-member__label::after {
+.tek-About-team-member__label::after {
   position: absolute;
 
   left: 50%;
@@ -898,8 +898,8 @@
 
 /* Visible label */
 
-.tek-home-team-member--featured
-.tek-home-team-member__label {
+.tek-About-team-member--featured
+.tek-About-team-member__label {
   opacity: 1;
 
   visibility: visible;
@@ -916,7 +916,7 @@
 
 /* Label typography */
 
-.tek-home-team-member__label strong {
+.tek-About-team-member__label strong {
   position: relative;
 
   z-index: 2;
@@ -940,7 +940,7 @@
 }
 
 
-.tek-home-team-member__label span {
+.tek-About-team-member__label span {
   position: relative;
 
   z-index: 2;
@@ -968,7 +968,7 @@
    SHINE
    ========================================================================== */
 
-.tek-home-team-member__shine {
+.tek-About-team-member__shine {
   position: absolute;
 
   z-index: 2;
@@ -1024,7 +1024,7 @@
 }
 
 
-.tek-home-team-member__shine::before {
+.tek-About-team-member__shine::before {
   position: absolute;
 
   top: -20%;
@@ -1068,20 +1068,20 @@
 
 @media (hover: hover) and (pointer: fine) {
 
-  .tek-home-team-member:hover
-  .tek-home-team-member__shine {
+  .tek-About-team-member:hover
+  .tek-About-team-member__shine {
     opacity: 1;
   }
 
 
-  .tek-home-team-member:hover
-  .tek-home-team-member__shine::before {
+  .tek-About-team-member:hover
+  .tek-About-team-member__shine::before {
     left: 135%;
   }
 
 
-  .tek-home-team-member--featured:hover
-  .tek-home-team-member__circle {
+  .tek-About-team-member--featured:hover
+  .tek-About-team-member__circle {
     transform:
       translate3d(
         -50%,
@@ -1102,8 +1102,8 @@
   }
 
 
-  .tek-home-team-member--featured:hover
-  .tek-home-team-member__person {
+  .tek-About-team-member--featured:hover
+  .tek-About-team-member__person {
     filter:
       drop-shadow(
         0
@@ -1147,8 +1147,8 @@
    CLICK
    ========================================================================== */
 
-.tek-home-team-member__visual:active
-.tek-home-team-member__person {
+.tek-About-team-member__visual:active
+.tek-About-team-member__person {
   transform:
     translate3d(
       calc(
@@ -1173,13 +1173,13 @@
    KEYBOARD
    ========================================================================== */
 
-.tek-home-team-member__visual:focus-visible {
+.tek-About-team-member__visual:focus-visible {
   outline: none;
 }
 
 
-.tek-home-team-member__visual:focus-visible
-.tek-home-team-member__circle {
+.tek-About-team-member__visual:focus-visible
+.tek-About-team-member__circle {
   box-shadow:
     0
     0
@@ -1200,7 +1200,7 @@
 
 @media (max-width: 900px) {
 
-  .tek-home-team {
+  .tek-About-team {
     /*
      * Responsive design tokens.
      *
@@ -1258,7 +1258,7 @@
      HEADER
      ========================================================================== */
 
-  .tek-home-team__header {
+  .tek-About-team__header {
     width:
       min(
         calc(
@@ -1271,7 +1271,7 @@
   }
 
 
-  .tek-home-team__header h2 {
+  .tek-About-team__header h2 {
     font-size:
       clamp(
         2.3rem,
@@ -1284,7 +1284,7 @@
   }
 
 
-  .tek-home-team__header p {
+  .tek-About-team__header p {
     width:
       min(
         100%,
@@ -1303,7 +1303,7 @@
      SCROLL CONTAINER
      ========================================================================== */
 
-  .tek-home-team__stage-wrap {
+  .tek-About-team__stage-wrap {
     position: relative;
 
     width: 100%;
@@ -1347,7 +1347,7 @@
   }
 
 
-  .tek-home-team__stage-wrap::-webkit-scrollbar {
+  .tek-About-team__stage-wrap::-webkit-scrollbar {
     display: none;
   }
 
@@ -1356,7 +1356,7 @@
      TRACK
      ========================================================================== */
 
-  .tek-home-team__stage {
+  .tek-About-team__stage {
     position: relative;
 
     left: auto;
@@ -1411,7 +1411,7 @@
      MEMBER
      ========================================================================== */
 
-  .tek-home-team-member {
+  .tek-About-team-member {
     --team-circle-size:
       var(
         --team-normal-circle
@@ -1441,7 +1441,7 @@
   }
 
 
-  .tek-home-team-member--featured {
+  .tek-About-team-member--featured {
     --team-circle-size:
       var(
         --team-featured-circle
@@ -1458,12 +1458,12 @@
   }
 
 
-  .tek-home-team-member__person {
+  .tek-About-team-member__person {
     bottom: -6px;
   }
 
 
-  .tek-home-team-member__label {
+  .tek-About-team-member__label {
     min-width: 138px;
 
     padding:
@@ -1476,7 +1476,7 @@
    * Keep horizontal gestures natural when the finger
    * starts directly over a portrait.
    */
-  .tek-home-team-member__visual {
+  .tek-About-team-member__visual {
     touch-action:
       pan-x pinch-zoom;
   }
@@ -1489,7 +1489,7 @@
 
 @media (max-width: 600px) {
 
-  .tek-home-team {
+  .tek-About-team {
     --team-stage-height:
       clamp(
         292px,
@@ -1541,7 +1541,7 @@
      HEADER
      ========================================================================== */
 
-  .tek-home-team__header {
+  .tek-About-team__header {
     width:
       min(
         calc(
@@ -1554,7 +1554,7 @@
   }
 
 
-  .tek-home-team__header h2 {
+  .tek-About-team__header h2 {
     font-size:
       clamp(
         2.1rem,
@@ -1570,7 +1570,7 @@
   }
 
 
-  .tek-home-team__header p {
+  .tek-About-team__header p {
     width:
       min(
         100%,
@@ -1596,7 +1596,7 @@
      TEAM
      ========================================================================== */
 
-  .tek-home-team__stage-wrap {
+  .tek-About-team__stage-wrap {
     margin-top:
       20px;
 
@@ -1605,7 +1605,7 @@
   }
 
 
-  .tek-home-team__stage {
+  .tek-About-team__stage {
     padding-inline:
       calc(
         (
@@ -1625,7 +1625,7 @@
      LABEL
      ========================================================================== */
 
-  .tek-home-team-member__label {
+  .tek-About-team-member__label {
     bottom:
       calc(
         var(
@@ -1664,13 +1664,13 @@
   }
 
 
-  .tek-home-team-member__label strong {
+  .tek-About-team-member__label strong {
     font-size:
       0.64rem;
   }
 
 
-  .tek-home-team-member__label span {
+  .tek-About-team-member__label span {
     font-size:
       0.51rem;
   }
@@ -1683,7 +1683,7 @@
 
 @media (max-width: 390px) {
 
-  .tek-home-team {
+  .tek-About-team {
     --team-stage-height:
       286px;
 
@@ -1713,7 +1713,7 @@
   }
 
 
-  .tek-home-team__header {
+  .tek-About-team__header {
     width:
       calc(
         100%
@@ -1723,7 +1723,7 @@
   }
 
 
-  .tek-home-team__header h2 {
+  .tek-About-team__header h2 {
     font-size:
       clamp(
         2rem,
@@ -1733,19 +1733,19 @@
   }
 
 
-  .tek-home-team__header p {
+  .tek-About-team__header p {
     font-size:
       0.7rem !important;
   }
 
 
-  .tek-home-team__stage-wrap {
+  .tek-About-team__stage-wrap {
     margin-top:
       17px;
   }
 
 
-  .tek-home-team-member__label {
+  .tek-About-team-member__label {
     min-width:
       116px;
 
@@ -1755,13 +1755,13 @@
   }
 
 
-  .tek-home-team-member__label strong {
+  .tek-About-team-member__label strong {
     font-size:
       0.61rem;
   }
 
 
-  .tek-home-team-member__label span {
+  .tek-About-team-member__label span {
     font-size:
       0.49rem;
   }
@@ -1774,7 +1774,7 @@
 
 @media (max-width: 340px) {
 
-  .tek-home-team {
+  .tek-About-team {
     --team-stage-height:
       275px;
 
@@ -1802,7 +1802,7 @@
    * Don't base this on viewport width because large tablets
    * can still be touch devices.
    */
-  .tek-home-team-member__shine {
+  .tek-About-team-member__shine {
     display: none;
   }
 }
@@ -1845,12 +1845,12 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .tek-home-team-member,
-  .tek-home-team-member__circle,
-  .tek-home-team-member__person,
-  .tek-home-team-member__label,
-  .tek-home-team-member__shine,
-  .tek-home-team-member__shine::before {
+  .tek-About-team-member,
+  .tek-About-team-member__circle,
+  .tek-About-team-member__person,
+  .tek-About-team-member__label,
+  .tek-About-team-member__shine,
+  .tek-About-team-member__shine::before {
     animation: none !important;
 
     transition-duration:

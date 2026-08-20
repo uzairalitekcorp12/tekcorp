@@ -79,7 +79,7 @@ const team = [
   },
 ];
 
-export default function HomeTeam() {
+export default function AboutTeam() {
   const [selectedMemberId, setSelectedMemberId] =
     useState(DEFAULT_MEMBER_ID);
 
@@ -294,7 +294,7 @@ export default function HomeTeam() {
    * Desktop-style keyboard navigation.
    *
    * ArrowLeft / ArrowRight
-   * Home / End
+   * About / End
    */
   const handleMemberKeyDown = useCallback(
     (event, currentIndex) => {
@@ -315,7 +315,7 @@ export default function HomeTeam() {
           );
           break;
 
-        case "Home":
+        case "About":
           nextIndex = 0;
           break;
 
@@ -353,16 +353,16 @@ export default function HomeTeam() {
 
   return (
     <section
-      className="tek-home-team"
+      className="tek-About-team"
       id="team"
-      aria-labelledby="tek-home-team-title"
+      aria-labelledby="tek-About-team-title"
     >
-      <div className="tek-home-shell">
+      <div className="tek-About-shell">
         <header
-          className="tek-home-team__header"
+          className="tek-About-team__header"
           data-reveal="up"
         >
-          <h2 id="tek-home-team-title">
+          <h2 id="tek-About-team-title">
             Meet our team
           </h2>
 
@@ -378,10 +378,10 @@ export default function HomeTeam() {
 
       <div
         ref={stageWrapRef}
-        className="tek-home-team__stage-wrap"
+        className="tek-About-team__stage-wrap"
       >
         <div
-          className="tek-home-team__stage"
+          className="tek-About-team__stage"
           role="list"
           aria-label="TekCorp team members"
         >
@@ -406,12 +406,12 @@ export default function HomeTeam() {
                   }
                   role="listitem"
                   className={[
-                    "tek-home-team-member",
+                    "tek-About-team-member",
                     isFeatured
-                      ? "tek-home-team-member--featured"
+                      ? "tek-About-team-member--featured"
                       : "",
                     isSelected
-                      ? "tek-home-team-member--selected"
+                      ? "tek-About-team-member--selected"
                       : "",
                   ]
                     .filter(Boolean)
@@ -452,7 +452,7 @@ export default function HomeTeam() {
                   }}
                 >
                   <div
-                    className="tek-home-team-member__label"
+                    className="tek-About-team-member__label"
                     aria-hidden={
                       !isFeatured
                     }
@@ -467,7 +467,7 @@ export default function HomeTeam() {
                   </div>
 
                   <button
-                    className="tek-home-team-member__visual"
+                    className="tek-About-team-member__visual"
                     type="button"
                     aria-label={`View ${member.name}, ${member.role}`}
                     aria-pressed={
@@ -496,16 +496,16 @@ export default function HomeTeam() {
                     }
                   >
                     <span
-                      className="tek-home-team-member__circle"
+                      className="tek-About-team-member__circle"
                       aria-hidden="true"
                     >
-                      <span className="tek-home-team-member__circle-light" />
+                      <span className="tek-About-team-member__circle-light" />
 
-                      <span className="tek-home-team-member__circle-ring" />
+                      <span className="tek-About-team-member__circle-ring" />
                     </span>
 
                     <img
-                      className="tek-home-team-member__person"
+                      className="tek-About-team-member__person"
                       src={member.image}
                       alt=""
                       width="350"
@@ -527,7 +527,7 @@ export default function HomeTeam() {
                     />
 
                     <span
-                      className="tek-home-team-member__shine"
+                      className="tek-About-team-member__shine"
                       aria-hidden="true"
                     />
                   </button>

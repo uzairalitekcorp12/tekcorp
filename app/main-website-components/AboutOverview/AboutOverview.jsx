@@ -11,7 +11,7 @@ import {
    Replace later with your final local asset if needed.
 
    Example:
-   /assets/Home-assets/about-team.jpg
+   /assets/About-assets/about-team.jpg
    ========================================================================== */
 
 const ABOUT_IMAGE =
@@ -45,27 +45,27 @@ const highlights = [
    COMPONENT
    ========================================================================== */
 
-export default function HomeAbout() {
+export default function AboutAbout() {
   return (
     <section
-      className="tek-home-about"
+      className="tek-About-about"
       id="about-company"
     >
 
-      <div className="tek-home-shell tek-home-about__layout">
+      <div className="tek-About-shell tek-About-about__layout">
 
         {/* ================================================================
             LEFT SIDE
             ================================================================ */}
 
         <div
-          className="tek-home-about__primary"
+          className="tek-About-about__primary"
           data-reveal="left"
         >
 
           {/* SECTION KICKER */}
 
-          <p className="tek-home-about__kicker">
+          <p className="tek-About-about__kicker">
 
             <span
               aria-hidden="true"
@@ -78,11 +78,11 @@ export default function HomeAbout() {
 
           {/* MAIN HEADING */}
 
-          <h2 className="tek-home-about__headline">
+          <h2 className="tek-About-about__headline">
             TekCorp delivers comprehensive, efficient,
-            <br className="tek-home-about__headline-break" />
+            <br className="tek-About-about__headline-break" />
             and scalable technology solutions tailored to
-            <br className="tek-home-about__headline-break" />
+            <br className="tek-About-about__headline-break" />
             meet the unique needs your businesses.
           </h2>
 
@@ -91,7 +91,7 @@ export default function HomeAbout() {
               INTRO ROW
               ============================================================== */}
 
-          <div className="tek-home-about__intro">
+          <div className="tek-About-about__intro">
 
             <p>
               At TekCorp, we specialize in cutting-edge IT solutions
@@ -102,8 +102,8 @@ export default function HomeAbout() {
 
 
             <a
-              className="tek-home-about__cta"
-              href="#home-contact"
+              className="tek-About-about__cta"
+              href="#About-contact"
             >
 
               <span>
@@ -125,7 +125,7 @@ export default function HomeAbout() {
               IMAGE
               ============================================================== */}
 
-          <figure className="tek-home-about__media">
+          <figure className="tek-About-about__media">
 
             <img
               src={ABOUT_IMAGE}
@@ -135,7 +135,7 @@ export default function HomeAbout() {
 
 
             <span
-              className="tek-home-about__media-overlay"
+              className="tek-About-about__media-overlay"
               aria-hidden="true"
             />
 
@@ -148,7 +148,7 @@ export default function HomeAbout() {
             RIGHT CARDS
             ================================================================ */}
 
-        <div className="tek-home-about__cards">
+        <div className="tek-About-about__cards">
 
           {highlights.map(
             (
@@ -157,16 +157,16 @@ export default function HomeAbout() {
             ) => (
 
               <article
-                className="tek-home-about-card"
+                className="tek-About-about-card"
                 key={item.title}
                 data-reveal="right"
                 style={{
-                  "--tek-home-card-delay":
+                  "--tek-About-card-delay":
                     `${index * 90}ms`,
                 }}
               >
 
-                <div className="tek-home-about-card__content">
+                <div className="tek-About-about-card__content">
 
                   <h3>
                     {item.title}
@@ -181,8 +181,8 @@ export default function HomeAbout() {
 
 
                 <a
-                  className="tek-home-about-card__link"
-                  href="#home-contact"
+                  className="tek-About-about-card__link"
+                  href="#About-contact"
                 >
 
                   <span>
@@ -190,7 +190,7 @@ export default function HomeAbout() {
                   </span>
 
 
-                  <span className="tek-home-about-card__link-icon">
+                  <span className="tek-About-about-card__link-icon">
 
                     <ArrowUpRight
                       size={14}

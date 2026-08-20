@@ -6,11 +6,14 @@ import SiteEffects from
 
 /*
  * ==========================================================================
- * GLOBAL METADATA
+ * TEKCORP — GLOBAL METADATA
  * ==========================================================================
  */
 
 export const metadata = {
+  applicationName:
+    "TekCorp",
+
   title: {
     default:
       "TekCorp - Empowering Innovation",
@@ -21,6 +24,30 @@ export const metadata = {
 
   description:
     "Digital Systems That Power Business Growth",
+
+  keywords: [
+    "TekCorp",
+    "Software Development",
+    "Website Development",
+    "Custom Software",
+    "AI Automation",
+    "Mobile App Development",
+    "UI UX Design",
+    "Digital Transformation",
+    "E-Commerce Development",
+    "Pakistan Software Company",
+  ],
+
+  robots: {
+    index:
+      true,
+
+    follow:
+      true,
+  },
+
+  category:
+    "technology",
 };
 
 
@@ -36,6 +63,9 @@ export const viewport = {
 
   initialScale:
     1,
+
+  viewportFit:
+    "cover",
 };
 
 
@@ -49,16 +79,15 @@ export const viewport = {
  *
  * /
  *
- * Existing/current website page
+ * Existing/current LandingPage
  *
  *
  * /Home
  *
  * Home.jsx
  *
- *     -> Adaptive Navbar
+ *     -> Navbar
  *     -> Home sections
- *     -> Contact
  *     -> Footer
  *
  *
@@ -66,14 +95,32 @@ export const viewport = {
  *
  * About.jsx
  *
- *     -> Standard Navbar
+ *     -> Navbar
  *     -> About sections
- *     -> Contact
  *     -> Footer
  *
  *
- * SiteEffects stays global because only one instance
- * is required across the application.
+ * /Contact
+ *
+ * Contact.jsx
+ *
+ *     -> Navbar
+ *     -> ContactPage
+ *     -> Footer2
+ *
+ *
+ * SiteEffects stays GLOBAL.
+ *
+ * There must be only one SiteEffects instance in the application.
+ *
+ * IMPORTANT:
+ * Contact.jsx should therefore NOT import/render SiteEffects separately.
+ *
+ * The wrapper below is deliberately a <div>, not <main>.
+ *
+ * Individual website pages are responsible for their own semantic <main>
+ * element. This prevents Navbar/Footer from accidentally being placed
+ * inside a global <main>.
  * ==========================================================================
  */
 
@@ -82,20 +129,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
       <body>
 
-        <main
+        <div
           className="tekcorp-main"
         >
           {children}
-        </main>
+        </div>
 
 
         <SiteEffects />
 
       </body>
-
     </html>
   );
 }

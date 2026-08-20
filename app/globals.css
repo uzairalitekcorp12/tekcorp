@@ -6,9 +6,10 @@
 
    IMPORTANT:
    We intentionally keep the family name "Lufga Regular"
-   because all existing components already use that name.
+   because the existing TekCorp components already use that name.
 
-   But the actual font file being loaded is LufgaMedium.ttf.
+   The three local files below provide Light, Regular and Medium+
+   weights through one shared CSS font family.
    ========================================================================== */
 
 @font-face {
@@ -1538,7 +1539,7 @@ a.btn-teal:hover,
 }
 
 /* ==========================================================================
-   LANDINGPAGE1 — GLOBAL DESIGN TOKENS
+   Home — GLOBAL DESIGN TOKENS
    ========================================================================== */
 
 :root {
@@ -1584,9 +1585,9 @@ a.btn-teal:hover,
 }
 
 
-/* Landingpage1 page isolation */
+/* Home page isolation */
 
-.landingpage1 {
+.Home {
   width: 100%;
   min-width: 0;
   overflow-x: clip;
@@ -1596,11 +1597,11 @@ a.btn-teal:hover,
 
 /*
  * Existing globals.css applies heading colors globally.
- * These scoped rules make sure Landingpage1 intentional
+ * These scoped rules make sure Home intentional
  * dark surfaces and gradient headings are not overridden.
  */
 
-.landingpage1 .lp1-display-heading {
+.Home .lp1-display-heading {
   background:
     var(--lp1-heading-gradient)
     !important;
@@ -1623,9 +1624,9 @@ a.btn-teal:hover,
 }
 
 
-.landingpage1 .lp1-hero__title,
-.landingpage1 .lp1-contact__copy h2,
-.landingpage1 .lp1-solution-card--featured h3 {
+.Home .lp1-hero__title,
+.Home .lp1-contact__copy h2,
+.Home .lp1-solution-card--featured h3 {
   color:
     #ffffff
     !important;
@@ -1721,7 +1722,7 @@ html {
 
 
 /* ==========================================================================
-   LANDINGPAGE1 RESPONSIVE GLOBALS
+   Home RESPONSIVE GLOBALS
    ========================================================================== */
 
 @media (max-width: 760px) {
@@ -1736,13 +1737,13 @@ html {
 
 
 /* ==========================================================================
-   LANDINGPAGE1 REDUCED MOTION
+   Home REDUCED MOTION
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .landingpage1 *,
-  .landingpage1 *::before,
-  .landingpage1 *::after {
+  .Home *,
+  .Home *::before,
+  .Home *::after {
     scroll-behavior:
       auto
       !important;
@@ -1778,24 +1779,24 @@ html {
 
 
 /* ==========================================================================
-   HOME PAGE — GLOBAL DESIGN TOKENS
+   About PAGE — GLOBAL DESIGN TOKENS
    ========================================================================== */
 
 :root {
   /* ---------------------------------------------------------------
-     HOME BRAND COLORS
+     About BRAND COLORS
      --------------------------------------------------------------- */
 
-  --home-teal:
+  --About-teal:
     #1bdbba;
 
-  --home-teal-bright:
+  --About-teal-bright:
     #22e6c4;
 
-  --home-teal-dark:
+  --About-teal-dark:
     #149c85;
 
-  --home-teal-soft:
+  --About-teal-soft:
     rgba(
       27,
       219,
@@ -1805,30 +1806,30 @@ html {
 
 
   /* ---------------------------------------------------------------
-     HOME DARK COLORS
+     About DARK COLORS
      --------------------------------------------------------------- */
 
-  --home-black:
+  --About-black:
     #040605;
 
-  --home-dark:
+  --About-dark:
     #151817;
 
-  --home-dark-soft:
+  --About-dark-soft:
     #242625;
 
 
   /* ---------------------------------------------------------------
-     HOME LIGHT COLORS
+     About LIGHT COLORS
      --------------------------------------------------------------- */
 
-  --home-white:
+  --About-white:
     #ffffff;
 
-  --home-paper:
+  --About-paper:
     #fbfbfa;
 
-  --home-paper-muted:
+  --About-paper-muted:
     #f6f6f5;
 
 
@@ -1836,7 +1837,7 @@ html {
      TYPOGRAPHY
      --------------------------------------------------------------- */
 
-  --home-heading-gradient:
+  --About-heading-gradient:
     linear-gradient(
       90deg,
       #151515 0%,
@@ -1849,7 +1850,7 @@ html {
      SHADOWS
      --------------------------------------------------------------- */
 
-  --home-shadow-soft:
+  --About-shadow-soft:
     0
     18px
     45px
@@ -1861,7 +1862,7 @@ html {
     );
 
 
-  --home-shadow-medium:
+  --About-shadow-medium:
     0
     24px
     65px
@@ -1877,7 +1878,7 @@ html {
      MOTION
      --------------------------------------------------------------- */
 
-  --home-ease:
+  --About-ease:
     cubic-bezier(
       0.16,
       1,
@@ -1888,10 +1889,10 @@ html {
 
 
 /* ==========================================================================
-   HOME PAGE ROOT
+   About PAGE ROOT
    ========================================================================== */
 
-.tek-home-page {
+.tek-About-page {
   width:
     100%;
 
@@ -1907,12 +1908,12 @@ html {
 
 
 /* ==========================================================================
-   HOME SHARED CONTAINER
+   About SHARED CONTAINER
 
-   Used by all new Home components.
+   Used by all new About components.
    ========================================================================== */
 
-.tek-home-shell {
+.tek-About-shell {
   width:
     min(
       calc(
@@ -1927,13 +1928,13 @@ html {
 
 
 /* ==========================================================================
-   HOME — GRADIENT HEADING UTILITY
+   About — GRADIENT HEADING UTILITY
    ========================================================================== */
 
-.tek-home-gradient-heading {
+.tek-About-gradient-heading {
   background:
     var(
-      --home-heading-gradient
+      --About-heading-gradient
     );
 
   background-clip:
@@ -1961,12 +1962,12 @@ html {
    section h2,
    ...
 
-   These scoped rules guarantee that intentional Home dark surfaces
+   These scoped rules guarantee that intentional About dark surfaces
    always keep white typography.
    ========================================================================== */
 
-.tek-home-page
-.tek-home-contact__copy
+.tek-About-page
+.tek-About-contact__copy
 h2 {
   color:
     #ffffff
@@ -1978,8 +1979,8 @@ h2 {
 }
 
 
-.tek-home-page
-.tek-home-about__value-card
+.tek-About-page
+.tek-About-about__value-card
 h3 {
   color:
     #ffffff
@@ -2004,7 +2005,7 @@ html {
 }
 
 
-.tek-home-page section[id] {
+.tek-About-page section[id] {
   scroll-margin-top:
     90px;
   padding: 20px 0px 20px
@@ -2013,21 +2014,21 @@ html {
 
 
 /* ==========================================================================
-   HOME LINKS / INTERACTIONS
+   About LINKS / INTERACTIONS
    ========================================================================== */
 
-.tek-home-page a,
-.tek-home-page button {
+.tek-About-page a,
+.tek-About-page button {
   -webkit-tap-highlight-color:
     transparent;
 }
 
 
 /* ==========================================================================
-   HOME IMAGE QUALITY
+   About IMAGE QUALITY
    ========================================================================== */
 
-.tek-home-page img {
+.tek-About-page img {
   backface-visibility:
     hidden;
 
@@ -2037,12 +2038,12 @@ html {
 
 
 /* ==========================================================================
-   HOME RESPONSIVE GLOBALS
+   About RESPONSIVE GLOBALS
    ========================================================================== */
 
 @media (max-width: 760px) {
 
-  .tek-home-shell {
+  .tek-About-shell {
     width:
       min(
         calc(
@@ -2059,7 +2060,7 @@ html {
   }
 
 
-  .tek-home-page section[id] {
+  .tek-About-page section[id] {
     scroll-margin-top:
       78px;
    padding: 0px 0px 20px
@@ -2069,7 +2070,7 @@ html {
 
 
 /* ==========================================================================
-   HOME — ACCESSIBILITY / REDUCED MOTION
+   About — ACCESSIBILITY / REDUCED MOTION
    ========================================================================== */
 
 @media (
@@ -2077,9 +2078,184 @@ html {
   reduce
 ) {
 
-  .tek-home-page *,
-  .tek-home-page *::before,
-  .tek-home-page *::after {
+  .tek-About-page *,
+  .tek-About-page *::before,
+  .tek-About-page *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+
+}
+
+
+
+
+/* ==========================================================================
+   Contact PAGE — GLOBAL INTEGRATION
+   ==========================================================================
+
+   CONTACT STRUCTURE
+   -----------------
+
+   app/main-website-pages/Contact/Contact.jsx
+
+   app/main-website-components/ContactPage/
+   ├── ContactPage.jsx
+   └── ContactPage.css
+
+
+   IMPORTANT
+   ---------
+
+   ContactPage.css owns the Contact-page visual design.
+
+   These globals only provide:
+
+   - route/page isolation
+   - shared anchor offset
+   - global heading-rule compatibility
+   - image rendering safety
+   - tap behavior
+   - reduced-motion accessibility
+
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Contact PAGE ROOT
+   ========================================================================== */
+
+.tek-contact-page {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    clip;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   Contact — GLOBAL HEADING COMPATIBILITY
+
+   Older global rules contain:
+
+   section h1,
+   section h2,
+   ...
+
+   ContactPage.css already defines the final page colors, but these rules
+   make the intended Contact typography explicit at the global level too.
+   ========================================================================== */
+
+.tek-contact-page
+.tek-contact-hero
+h1 {
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+}
+
+
+.tek-contact-page
+.tek-contact-brief
+h2,
+.tek-contact-page
+.tek-contact-form-card
+h3 {
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+}
+
+
+/* ==========================================================================
+   Contact — ANCHOR OFFSET
+   ========================================================================== */
+
+.tek-contact-page
+section[id] {
+  scroll-margin-top:
+    90px;
+}
+
+
+/* ==========================================================================
+   Contact — INTERACTIONS / MEDIA
+   ========================================================================== */
+
+.tek-contact-page
+a,
+.tek-contact-page
+button {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.tek-contact-page
+img {
+  backface-visibility:
+    hidden;
+}
+
+
+/* ==========================================================================
+   Contact — RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (
+  max-width:
+    760px
+) {
+
+  .tek-contact-page
+  section[id] {
+    scroll-margin-top:
+      78px;
+  }
+
+}
+
+
+/* ==========================================================================
+   Contact — REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .tek-contact-page *,
+  .tek-contact-page *::before,
+  .tek-contact-page *::after {
     scroll-behavior:
       auto
       !important;
@@ -2110,6 +2286,84 @@ html {
     display:
       none
       !important;
+  }
+
+}
+
+/* ==========================================================================
+   TEKCORP — SHARED NAVIGATION TOKENS
+   ========================================================================== */
+
+:root {
+  --tek-nav-accent:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  --tek-nav-accent-dark:
+    var(
+      --lp1-teal-dark,
+      #149c85
+    );
+
+  --tek-nav-accent-soft:
+    rgba(
+      27,
+      219,
+      186,
+      .08
+    );
+
+
+  --tek-nav-heading-gradient:
+    var(
+      --lp1-heading-gradient,
+      linear-gradient(
+        84.4deg,
+        #17191a 1.6%,
+        rgba(23, 25, 26, .55) 31.82%,
+        #17191a 67.87%,
+        rgba(23, 25, 26, .55) 103.4%
+      )
+    );
+}
+
+
+/* ==========================================================================
+   FIXED NAVIGATION OFFSET
+   ========================================================================== */
+
+html {
+  scroll-padding-top:
+    86px;
+}
+
+
+main section[id] {
+  scroll-margin-top:
+    86px;
+}
+
+
+/* ==========================================================================
+   MOBILE OFFSET
+   ========================================================================== */
+
+@media (
+  max-width:
+    760px
+) {
+
+  html {
+    scroll-padding-top:
+      76px;
+  }
+
+
+  main section[id] {
+    scroll-margin-top:
+      76px;
   }
 
 }

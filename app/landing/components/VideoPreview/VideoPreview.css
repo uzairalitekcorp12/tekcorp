@@ -1,39 +1,61 @@
-/* ==========================================================================
-   VIDEO / MEDIA SHOWCASE SECTION
+/* ========================================================================== 
+   TEKCORP — VIDEO PREVIEW
    ========================================================================== */
 
 .video-section {
   width: 100%;
 
-  padding-top: 58px;
-  padding-bottom: 72px;
+  padding:
+    clamp(46px, 6vw, 72px)
+    0
+    clamp(52px, 7vw, 82px);
 }
 
 
-/* ==========================================================================
+/* ========================================================================== 
    SECTION HEADER
    ========================================================================== */
 
 .video-header {
-  width: calc(100% - 48px);
-
-  max-width: 820px;
+  width:
+    min(
+      calc(100% - 40px),
+      820px
+    );
 
   margin:
     0
     auto
-    38px;
+    clamp(26px, 4vw, 40px);
 
   text-align: center;
 }
 
 
-/* ==========================================================================
-   HEADING
-   ========================================================================== */
+.video-kicker {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color:
+    var(--lp1-teal, #1bdbba);
+
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+
+  line-height: 1.2;
+}
+
 
 .video-heading {
   margin: 0 !important;
+
   padding: 0 !important;
 
   font-family:
@@ -50,29 +72,24 @@
 }
 
 
-/* ==========================================================================
-   HEADING GRADIENT
-
-   Same dark → charcoal → gray language used throughout
-   the rest of the landing page.
-   ========================================================================== */
-
 .video-heading-gradient {
   display: inline-block;
 
   max-width: 100%;
 
-  background: linear-gradient(
-    90deg,
-    #1d1d1d 0%,
-    #252323 28%,
-    #403c3d 54%,
-    #5d595a 79%,
-    #696566 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #1d1d1d 0%,
+      #252323 28%,
+      #403c3d 54%,
+      #5d595a 79%,
+      #696566 100%
+    );
+
+  background-clip: text;
 
   -webkit-background-clip: text;
-  background-clip: text;
 
   color: transparent !important;
 
@@ -80,12 +97,8 @@
 }
 
 
-/* ==========================================================================
-   DESCRIPTION
-   ========================================================================== */
-
 .video-description {
-  max-width: 720px;
+  max-width: 650px;
 
   margin:
     14px
@@ -94,6 +107,10 @@
 
   padding: 0 !important;
 
+  color: #626666 !important;
+
+  -webkit-text-fill-color: #626666 !important;
+
   font-family:
     var(--font-site, "Lufga Regular", sans-serif) !important;
 
@@ -101,27 +118,26 @@
 
   font-weight: 400;
 
-  line-height: 1.6 !important;
+  line-height: 1.65 !important;
 
   letter-spacing: -0.01em;
 
   text-align: center;
-
-  color: #626666 !important;
-
-  -webkit-text-fill-color: #626666 !important;
 }
 
 
-/* ==========================================================================
-   VIDEO CANVAS
+/* ========================================================================== 
+   VIDEO FRAME
    ========================================================================== */
 
 .video-wrapper {
   position: relative;
 
-  width: 100%;
-  max-width: 1140px;
+  width:
+    min(
+      calc(100% - 64px),
+      1140px
+    );
 
   margin: 0 auto;
 
@@ -129,22 +145,22 @@
 
   overflow: hidden;
 
-  border-radius: var(--radius-xl);
-
-  background: #000000;
-
   border:
-    2px solid
-    rgba(0, 212, 170, 0.18);
+    1px solid
+    rgba(0, 212, 170, 0.16);
+
+  border-radius:
+    clamp(18px, 2.4vw, 30px);
+
+  background: #070908;
 
   box-shadow:
-    var(--shadow-xl);
+    0 24px 70px
+    rgba(10, 19, 16, 0.16);
+
+  isolation: isolate;
 }
 
-
-/* ==========================================================================
-   VIDEO INNER
-   ========================================================================== */
 
 .video-inner {
   position: relative;
@@ -154,19 +170,17 @@
 }
 
 
-/* ==========================================================================
-   NATIVE MP4 VIDEO
-   ========================================================================== */
-
 .video-element {
   position: absolute;
 
   inset: 0;
 
-  width: 100%;
-  height: 100%;
+  z-index: 1;
 
   display: block;
+
+  width: 100%;
+  height: 100%;
 
   object-fit: cover;
 
@@ -176,21 +190,154 @@
 }
 
 
-/* ==========================================================================
-   COMPLETE VOLUME CONTROL
+/* ========================================================================== 
+   VIDEO SHADE
+   ========================================================================== */
+
+.video-shade {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 7, 6, 0.72) 0%,
+      rgba(4, 7, 6, 0.44) 34%,
+      rgba(4, 7, 6, 0.08) 68%,
+      rgba(4, 7, 6, 0.04) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 5, 4, 0.03) 45%,
+      rgba(2, 5, 4, 0.64) 100%
+    );
+}
+
+
+/* ========================================================================== 
+   WHITE VIDEO CAPTION
+   ========================================================================== */
+
+.video-caption {
+  position: absolute;
+
+  z-index: 5;
+
+  left:
+    clamp(24px, 4vw, 54px);
+
+  bottom:
+    clamp(24px, 4vw, 46px);
+
+  width:
+    min(58%, 650px);
+
+  padding-right: 24px;
+
+  color: #ffffff;
+
+  text-align: left;
+
+  text-shadow:
+    0 2px 16px
+    rgba(0, 0, 0, 0.36);
+}
+
+
+.video-caption__eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #b5fff3;
+
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  line-height: 1.2;
+}
+
+
+.video-caption strong {
+  display: block;
+
+  max-width: 620px;
+
+  color: #ffffff !important;
+
+  -webkit-text-fill-color: #ffffff !important;
+
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size:
+    clamp(24px, 3.1vw, 42px);
+
+  font-weight: 600;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.045em;
+}
+
+
+.video-caption p {
+  max-width: 520px;
+
+  margin:
+    12px
+    0
+    0 !important;
+
+  color:
+    rgba(255, 255, 255, 0.82) !important;
+
+  -webkit-text-fill-color:
+    rgba(255, 255, 255, 0.82) !important;
+
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size:
+    clamp(12px, 1.25vw, 15px);
+
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  letter-spacing: -0.01em;
+}
+
+
+/* ========================================================================== 
+   VOLUME CONTROL
    ========================================================================== */
 
 .video-volume-control {
   position: absolute;
 
-  right: 16px;
-  bottom: 16px;
-
   z-index: 10;
 
-  min-height: 42px;
+  right:
+    clamp(14px, 2vw, 20px);
+
+  bottom:
+    clamp(14px, 2vw, 20px);
 
   display: flex;
+
+  min-height: 42px;
 
   align-items: center;
 
@@ -206,22 +353,20 @@
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.12);
+    rgba(255, 255, 255, 0.14);
 
   border-radius: 999px;
 
   background:
-    rgba(0, 0, 0, 0.52);
-
-  backdrop-filter:
-    blur(10px);
-
-  -webkit-backdrop-filter:
-    blur(10px);
+    rgba(0, 0, 0, 0.54);
 
   box-shadow:
     0 4px 18px
     rgba(0, 0, 0, 0.26);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
 
   transition:
     background 0.3s ease,
@@ -230,48 +375,34 @@
 }
 
 
-/* ==========================================================================
-   VOLUME CONTROL HOVER
-   ========================================================================== */
-
 @media (hover: hover) and (pointer: fine) {
 
   .video-volume-control:hover,
   .video-volume-control:focus-within {
     background:
-      rgba(9, 24, 21, 0.78);
+      rgba(9, 24, 21, 0.82);
 
     border-color:
-      rgba(27, 219, 186, 0.42);
+      rgba(27, 219, 186, 0.46);
 
     box-shadow:
       0 7px 24px
-      rgba(0, 0, 0, 0.3);
+      rgba(0, 0, 0, 0.32);
   }
 
 }
 
 
-/* ==========================================================================
-   SLIDER WRAPPER
-
-   Desktop:
-   starts collapsed and expands on hover/focus.
-
-   This keeps the video visually clean when the user
-   isn't interacting with the sound control.
-   ========================================================================== */
-
 .video-volume-slider-wrap {
+  display: flex;
+
   width: 0;
+
+  align-items: center;
 
   overflow: hidden;
 
   opacity: 0;
-
-  display: flex;
-
-  align-items: center;
 
   transition:
     width 0.3s
@@ -279,10 +410,6 @@
     opacity 0.22s ease;
 }
 
-
-/* ==========================================================================
-   SHOW SLIDER
-   ========================================================================== */
 
 .video-volume-control:hover
 .video-volume-slider-wrap,
@@ -294,16 +421,11 @@
 }
 
 
-/* ==========================================================================
-   RANGE INPUT
-   ========================================================================== */
-
 .video-volume-slider {
   width: 86px;
   height: 18px;
 
   margin: 0;
-
   padding: 0;
 
   appearance: none;
@@ -316,10 +438,6 @@
 }
 
 
-/* ==========================================================================
-   RANGE TRACK — WEBKIT
-   ========================================================================== */
-
 .video-volume-slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
@@ -330,10 +448,6 @@
     rgba(255, 255, 255, 0.42);
 }
 
-
-/* ==========================================================================
-   RANGE THUMB — WEBKIT
-   ========================================================================== */
 
 .video-volume-slider::-webkit-slider-thumb {
   width: 13px;
@@ -349,30 +463,14 @@
 
   border-radius: 50%;
 
-  background: #1bdbba;
+  background:
+    var(--lp1-teal, #1bdbba);
 
   box-shadow:
     0 2px 7px
     rgba(27, 219, 186, 0.42);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
-
-.video-volume-slider:hover::-webkit-slider-thumb {
-  transform: scale(1.14);
-
-  box-shadow:
-    0 3px 10px
-    rgba(27, 219, 186, 0.58);
-}
-
-
-/* ==========================================================================
-   RANGE TRACK — FIREFOX
-   ========================================================================== */
 
 .video-volume-slider::-moz-range-track {
   width: 100%;
@@ -387,22 +485,15 @@
 }
 
 
-/* ==========================================================================
-   RANGE PROGRESS — FIREFOX
-   ========================================================================== */
-
 .video-volume-slider::-moz-range-progress {
   height: 4px;
 
   border-radius: 999px;
 
-  background: #1bdbba;
+  background:
+    var(--lp1-teal, #1bdbba);
 }
 
-
-/* ==========================================================================
-   RANGE THUMB — FIREFOX
-   ========================================================================== */
 
 .video-volume-slider::-moz-range-thumb {
   width: 13px;
@@ -412,32 +503,28 @@
 
   border-radius: 50%;
 
-  background: #1bdbba;
-
-  box-shadow:
-    0 2px 7px
-    rgba(27, 219, 186, 0.42);
+  background:
+    var(--lp1-teal, #1bdbba);
 }
 
-
-/* ==========================================================================
-   RANGE FOCUS
-   ========================================================================== */
 
 .video-volume-slider:focus-visible {
   outline: none;
 }
 
 
-/* ==========================================================================
-   MUTE / UNMUTE BUTTON
-   ========================================================================== */
-
 .video-mute-btn {
+  display: flex;
+
   width: 38px;
   height: 38px;
 
-  flex: 0 0 38px;
+  flex:
+    0 0 38px;
+
+  align-items: center;
+
+  justify-content: center;
 
   padding: 0;
 
@@ -445,71 +532,52 @@
 
   border-radius: 50%;
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  cursor: pointer;
-
   background:
     rgba(255, 255, 255, 0.1);
 
   color: #ffffff;
 
+  cursor: pointer;
+
   transition:
     transform 0.25s
       cubic-bezier(0.34, 1.56, 0.64, 1),
     background 0.25s ease,
-    color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
 
-/* ==========================================================================
-   BUTTON HOVER
-   ========================================================================== */
-
 @media (hover: hover) and (pointer: fine) {
 
   .video-mute-btn:hover {
-    transform: scale(1.07);
-
-    background: #1bdbba;
-
-    color: #ffffff;
+    background:
+      var(--lp1-teal, #1bdbba);
 
     box-shadow:
       0 4px 16px
       rgba(27, 219, 186, 0.35);
+
+    transform:
+      scale(1.07);
   }
 
 }
 
 
-/* ==========================================================================
-   BUTTON FOCUS
-   ========================================================================== */
-
 .video-mute-btn:focus-visible {
   outline:
     2px solid
-    #1bdbba;
+    var(--lp1-teal, #1bdbba);
 
   outline-offset: 3px;
 }
 
 
-/* ==========================================================================
-   SPEAKER SVG
-   ========================================================================== */
-
 .video-mute-btn svg {
+  display: block;
+
   width: 16px;
   height: 16px;
-
-  display: block;
 
   flex-shrink: 0;
 
@@ -517,100 +585,57 @@
 }
 
 
-/* ==========================================================================
-   <= 1200px
+/* ========================================================================== 
+   TABLET
    ========================================================================== */
 
-@media (max-width: 1200px) {
+@media (max-width: 820px) {
 
   .video-wrapper {
-    max-width:
-      calc(100% - 64px);
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET / SMALL LAPTOP
-   ========================================================================== */
-
-@media (max-width: 768px) {
-
-  .video-section {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-
-  .video-header {
     width:
-      calc(100% - 40px);
-
-    margin-bottom: 30px;
-  }
-
-
-  .video-heading {
-    font-size:
-      clamp(
-        31px,
-        6vw,
-        39px
-      ) !important;
-  }
-
-
-  .video-description {
-    max-width: 590px;
-
-    font-size:
-      14px !important;
-  }
-
-
-  .video-wrapper {
-    max-width:
       calc(100% - 32px);
 
-    border-radius: 18px;
+    aspect-ratio: 16 / 10;
   }
 
 
-  .video-volume-control {
-    right: 14px;
-    bottom: 14px;
+  .video-caption {
+    width:
+      min(70%, 560px);
+
+    bottom: 26px;
   }
 
 
-  /*
-    Touch devices do not have hover,
-    so keep the slider visible.
-  */
+  .video-caption strong {
+    font-size:
+      clamp(22px, 4.3vw, 34px);
+  }
+
 
   .video-volume-slider-wrap {
-    width: 84px;
+    width: 78px;
 
     opacity: 1;
   }
 
 
   .video-volume-slider {
-    width: 78px;
+    width: 72px;
   }
 
 }
 
 
-/* ==========================================================================
+/* ========================================================================== 
    MOBILE
    ========================================================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
   .video-section {
     padding-top: 42px;
-    padding-bottom: 40px;
+    padding-bottom: 48px;
   }
 
 
@@ -618,40 +643,89 @@
     width:
       calc(100% - 28px);
 
-    margin-bottom: 25px;
+    margin-bottom: 24px;
   }
 
 
   .video-heading {
     font-size:
-      clamp(
-        28px,
-        8vw,
-        33px
-      ) !important;
+      clamp(29px, 8.6vw, 36px) !important;
 
-    line-height:
-      1.12 !important;
+    line-height: 1.1 !important;
   }
 
 
   .video-description {
-    margin-top:
-      11px !important;
+    max-width: 470px;
 
-    font-size:
-      13px !important;
+    font-size: 13px !important;
 
-    line-height:
-      1.55 !important;
+    line-height: 1.6 !important;
   }
 
 
   .video-wrapper {
-    max-width:
+    width:
       calc(100% - 24px);
 
-    border-radius: 16px;
+    aspect-ratio: 4 / 3;
+
+    border-radius: 18px;
+  }
+
+
+  .video-element {
+    object-position: center;
+  }
+
+
+  .video-shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 6, 5, 0.10) 0%,
+        rgba(3, 6, 5, 0.26) 42%,
+        rgba(3, 6, 5, 0.82) 100%
+      );
+  }
+
+
+  .video-caption {
+    left: 18px;
+    right: 18px;
+    bottom: 68px;
+
+    width: auto;
+
+    padding-right: 0;
+  }
+
+
+  .video-caption__eyebrow {
+    margin-bottom: 7px;
+
+    font-size: 9px;
+  }
+
+
+  .video-caption strong {
+    max-width: 100%;
+
+    font-size:
+      clamp(20px, 6.8vw, 28px);
+
+    line-height: 1.1;
+  }
+
+
+  .video-caption p {
+    max-width: 420px;
+
+    margin-top: 8px !important;
+
+    font-size: 12px;
+
+    line-height: 1.48;
   }
 
 
@@ -668,12 +742,12 @@
 
 
   .video-volume-slider-wrap {
-    width: 72px;
+    width: 66px;
   }
 
 
   .video-volume-slider {
-    width: 66px;
+    width: 60px;
   }
 
 
@@ -684,46 +758,78 @@
     flex-basis: 34px;
   }
 
+}
 
-  .video-mute-btn svg {
-    width: 15px;
-    height: 15px;
+
+/* ========================================================================== 
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 440px) {
+
+  .video-wrapper {
+    aspect-ratio: 4 / 3.35;
+  }
+
+
+  .video-caption {
+    bottom: 58px;
+  }
+
+
+  .video-caption p {
+    display: none;
+  }
+
+
+  .video-volume-slider-wrap,
+  .video-volume-control:hover
+  .video-volume-slider-wrap,
+  .video-volume-control:focus-within
+  .video-volume-slider-wrap {
+    width: 0;
+
+    opacity: 0;
+  }
+
+
+  .video-volume-control {
+    padding: 2px;
   }
 
 }
 
 
-/* ==========================================================================
+/* ========================================================================== 
    VERY SMALL MOBILE
    ========================================================================== */
 
 @media (max-width: 360px) {
 
   .video-heading {
-    font-size:
-      27px !important;
+    font-size: 28px !important;
   }
 
 
   .video-description {
-    font-size:
-      12.5px !important;
+    font-size: 12.5px !important;
   }
 
 
-  .video-volume-slider-wrap {
-    width: 61px;
+  .video-caption {
+    left: 15px;
+    right: 15px;
   }
 
 
-  .video-volume-slider {
-    width: 55px;
+  .video-caption strong {
+    font-size: 19px;
   }
 
 }
 
 
-/* ==========================================================================
+/* ========================================================================== 
    REDUCED MOTION
    ========================================================================== */
 
@@ -731,8 +837,7 @@
 
   .video-volume-control,
   .video-volume-slider-wrap,
-  .video-mute-btn,
-  .video-volume-slider::-webkit-slider-thumb {
+  .video-mute-btn {
     transition: none !important;
   }
 

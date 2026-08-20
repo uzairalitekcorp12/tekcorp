@@ -11,50 +11,453 @@ import {
 } from "react";
 
 
-/*
- * ==========================================================================
- * TEKCORP — REUSABLE / ADAPTIVE NAVBAR
- * ==========================================================================
- *
- * AVAILABLE MODES
- *
- * 1. DEFAULT
- *
- * <Navbar variant="default" />
- *
- * Always renders the regular white navbar.
- *
- *
- * 2. TRANSPARENT
- *
- * <Navbar variant="transparent" />
- *
- * Always renders the transparent / dark-media navbar.
- *
- *
- * 3. ADAPTIVE
- *
- * <Navbar
- *   variant="adaptive"
- *   transparentTargetId="landingpage1-hero"
- * />
- *
- * Transparent while the navbar overlaps the supplied section.
- * Automatically changes to the regular white navbar when that
- * section moves above the navbar.
- *
- * This is the preferred mode for video/image heroes.
- * ==========================================================================
- */
+/* ==========================================================================
+   TEKCORP — NAVIGATION DATA
+   ==========================================================================
+
+   EXISTING REAL PAGES
+   -------------------
+
+   /Home
+   /About
+   /contact
+
+
+   PLACEHOLDER DESTINATIONS
+   ------------------------
+
+   Individual service, insight and case-study pages are not available yet.
+
+   For now those links resolve to:
+
+   /contact
+
+   Later, simply add the real href to an item:
+
+   {
+     title: "Web Application Development",
+     href: "/services/web-development",
+   }
+
+   No layout or component changes will be required.
+   ========================================================================== */
+
+
+const SOLUTION_GROUPS = [
+  {
+    key: "engineering",
+
+    number: "01",
+
+    title: "Engineering",
+
+    subtitle:
+      "Digital products built for scale",
+
+    items: [
+      {
+        title:
+          "Web Application Development",
+      },
+
+      {
+        title:
+          "Custom Software Development",
+      },
+
+      {
+        title:
+          "SaaS Product Development",
+      },
+
+      {
+        title:
+          "Mobile App Development",
+      },
+
+      {
+        title:
+          "API & System Integration",
+      },
+
+      {
+        title:
+          "Cloud Engineering",
+      },
+
+      {
+        title:
+          "DevOps & Reliability",
+      },
+    ],
+  },
+
+
+  {
+    key: "ai",
+
+    number: "02",
+
+    title: "AI & Automation",
+
+    subtitle:
+      "Intelligence that creates efficiency",
+
+    items: [
+      {
+        title:
+          "AI Strategy & Consulting",
+      },
+
+      {
+        title:
+          "Generative AI Solutions",
+      },
+
+      {
+        title:
+          "AI Agents & Copilots",
+      },
+
+      {
+        title:
+          "RAG & Knowledge Assistants",
+      },
+
+      {
+        title:
+          "Business Process Automation",
+      },
+
+      {
+        title:
+          "Machine Learning Solutions",
+      },
+
+      {
+        title:
+          "Data & AI Integration",
+      },
+    ],
+  },
+
+
+  {
+    key: "product",
+
+    number: "03",
+
+    title: "Product & Design",
+
+    subtitle:
+      "Experiences people want to use",
+
+    items: [
+      {
+        title:
+          "Digital Product Strategy",
+      },
+
+      {
+        title:
+          "UX Research",
+      },
+
+      {
+        title:
+          "UI / UX Design",
+      },
+
+      {
+        title:
+          "Design Systems",
+      },
+
+      {
+        title:
+          "Product Prototyping",
+      },
+
+      {
+        title:
+          "MVP Development",
+      },
+
+      {
+        title:
+          "Brand Experience Design",
+      },
+    ],
+  },
+
+
+  {
+    key: "growth",
+
+    number: "04",
+
+    title: "Growth & Platforms",
+
+    subtitle:
+      "Technology that supports growth",
+
+    items: [
+      {
+        title:
+          "Technical SEO",
+      },
+
+      {
+        title:
+          "Digital Growth Strategy",
+      },
+
+      {
+        title:
+          "E-commerce Development",
+      },
+
+      {
+        title:
+          "Conversion Optimization",
+      },
+
+      {
+        title:
+          "Marketing Automation",
+      },
+
+      {
+        title:
+          "Analytics & Business Intelligence",
+      },
+
+      {
+        title:
+          "CRM & ERP Integration",
+      },
+    ],
+  },
+];
+
+
+/* ==========================================================================
+   ICONS
+   ========================================================================== */
+
+
+function ChevronIcon({
+  open = false,
+  size = 12,
+}) {
+
+  return (
+
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={[
+        "navbar-chevron",
+
+        open
+          ? "open"
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      aria-hidden="true"
+    >
+
+      <path d="m6 9 6 6 6-6" />
+
+    </svg>
+
+  );
+
+}
+
+
+function ArrowUpRightIcon({
+  size = 12,
+}) {
+
+  return (
+
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+
+      <path d="M7 17 17 7" />
+
+      <path d="M7 7h10v10" />
+
+    </svg>
+
+  );
+
+}
+
+
+function GroupIcon({
+  type,
+}) {
+
+  const icons = {
+
+    engineering: (
+
+      <>
+        <path d="m8 9-4 3 4 3" />
+
+        <path d="m16 9 4 3-4 3" />
+
+        <path d="m14 5-4 14" />
+      </>
+
+    ),
+
+
+    ai: (
+
+      <>
+        <circle
+          cx="12"
+          cy="12"
+          r="3.7"
+        />
+
+        <path d="M12 3v3" />
+
+        <path d="M12 18v3" />
+
+        <path d="M3 12h3" />
+
+        <path d="M18 12h3" />
+
+        <path d="m5.7 5.7 2.1 2.1" />
+
+        <path d="m16.2 16.2 2.1 2.1" />
+
+        <path d="m18.3 5.7-2.1 2.1" />
+
+        <path d="m7.8 16.2-2.1 2.1" />
+      </>
+
+    ),
+
+
+    product: (
+
+      <>
+        <rect
+          x="4"
+          y="4"
+          width="16"
+          height="16"
+          rx="3"
+        />
+
+        <path d="M8 9h8" />
+
+        <path d="M8 13h5" />
+
+        <path d="M8 17h3" />
+      </>
+
+    ),
+
+
+    growth: (
+
+      <>
+        <path d="M4 18V6" />
+
+        <path d="M4 18h16" />
+
+        <path d="m7 14 4-4 3 2 5-6" />
+      </>
+
+    ),
+
+  };
+
+
+  return (
+
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+
+      {icons[type]}
+
+    </svg>
+
+  );
+
+}
+
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
 
 
 export default function Navbar({
   variant = "default",
+
   transparentTargetId = "",
+
   initialActiveTab = "Home",
-  homeHref = "/home",
-  ctaHref = "#home-contact",
+
+  homeHref = "/Home",
+
+  aboutHref = "/About",
+
+  contactHref = "/contact",
+
+  ctaHref,
+
+  ctaLabel = "Get Started",
 }) {
+
+  /* ==========================================================================
+     PLACEHOLDER ROUTING
+     ==========================================================================
+
+     Until the individual destination pages are ready,
+     every non-existing content destination points to Contact.
+     ========================================================================== */
+
+  const placeholderHref =
+    contactHref;
+
+
+  const resolvedCtaHref =
+    ctaHref ||
+    contactHref;
+
 
   /* ==========================================================================
      STATE
@@ -63,34 +466,60 @@ export default function Navbar({
   const [
     scrolled,
     setScrolled,
-  ] = useState(false);
+  ] =
+    useState(false);
 
 
   const [
     overTransparentTarget,
     setOverTransparentTarget,
-  ] = useState(
-    variant === "transparent" ||
-    variant === "adaptive"
-  );
+  ] =
+    useState(
+      variant === "transparent" ||
+      variant === "adaptive",
+    );
 
 
   const [
     solutionsOpen,
     setSolutionsOpen,
-  ] = useState(false);
+  ] =
+    useState(false);
 
 
   const [
     mobileOpen,
     setMobileOpen,
-  ] = useState(false);
+  ] =
+    useState(false);
+
+
+  /*
+   * Each mobile category has independent state.
+   *
+   * This intentionally avoids the previous issue where
+   * opening one category could prevent another from opening.
+   */
+
+  const [
+    mobileGroups,
+    setMobileGroups,
+  ] =
+    useState({
+      engineering: false,
+      ai: false,
+      product: false,
+      growth: false,
+    });
 
 
   const [
     activeTab,
     setActiveTab,
-  ] = useState(initialActiveTab);
+  ] =
+    useState(
+      initialActiveTab,
+    );
 
 
   /* ==========================================================================
@@ -101,7 +530,7 @@ export default function Navbar({
     useRef(null);
 
 
-  const dropdownRef =
+  const closeTimerRef =
     useRef(null);
 
 
@@ -120,7 +549,7 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     DETERMINE CURRENT VISUAL MODE
+     VISUAL MODE
      ========================================================================== */
 
   const isOverlayMode =
@@ -138,18 +567,66 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     GENERAL SCROLL STATE
+     PRIMARY LINKS
+     ========================================================================== */
+
+  const navLinks = [
+    {
+      name:
+        "Home",
+
+      href:
+        homeHref,
+    },
+
+    {
+      name:
+        "Our Solutions",
+
+      mega:
+        true,
+    },
+
+    {
+      name:
+        "Case Studies",
+
+      href:
+        placeholderHref,
+    },
+
+    {
+      name:
+        "Insights",
+
+      href:
+        placeholderHref,
+    },
+
+    {
+      name:
+        "Company",
+
+      href:
+        aboutHref,
+    },
+  ];
+
+
+  /* ==========================================================================
+     SCROLL STATE
      ========================================================================== */
 
   useEffect(() => {
 
-    const handleScroll = () => {
+    const handleScroll =
+      () => {
 
-      setScrolled(
-        window.scrollY > 8
-      );
+        setScrolled(
+          window.scrollY > 8,
+        );
 
-    };
+      };
 
 
     handleScroll();
@@ -160,7 +637,7 @@ export default function Navbar({
       handleScroll,
       {
         passive: true,
-      }
+      },
     );
 
 
@@ -168,7 +645,7 @@ export default function Navbar({
 
       window.removeEventListener(
         "scroll",
-        handleScroll
+        handleScroll,
       );
 
     };
@@ -177,38 +654,17 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     ADAPTIVE TRANSPARENT TARGET
-     ==========================================================================
-
-     Instead of checking:
-
-     window.scrollY > 500
-
-     we check the ACTUAL position of the requested section.
-
-     This means it works correctly if the hero is:
-
-     650px desktop
-     820px laptop
-     730px tablet
-     680px mobile
-
-     No breakpoint-specific JavaScript is needed.
+     ADAPTIVE HERO DETECTION
      ========================================================================== */
 
   useEffect(() => {
 
-    /*
-     * DEFAULT
-     */
-
     if (
-      navbarVariant ===
-      "default"
+      navbarVariant === "default"
     ) {
 
       setOverTransparentTarget(
-        false
+        false,
       );
 
       return;
@@ -216,34 +672,25 @@ export default function Navbar({
     }
 
 
-    /*
-     * ALWAYS TRANSPARENT
-     */
-
     if (
-      navbarVariant ===
-      "transparent"
+      navbarVariant === "transparent"
     ) {
 
       setOverTransparentTarget(
-        true
+        true,
       );
 
       return;
 
     }
 
-
-    /*
-     * ADAPTIVE REQUIRES TARGET ID
-     */
 
     if (
       !transparentTargetId
     ) {
 
       setOverTransparentTarget(
-        false
+        false,
       );
 
       return;
@@ -253,14 +700,14 @@ export default function Navbar({
 
     const target =
       document.getElementById(
-        transparentTargetId
+        transparentTargetId,
       );
 
 
     if (!target) {
 
       setOverTransparentTarget(
-        false
+        false,
       );
 
       return;
@@ -280,7 +727,7 @@ export default function Navbar({
         ) {
 
           cancelAnimationFrame(
-            animationFrameId
+            animationFrameId,
           );
 
         }
@@ -297,33 +744,22 @@ export default function Navbar({
               const navbarHeight =
                 navbarRef.current
                   ?.getBoundingClientRect()
-                  .height || 76;
+                  .height ||
+                76;
 
 
-              /*
-               * We use the bottom of the navbar as our
-               * measurement line.
-               *
-               * As long as that line is inside the Hero,
-               * the navbar stays transparent.
-               */
-
-              const navbarBoundary =
-                navbarHeight;
-
-
-              const navbarIsOverTarget =
+              const overTarget =
                 targetRect.top <
-                  navbarBoundary &&
+                  navbarHeight &&
                 targetRect.bottom >
-                  navbarBoundary;
+                  navbarHeight;
 
 
               setOverTransparentTarget(
-                navbarIsOverTarget
+                overTarget,
               );
 
-            }
+            },
           );
 
       };
@@ -337,24 +773,15 @@ export default function Navbar({
       updateVisualMode,
       {
         passive: true,
-      }
+      },
     );
 
 
     window.addEventListener(
       "resize",
-      updateVisualMode
+      updateVisualMode,
     );
 
-
-    /*
-     * ResizeObserver helps when:
-     *
-     * - fonts finish loading
-     * - video dimensions change
-     * - responsive Hero height changes
-     * - content changes dynamically
-     */
 
     let resizeObserver =
       null;
@@ -367,12 +794,12 @@ export default function Navbar({
 
       resizeObserver =
         new ResizeObserver(
-          updateVisualMode
+          updateVisualMode,
         );
 
 
       resizeObserver.observe(
-        target
+        target,
       );
 
 
@@ -381,7 +808,7 @@ export default function Navbar({
       ) {
 
         resizeObserver.observe(
-          navbarRef.current
+          navbarRef.current,
         );
 
       }
@@ -396,7 +823,7 @@ export default function Navbar({
       ) {
 
         cancelAnimationFrame(
-          animationFrameId
+          animationFrameId,
         );
 
       }
@@ -404,13 +831,13 @@ export default function Navbar({
 
       window.removeEventListener(
         "scroll",
-        updateVisualMode
+        updateVisualMode,
       );
 
 
       window.removeEventListener(
         "resize",
-        updateVisualMode
+        updateVisualMode,
       );
 
 
@@ -425,13 +852,13 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     ACTIVE ITEM SYNC
+     ACTIVE STATE
      ========================================================================== */
 
   useEffect(() => {
 
     setActiveTab(
-      initialActiveTab
+      initialActiveTab,
     );
 
   }, [
@@ -440,23 +867,100 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     CLICK OUTSIDE / ESCAPE / RESIZE
+     DESKTOP HOVER INTENT
+     ========================================================================== */
+
+  function cancelScheduledClose() {
+
+    if (
+      closeTimerRef.current
+    ) {
+
+      clearTimeout(
+        closeTimerRef.current,
+      );
+
+
+      closeTimerRef.current =
+        null;
+
+    }
+
+  }
+
+
+  function openSolutions() {
+
+    cancelScheduledClose();
+
+
+    setSolutionsOpen(
+      true,
+    );
+
+  }
+
+
+  function scheduleSolutionsClose() {
+
+    cancelScheduledClose();
+
+
+    closeTimerRef.current =
+      setTimeout(
+        () => {
+
+          setSolutionsOpen(
+            false,
+          );
+
+        },
+        170,
+      );
+
+  }
+
+
+  useEffect(() => {
+
+    return () => {
+
+      cancelScheduledClose();
+
+    };
+
+  }, []);
+
+
+  /* ==========================================================================
+     OUTSIDE CLICK / ESCAPE / RESIZE
      ========================================================================== */
 
   useEffect(() => {
 
-    const handleClickOutside =
+    const handlePointerDown =
       (event) => {
 
+        /*
+         * Check against the ENTIRE Navbar.
+         *
+         * Mobile accordions therefore never count as outside clicks.
+         */
+
         if (
-          dropdownRef.current &&
-          !dropdownRef.current.contains(
-            event.target
+          navbarRef.current &&
+          !navbarRef.current.contains(
+            event.target,
           )
         ) {
 
           setSolutionsOpen(
-            false
+            false,
+          );
+
+
+          setMobileOpen(
+            false,
           );
 
         }
@@ -468,17 +972,16 @@ export default function Navbar({
       (event) => {
 
         if (
-          event.key ===
-          "Escape"
+          event.key === "Escape"
         ) {
 
           setSolutionsOpen(
-            false
+            false,
           );
 
 
           setMobileOpen(
-            false
+            false,
           );
 
         }
@@ -490,54 +993,58 @@ export default function Navbar({
       () => {
 
         if (
-          window.innerWidth >
-          1023
+          window.innerWidth > 1023
         ) {
 
           setMobileOpen(
-            false
+            false,
           );
 
         }
+
+
+        setSolutionsOpen(
+          false,
+        );
 
       };
 
 
     document.addEventListener(
-      "mousedown",
-      handleClickOutside
+      "pointerdown",
+      handlePointerDown,
     );
 
 
     document.addEventListener(
       "keydown",
-      handleKeyDown
+      handleKeyDown,
     );
 
 
     window.addEventListener(
       "resize",
-      handleResize
+      handleResize,
     );
 
 
     return () => {
 
       document.removeEventListener(
-        "mousedown",
-        handleClickOutside
+        "pointerdown",
+        handlePointerDown,
       );
 
 
       document.removeEventListener(
         "keydown",
-        handleKeyDown
+        handleKeyDown,
       );
 
 
       window.removeEventListener(
         "resize",
-        handleResize
+        handleResize,
       );
 
     };
@@ -546,321 +1053,91 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     NAVIGATION LINKS
-     ========================================================================== */
-
-  const navLinks = [
-
-    {
-      name:
-        "Home",
-
-      href:
-        homeHref,
-    },
-
-
-    {
-      name:
-        "Our Solutions",
-
-      hasDropdown:
-        true,
-    },
-
-
-    {
-      name:
-        "Case Studies",
-
-      href:
-        "#case-studies",
-    },
-
-
-    {
-      name:
-        "Insights",
-
-      href:
-        "#insights",
-    },
-
-
-    {
-      name:
-        "Company",
-
-      href:
-        "#company",
-    },
-
-  ];
-
-
-  /* ==========================================================================
-     SOLUTIONS DATA
-     ========================================================================== */
-
-  const solutionsItems = [
-
-    {
-      title:
-        "AI Solutions",
-
-      description:
-        "Intelligent automation & generative ML systems",
-
-      href:
-        "#",
-
-      icon: (
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-
-          <rect
-            x="5"
-            y="5"
-            width="14"
-            height="14"
-            rx="3"
-          />
-
-          <path d="M9 9h6v6H9z" />
-
-          <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
-
-        </svg>
-
-      ),
-    },
-
-
-    {
-      title:
-        "Website & Software Development",
-
-      description:
-        "Custom web applications & scalable backend systems",
-
-      href:
-        "#",
-
-      icon: (
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-
-          <rect
-            x="3"
-            y="4"
-            width="18"
-            height="16"
-            rx="2.5"
-          />
-
-          <path d="M3 9h18" />
-
-          <path d="M8 14l-2 2 2 2" />
-
-          <path d="M11 18h4" />
-
-        </svg>
-
-      ),
-    },
-
-
-    {
-      title:
-        "Search Engine Optimization",
-
-      description:
-        "Organic search growth & technical domain optimization",
-
-      href:
-        "#",
-
-      icon: (
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-
-          <circle
-            cx="11"
-            cy="11"
-            r="6.5"
-          />
-
-          <path d="M16 16l5 5" />
-
-          <path d="M8 11h6M11 8v6" />
-
-        </svg>
-
-      ),
-    },
-
-
-    {
-      title:
-        "Branding & Design",
-
-      description:
-        "UI/UX interfaces & modern brand identities",
-
-      href:
-        "#",
-
-      icon: (
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-
-          <path d="M12 3a9 9 0 1 0 9 9c0-1.1-.9-2-2-2h-2.5a2 2 0 0 1-2-2V6a3 3 0 0 0-2.5-3Z" />
-
-          <circle
-            cx="7.5"
-            cy="12"
-            r="1"
-          />
-
-          <circle
-            cx="10"
-            cy="7.5"
-            r="1"
-          />
-
-          <circle
-            cx="15.5"
-            cy="7"
-            r="1"
-          />
-
-        </svg>
-
-      ),
-    },
-
-
-    {
-      title:
-        "EdTech Platform Development",
-
-      description:
-        "Interactive learning portals & education software",
-
-      href:
-        "#",
-
-      icon: (
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-
-          <path d="M3 8.5L12 4l9 4.5-9 4.5L3 8.5Z" />
-
-          <path d="M6 10.5V16c2.5 2 9.5 2 12 0v-5.5" />
-
-          <path d="M21 9v6" />
-
-        </svg>
-
-      ),
-    },
-
-  ];
-
-
-  /* ==========================================================================
      HELPERS
      ========================================================================== */
 
-  const closeMobileMenu =
-    () => {
+  function closeNavigation() {
 
-      setMobileOpen(
-        false
-      );
+    cancelScheduledClose();
 
 
-      setSolutionsOpen(
-        false
-      );
-
-    };
+    setSolutionsOpen(
+      false,
+    );
 
 
-  const handleNavigation =
-    (name) => {
+    setMobileOpen(
+      false,
+    );
 
-      setActiveTab(
-        name
-      );
-
-
-      setSolutionsOpen(
-        false
-      );
+  }
 
 
-      setMobileOpen(
-        false
-      );
+  function handleNavigation(
+    name,
+  ) {
 
-    };
-
-
-  const toggleMobileMenu =
-    () => {
-
-      setMobileOpen(
-        (previous) =>
-          !previous
-      );
+    setActiveTab(
+      name,
+    );
 
 
-      setSolutionsOpen(
-        false
-      );
+    closeNavigation();
 
-    };
+  }
+
+
+  function handleServiceNavigation() {
+
+    setActiveTab(
+      "Our Solutions",
+    );
+
+
+    closeNavigation();
+
+  }
+
+
+  function toggleMobileMenu() {
+
+    setMobileOpen(
+      (previous) =>
+        !previous,
+    );
+
+
+    setSolutionsOpen(
+      false,
+    );
+
+  }
+
+
+  function toggleSolutionsMobile() {
+
+    setSolutionsOpen(
+      (previous) =>
+        !previous,
+    );
+
+  }
+
+
+  function toggleMobileGroup(
+    key,
+  ) {
+
+    setMobileGroups(
+      (previous) => ({
+        ...previous,
+
+        [key]:
+          !previous[key],
+      }),
+    );
+
+  }
 
 
   /* ==========================================================================
@@ -868,7 +1145,6 @@ export default function Navbar({
      ========================================================================== */
 
   const navbarClasses = [
-
     "navbar",
 
     `navbar--${visualMode}`,
@@ -883,23 +1159,40 @@ export default function Navbar({
       ? "mobile-open"
       : "",
 
+    solutionsOpen
+      ? "mega-open"
+      : "",
   ]
     .filter(Boolean)
     .join(" ");
 
+
+  /* ==========================================================================
+     RENDER
+     ========================================================================== */
 
   return (
 
     <header
       ref={navbarRef}
       className={navbarClasses}
-      data-navbar-variant={navbarVariant}
-      data-navbar-mode={visualMode}
+      data-navbar-variant={
+        navbarVariant
+      }
+      data-navbar-mode={
+        visualMode
+      }
     >
 
       <div className="navbar-container">
 
+
+        {/* ================================================================
+            MAIN NAVBAR
+            ================================================================ */}
+
         <div className="navbar-inner">
+
 
           {/* ==============================================================
               LOGO
@@ -911,14 +1204,12 @@ export default function Navbar({
             aria-label="TekCorp Home"
             onClick={() =>
               handleNavigation(
-                "Home"
+                "Home",
               )
             }
           >
 
             <div className="navbar-logo-image">
-
-              {/* DARK LOGO */}
 
               <Image
                 src="/assets/shared/blacklogo.png"
@@ -929,8 +1220,6 @@ export default function Navbar({
                 className="navbar-logo-img navbar-logo-img--dark"
               />
 
-
-              {/* WHITE LOGO */}
 
               <Image
                 src="/assets/shared/whitelogo.png"
@@ -953,31 +1242,26 @@ export default function Navbar({
 
           <nav
             className="navbar-nav"
-            aria-label="Main Navigation"
+            aria-label="Primary navigation"
           >
 
             {navLinks.map(
               (link) => {
 
                 if (
-                  link.hasDropdown
+                  link.mega
                 ) {
 
                   return (
 
                     <div
                       key={link.name}
-                      ref={dropdownRef}
                       className="navbar-dropdown"
-                      onMouseEnter={() =>
-                        setSolutionsOpen(
-                          true
-                        )
+                      onMouseEnter={
+                        openSolutions
                       }
-                      onMouseLeave={() =>
-                        setSolutionsOpen(
-                          false
-                        )
+                      onMouseLeave={
+                        scheduleSolutionsClose
                       }
                     >
 
@@ -986,9 +1270,14 @@ export default function Navbar({
                         className={[
                           "navbar-nav-link",
                           "navbar-solutions-trigger",
+
                           activeTab ===
-                          link.name
+                            link.name
                             ? "active"
+                            : "",
+
+                          solutionsOpen
+                            ? "is-open"
                             : "",
                         ]
                           .filter(Boolean)
@@ -996,122 +1285,38 @@ export default function Navbar({
                         onClick={() => {
 
                           setActiveTab(
-                            link.name
+                            "Our Solutions",
                           );
 
 
                           setSolutionsOpen(
                             (previous) =>
-                              !previous
+                              !previous,
                           );
 
                         }}
+                        onFocus={
+                          openSolutions
+                        }
+                        aria-haspopup="true"
                         aria-expanded={
                           solutionsOpen
                         }
-                        aria-haspopup="true"
+                        aria-controls="tekcorp-mega-menu"
                       >
 
                         <span>
-                          {link.name}
+                          Our Solutions
                         </span>
 
 
-                        <svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          className={[
-                            "navbar-chevron",
+                        <ChevronIcon
+                          open={
                             solutionsOpen
-                              ? "open"
-                              : "",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                          aria-hidden="true"
-                        >
-
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m6 9 6 6 6-6"
-                          />
-
-                        </svg>
+                          }
+                        />
 
                       </button>
-
-
-                      {solutionsOpen && (
-
-                        <div
-                          className="navbar-dropdown-menu"
-                          role="menu"
-                          aria-label="Our Solutions"
-                        >
-
-                          <div className="navbar-dropdown-inner">
-
-                            {solutionsItems.map(
-                              (item) => (
-
-                                <a
-                                  key={item.title}
-                                  href={item.href}
-                                  className="navbar-solution-item"
-                                  role="menuitem"
-                                  onClick={() => {
-
-                                    setSolutionsOpen(
-                                      false
-                                    );
-
-
-                                    setActiveTab(
-                                      "Our Solutions"
-                                    );
-
-                                  }}
-                                >
-
-                                  <div className="navbar-solution-icon">
-
-                                    {item.icon}
-
-                                  </div>
-
-
-                                  <div className="navbar-solution-content">
-
-                                    <span className="navbar-solution-title">
-
-                                      {item.title}
-
-                                    </span>
-
-
-                                    <span className="navbar-solution-description">
-
-                                      {item.description}
-
-                                    </span>
-
-                                  </div>
-
-                                </a>
-
-                              )
-                            )}
-
-                          </div>
-
-                        </div>
-
-                      )}
 
                     </div>
 
@@ -1125,20 +1330,21 @@ export default function Navbar({
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() =>
-                      handleNavigation(
-                        link.name
-                      )
-                    }
                     className={[
                       "navbar-nav-link",
+
                       activeTab ===
-                      link.name
+                        link.name
                         ? "active"
                         : "",
                     ]
                       .filter(Boolean)
                       .join(" ")}
+                    onClick={() =>
+                      handleNavigation(
+                        link.name,
+                      )
+                    }
                   >
 
                     {link.name}
@@ -1147,29 +1353,31 @@ export default function Navbar({
 
                 );
 
-              }
+              },
             )}
 
           </nav>
 
 
           {/* ==============================================================
-              ACTIONS
+              CTA / MOBILE TOGGLE
               ============================================================== */}
 
           <div className="navbar-actions">
 
             <a
-              href={ctaHref}
+              href={
+                resolvedCtaHref
+              }
               className="navbar-cta"
               onClick={() =>
-                setMobileOpen(
-                  false
+                handleNavigation(
+                  "Contact",
                 )
               }
             >
 
-              Get Started
+              {ctaLabel}
 
             </a>
 
@@ -1178,6 +1386,7 @@ export default function Navbar({
               type="button"
               className={[
                 "nav-toggle",
+
                 mobileOpen
                   ? "open"
                   : "",
@@ -1187,15 +1396,15 @@ export default function Navbar({
               onClick={
                 toggleMobileMenu
               }
+              aria-expanded={
+                mobileOpen
+              }
+              aria-controls="mobile-navigation"
               aria-label={
                 mobileOpen
                   ? "Close navigation menu"
                   : "Open navigation menu"
               }
-              aria-expanded={
-                mobileOpen
-              }
-              aria-controls="mobile-navigation"
             >
 
               <span />
@@ -1212,13 +1421,243 @@ export default function Navbar({
 
 
         {/* ================================================================
-            MOBILE MENU
+            DESKTOP MEGA MENU
+            ================================================================ */}
+
+        {solutionsOpen && (
+
+          <div
+            id="tekcorp-mega-menu"
+            className="navbar-mega-menu"
+            onMouseEnter={
+              openSolutions
+            }
+            onMouseLeave={
+              scheduleSolutionsClose
+            }
+          >
+
+            <div className="navbar-mega-panel">
+
+
+              {/* ==========================================================
+                  TOP
+                  ========================================================== */}
+
+              <div className="navbar-mega-head">
+
+                <div className="navbar-mega-intro">
+
+                  <span className="navbar-mega-eyebrow">
+
+                    Digital Capabilities
+
+                  </span>
+
+
+                  <h2>
+
+                    Technology solutions built around your business.
+
+                  </h2>
+
+
+                  <p>
+
+                    Strategy, design and engineering expertise to help ambitious
+                    businesses launch, modernize and scale.
+
+                  </p>
+
+                </div>
+
+
+                <a
+                  href={contactHref}
+                  className="navbar-mega-head-cta"
+                  onClick={
+                    handleServiceNavigation
+                  }
+                >
+
+                  Discuss Your Project
+
+                  <ArrowUpRightIcon />
+
+                </a>
+
+              </div>
+
+
+              {/* ==========================================================
+                  4-COLUMN SERVICES
+                  ========================================================== */}
+
+              <div className="navbar-mega-grid">
+
+                {SOLUTION_GROUPS.map(
+                  (group) => (
+
+                    <section
+                      key={
+                        group.key
+                      }
+                      className="navbar-mega-column"
+                    >
+
+                      <div className="navbar-mega-column-head">
+
+                        <span className="navbar-mega-column-icon">
+
+                          <GroupIcon
+                            type={
+                              group.key
+                            }
+                          />
+
+                        </span>
+
+
+                        <div className="navbar-mega-column-copy">
+
+                          <div className="navbar-mega-column-title-row">
+
+                            <h3>
+                              {group.title}
+                            </h3>
+
+
+                            <span className="navbar-mega-number">
+
+                              {group.number}
+
+                            </span>
+
+                          </div>
+
+
+                          <p>
+                            {group.subtitle}
+                          </p>
+
+                        </div>
+
+                      </div>
+
+
+                      <div className="navbar-mega-links">
+
+                        {group.items.map(
+                          (item) => (
+
+                            <a
+                              key={
+                                item.title
+                              }
+                              href={
+                                item.href ||
+                                contactHref
+                              }
+                              className="navbar-mega-link"
+                              onClick={
+                                handleServiceNavigation
+                              }
+                            >
+
+                              <span className="navbar-mega-link-dot" />
+
+
+                              <span className="navbar-mega-link-label">
+
+                                {item.title}
+
+                              </span>
+
+
+                              <span className="navbar-mega-link-arrow">
+
+                                <ArrowUpRightIcon
+                                  size={10}
+                                />
+
+                              </span>
+
+                            </a>
+
+                          ),
+                        )}
+
+                      </div>
+
+                    </section>
+
+                  ),
+                )}
+
+              </div>
+
+
+              {/* ==========================================================
+                  BOTTOM STRIP
+                  ========================================================== */}
+
+              <div className="navbar-mega-bottom">
+
+                <div className="navbar-mega-bottom-copy">
+
+                  <span>
+                    Not sure where to start?
+                  </span>
+
+
+                  <strong>
+
+                    Tell us what you&apos;re building and we&apos;ll help define
+                    the right technology approach.
+
+                  </strong>
+
+                </div>
+
+
+                <a
+                  href={contactHref}
+                  className="navbar-mega-bottom-link"
+                  onClick={() =>
+                    handleNavigation(
+                      "Contact",
+                    )
+                  }
+                >
+
+                  Talk to TekCorp
+
+                  <span>
+
+                    <ArrowUpRightIcon />
+
+                  </span>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        )}
+
+
+        {/* ================================================================
+            MOBILE NAVIGATION
             ================================================================ */}
 
         <div
           id="mobile-navigation"
           className={[
             "mobile-menu",
+
             mobileOpen
               ? "open"
               : "",
@@ -1232,28 +1671,35 @@ export default function Navbar({
 
           <div className="mobile-menu-inner">
 
+
+            {/* HOME */}
+
             <a
               href={homeHref}
-              onClick={() =>
-                handleNavigation(
-                  "Home"
-                )
-              }
               className={[
                 "mobile-nav-link",
-                activeTab ===
-                "Home"
+
+                activeTab === "Home"
                   ? "active"
                   : "",
               ]
                 .filter(Boolean)
                 .join(" ")}
+              onClick={() =>
+                handleNavigation(
+                  "Home",
+                )
+              }
             >
 
               Home
 
             </a>
 
+
+            {/* ============================================================
+                SOLUTIONS
+                ============================================================ */}
 
             <div className="mobile-solutions">
 
@@ -1262,29 +1708,21 @@ export default function Navbar({
                 className={[
                   "mobile-nav-link",
                   "mobile-solutions-trigger",
+
                   activeTab ===
-                  "Our Solutions"
+                    "Our Solutions"
                     ? "active"
                     : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                onClick={() => {
-
-                  setActiveTab(
-                    "Our Solutions"
-                  );
-
-
-                  setSolutionsOpen(
-                    (previous) =>
-                      !previous
-                  );
-
-                }}
+                onClick={
+                  toggleSolutionsMobile
+                }
                 aria-expanded={
                   solutionsOpen
                 }
+                aria-controls="mobile-solutions"
               >
 
                 <span>
@@ -1292,79 +1730,181 @@ export default function Navbar({
                 </span>
 
 
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={[
-                    "navbar-chevron",
+                <ChevronIcon
+                  open={
                     solutionsOpen
-                      ? "open"
-                      : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  aria-hidden="true"
-                >
-
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m6 9 6 6 6-6"
-                  />
-
-                </svg>
+                  }
+                  size={14}
+                />
 
               </button>
 
 
               {solutionsOpen && (
 
-                <div className="mobile-solutions-list">
+                <div
+                  id="mobile-solutions"
+                  className="mobile-solutions-panel"
+                >
 
-                  {solutionsItems.map(
-                    (item) => (
+                  <div className="mobile-solutions-intro">
 
-                      <a
-                        key={item.title}
-                        href={item.href}
-                        className="mobile-solution-item"
-                        onClick={
-                          closeMobileMenu
-                        }
-                      >
+                    <div>
 
-                        <div className="mobile-solution-icon">
-
-                          {item.icon}
-
-                        </div>
+                      <span>
+                        Digital capabilities
+                      </span>
 
 
-                        <div className="mobile-solution-content">
+                      <strong>
+                        Explore our expertise
+                      </strong>
 
-                          <span className="mobile-solution-title">
-
-                            {item.title}
-
-                          </span>
+                    </div>
 
 
-                          <span className="mobile-solution-description">
+                    <a
+                      href={contactHref}
+                      onClick={
+                        handleServiceNavigation
+                      }
+                    >
 
-                            {item.description}
+                      Contact Us
 
-                          </span>
+                      <ArrowUpRightIcon />
 
-                        </div>
+                    </a>
 
-                      </a>
+                  </div>
 
-                    )
-                  )}
+
+                  <div className="mobile-solution-groups">
+
+                    {SOLUTION_GROUPS.map(
+                      (group) => {
+
+                        const groupOpen =
+                          mobileGroups[
+                            group.key
+                          ];
+
+
+                        return (
+
+                          <section
+                            key={
+                              group.key
+                            }
+                            className={[
+                              "mobile-solution-group",
+
+                              groupOpen
+                                ? "open"
+                                : "",
+                            ]
+                              .filter(Boolean)
+                              .join(" ")}
+                          >
+
+                            <button
+                              type="button"
+                              className="mobile-solution-group-trigger"
+                              onClick={() =>
+                                toggleMobileGroup(
+                                  group.key,
+                                )
+                              }
+                              aria-expanded={
+                                groupOpen
+                              }
+                            >
+
+                              <span className="mobile-solution-group-left">
+
+                                <span className="mobile-solution-group-icon">
+
+                                  <GroupIcon
+                                    type={
+                                      group.key
+                                    }
+                                  />
+
+                                </span>
+
+
+                                <span className="mobile-solution-group-copy">
+
+                                  <strong>
+                                    {group.title}
+                                  </strong>
+
+
+                                  <small>
+                                    {group.subtitle}
+                                  </small>
+
+                                </span>
+
+                              </span>
+
+
+                              <ChevronIcon
+                                open={
+                                  groupOpen
+                                }
+                                size={13}
+                              />
+
+                            </button>
+
+
+                            {groupOpen && (
+
+                              <div className="mobile-solution-links">
+
+                                {group.items.map(
+                                  (item) => (
+
+                                    <a
+                                      key={
+                                        item.title
+                                      }
+                                      href={
+                                        item.href ||
+                                        contactHref
+                                      }
+                                      onClick={
+                                        handleServiceNavigation
+                                      }
+                                    >
+
+                                      <span>
+                                        {item.title}
+                                      </span>
+
+
+                                      <ArrowUpRightIcon
+                                        size={9}
+                                      />
+
+                                    </a>
+
+                                  ),
+                                )}
+
+                              </div>
+
+                            )}
+
+                          </section>
+
+                        );
+
+                      },
+                    )}
+
+                  </div>
 
                 </div>
 
@@ -1373,49 +1913,110 @@ export default function Navbar({
             </div>
 
 
-            {[
-              "Case Studies",
-              "Insights",
-              "Company",
-            ].map(
-              (name) => (
-
-                <a
-                  key={name}
-                  href="#"
-                  onClick={() =>
-                    handleNavigation(
-                      name
-                    )
-                  }
-                  className={[
-                    "mobile-nav-link",
-                    activeTab ===
-                    name
-                      ? "active"
-                      : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
-
-                  {name}
-
-                </a>
-
-              )
-            )}
-
+            {/* CASE STUDIES */}
 
             <a
-              href={ctaHref}
-              onClick={
-                closeMobileMenu
+              href={
+                placeholderHref
               }
-              className="mobile-cta"
+              className={[
+                "mobile-nav-link",
+
+                activeTab ===
+                  "Case Studies"
+                  ? "active"
+                  : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              onClick={() =>
+                handleNavigation(
+                  "Case Studies",
+                )
+              }
             >
 
-              Get Started
+              Case Studies
+
+            </a>
+
+
+            {/* INSIGHTS */}
+
+            <a
+              href={
+                placeholderHref
+              }
+              className={[
+                "mobile-nav-link",
+
+                activeTab ===
+                  "Insights"
+                  ? "active"
+                  : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              onClick={() =>
+                handleNavigation(
+                  "Insights",
+                )
+              }
+            >
+
+              Insights
+
+            </a>
+
+
+            {/* COMPANY */}
+
+            <a
+              href={
+                aboutHref
+              }
+              className={[
+                "mobile-nav-link",
+
+                activeTab ===
+                  "Company"
+                  ? "active"
+                  : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              onClick={() =>
+                handleNavigation(
+                  "Company",
+                )
+              }
+            >
+
+              Company
+
+            </a>
+
+
+            {/* CTA */}
+
+            <a
+              href={
+                resolvedCtaHref
+              }
+              className="mobile-cta"
+              onClick={() =>
+                handleNavigation(
+                  "Contact",
+                )
+              }
+            >
+
+              <span>
+                {ctaLabel}
+              </span>
+
+
+              <ArrowUpRightIcon />
 
             </a>
 

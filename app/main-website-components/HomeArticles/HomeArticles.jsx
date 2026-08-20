@@ -70,7 +70,7 @@ const articles = [
    COMPONENT
    ========================================================================== */
 
-export default function Landingpage1Articles() {
+export default function HomeArticles() {
   return (
     <section
       className="lp1-articles"

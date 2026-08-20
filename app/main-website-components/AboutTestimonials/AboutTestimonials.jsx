@@ -45,14 +45,14 @@ const testimonials = [
    COMPONENT
    ========================================================================== */
 
-export default function HomeTestimonials() {
+export default function AboutTestimonials() {
   return (
     <section
-      className="tek-home-testimonials"
+      className="tek-About-testimonials"
       aria-label="Client testimonials"
     >
 
-      <div className="tek-home-shell tek-home-testimonials__grid">
+      <div className="tek-About-shell tek-About-testimonials__grid">
 
         {testimonials.map(
           (
@@ -61,11 +61,11 @@ export default function HomeTestimonials() {
           ) => (
 
             <blockquote
-              className="tek-home-testimonial"
+              className="tek-About-testimonial"
               key={testimonial.name}
               data-reveal="up"
               style={{
-                "--tek-home-testimonial-delay":
+                "--tek-About-testimonial-delay":
                   `${index * 90}ms`,
               }}
             >
@@ -74,7 +74,7 @@ export default function HomeTestimonials() {
                   QUOTE
                   ======================================================== */}
 
-              <p className="tek-home-testimonial__quote">
+              <p className="tek-About-testimonial__quote">
 
                 &quot;
                 {testimonial.quote}
@@ -87,7 +87,7 @@ export default function HomeTestimonials() {
                   PERSON
                   ======================================================== */}
 
-              <footer className="tek-home-testimonial__person">
+              <footer className="tek-About-testimonial__person">
 
                 <strong>
                   {testimonial.name}

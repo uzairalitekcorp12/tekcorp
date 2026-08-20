@@ -1,6 +1,6 @@
 /* ==========================================================================
    TEKCORP
-   HOME — TRUSTED BRANDS
+   About — TRUSTED BRANDS
    ========================================================================== */
 
 
@@ -8,7 +8,7 @@
    SECTION THEME
    ========================================================================== */
 
-.tek-home-brands {
+.tek-About-brands {
   --tek-brands-bg:
     #ffffff;
 
@@ -76,7 +76,7 @@
    HEADER
    ========================================================================== */
 
-.tek-home-brands__header {
+.tek-About-brands__header {
   display:
     flex;
 
@@ -103,7 +103,7 @@
    Trusted Brands —
    ========================================================================== */
 
-.tek-home-brands__kicker {
+.tek-About-brands__kicker {
   display:
     inline-flex;
 
@@ -153,7 +153,7 @@
    KICKER LINE
    ========================================================================== */
 
-.tek-home-brands__kicker > span {
+.tek-About-brands__kicker > span {
   display:
     block;
 
@@ -184,7 +184,7 @@
    of the full header/container width.
    ========================================================================== */
 
-.tek-home-brands__header h2 {
+.tek-About-brands__header h2 {
   display:
     inline-block;
 
@@ -274,7 +274,7 @@
    GRID WRAPPER
    ========================================================================== */
 
-.tek-home-brands__grid {
+.tek-About-brands__grid {
   display:
     grid;
 
@@ -305,7 +305,7 @@
    BRAND CELL
    ========================================================================== */
 
-.tek-home-brand-card {
+.tek-About-brand-card {
   position:
     relative;
 
@@ -358,7 +358,7 @@
 
   transition-delay:
     var(
-      --tek-home-brand-delay,
+      --tek-About-brand-delay,
       0ms
     );
 }
@@ -368,7 +368,7 @@
    SOFT CELLS
    ========================================================================== */
 
-.tek-home-brand-card--soft {
+.tek-About-brand-card--soft {
   background:
     var(
       --tek-brands-cell-soft
@@ -380,7 +380,7 @@
    BRAND LOGO AREA
    ========================================================================== */
 
-.tek-home-brand-card__logo {
+.tek-About-brand-card__logo {
   display:
     flex;
 
@@ -402,7 +402,7 @@
    LOGO IMAGE
    ========================================================================== */
 
-.tek-home-brand-card__logo img {
+.tek-About-brand-card__logo img {
   display:
     block;
 
@@ -448,7 +448,7 @@
    DESCRIPTION
    ========================================================================== */
 
-.tek-home-brand-card > p {
+.tek-About-brand-card > p {
   max-width:
     167px;
 
@@ -492,7 +492,7 @@
    HOVER ACCENT
    ========================================================================== */
 
-.tek-home-brand-card__accent {
+.tek-About-brand-card__accent {
   position:
     absolute;
 
@@ -544,7 +544,7 @@
    SUBTLE BACKGROUND GLOW
    ========================================================================== */
 
-.tek-home-brand-card::before {
+.tek-About-brand-card::before {
   position:
     absolute;
 
@@ -616,7 +616,7 @@
 
 @media (hover: hover) and (pointer: fine) {
 
-  .tek-home-brand-card:hover {
+  .tek-About-brand-card:hover {
     z-index:
       4;
 
@@ -641,7 +641,7 @@
   }
 
 
-  .tek-home-brand-card:hover::before {
+  .tek-About-brand-card:hover::before {
     opacity:
       1;
 
@@ -652,8 +652,8 @@
   }
 
 
-  .tek-home-brand-card:hover
-  .tek-home-brand-card__logo
+  .tek-About-brand-card:hover
+  .tek-About-brand-card__logo
   img {
     transform:
       translateY(
@@ -665,8 +665,8 @@
   }
 
 
-  .tek-home-brand-card:hover
-  .tek-home-brand-card__accent {
+  .tek-About-brand-card:hover
+  .tek-About-brand-card__accent {
     opacity:
       1;
 
@@ -685,7 +685,7 @@
 
 @media (max-width: 840px) {
 
-  .tek-home-brands {
+  .tek-About-brands {
     padding:
       68px
       0
@@ -693,7 +693,7 @@
   }
 
 
-  .tek-home-brands__grid {
+  .tek-About-brands__grid {
     max-width:
       600px;
 
@@ -708,7 +708,7 @@
   }
 
 
-  .tek-home-brand-card {
+  .tek-About-brand-card {
     min-height:
       165px;
 
@@ -718,7 +718,7 @@
   }
 
 
-  .tek-home-brand-card > p {
+  .tek-About-brand-card > p {
     max-width:
       195px;
   }
@@ -732,7 +732,7 @@
 
 @media (max-width: 560px) {
 
-  .tek-home-brands {
+  .tek-About-brands {
     padding:
       60px
       0
@@ -740,13 +740,13 @@
   }
 
 
-  .tek-home-brands__header {
+  .tek-About-brands__header {
     margin-bottom:
       27px;
   }
 
 
-  .tek-home-brands__header h2 {
+  .tek-About-brands__header h2 {
     font-size:
       clamp(
         1.55rem,
@@ -756,13 +756,13 @@
   }
 
 
-  .tek-home-brands__grid {
+  .tek-About-brands__grid {
     max-width:
       100%;
   }
 
 
-  .tek-home-brand-card {
+  .tek-About-brand-card {
     min-height:
       150px;
 
@@ -772,13 +772,13 @@
   }
 
 
-  .tek-home-brand-card__logo {
+  .tek-About-brand-card__logo {
     height:
       31px;
   }
 
 
-  .tek-home-brand-card__logo img {
+  .tek-About-brand-card__logo img {
     max-width:
       80px;
 
@@ -787,7 +787,7 @@
   }
 
 
-  .tek-home-brand-card > p {
+  .tek-About-brand-card > p {
     max-width:
       170px;
 
@@ -807,13 +807,13 @@
 
 @media (max-width: 390px) {
 
-  .tek-home-brands__grid {
+  .tek-About-brands__grid {
     grid-template-columns:
       1fr;
   }
 
 
-  .tek-home-brand-card {
+  .tek-About-brand-card {
     min-height:
       135px;
 
@@ -823,7 +823,7 @@
   }
 
 
-  .tek-home-brand-card:nth-child(
+  .tek-About-brand-card:nth-child(
     odd
   ) {
     background:
@@ -833,7 +833,7 @@
   }
 
 
-  .tek-home-brand-card:nth-child(
+  .tek-About-brand-card:nth-child(
     even
   ) {
     background:
@@ -843,7 +843,7 @@
   }
 
 
-  .tek-home-brand-card > p {
+  .tek-About-brand-card > p {
     max-width:
       240px;
   }
@@ -857,10 +857,10 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .tek-home-brand-card,
-  .tek-home-brand-card::before,
-  .tek-home-brand-card__logo img,
-  .tek-home-brand-card__accent {
+  .tek-About-brand-card,
+  .tek-About-brand-card::before,
+  .tek-About-brand-card__logo img,
+  .tek-About-brand-card__accent {
     transition-duration:
       0.01ms !important;
   }

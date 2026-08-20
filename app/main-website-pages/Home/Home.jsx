@@ -6,23 +6,23 @@ import Footer2 from
   "@/app/_shared/Footer/Footer2";
 
 
-import Landingpage1Hero from
+import HomeHero from
   "@/app/main-website-components/HomeHero/HomeHero";
 
 
-import Landingpage1Solutions from
+import HomeSolutions from
   "@/app/main-website-components/HomeSolutions/HomeSolutions";
 
 
-import Landingpage1Partners from
+import HomePartners from
   "@/app/main-website-components/HomePartners/HomePartners";
 
 
-import Landingpage1Portfolio from
+import HomePortfolio from
   "@/app/main-website-components/HomePortfolio/HomePortfolio";
 
 
-import Landingpage1Articles from
+import HomeArticles from
   "@/app/main-website-components/HomeArticles/HomeArticles";
 
 
@@ -35,8 +35,8 @@ export default function Home() {
   return (
 
     <div
-      className="landingpage1"
-      data-page="landingpage1"
+      className="Home"
+      data-page="Home"
     >
 
       {/*
@@ -46,7 +46,7 @@ export default function Home() {
        *
        * While the Navbar overlaps:
        *
-       * #landingpage1-hero
+       * #Home-hero
        *
        * it is transparent.
        *
@@ -58,26 +58,26 @@ export default function Home() {
 
       <Navbar
         variant="adaptive"
-        transparentTargetId="landingpage1-hero"
+        transparentTargetId="Home-hero"
         initialActiveTab="Home"
         homeHref="/home"
         ctaHref="#contact-lp1"
       />
 
 
-      <Landingpage1Hero />
+      <HomeHero />
 
 
-      <Landingpage1Solutions />
+      <HomeSolutions />
 
 
-      <Landingpage1Partners />
+      <HomePartners />
 
 
-      <Landingpage1Portfolio />
+      <HomePortfolio />
 
 
-      <Landingpage1Articles />
+      <HomeArticles />
 
 
       <ContactSection />

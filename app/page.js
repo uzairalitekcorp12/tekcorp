@@ -7,7 +7,7 @@
  *
  * Happy coding lol : (
  *
- * TOTAL HOURS WASTED = 573
+ * TOTAL HOURS WASTED = 574
  */
 
 
@@ -19,20 +19,26 @@
  * MAIN WEBSITE ROUTES
  *
  * /
- *      -> Existing/current website page
+ *      -> Existing/current LandingPage
  *
  * /Home
- *      -> New Home page
+ *      -> Home page
  *
  * /About
  *      -> About page
+ *
+ * /Contact
+ *      -> Contact page
  *
  *
  * We intentionally continue using one central:
  *
  * app/page.js
  *
- * /Home and /About are internally rewritten by next.config.mjs.
+ *
+ * /Home, /About and /Contact are internally rewritten by:
+ *
+ * next.config.mjs
  *
  *
  * Browser:
@@ -53,9 +59,19 @@
  * /?view=about
  *
  *
+ * Browser:
+ *
+ * /Contact
+ *
+ * Internal:
+ *
+ * /?view=contact
+ *
+ *
  * IMPORTANT:
  *
- * There is NO Landingpage1 page or route anymore.
+ * There is no separate App Router folder route required for these
+ * main-website pages while this centralized routing architecture is used.
  * ==========================================================================
  */
 
@@ -85,6 +101,14 @@ import About from
 
 
 /* ==========================================================================
+   CONTACT PAGE
+   ========================================================================== */
+
+import Contact from
+  "./main-website-pages/Contact/Contact";
+
+
+/* ==========================================================================
    MAIN WEBSITE PAGE REGISTRY
    ========================================================================== */
 
@@ -94,6 +118,9 @@ const MAIN_WEBSITE_PAGES = {
 
   about:
     About,
+
+  contact:
+    Contact,
 };
 
 
@@ -118,7 +145,41 @@ const PAGE_METADATA = {
     description:
       "Learn about TekCorp, our mission, ambition, team, technology partnerships and approach to building scalable digital solutions.",
   },
+
+
+  contact: {
+    title:
+      "Contact Us",
+
+    description:
+      "Start a conversation with TekCorp about your next website, software, AI, mobile, e-commerce or digital transformation project.",
+  },
 };
+
+
+/* ==========================================================================
+   VIEW NORMALIZER
+   ========================================================================== */
+
+function getView(
+  params,
+) {
+  const rawView =
+    params?.view;
+
+
+  if (
+    typeof rawView !==
+    "string"
+  ) {
+    return "";
+  }
+
+
+  return rawView
+    .trim()
+    .toLowerCase();
+}
 
 
 /* ==========================================================================
@@ -133,16 +194,20 @@ export async function generateMetadata({
 
 
   const view =
-    params?.view;
+    getView(
+      params,
+    );
 
 
   /* ------------------------------------------------------------------------
-     HOME / ABOUT
+     REGISTERED MAIN WEBSITE PAGE
      ------------------------------------------------------------------------ */
 
   if (
     view &&
-    PAGE_METADATA[view]
+    PAGE_METADATA[
+      view
+    ]
   ) {
     return {
       title:
@@ -186,18 +251,22 @@ export default async function Page({
 
 
   const view =
-    params?.view;
+    getView(
+      params,
+    );
 
 
   /*
-   * If /Home or /About is requested,
-   * render its registered page.
+   * Registered rewritten pages:
    *
-   * Otherwise:
+   * /Home
+   * /About
+   * /Contact
    *
-   * /
+   * render from MAIN_WEBSITE_PAGES.
    *
-   * renders the existing current LandingPage.
+   * Anything else — including "/" — keeps rendering
+   * the existing LandingPage.
    */
 
   const SelectedPage =

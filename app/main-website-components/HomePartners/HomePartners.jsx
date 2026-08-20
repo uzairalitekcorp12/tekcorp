@@ -9,7 +9,7 @@ const PARTNER_IMAGE =
   "/assets/Home-assets/home-img-1.png";
 
 
-export default function Landingpage1Partners() {
+export default function HomePartners() {
   return (
     <section
       className="lp1-partners"

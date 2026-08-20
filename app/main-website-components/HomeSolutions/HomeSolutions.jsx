@@ -93,7 +93,7 @@ const solutions = [
    COMPONENT
    ========================================================================== */
 
-export default function Landingpage1Solutions() {
+export default function HomeSolutions() {
   return (
     <section
       className="lp1-solutions"

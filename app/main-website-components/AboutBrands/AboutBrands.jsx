@@ -8,8 +8,8 @@ import "./AboutBrands.css";
    -----
    These can later be replaced with local files:
 
-   /assets/main-website/home/brands/yelp.svg
-   /assets/main-website/home/brands/odoo.svg
+   /assets/main-website/About/brands/yelp.svg
+   /assets/main-website/About/brands/odoo.svg
    etc.
 
    No component/CSS changes will be required.
@@ -128,30 +128,30 @@ const brands = [
 ];
 
 
-export default function HomeBrands() {
+export default function AboutBrands() {
   return (
     <section
-      className="tek-home-brands"
+      className="tek-About-brands"
       id="trusted-brands"
-      aria-labelledby="tek-home-brands-title"
+      aria-labelledby="tek-About-brands-title"
     >
-      <div className="tek-home-shell">
+      <div className="tek-About-shell">
 
         {/* ==================================================================
             SECTION HEADER
             ================================================================== */}
 
         <header
-          className="tek-home-brands__header"
+          className="tek-About-brands__header"
           data-reveal="up"
         >
-          <p className="tek-home-brands__kicker">
+          <p className="tek-About-brands__kicker">
             Trusted Brands
             <span aria-hidden="true" />
           </p>
 
 
-          <h2 id="tek-home-brands-title">
+          <h2 id="tek-About-brands-title">
             Partnerships we&apos;ve built
           </h2>
         </header>
@@ -161,7 +161,7 @@ export default function HomeBrands() {
             BRAND GRID
             ================================================================== */}
 
-        <div className="tek-home-brands__grid">
+        <div className="tek-About-brands__grid">
 
           {brands.map(
             (
@@ -170,10 +170,10 @@ export default function HomeBrands() {
             ) => (
               <article
                 className={[
-                  "tek-home-brand-card",
+                  "tek-About-brand-card",
 
                   brand.tone === "soft"
-                    ? "tek-home-brand-card--soft"
+                    ? "tek-About-brand-card--soft"
                     : "",
                 ]
                   .filter(Boolean)
@@ -181,7 +181,7 @@ export default function HomeBrands() {
                 key={brand.name}
                 data-reveal="up"
                 style={{
-                  "--tek-home-brand-delay":
+                  "--tek-About-brand-delay":
                     `${index * 55}ms`,
                 }}
               >
@@ -190,7 +190,7 @@ export default function HomeBrands() {
                     BRAND LOGO
                     ========================================================== */}
 
-                <div className="tek-home-brand-card__logo">
+                <div className="tek-About-brand-card__logo">
 
                   <img
                     src={brand.logo}
@@ -216,7 +216,7 @@ export default function HomeBrands() {
                     ========================================================== */}
 
                 <span
-                  className="tek-home-brand-card__accent"
+                  className="tek-About-brand-card__accent"
                   aria-hidden="true"
                 />
 

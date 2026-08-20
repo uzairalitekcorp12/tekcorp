@@ -34,12 +34,12 @@ import "swiper/css/pagination";
 
    Later you can replace every remote image with:
 
-   /public/assets/main-website/landingpage1/portfolio/project-01.webp
+   /public/assets/main-website/Home/portfolio/project-01.webp
 
    and then use:
 
    image:
-     "/assets/main-website/landingpage1/portfolio/project-01.webp"
+     "/assets/main-website/Home/portfolio/project-01.webp"
 
    No component changes will be required.
    ========================================================================== */
@@ -516,7 +516,7 @@ function ProjectCard({
    PORTFOLIO
    ========================================================================== */
 
-export default function Landingpage1Portfolio() {
+export default function HomePortfolio() {
   return (
     <section
       className="lp1-portfolio"

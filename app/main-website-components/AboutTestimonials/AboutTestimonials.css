@@ -1,8 +1,8 @@
 /* ==========================================================================
-   HOME — TESTIMONIALS
+   About — TESTIMONIALS
    ========================================================================== */
 
-.tek-home-testimonials {
+.tek-About-testimonials {
   position:
     relative;
 
@@ -26,7 +26,7 @@
    TESTIMONIAL GRID
    ========================================================================== */
 
-.tek-home-testimonials__grid {
+.tek-About-testimonials__grid {
   display:
     grid;
 
@@ -58,7 +58,7 @@
    TESTIMONIAL
    ========================================================================== */
 
-.tek-home-testimonial {
+.tek-About-testimonial {
   position:
     relative;
 
@@ -86,7 +86,7 @@
 
   transition-delay:
     var(
-      --tek-home-testimonial-delay,
+      --tek-About-testimonial-delay,
       0ms
     );
 }
@@ -96,7 +96,7 @@
    QUOTE
    ========================================================================== */
 
-.tek-home-testimonial__quote {
+.tek-About-testimonial__quote {
   max-width:
     315px;
 
@@ -169,7 +169,7 @@
    PERSON
    ========================================================================== */
 
-.tek-home-testimonial__person {
+.tek-About-testimonial__person {
   display:
     flex;
 
@@ -191,7 +191,7 @@
    NAME
    ========================================================================== */
 
-.tek-home-testimonial__person strong {
+.tek-About-testimonial__person strong {
   display:
     block;
 
@@ -247,7 +247,7 @@
    ROLE
    ========================================================================== */
 
-.tek-home-testimonial__person span {
+.tek-About-testimonial__person span {
   display:
     block;
 
@@ -294,7 +294,7 @@
   fine
 ) {
 
-  .tek-home-testimonial:hover {
+  .tek-About-testimonial:hover {
     transform:
       translateY(
         -3px
@@ -302,8 +302,8 @@
   }
 
 
-  .tek-home-testimonial:hover
-  .tek-home-testimonial__person strong {
+  .tek-About-testimonial:hover
+  .tek-About-testimonial__person strong {
     background:
       linear-gradient(
         90deg,
@@ -337,7 +337,7 @@
   900px
 ) {
 
-  .tek-home-testimonials {
+  .tek-About-testimonials {
     padding:
       48px
       0
@@ -345,7 +345,7 @@
   }
 
 
-  .tek-home-testimonials__grid {
+  .tek-About-testimonials__grid {
     gap:
       28px;
 
@@ -354,7 +354,7 @@
   }
 
 
-  .tek-home-testimonial__quote {
+  .tek-About-testimonial__quote {
     max-width:
       285px;
 
@@ -375,7 +375,7 @@
   700px
 ) {
 
-  .tek-home-testimonials {
+  .tek-About-testimonials {
     padding:
       44px
       0
@@ -383,7 +383,7 @@
   }
 
 
-  .tek-home-testimonials__grid {
+  .tek-About-testimonials__grid {
     grid-template-columns:
       1fr;
 
@@ -395,7 +395,7 @@
   }
 
 
-  .tek-home-testimonial__quote {
+  .tek-About-testimonial__quote {
     max-width:
       430px;
 
@@ -412,13 +412,13 @@
   }
 
 
-  .tek-home-testimonial__person strong {
+  .tek-About-testimonial__person strong {
     font-size:
       11px;
   }
 
 
-  .tek-home-testimonial__person span {
+  .tek-About-testimonial__person span {
     font-size:
       9px;
   }
@@ -435,7 +435,7 @@
   480px
 ) {
 
-  .tek-home-testimonials {
+  .tek-About-testimonials {
     padding:
       38px
       0
@@ -443,7 +443,7 @@
   }
 
 
-  .tek-home-testimonials__grid {
+  .tek-About-testimonials__grid {
     gap:
       34px;
 
@@ -452,7 +452,7 @@
   }
 
 
-  .tek-home-testimonial__quote {
+  .tek-About-testimonial__quote {
     max-width:
       330px;
 
@@ -477,7 +477,7 @@
   reduce
 ) {
 
-  .tek-home-testimonial {
+  .tek-About-testimonial {
     transition:
       none
       !important;

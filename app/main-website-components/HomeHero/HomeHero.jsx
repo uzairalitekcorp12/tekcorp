@@ -100,7 +100,7 @@ function getYouTubeEmbedUrl(url) {
    COMPONENT
    ========================================================================== */
 
-export default function Landingpage1Hero() {
+export default function HomeHero() {
   const youtubeEmbed =
     getYouTubeEmbedUrl(
       HERO_VIDEO_URL,
@@ -117,7 +117,7 @@ export default function Landingpage1Hero() {
   return (
     <section
       className="lp1-hero"
-      id="landingpage1-hero"
+      id="Home-hero"
       data-navbar-transparent-target="true"
     >
 

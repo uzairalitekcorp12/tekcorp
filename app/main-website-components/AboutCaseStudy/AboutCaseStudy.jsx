@@ -9,32 +9,22 @@ import {
 } from "react";
 
 
-/* ==========================================================================
-   VIDEO
-   ========================================================================== */
-
 const VIDEO_URL =
   "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/testimonial-moosa-khan.mp4";
 
 
-/* ==========================================================================
-   COMPONENT
-   ========================================================================== */
-
-export default function HomeCaseStudy() {
+export default function AboutCaseStudy() {
   const sectionRef =
     useRef(null);
 
   const videoRef =
     useRef(null);
 
-
   const [
     muted,
     setMuted,
   ] =
     useState(true);
-
 
   const [
     volume,
@@ -43,17 +33,12 @@ export default function HomeCaseStudy() {
     useState(0.75);
 
 
-  /* ==========================================================================
-     AUTO PLAY / PAUSE WITH VIEWPORT
-     ========================================================================== */
-
   useEffect(() => {
     const section =
       sectionRef.current;
 
     const video =
       videoRef.current;
-
 
     if (
       !section ||
@@ -62,10 +47,8 @@ export default function HomeCaseStudy() {
       return;
     }
 
-
     video.volume =
       volume;
-
 
     const observer =
       new IntersectionObserver(
@@ -80,7 +63,6 @@ export default function HomeCaseStudy() {
             return;
           }
 
-
           video.pause();
         },
         {
@@ -89,11 +71,9 @@ export default function HomeCaseStudy() {
         },
       );
 
-
     observer.observe(
       section,
     );
-
 
     return () => {
       observer.disconnect();
@@ -101,25 +81,14 @@ export default function HomeCaseStudy() {
   }, []);
 
 
-  /* ==========================================================================
-     MUTE / UNMUTE
-     ========================================================================== */
-
   const toggleMute =
     () => {
       const video =
         videoRef.current;
 
-
       if (!video) {
         return;
       }
-
-
-      /*
-       * If volume was previously dragged to zero,
-       * restore a useful default volume.
-       */
 
       if (
         video.muted &&
@@ -128,13 +97,11 @@ export default function HomeCaseStudy() {
         const restoredVolume =
           0.65;
 
-
         video.volume =
           restoredVolume;
 
         video.muted =
           false;
-
 
         setVolume(
           restoredVolume,
@@ -147,21 +114,13 @@ export default function HomeCaseStudy() {
         const nextMuted =
           !video.muted;
 
-
         video.muted =
           nextMuted;
-
 
         setMuted(
           nextMuted,
         );
       }
-
-
-      /*
-       * Sound interaction is a user action,
-       * so resume video if required.
-       */
 
       if (video.paused) {
         video
@@ -171,35 +130,26 @@ export default function HomeCaseStudy() {
     };
 
 
-  /* ==========================================================================
-     VOLUME SLIDER
-     ========================================================================== */
-
   const handleVolumeChange =
     (event) => {
       const video =
         videoRef.current;
 
-
       if (!video) {
         return;
       }
-
 
       const nextVolume =
         Number(
           event.target.value,
         );
 
-
       video.volume =
         nextVolume;
-
 
       setVolume(
         nextVolume,
       );
-
 
       if (
         nextVolume === 0
@@ -219,7 +169,6 @@ export default function HomeCaseStudy() {
         );
       }
 
-
       if (video.paused) {
         video
           .play()
@@ -228,26 +177,19 @@ export default function HomeCaseStudy() {
     };
 
 
-  /* ==========================================================================
-     SYNC NATIVE VIDEO VOLUME
-     ========================================================================== */
-
   const handleNativeVolumeChange =
     () => {
       const video =
         videoRef.current;
 
-
       if (!video) {
         return;
       }
-
 
       setMuted(
         video.muted ||
         video.volume === 0,
       );
-
 
       setVolume(
         video.volume,
@@ -255,30 +197,20 @@ export default function HomeCaseStudy() {
     };
 
 
-  /* ==========================================================================
-     RENDER
-     ========================================================================== */
-
   return (
     <section
       ref={sectionRef}
-      className="tek-home-case"
+      className="tek-About-case"
       id="client-story"
     >
-      <div className="tek-home-shell">
-
+      <div className="tek-About-shell">
         <div
-          className="tek-home-case__frame"
+          className="tek-About-case__frame"
           data-reveal="up"
         >
-
-          {/* ================================================================
-              VIDEO
-              ================================================================ */}
-
           <video
             ref={videoRef}
-            className="tek-home-case__video"
+            className="tek-About-case__video"
             src={VIDEO_URL}
             autoPlay
             muted={muted}
@@ -290,42 +222,34 @@ export default function HomeCaseStudy() {
             }
           />
 
-
-          {/* ================================================================
-              VIDEO SHADE
-              ================================================================ */}
-
           <span
-            className="tek-home-case__shade"
+            className="tek-About-case__shade"
             aria-hidden="true"
           />
 
+          <div className="tek-About-case__caption">
+            <span className="tek-About-case__eyebrow">
+              CLIENT STORY
+            </span>
 
-          {/* ================================================================
-              CENTERED ODOO CAPTION
-              ================================================================ */}
-
-          <div className="tek-home-case__caption">
             <strong>
-              See how we helped Odoo to grow 11x faster
+              Real Partnership. Real Delivery. Real Results.
             </strong>
+
+            <p>
+              Hear directly from our client about the
+              experience of working with Tekcorp and the
+              value created through the solutions we delivered.
+            </p>
           </div>
 
-
-          {/* ================================================================
-              VOLUME CONTROL
-              ================================================================ */}
-
           <div
-            className="tek-home-case__volume"
+            className="tek-About-case__volume"
             onClick={(event) => {
               event.stopPropagation();
             }}
           >
-
-            {/* VOLUME SLIDER */}
-
-            <div className="tek-home-case__volume-slider-wrap">
+            <div className="tek-About-case__volume-slider-wrap">
               <input
                 type="range"
                 min="0"
@@ -339,17 +263,14 @@ export default function HomeCaseStudy() {
                 onChange={
                   handleVolumeChange
                 }
-                className="tek-home-case__volume-slider"
+                className="tek-About-case__volume-slider"
                 aria-label="Client story video volume"
               />
             </div>
 
-
-            {/* MUTE / UNMUTE */}
-
             <button
               type="button"
-              className="tek-home-case__mute"
+              className="tek-About-case__mute"
               aria-label={
                 muted
                   ? "Unmute client story video"
@@ -412,11 +333,8 @@ export default function HomeCaseStudy() {
                 )}
               </svg>
             </button>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
