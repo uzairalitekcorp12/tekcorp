@@ -15,31 +15,34 @@ import {
    TEKCORP — NAVIGATION DATA
    ==========================================================================
 
-   EXISTING REAL PAGES
+   CURRENT REAL ROUTES
    -------------------
 
    /Home
    /About
    /contact
+   /case-studies
+   /insights
 
 
-   PLACEHOLDER DESTINATIONS
-   ------------------------
+   SERVICE DESTINATIONS
+   --------------------
 
-   Individual service, insight and case-study pages are not available yet.
+   Individual service pages can define their own href.
 
-   For now those links resolve to:
-
-   /contact
-
-   Later, simply add the real href to an item:
+   Example:
 
    {
      title: "Web Application Development",
-     href: "/services/web-development",
+     href: "/services/web-engineering",
    }
 
-   No layout or component changes will be required.
+   If a service item does not yet have its own page,
+   it safely falls back to:
+
+   /contact
+
+   This means unfinished services never produce broken links.
    ========================================================================== */
 
 
@@ -58,6 +61,9 @@ const SOLUTION_GROUPS = [
       {
         title:
           "Web Application Development",
+
+        href:
+          "/services/web-engineering",
       },
 
       {
@@ -73,6 +79,9 @@ const SOLUTION_GROUPS = [
       {
         title:
           "Mobile App Development",
+
+        href:
+          "/services/application-engineering",
       },
 
       {
@@ -166,6 +175,9 @@ const SOLUTION_GROUPS = [
       {
         title:
           "UI / UX Design",
+
+        href:
+          "/services/prototyping-ui-ux-design",
       },
 
       {
@@ -250,9 +262,7 @@ function ChevronIcon({
   open = false,
   size = 12,
 }) {
-
   return (
-
     <svg
       width={size}
       height={size}
@@ -273,22 +283,16 @@ function ChevronIcon({
         .join(" ")}
       aria-hidden="true"
     >
-
       <path d="m6 9 6 6 6-6" />
-
     </svg>
-
   );
-
 }
 
 
 function ArrowUpRightIcon({
   size = 12,
 }) {
-
   return (
-
     <svg
       width={size}
       height={size}
@@ -300,26 +304,19 @@ function ArrowUpRightIcon({
       strokeLinejoin="round"
       aria-hidden="true"
     >
-
       <path d="M7 17 17 7" />
 
       <path d="M7 7h10v10" />
-
     </svg>
-
   );
-
 }
 
 
 function GroupIcon({
   type,
 }) {
-
   const icons = {
-
     engineering: (
-
       <>
         <path d="m8 9-4 3 4 3" />
 
@@ -327,12 +324,10 @@ function GroupIcon({
 
         <path d="m14 5-4 14" />
       </>
-
     ),
 
 
     ai: (
-
       <>
         <circle
           cx="12"
@@ -356,12 +351,10 @@ function GroupIcon({
 
         <path d="m7.8 16.2-2.1 2.1" />
       </>
-
     ),
 
 
     product: (
-
       <>
         <rect
           x="4"
@@ -377,12 +370,10 @@ function GroupIcon({
 
         <path d="M8 17h3" />
       </>
-
     ),
 
 
     growth: (
-
       <>
         <path d="M4 18V6" />
 
@@ -390,14 +381,11 @@ function GroupIcon({
 
         <path d="m7 14 4-4 3 2 5-6" />
       </>
-
     ),
-
   };
 
 
   return (
-
     <svg
       width="17"
       height="17"
@@ -409,13 +397,9 @@ function GroupIcon({
       strokeLinejoin="round"
       aria-hidden="true"
     >
-
       {icons[type]}
-
     </svg>
-
   );
-
 }
 
 
@@ -437,20 +421,20 @@ export default function Navbar({
 
   contactHref = "/contact",
 
+  caseStudiesHref = "/case-studies",
+
+  insightsHref = "/insights",
+
   ctaHref,
 
   ctaLabel = "Get Started",
 }) {
 
   /* ==========================================================================
-     PLACEHOLDER ROUTING
-     ==========================================================================
-
-     Until the individual destination pages are ready,
-     every non-existing content destination points to Contact.
+     RESOLVED ROUTES
      ========================================================================== */
 
-  const placeholderHref =
+  const unresolvedServiceHref =
     contactHref;
 
 
@@ -495,10 +479,10 @@ export default function Navbar({
 
 
   /*
-   * Each mobile category has independent state.
+   * Every mobile solution group has independent state.
    *
-   * This intentionally avoids the previous issue where
-   * opening one category could prevent another from opening.
+   * This allows users to open any group without blocking
+   * another category from working.
    */
 
   const [
@@ -567,7 +551,7 @@ export default function Navbar({
 
 
   /* ==========================================================================
-     PRIMARY LINKS
+     PRIMARY NAVIGATION
      ========================================================================== */
 
   const navLinks = [
@@ -592,7 +576,7 @@ export default function Navbar({
         "Case Studies",
 
       href:
-        placeholderHref,
+        caseStudiesHref,
     },
 
     {
@@ -600,7 +584,7 @@ export default function Navbar({
         "Insights",
 
       href:
-        placeholderHref,
+        insightsHref,
     },
 
     {
@@ -618,14 +602,11 @@ export default function Navbar({
      ========================================================================== */
 
   useEffect(() => {
-
     const handleScroll =
       () => {
-
         setScrolled(
           window.scrollY > 8,
         );
-
       };
 
 
@@ -642,14 +623,11 @@ export default function Navbar({
 
 
     return () => {
-
       window.removeEventListener(
         "scroll",
         handleScroll,
       );
-
     };
-
   }, []);
 
 
@@ -658,43 +636,36 @@ export default function Navbar({
      ========================================================================== */
 
   useEffect(() => {
-
     if (
       navbarVariant === "default"
     ) {
-
       setOverTransparentTarget(
         false,
       );
 
       return;
-
     }
 
 
     if (
       navbarVariant === "transparent"
     ) {
-
       setOverTransparentTarget(
         true,
       );
 
       return;
-
     }
 
 
     if (
       !transparentTargetId
     ) {
-
       setOverTransparentTarget(
         false,
       );
 
       return;
-
     }
 
 
@@ -705,13 +676,11 @@ export default function Navbar({
 
 
     if (!target) {
-
       setOverTransparentTarget(
         false,
       );
 
       return;
-
     }
 
 
@@ -721,22 +690,18 @@ export default function Navbar({
 
     const updateVisualMode =
       () => {
-
         if (
           animationFrameId
         ) {
-
           cancelAnimationFrame(
             animationFrameId,
           );
-
         }
 
 
         animationFrameId =
           requestAnimationFrame(
             () => {
-
               const targetRect =
                 target.getBoundingClientRect();
 
@@ -758,10 +723,8 @@ export default function Navbar({
               setOverTransparentTarget(
                 overTarget,
               );
-
             },
           );
-
       };
 
 
@@ -791,7 +754,6 @@ export default function Navbar({
       typeof ResizeObserver !==
       "undefined"
     ) {
-
       resizeObserver =
         new ResizeObserver(
           updateVisualMode,
@@ -806,26 +768,20 @@ export default function Navbar({
       if (
         navbarRef.current
       ) {
-
         resizeObserver.observe(
           navbarRef.current,
         );
-
       }
-
     }
 
 
     return () => {
-
       if (
         animationFrameId
       ) {
-
         cancelAnimationFrame(
           animationFrameId,
         );
-
       }
 
 
@@ -842,9 +798,7 @@ export default function Navbar({
 
 
       resizeObserver?.disconnect();
-
     };
-
   }, [
     navbarVariant,
     transparentTargetId,
@@ -856,11 +810,9 @@ export default function Navbar({
      ========================================================================== */
 
   useEffect(() => {
-
     setActiveTab(
       initialActiveTab,
     );
-
   }, [
     initialActiveTab,
   ]);
@@ -871,11 +823,9 @@ export default function Navbar({
      ========================================================================== */
 
   function cancelScheduledClose() {
-
     if (
       closeTimerRef.current
     ) {
-
       clearTimeout(
         closeTimerRef.current,
       );
@@ -883,52 +833,40 @@ export default function Navbar({
 
       closeTimerRef.current =
         null;
-
     }
-
   }
 
 
   function openSolutions() {
-
     cancelScheduledClose();
 
 
     setSolutionsOpen(
       true,
     );
-
   }
 
 
   function scheduleSolutionsClose() {
-
     cancelScheduledClose();
 
 
     closeTimerRef.current =
       setTimeout(
         () => {
-
           setSolutionsOpen(
             false,
           );
-
         },
         170,
       );
-
   }
 
 
   useEffect(() => {
-
     return () => {
-
       cancelScheduledClose();
-
     };
-
   }, []);
 
 
@@ -937,23 +875,14 @@ export default function Navbar({
      ========================================================================== */
 
   useEffect(() => {
-
     const handlePointerDown =
       (event) => {
-
-        /*
-         * Check against the ENTIRE Navbar.
-         *
-         * Mobile accordions therefore never count as outside clicks.
-         */
-
         if (
           navbarRef.current &&
           !navbarRef.current.contains(
             event.target,
           )
         ) {
-
           setSolutionsOpen(
             false,
           );
@@ -962,19 +891,15 @@ export default function Navbar({
           setMobileOpen(
             false,
           );
-
         }
-
       };
 
 
     const handleKeyDown =
       (event) => {
-
         if (
           event.key === "Escape"
         ) {
-
           setSolutionsOpen(
             false,
           );
@@ -983,30 +908,24 @@ export default function Navbar({
           setMobileOpen(
             false,
           );
-
         }
-
       };
 
 
     const handleResize =
       () => {
-
         if (
           window.innerWidth > 1023
         ) {
-
           setMobileOpen(
             false,
           );
-
         }
 
 
         setSolutionsOpen(
           false,
         );
-
       };
 
 
@@ -1029,7 +948,6 @@ export default function Navbar({
 
 
     return () => {
-
       document.removeEventListener(
         "pointerdown",
         handlePointerDown,
@@ -1046,9 +964,7 @@ export default function Navbar({
         "resize",
         handleResize,
       );
-
     };
-
   }, []);
 
 
@@ -1057,7 +973,6 @@ export default function Navbar({
      ========================================================================== */
 
   function closeNavigation() {
-
     cancelScheduledClose();
 
 
@@ -1069,38 +984,32 @@ export default function Navbar({
     setMobileOpen(
       false,
     );
-
   }
 
 
   function handleNavigation(
     name,
   ) {
-
     setActiveTab(
       name,
     );
 
 
     closeNavigation();
-
   }
 
 
   function handleServiceNavigation() {
-
     setActiveTab(
       "Our Solutions",
     );
 
 
     closeNavigation();
-
   }
 
 
   function toggleMobileMenu() {
-
     setMobileOpen(
       (previous) =>
         !previous,
@@ -1110,24 +1019,20 @@ export default function Navbar({
     setSolutionsOpen(
       false,
     );
-
   }
 
 
   function toggleSolutionsMobile() {
-
     setSolutionsOpen(
       (previous) =>
         !previous,
     );
-
   }
 
 
   function toggleMobileGroup(
     key,
   ) {
-
     setMobileGroups(
       (previous) => ({
         ...previous,
@@ -1136,7 +1041,6 @@ export default function Navbar({
           !previous[key],
       }),
     );
-
   }
 
 
@@ -1172,7 +1076,6 @@ export default function Navbar({
      ========================================================================== */
 
   return (
-
     <header
       ref={navbarRef}
       className={navbarClasses}
@@ -1251,9 +1154,7 @@ export default function Navbar({
                 if (
                   link.mega
                 ) {
-
                   return (
-
                     <div
                       key={link.name}
                       className="navbar-dropdown"
@@ -1283,7 +1184,6 @@ export default function Navbar({
                           .filter(Boolean)
                           .join(" ")}
                         onClick={() => {
-
                           setActiveTab(
                             "Our Solutions",
                           );
@@ -1293,7 +1193,6 @@ export default function Navbar({
                             (previous) =>
                               !previous,
                           );
-
                         }}
                         onFocus={
                           openSolutions
@@ -1319,14 +1218,11 @@ export default function Navbar({
                       </button>
 
                     </div>
-
                   );
-
                 }
 
 
                 return (
-
                   <a
                     key={link.name}
                     href={link.href}
@@ -1346,13 +1242,9 @@ export default function Navbar({
                       )
                     }
                   >
-
                     {link.name}
-
                   </a>
-
                 );
-
               },
             )}
 
@@ -1376,9 +1268,7 @@ export default function Navbar({
                 )
               }
             >
-
               {ctaLabel}
-
             </a>
 
 
@@ -1425,7 +1315,6 @@ export default function Navbar({
             ================================================================ */}
 
         {solutionsOpen && (
-
           <div
             id="tekcorp-mega-menu"
             className="navbar-mega-menu"
@@ -1449,24 +1338,18 @@ export default function Navbar({
                 <div className="navbar-mega-intro">
 
                   <span className="navbar-mega-eyebrow">
-
                     Digital Capabilities
-
                   </span>
 
 
                   <h2>
-
                     Technology solutions built around your business.
-
                   </h2>
 
 
                   <p>
-
                     Strategy, design and engineering expertise to help ambitious
                     businesses launch, modernize and scale.
-
                   </p>
 
                 </div>
@@ -1479,25 +1362,22 @@ export default function Navbar({
                     handleServiceNavigation
                   }
                 >
-
                   Discuss Your Project
 
                   <ArrowUpRightIcon />
-
                 </a>
 
               </div>
 
 
               {/* ==========================================================
-                  4-COLUMN SERVICES
+                  SERVICES
                   ========================================================== */}
 
               <div className="navbar-mega-grid">
 
                 {SOLUTION_GROUPS.map(
                   (group) => (
-
                     <section
                       key={
                         group.key
@@ -1528,9 +1408,7 @@ export default function Navbar({
 
 
                             <span className="navbar-mega-number">
-
                               {group.number}
-
                             </span>
 
                           </div>
@@ -1549,14 +1427,13 @@ export default function Navbar({
 
                         {group.items.map(
                           (item) => (
-
                             <a
                               key={
                                 item.title
                               }
                               href={
                                 item.href ||
-                                contactHref
+                                unresolvedServiceHref
                               }
                               className="navbar-mega-link"
                               onClick={
@@ -1568,9 +1445,7 @@ export default function Navbar({
 
 
                               <span className="navbar-mega-link-label">
-
                                 {item.title}
-
                               </span>
 
 
@@ -1583,14 +1458,12 @@ export default function Navbar({
                               </span>
 
                             </a>
-
                           ),
                         )}
 
                       </div>
 
                     </section>
-
                   ),
                 )}
 
@@ -1611,10 +1484,8 @@ export default function Navbar({
 
 
                   <strong>
-
                     Tell us what you&apos;re building and we&apos;ll help define
                     the right technology approach.
-
                   </strong>
 
                 </div>
@@ -1629,13 +1500,10 @@ export default function Navbar({
                     )
                   }
                 >
-
                   Talk to TekCorp
 
                   <span>
-
                     <ArrowUpRightIcon />
-
                   </span>
 
                 </a>
@@ -1645,7 +1513,6 @@ export default function Navbar({
             </div>
 
           </div>
-
         )}
 
 
@@ -1672,7 +1539,9 @@ export default function Navbar({
           <div className="mobile-menu-inner">
 
 
-            {/* HOME */}
+            {/* ============================================================
+                HOME
+                ============================================================ */}
 
             <a
               href={homeHref}
@@ -1691,9 +1560,7 @@ export default function Navbar({
                 )
               }
             >
-
               Home
-
             </a>
 
 
@@ -1741,7 +1608,6 @@ export default function Navbar({
 
 
               {solutionsOpen && (
-
                 <div
                   id="mobile-solutions"
                   className="mobile-solutions-panel"
@@ -1769,11 +1635,9 @@ export default function Navbar({
                         handleServiceNavigation
                       }
                     >
-
                       Contact Us
 
                       <ArrowUpRightIcon />
-
                     </a>
 
                   </div>
@@ -1783,7 +1647,6 @@ export default function Navbar({
 
                     {SOLUTION_GROUPS.map(
                       (group) => {
-
                         const groupOpen =
                           mobileGroups[
                             group.key
@@ -1791,7 +1654,6 @@ export default function Navbar({
 
 
                         return (
-
                           <section
                             key={
                               group.key
@@ -1860,19 +1722,17 @@ export default function Navbar({
 
 
                             {groupOpen && (
-
                               <div className="mobile-solution-links">
 
                                 {group.items.map(
                                   (item) => (
-
                                     <a
                                       key={
                                         item.title
                                       }
                                       href={
                                         item.href ||
-                                        contactHref
+                                        unresolvedServiceHref
                                       }
                                       onClick={
                                         handleServiceNavigation
@@ -1889,35 +1749,35 @@ export default function Navbar({
                                       />
 
                                     </a>
-
                                   ),
                                 )}
 
                               </div>
-
                             )}
 
                           </section>
-
                         );
-
                       },
                     )}
 
                   </div>
 
                 </div>
-
               )}
 
             </div>
 
 
-            {/* CASE STUDIES */}
+            {/* ============================================================
+                CASE STUDIES
+
+                Real route:
+                /case-studies
+                ============================================================ */}
 
             <a
               href={
-                placeholderHref
+                caseStudiesHref
               }
               className={[
                 "mobile-nav-link",
@@ -1935,17 +1795,20 @@ export default function Navbar({
                 )
               }
             >
-
               Case Studies
-
             </a>
 
 
-            {/* INSIGHTS */}
+            {/* ============================================================
+                INSIGHTS
+
+                Real route:
+                /insights
+                ============================================================ */}
 
             <a
               href={
-                placeholderHref
+                insightsHref
               }
               className={[
                 "mobile-nav-link",
@@ -1963,13 +1826,13 @@ export default function Navbar({
                 )
               }
             >
-
               Insights
-
             </a>
 
 
-            {/* COMPANY */}
+            {/* ============================================================
+                COMPANY
+                ============================================================ */}
 
             <a
               href={
@@ -1991,13 +1854,13 @@ export default function Navbar({
                 )
               }
             >
-
               Company
-
             </a>
 
 
-            {/* CTA */}
+            {/* ============================================================
+                CTA
+                ============================================================ */}
 
             <a
               href={
@@ -2027,7 +1890,5 @@ export default function Navbar({
       </div>
 
     </header>
-
   );
-
 }
