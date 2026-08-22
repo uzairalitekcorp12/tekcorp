@@ -11,6 +11,7 @@ import {
 
 import {
   useEffect,
+  useRef,
   useState,
 } from "react";
 
@@ -51,6 +52,7 @@ function articleHref(slug) {
 
 export default function InsightsSearch({
   initialSearch = "",
+  featuredArticles = [],
 }) {
   const [value, setValue] =
     useState(initialSearch);
@@ -62,7 +64,28 @@ export default function InsightsSearch({
     useState(false);
   const [activeIndex, setActiveIndex] =
     useState(-1);
+  const requestVersion =
+    useRef(0);
+  const searchWrapRef =
+    useRef(null);
+
+  const safeFeaturedArticles =
+    Array.isArray(featuredArticles)
+      ? featuredArticles.slice(0, 6)
+      : [];
+
+  const visibleArticles =
+    value.trim()
+      ? articles
+      : safeFeaturedArticles;
+
   useEffect(() => {
+    const currentVersion =
+      requestVersion.current + 1;
+
+    requestVersion.current =
+      currentVersion;
+
     const query = value.trim();
 
     if (!query) {
@@ -98,17 +121,30 @@ export default function InsightsSearch({
             const result =
               await response.json();
 
-            setArticles(
-              Array.isArray(result.articles)
-                ? result.articles.slice(0, 6)
-                : [],
-            );
+            if (
+              currentVersion ===
+              requestVersion.current
+            ) {
+              setArticles(
+                Array.isArray(result.articles)
+                  ? result.articles
+                  : [],
+              );
+            }
           } catch (error) {
-            if (error?.name !== "AbortError") {
+            if (
+              error?.name !== "AbortError" &&
+              currentVersion ===
+                requestVersion.current
+            ) {
               setArticles([]);
             }
           } finally {
-            if (!controller.signal.aborted) {
+            if (
+              !controller.signal.aborted &&
+              currentVersion ===
+                requestVersion.current
+            ) {
               setLoading(false);
             }
           }
@@ -121,6 +157,45 @@ export default function InsightsSearch({
       controller.abort();
     };
   }, [value]);
+
+  useEffect(() => {
+    if (activeIndex < 0) {
+      return;
+    }
+
+    document
+      .getElementById(
+        `insight-result-${activeIndex}`,
+      )
+      ?.scrollIntoView({
+        block: "nearest",
+      });
+  }, [activeIndex]);
+
+  useEffect(() => {
+    function closeOnOutsidePointer(event) {
+      if (
+        !searchWrapRef.current?.contains(
+          event.target,
+        )
+      ) {
+        setOpen(false);
+        setActiveIndex(-1);
+      }
+    }
+
+    document.addEventListener(
+      "pointerdown",
+      closeOnOutsidePointer,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "pointerdown",
+        closeOnOutsidePointer,
+      );
+    };
+  }, []);
 
   function handleChange(event) {
     const nextValue =
@@ -148,8 +223,8 @@ export default function InsightsSearch({
       setOpen(true);
       setActiveIndex(
         (current) =>
-          articles.length
-            ? (current + 1) % articles.length
+          visibleArticles.length
+            ? (current + 1) % visibleArticles.length
             : -1,
       );
     }
@@ -158,8 +233,8 @@ export default function InsightsSearch({
       event.preventDefault();
       setActiveIndex(
         (current) =>
-          articles.length
-            ? (current - 1 + articles.length) % articles.length
+          visibleArticles.length
+            ? (current - 1 + visibleArticles.length) % visibleArticles.length
             : -1,
       );
     }
@@ -167,12 +242,12 @@ export default function InsightsSearch({
     if (
       event.key === "Enter" &&
       activeIndex >= 0 &&
-      articles[activeIndex]
+      visibleArticles[activeIndex]
     ) {
       event.preventDefault();
       window.location.href =
         articleHref(
-          articles[activeIndex].slug,
+          visibleArticles[activeIndex].slug,
         );
     }
   }
@@ -184,7 +259,10 @@ export default function InsightsSearch({
   }
 
   return (
-    <div className="insights-page__search-wrap">
+    <div
+      className="insights-page__search-wrap"
+      ref={searchWrapRef}
+    >
       <form
         className="insights-page__search"
         action="/insights"
@@ -211,7 +289,7 @@ export default function InsightsSearch({
           name="search"
           value={value}
           onChange={handleChange}
-          onFocus={() => value.trim() && setOpen(true)}
+          onFocus={() => setOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder="Search here..."
           maxLength={100}
@@ -261,12 +339,19 @@ export default function InsightsSearch({
           role="listbox"
           aria-label="Article suggestions"
         >
+          {!value.trim() ? (
+            <div className="insights-page__search-featured-head">
+              <span>Featured Blogs</span>
+              <small>Worth a closer look</small>
+            </div>
+          ) : null}
+
           {loading ? (
             <p className="insights-page__search-status">
               Finding related articles...
             </p>
-          ) : articles.length ? (
-            articles.map((article, index) => (
+          ) : visibleArticles.length ? (
+            visibleArticles.map((article, index) => (
               <Link
                 className={[
                   "insights-page__search-result",

@@ -113,7 +113,9 @@
   top: calc(100% + 9px);
   right: 0;
   left: 0;
-  overflow: hidden;
+  max-height: min(560px, calc(100svh - 150px));
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 6px;
   border: 1px solid rgba(23, 25, 24, 0.1);
   border-radius: 16px;
@@ -124,9 +126,33 @@
 }
 
 
+.insights-page__search-featured-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 11px 7px;
+  border-bottom: 1px solid rgba(23, 25, 24, 0.08);
+}
+
+
+.insights-page__search-featured-head span {
+  color: #171918;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+
+.insights-page__search-featured-head small {
+  color: #7a827e;
+  font-size: 0.48rem;
+}
+
+
 .insights-page__search-result {
   display: flex;
-  min-height: 58px;
+  min-height: 68px;
   align-items: center;
   gap: 10px;
   padding: 7px 9px;
@@ -162,16 +188,16 @@
 }
 
 
-.insights-page__search-result-image,
-.insights-page__search-result-fallback {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+.insights-page__search-result > .insights-page__search-result-image,
+.insights-page__search-result > .insights-page__search-result-fallback {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
   border-radius: 8px;
 }
 
 
-.insights-page__search-result-image {
+.insights-page__search-result > .insights-page__search-result-image {
   object-fit: cover;
 }
 
@@ -208,7 +234,7 @@
 
 .insights-page__search-result-copy strong {
   overflow: hidden;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.25;
   text-overflow: ellipsis;
@@ -222,6 +248,17 @@
   color: #69706c;
   font-size: 0.59rem;
   text-align: center;
+}
+
+
+.insights-page__search-results::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.insights-page__search-results::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(20, 156, 133, 0.45);
 }
 
 
@@ -255,6 +292,13 @@
   background: transparent;
   color: #171918;
   font-size: 0.65rem;
+}
+
+
+.insights-page__search input::-webkit-search-cancel-button,
+.insights-page__search input::-webkit-search-decoration {
+  appearance: none;
+  display: none;
 }
 
 

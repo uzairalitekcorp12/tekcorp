@@ -112,6 +112,15 @@ function articleSearchText(article) {
 }
 
 
+function articleSearchTokens(article) {
+  return new Set(
+    articleSearchText(article).match(
+      /[\p{L}\p{N}]+/gu,
+    ) || [],
+  );
+}
+
+
 function articleRelevance(article, terms) {
   const title =
     textValue(article.title).toLowerCase();
@@ -135,6 +144,24 @@ function articleRelevance(article, terms) {
       (tags.includes(term) ? 6 : 0) +
       (searchable.includes(term) ? 1 : 0),
     0,
+  );
+}
+
+
+function articleMatchesTerms(
+  article,
+  terms,
+) {
+  const searchable =
+    articleSearchTokens(article);
+
+  return terms.every(
+    (term) =>
+      Array.from(searchable).some(
+        (token) =>
+          token === term ||
+          token.startsWith(term),
+      ),
   );
 }
 
@@ -193,7 +220,7 @@ function buildSearchCondition(search) {
       (term) => {
         const regex =
           new RegExp(
-            escapeRegex(term),
+            `(?:^|[^a-z0-9])${escapeRegex(term)}`,
             "i",
           );
 
@@ -260,10 +287,18 @@ function localSearchMatches(
       )
       .toLowerCase();
 
+  const tokens = new Set(
+    searchable.match(
+      /[\p{L}\p{N}]+/gu,
+    ) || [],
+  );
+
   return terms.every(
     (term) =>
-      searchable.includes(
-        term,
+      Array.from(tokens).some(
+        (token) =>
+          token === term ||
+          token.startsWith(term),
       ),
   );
 }
@@ -488,6 +523,13 @@ export async function getArticleSuggestions({
           terms,
         ),
       }),
+    )
+    .filter(
+      ({ article }) =>
+        articleMatchesTerms(
+          article,
+          terms,
+        ),
     )
     .sort(
       (left, right) =>

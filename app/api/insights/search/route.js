@@ -26,7 +26,7 @@ export async function GET(request) {
   const articles =
     await getArticleSuggestions({
       search: search.slice(0, 100),
-      limit: 6,
+      limit: 12,
     });
 
   return NextResponse.json(

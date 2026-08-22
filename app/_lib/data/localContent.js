@@ -39,7 +39,7 @@ const CASE_STUDY_IMAGES = [
 
 
 const LONG_ARTICLE_BODY =
-  "A production content page rarely contains only a short summary. Teams may need to explain the original constraint, the decisions that shaped the implementation, the trade-offs that were accepted and the operational lessons that followed. This longer fixture intentionally exercises readable paragraph rhythm, line wrapping, search indexing and responsive behavior across the article detail layout. It also gives future CMS records a realistic baseline for content length without requiring a component rewrite.\n\nWhen content becomes more detailed, the page should remain calm and scannable. Headings should create useful pauses, images should stay inside their containers, captions should wrap naturally and long URLs should never push the page wider than the viewport. These are ordinary editorial conditions, so the local content mirrors them during development.";
+  "A production content page rarely contains only a short summary. Teams may need to explain the original constraint, the decisions that shaped the implementation, the trade-offs that were accepted and the operational lessons that followed. This longer fixture intentionally exercises readable paragraph rhythm, line wrapping, search indexing and responsive behavior across the editorial detail layout. It also gives future CMS records a representative baseline for content length without requiring a component rewrite.\n\nWhen content becomes more detailed, the page should remain calm and scannable. Headings should create useful pauses, images should stay inside their containers, captions should wrap naturally and long URLs should never push the page wider than the viewport. These are ordinary editorial conditions, so the local content mirrors them during development.";
 
 
 const LONG_CASE_STUDY_BODY =
@@ -52,6 +52,7 @@ function makeArticle({
   slug,
   category,
   excerpt,
+  longContent = false,
   trending = false,
   featured = false,
 }) {
@@ -140,7 +141,9 @@ function makeArticle({
           "paragraph",
 
         text:
-          `${LONG_ARTICLE_BODY}`,
+          longContent
+            ? LONG_ARTICLE_BODY
+            : "Successful digital products connect business goals, user experience and technical decisions early. That creates a roadmap where the product can grow without adding unnecessary complexity every time a new feature is introduced.",
       },
 
       {
@@ -197,6 +200,7 @@ export const LOCAL_ARTICLES = [
       "Product Engineering",
     excerpt:
       "A practical look at the product decisions and engineering habits that help digital products scale without becoming harder to operate.",
+    longContent: true,
     trending: true,
     featured: true,
   }),

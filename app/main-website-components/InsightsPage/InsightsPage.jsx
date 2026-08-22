@@ -316,6 +316,11 @@ export default function InsightsPage({
 
           <InsightsSearch
             initialSearch={safeSearch}
+            featuredArticles={
+              safeTrending.length
+                ? safeTrending
+                : safeArticles
+            }
           />
         </div>
       </section>
