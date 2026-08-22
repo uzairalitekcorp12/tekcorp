@@ -1253,6 +1253,60 @@
    BOTTOM CTA
    ========================================================================== */
 
+.lp1-portfolio__empty {
+  display: flex;
+
+  min-height: 220px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  padding:
+    36px
+    24px;
+
+  border:
+    1px
+    solid
+    rgba(
+      27,
+      219,
+      186,
+      0.22
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        27,
+        219,
+        186,
+        0.08
+      ),
+      #ffffff
+    );
+
+  text-align: center;
+}
+
+
+.lp1-portfolio__empty p {
+  max-width: 560px;
+
+  margin: 0 !important;
+
+  color: #737876 !important;
+
+  font-size: 12px !important;
+
+  line-height: 1.65 !important;
+}
+
+
 .lp1-portfolio__footer {
   display: flex;
 

@@ -1,0 +1,87 @@
+.tek-content-state {
+  display: grid;
+  min-height: 58vh;
+  place-items: center;
+  padding: 70px 20px;
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      rgba(27, 219, 186, 0.1),
+      transparent 34%
+    ),
+    #fafbfa;
+}
+
+
+.tek-content-state__inner {
+  width: min(100%, 620px);
+  text-align: center;
+}
+
+
+.tek-content-state__inner > p {
+  margin: 0 0 10px !important;
+  color: var(--tek-green-dark) !important;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: var(--tek-green-dark) !important;
+}
+
+
+.tek-content-state__inner h1 {
+  margin: 0 !important;
+  color: #171918 !important;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  -webkit-text-fill-color: #171918 !important;
+}
+
+
+.tek-content-state__inner > span {
+  display: block;
+  margin-top: 14px;
+  color: #707674;
+  font-size: 0.69rem;
+  line-height: 1.65;
+}
+
+
+.tek-content-state__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+
+.tek-content-state__actions a,
+.tek-content-state__actions button {
+  display: inline-flex;
+  min-height: 41px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding-inline: 15px;
+  border: 1px solid #171918;
+  border-radius: 999px;
+  background: #171918;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.59rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+.tek-content-state__actions a {
+  border-color: #d8ddda;
+  background: #ffffff;
+  color: #171918;
+}

@@ -1,76 +1,142 @@
 import "./HomeArticles.css";
 
+import Link from "next/link";
+
 import {
   ArrowUpRight,
 } from "lucide-react";
 
+import CmsImage from
+  "@/app/main-website-components/CmsImage/CmsImage";
 
-/* ==========================================================================
-   ARTICLES
 
-   Dummy images are being used for now.
-   Replace only the `image` values later with your final article images.
-   ========================================================================== */
+const articleDateFormatter =
+  new Intl.DateTimeFormat(
+    "en-US",
+    {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    },
+  );
 
-const articles = [
-  {
-    date:
-      "May 23, 2023",
 
-    readTime:
-      "7 Min Read",
+function formatArticleDate(
+  value,
+) {
+  if (!value) {
+    return "Recently published";
+  }
 
-    title:
-      "25 LinkedIn Connection Messages [Up To 78% Acceptance Rate]",
+  const date =
+    new Date(
+      value,
+    );
 
-    excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Lorem ipsum dolor sit amet.",
+  if (
+    Number.isNaN(
+      date.getTime(),
+    )
+  ) {
+    return "Recently published";
+  }
 
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=88",
-  },
+  return articleDateFormatter.format(
+    date,
+  );
+}
 
-  {
-    date:
-      "May 23, 2023",
 
-    readTime:
-      "7 Min Read",
+function getReadTime(
+  article,
+) {
+  const contentText =
+    Array.isArray(
+      article.content,
+    )
+      ? article.content
+          .map(
+            (block) =>
+              block?.text ||
+              "",
+          )
+          .join(
+            " ",
+          )
+      : "";
 
-    title:
-      "How Digital Products Can Create Better Business Experiences",
+  const wordCount = [
+    article.excerpt,
+    contentText,
+  ]
+    .filter(
+      Boolean,
+    )
+    .join(
+      " ",
+    )
+    .trim()
+    .split(
+      /\s+/,
+    )
+    .filter(
+      Boolean,
+    ).length;
 
-    excerpt:
-      "Discover how thoughtful digital solutions help businesses improve operations, customer experiences and long-term growth.",
-
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=88",
-  },
-
-  {
-    date:
-      "May 23, 2023",
-
-    readTime:
-      "7 Min Read",
-
-    title:
-      "Building Scalable Technology for Modern Businesses",
-
-    excerpt:
-      "Scalable architecture, thoughtful engineering and a strong product strategy can help businesses move faster and grow confidently.",
-
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=88",
-  },
-];
+  return `${Math.max(
+    1,
+    Math.ceil(
+      wordCount / 200,
+    ),
+  )} Min Read`;
+}
 
 
 /* ==========================================================================
    COMPONENT
    ========================================================================== */
 
-export default function HomeArticles() {
+export default function HomeArticles({
+  articles = [],
+}) {
+  const articleCards =
+    Array.isArray(
+      articles,
+    )
+      ? articles
+          .filter(
+            (article) =>
+              article?.slug &&
+              article?.title,
+          )
+          .map(
+            (article) => ({
+              ...article,
+
+              date:
+                formatArticleDate(
+                  article.publishedAt ||
+                    article.createdAt,
+                ),
+
+              readTime:
+                getReadTime(
+                  article,
+                ),
+
+              image:
+                article.thumbnail ||
+                article.heroImage ||
+                "",
+
+              href:
+                `/insights/${encodeURIComponent(
+                  article.slug,
+                )}`,
+            }),
+          )
+      : [];
+
   return (
     <section
       className="lp1-articles"
@@ -110,9 +176,10 @@ export default function HomeArticles() {
             ARTICLE GRID
             ================================================================ */}
 
-        <div className="lp1-articles__grid">
+        {articleCards.length > 0 ? (
+          <div className="lp1-articles__grid">
 
-          {articles.map(
+          {articleCards.map(
             (
               article,
               index,
@@ -120,7 +187,10 @@ export default function HomeArticles() {
 
               <article
                 className="lp1-article"
-                key={`${article.title}-${index}`}
+                key={
+                  article._id ||
+                  article.slug
+                }
                 data-reveal="up"
                 style={{
                   "--lp1-article-delay":
@@ -132,16 +202,16 @@ export default function HomeArticles() {
                     ARTICLE IMAGE
                     ======================================================== */}
 
-                <a
+                <Link
                   className="lp1-article__visual"
-                  href="#contact-lp1"
+                  href={article.href}
                   aria-label={article.title}
                 >
 
-                  <img
+                  <CmsImage
                     src={article.image}
-                    alt={article.title}
-                    loading="lazy"
+                    alt=""
+                    sizes="(max-width: 760px) 100vw, 33vw"
                   />
 
 
@@ -164,7 +234,7 @@ export default function HomeArticles() {
 
                   </span>
 
-                </a>
+                </Link>
 
 
                 {/* ========================================================
@@ -208,9 +278,9 @@ export default function HomeArticles() {
 
                   {/* READ MORE */}
 
-                  <a
+                  <Link
                     className="lp1-article__read"
-                    href="#contact-lp1"
+                    href={article.href}
                   >
 
                     <span>
@@ -223,7 +293,7 @@ export default function HomeArticles() {
                       strokeWidth={1.8}
                     />
 
-                  </a>
+                  </Link>
 
                 </div>
 
@@ -232,7 +302,32 @@ export default function HomeArticles() {
             ),
           )}
 
-        </div>
+          </div>
+        ) : (
+          <div
+            className="lp1-articles__empty"
+            data-reveal="up"
+          >
+            <p>
+              New insights are being prepared. Explore the insights
+              library for every published TekCorp article.
+            </p>
+
+            <Link
+              className="lp1-article__read"
+              href="/insights"
+            >
+              <span>
+                Browse all insights
+              </span>
+
+              <ArrowUpRight
+                size={12}
+                strokeWidth={1.8}
+              />
+            </Link>
+          </div>
+        )}
 
       </div>
 

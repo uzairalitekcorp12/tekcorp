@@ -1,128 +1,24 @@
 import "./globals.css";
 
-import SiteEffects from
-  "./_shared/SiteEffects/SiteEffects";
+import SiteEffects from "./_shared/SiteEffects/SiteEffects";
 
-
-/*
- * ==========================================================================
- * TEKCORP — GLOBAL METADATA
- * ==========================================================================
- */
 
 export const metadata = {
-  applicationName:
-    "TekCorp",
-
   title: {
-    default:
-      "TekCorp - Empowering Innovation",
-
-    template:
-      "%s | TekCorp",
+    default: "TekCorp - Empowering Innovation",
+    template: "%s | TekCorp",
   },
 
   description:
-    "Digital Systems That Power Business Growth",
-
-  keywords: [
-    "TekCorp",
-    "Software Development",
-    "Website Development",
-    "Custom Software",
-    "AI Automation",
-    "Mobile App Development",
-    "UI UX Design",
-    "Digital Transformation",
-    "E-Commerce Development",
-    "Pakistan Software Company",
-  ],
-
-  robots: {
-    index:
-      true,
-
-    follow:
-      true,
-  },
-
-  category:
-    "technology",
+    "Digital systems, product engineering and software solutions that power business growth.",
 };
 
-
-/*
- * ==========================================================================
- * VIEWPORT
- * ==========================================================================
- */
 
 export const viewport = {
-  width:
-    "device-width",
-
-  initialScale:
-    1,
-
-  viewportFit:
-    "cover",
+  width: "device-width",
+  initialScale: 1,
 };
 
-
-/*
- * ==========================================================================
- * ROOT LAYOUT
- * ==========================================================================
- *
- * Navbar and Footer remain page-owned.
- *
- *
- * /
- *
- * Existing/current LandingPage
- *
- *
- * /Home
- *
- * Home.jsx
- *
- *     -> Navbar
- *     -> Home sections
- *     -> Footer
- *
- *
- * /About
- *
- * About.jsx
- *
- *     -> Navbar
- *     -> About sections
- *     -> Footer
- *
- *
- * /Contact
- *
- * Contact.jsx
- *
- *     -> Navbar
- *     -> ContactPage
- *     -> Footer2
- *
- *
- * SiteEffects stays GLOBAL.
- *
- * There must be only one SiteEffects instance in the application.
- *
- * IMPORTANT:
- * Contact.jsx should therefore NOT import/render SiteEffects separately.
- *
- * The wrapper below is deliberately a <div>, not <main>.
- *
- * Individual website pages are responsible for their own semantic <main>
- * element. This prevents Navbar/Footer from accidentally being placed
- * inside a global <main>.
- * ==========================================================================
- */
 
 export default function RootLayout({
   children,
@@ -130,16 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-
-        <div
-          className="tekcorp-main"
-        >
+        <main className="tekcorp-main">
           {children}
-        </div>
-
+        </main>
 
         <SiteEffects />
-
       </body>
     </html>
   );

@@ -1,0 +1,443 @@
+/* ========================================================================== 
+   TEKCORP — PROTOTYPING & UI/UX DESIGN PAGE
+   ========================================================================== */
+
+.prototyping-design-page {
+  --prototype-teal: var(--lp1-teal, #1bdbba);
+  --prototype-teal-dark: var(--lp1-teal-dark, #149c85);
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+}
+
+.prototyping-design-page .service-page-shell {
+  width: min(calc(100% - 56px), 1180px);
+  margin-inline: auto;
+}
+
+/* HERO */
+.prototyping-design-hero {
+  display: grid;
+  min-height: 405px;
+  place-items: center;
+  padding: 108px 0 56px;
+  background: #fff;
+}
+
+.prototyping-design-hero__content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.prototyping-design-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--prototype-teal);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.prototyping-design-hero h1 {
+  margin: 0 !important;
+  background: var(--lp1-heading-gradient, linear-gradient(90deg, #17191a, #505050));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: clamp(38px, 5vw, 66px) !important;
+  font-weight: 600 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.047em !important;
+}
+
+.prototyping-design-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 18px;
+  color: #898e8c;
+  font-size: 7.4px;
+  font-weight: 500;
+}
+
+.prototyping-design-breadcrumb a,
+.prototyping-design-breadcrumb strong {
+  color: #333734;
+  text-decoration: none;
+}
+
+.prototyping-design-breadcrumb a:hover {
+  color: var(--prototype-teal-dark);
+}
+
+/* OVERVIEW */
+.prototyping-design-overview {
+  padding: 50px 0 54px;
+  background: #f5f6f6;
+}
+
+.prototyping-design-overview__grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: clamp(42px, 8vw, 110px);
+}
+
+.prototyping-design-overview__copy {
+  max-width: 510px;
+}
+
+.prototyping-design-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+  color: #707673;
+  font-size: 7.5px;
+  font-weight: 500;
+}
+
+.prototyping-design-kicker::after {
+  width: 24px;
+  height: 1px;
+  background: var(--prototype-teal);
+  content: "";
+}
+
+.prototyping-design-overview__copy h2,
+.prototyping-design-process-row__copy h2,
+.prototyping-design-capabilities__header h2 {
+  margin: 0 !important;
+  background: var(--lp1-heading-gradient, linear-gradient(90deg, #17191a, #505050));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: clamp(25px, 3.3vw, 42px) !important;
+  font-weight: 600 !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.04em !important;
+}
+
+.prototyping-design-overview__copy p,
+.prototyping-design-process-row__copy p {
+  margin: 12px 0 0 !important;
+  color: #747a77 !important;
+  font-size: 8.8px;
+  line-height: 1.65;
+}
+
+.prototyping-design-outline-link {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 0 4px 0 10px;
+  border: 1px solid #8b908e;
+  border-radius: 999px;
+  color: #2d322f;
+  font-size: 7.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, transform .22s cubic-bezier(.16, 1, .3, 1);
+}
+
+.prototyping-design-outline-link > span {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border: 1px solid #aeb2b0;
+  border-radius: 50%;
+  transition: background .2s ease, border-color .2s ease, transform .22s ease;
+}
+
+.prototyping-design-outline-link:hover {
+  border-color: var(--prototype-teal-dark);
+  color: var(--prototype-teal-dark);
+  transform: translateY(-1px);
+}
+
+.prototyping-design-outline-link:hover > span {
+  border-color: var(--prototype-teal);
+  background: rgba(27, 219, 186, .09);
+  transform: rotate(4deg);
+}
+
+.prototyping-design-overview__media {
+  position: relative;
+  width: min(100%, 520px);
+  aspect-ratio: 1.35 / 1;
+  margin-left: auto;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.prototyping-design-overview__image {
+  object-fit: contain;
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1);
+}
+
+.prototyping-design-overview__media:hover .prototyping-design-overview__image {
+  transform: scale(1.025);
+}
+
+/* PHASE GRID */
+.prototyping-design-phase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.prototyping-design-phase-card {
+  min-height: 154px;
+  padding: 15px;
+  border: 1px solid #8f9491;
+  background: rgba(255, 255, 255, .28);
+  transition: background .2s ease, border-color .2s ease, transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s ease;
+  animation-delay: var(--phase-delay, 0ms);
+}
+
+.prototyping-design-phase-card:hover {
+  border-color: rgba(27, 219, 186, .35);
+  background: #fff;
+  box-shadow: 0 13px 29px rgba(25, 44, 38, .055);
+  transform: translateY(-3px);
+}
+
+.prototyping-design-phase-card__icon,
+.prototyping-design-capability-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 13px;
+  place-items: center;
+  background: #171a19;
+  color: #fff;
+  transition: background .2s ease, color .2s ease;
+}
+
+.prototyping-design-phase-card:hover .prototyping-design-phase-card__icon {
+  background: var(--prototype-teal);
+  color: #07110f;
+}
+
+.prototyping-design-phase-card h3 {
+  margin: 0 !important;
+  color: #222624 !important;
+  -webkit-text-fill-color: #222624 !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+.prototyping-design-phase-card p {
+  margin: 7px 0 0 !important;
+  color: #838986 !important;
+  font-size: 7.4px;
+  line-height: 1.45;
+}
+
+/* PROCESS */
+.prototyping-design-process {
+  padding: 56px 0 52px;
+  background: #fff;
+}
+
+.prototyping-design-process__list {
+  display: grid;
+  gap: 52px;
+}
+
+.prototyping-design-process-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(42px, 8vw, 108px);
+}
+
+.prototyping-design-process-row--reverse .prototyping-design-process-row__media {
+  order: 2;
+}
+
+.prototyping-design-process-row--reverse .prototyping-design-process-row__copy {
+  order: 1;
+}
+
+.prototyping-design-process-row__media {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1.08 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f5f6f6;
+  box-shadow: 0 12px 30px rgba(25, 40, 35, .035);
+}
+
+.prototyping-design-process-row__media img {
+  object-fit: contain;
+  padding: 22px;
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1), filter .3s ease;
+}
+
+.prototyping-design-process-row:hover .prototyping-design-process-row__media img {
+  filter: saturate(1.03);
+  transform: scale(1.025);
+}
+
+.prototyping-design-process-row__copy {
+  max-width: 500px;
+}
+
+/* CAPABILITIES */
+.prototyping-design-capabilities {
+  padding: 48px 0 54px;
+  background: #f7f8f8;
+}
+
+.prototyping-design-capabilities__header {
+  max-width: 670px;
+  margin: 0 auto 25px;
+  text-align: center;
+}
+
+.prototyping-design-capabilities__header > span {
+  color: #787e7b;
+  font-size: 7.4px;
+}
+
+.prototyping-design-capabilities__header h2 {
+  margin-top: 6px !important;
+  font-size: clamp(25px, 3vw, 39px) !important;
+}
+
+.prototyping-design-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #929693;
+  border-left: 1px solid #929693;
+}
+
+.prototyping-design-capabilities__grid article {
+  min-height: 150px;
+  padding: 16px;
+  border-right: 1px solid #929693;
+  border-bottom: 1px solid #929693;
+  background: #fff;
+  transition: background .2s ease, transform .25s cubic-bezier(.16, 1, .3, 1);
+  animation-delay: var(--capability-delay, 0ms);
+}
+
+.prototyping-design-capabilities__grid article:hover {
+  background: rgba(27, 219, 186, .025);
+}
+
+.prototyping-design-capabilities__grid article:hover .prototyping-design-capability-icon {
+  background: var(--prototype-teal);
+  color: #07110f;
+}
+
+.prototyping-design-capabilities__grid h3 {
+  margin: 0 !important;
+  color: #262a28 !important;
+  -webkit-text-fill-color: #262a28 !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+}
+
+.prototyping-design-capabilities__grid p {
+  margin: 7px 0 0 !important;
+  color: #848a87 !important;
+  font-size: 7.4px;
+  line-height: 1.48;
+}
+
+@media (max-width: 900px) {
+  .prototyping-design-overview__grid,
+  .prototyping-design-process-row {
+    gap: 34px;
+  }
+
+  .prototyping-design-phase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .prototyping-design-page .service-page-shell {
+    width: min(calc(100% - 30px), 1180px);
+  }
+
+  .prototyping-design-hero {
+    min-height: 340px;
+    padding: 92px 0 42px;
+  }
+
+  .prototyping-design-hero h1 {
+    font-size: clamp(34px, 10.5vw, 50px) !important;
+  }
+
+  .prototyping-design-hero h1 br {
+    display: none;
+  }
+
+  .prototyping-design-overview,
+  .prototyping-design-process,
+  .prototyping-design-capabilities {
+    padding-top: 42px;
+    padding-bottom: 44px;
+  }
+
+  .prototyping-design-overview__grid,
+  .prototyping-design-process-row {
+    grid-template-columns: 1fr;
+  }
+
+  .prototyping-design-overview__media {
+    order: -1;
+    width: min(100%, 430px);
+    margin-inline: auto;
+  }
+
+  .prototyping-design-process-row--reverse .prototyping-design-process-row__media,
+  .prototyping-design-process-row--reverse .prototyping-design-process-row__copy {
+    order: initial;
+  }
+
+  .prototyping-design-process-row__media {
+    width: min(100%, 480px);
+    margin-inline: auto;
+  }
+
+  .prototyping-design-capabilities__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .prototyping-design-phase-grid,
+  .prototyping-design-capabilities__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prototyping-design-process-row__media img {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prototyping-design-page *,
+  .prototyping-design-page *::before,
+  .prototyping-design-page *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}

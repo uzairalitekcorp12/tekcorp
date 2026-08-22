@@ -25,11 +25,22 @@ import {
 } from "lucide-react";
 
 import {
+  useActionState,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
+
+import {
+  submitContact,
+} from "@/app/_actions/contact";
+
+
+const initialSubmissionState = {
+  ok: false,
+  message: "",
+};
 
 
 /* ==========================================================================
@@ -662,10 +673,6 @@ function CountrySelect({
 
   useEffect(() => {
     if (!isOpen) {
-      setQuery(
-        "",
-      );
-
       return undefined;
     }
 
@@ -686,6 +693,10 @@ function CountrySelect({
           event.target,
         )
       ) {
+        setQuery(
+          "",
+        );
+
         setOpenMenu(
           null,
         );
@@ -698,6 +709,10 @@ function CountrySelect({
       if (
         event.key === "Escape"
       ) {
+        setQuery(
+          "",
+        );
+
         setOpenMenu(
           null,
         );
@@ -754,13 +769,19 @@ function CountrySelect({
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-controls="country-menu-options"
-        onClick={() =>
+        onClick={() => {
+          if (isOpen) {
+            setQuery(
+              "",
+            );
+          }
+
           setOpenMenu(
             isOpen
               ? null
               : "country-menu",
-          )
-        }
+          );
+        }}
       >
         <span className="tek-contact-country__flag">
           {isoToFlag(
@@ -846,6 +867,10 @@ function CountrySelect({
                         country.iso,
                       );
 
+                      setQuery(
+                        "",
+                      );
+
                       setOpenMenu(
                         null,
                       );
@@ -928,9 +953,16 @@ export default function ContactPage() {
   ] = useState(null);
 
   const [
-    submitted,
-    setSubmitted,
-  ] = useState(false);
+    submissionState,
+    formAction,
+    isPending,
+  ] = useActionState(
+    submitContact,
+    initialSubmissionState,
+  );
+
+  const submitted =
+    submissionState.ok;
 
 
   const selectedServiceLabel =
@@ -996,21 +1028,12 @@ export default function ContactPage() {
       : "";
 
 
-  function resetSubmissionState() {
-    setSubmitted(
-      false,
-    );
-  }
-
-
   function updateSelectedService(
     serviceKey,
   ) {
     setSelectedService(
       serviceKey,
     );
-
-    resetSubmissionState();
   }
 
 
@@ -1028,23 +1051,6 @@ export default function ContactPage() {
         0,
         15,
       ),
-    );
-
-    resetSubmissionState();
-  }
-
-
-  function handleSubmit(
-    event,
-  ) {
-    event.preventDefault();
-
-    setOpenMenu(
-      null,
-    );
-
-    setSubmitted(
-      true,
     );
   }
 
@@ -1271,8 +1277,27 @@ export default function ContactPage() {
 
             <form
               className="tek-contact-form"
-              onSubmit={handleSubmit}
+              action={formAction}
+              aria-busy={isPending}
+              onSubmit={() =>
+                setOpenMenu(null)
+              }
             >
+              <input
+                type="hidden"
+                name="source"
+                value="contact-page"
+              />
+
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: "none" }}
+              />
+
               <input
                 type="hidden"
                 name="service"
@@ -1358,9 +1383,6 @@ export default function ContactPage() {
                       placeholder="Your full name"
                       autoComplete="name"
                       required
-                      onChange={
-                        resetSubmissionState
-                      }
                     />
                   </span>
                 </label>
@@ -1388,9 +1410,6 @@ export default function ContactPage() {
                       placeholder="you@company.com"
                       autoComplete="email"
                       required
-                      onChange={
-                        resetSubmissionState
-                      }
                     />
                   </span>
                 </label>
@@ -1418,8 +1437,6 @@ export default function ContactPage() {
                         setCountryIso(
                           iso,
                         );
-
-                        resetSubmissionState();
                       }}
                       openMenu={openMenu}
                       setOpenMenu={setOpenMenu}
@@ -1466,9 +1483,6 @@ export default function ContactPage() {
                       name="company"
                       placeholder="Company name"
                       autoComplete="organization"
-                      onChange={
-                        resetSubmissionState
-                      }
                     />
                   </span>
                 </label>
@@ -1494,8 +1508,6 @@ export default function ContactPage() {
                       setBudget(
                         value,
                       );
-
-                      resetSubmissionState();
                     }}
                     icon={WalletCards}
                     openMenu={openMenu}
@@ -1524,8 +1536,6 @@ export default function ContactPage() {
                       setTimeline(
                         value,
                       );
-
-                      resetSubmissionState();
                     }}
                     icon={CalendarClock}
                     openMenu={openMenu}
@@ -1555,9 +1565,6 @@ export default function ContactPage() {
                       rows="6"
                       placeholder="Tell us about your idea, current challenge, goals and any important requirements..."
                       required
-                      onChange={
-                        resetSubmissionState
-                      }
                     />
                   </span>
                 </label>
@@ -1587,9 +1594,12 @@ export default function ContactPage() {
                     .filter(Boolean)
                     .join(" ")}
                   type="submit"
+                  disabled={isPending}
                 >
                   <span>
-                    {submitted
+                    {isPending
+                      ? "Saving your brief..."
+                      : submitted
                       ? "Brief Received — Let's Build"
                       : "Get Started"}
                   </span>
@@ -1648,6 +1658,37 @@ export default function ContactPage() {
                   </span>
                 </div>
               )}
+
+
+              {!submitted &&
+                submissionState.message && (
+                  <div
+                    className="tek-contact-form__success"
+                    role="alert"
+                    aria-live="assertive"
+                  >
+                    <span className="tek-contact-form__success-icon">
+                      <MessageSquareText
+                        size={19}
+                        strokeWidth={1.8}
+                      />
+                    </span>
+
+                    <span className="tek-contact-form__success-copy">
+                      <small>
+                        Submission not saved
+                      </small>
+
+                      <strong>
+                        Please review your details and try again.
+                      </strong>
+
+                      <span>
+                        {submissionState.message}
+                      </span>
+                    </span>
+                  </div>
+                )}
 
             </form>
           </div>

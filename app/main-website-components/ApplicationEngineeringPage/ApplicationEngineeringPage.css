@@ -1,0 +1,470 @@
+/* ==========================================================================
+   TEKCORP — APPLICATION ENGINEERING PAGE
+   ========================================================================== */
+
+.application-engineering-page {
+  --app-teal: var(--lp1-teal, #1bdbba);
+  --app-teal-dark: var(--lp1-teal-dark, #149c85);
+  --app-ink: #191b1a;
+  --app-muted: #747a77;
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+}
+
+.application-engineering-page .service-page-shell {
+  width: min(calc(100% - 56px), 1180px);
+  margin-inline: auto;
+}
+
+/* HERO */
+.application-engineering-hero {
+  display: grid;
+  min-height: 410px;
+  place-items: center;
+  padding: 104px 0 58px;
+  background: #fff;
+}
+
+.application-engineering-hero__content {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.application-engineering-hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 13px;
+  color: var(--app-teal);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.application-engineering-hero h1 {
+  margin: 0 !important;
+  background: var(--lp1-heading-gradient, linear-gradient(90deg, #17191a, #505050));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: clamp(40px, 5.15vw, 67px) !important;
+  font-weight: 600 !important;
+  line-height: 1.01 !important;
+  letter-spacing: -.047em !important;
+}
+
+.application-engineering-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 18px;
+  color: #858a88;
+  font-size: 7.5px;
+  font-weight: 500;
+}
+
+.application-engineering-breadcrumb a:hover {
+  color: var(--app-teal-dark);
+}
+
+.application-engineering-breadcrumb strong {
+  color: #242826;
+  font-weight: 600;
+}
+
+/* OVERVIEW */
+.application-engineering-overview {
+  padding: 54px 0 58px;
+  background: #fff;
+}
+
+.application-engineering-overview__grid {
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  align-items: center;
+  gap: clamp(38px, 7vw, 96px);
+}
+
+.application-engineering-overview__copy {
+  max-width: 500px;
+}
+
+.application-engineering-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  color: #6c726f;
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.application-engineering-kicker::after {
+  width: 24px;
+  height: 1px;
+  background: var(--app-teal);
+  content: "";
+}
+
+.application-engineering-overview__copy h2 {
+  margin: 0 !important;
+  background: var(--lp1-heading-gradient, linear-gradient(90deg, #17191a, #505050));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: clamp(25px, 3.2vw, 41px) !important;
+  font-weight: 600 !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.039em !important;
+}
+
+.application-engineering-overview__copy > p {
+  margin: 12px 0 0 !important;
+  color: #686e6b !important;
+  font-size: 9px;
+  line-height: 1.68;
+}
+
+.application-engineering-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 28px;
+  margin-top: 24px;
+}
+
+.application-engineering-platforms article {
+  min-width: 0;
+}
+
+.application-engineering-platforms strong {
+  display: block;
+  color: #181b1a;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.025em;
+}
+
+.application-engineering-platforms span {
+  display: block;
+  margin-top: 4px;
+  color: #8b908e;
+  font-size: 7px;
+  line-height: 1.4;
+}
+
+.application-engineering-overview__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  color: #242826;
+  font-size: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.application-engineering-overview__cta:hover {
+  color: var(--app-teal-dark);
+  transform: translateX(2px);
+}
+
+/* PNG SHOWCASE */
+.application-engineering-overview__visual {
+  min-width: 0;
+}
+
+.application-engineering-showcase {
+  position: relative;
+  width: min(100%, 500px);
+  aspect-ratio: 1.08 / 1;
+  margin-left: auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 70% 76%, rgba(255, 255, 255, .16), transparent 30%),
+    linear-gradient(145deg, #22dec0 0%, #18cdb0 100%);
+  box-shadow: 0 18px 44px rgba(20, 86, 73, .11);
+  isolation: isolate;
+}
+
+.application-engineering-showcase__wave {
+  position: absolute;
+  z-index: 1;
+  left: -12%;
+  width: 124%;
+  height: 54%;
+  border: 14px solid rgba(255, 255, 255, .16);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.application-engineering-showcase__wave--one {
+  top: -30%;
+  transform: rotate(3deg);
+}
+
+.application-engineering-showcase__wave--two {
+  top: -21%;
+  transform: rotate(-7deg) scale(.86);
+  opacity: .72;
+}
+
+.application-engineering-showcase__glow {
+  position: absolute;
+  right: 8%;
+  bottom: 8%;
+  z-index: 1;
+  width: 42%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(3, 41, 35, .14);
+  filter: blur(28px);
+}
+
+.application-engineering-showcase img {
+  position: absolute;
+  z-index: 2;
+  right: 4%;
+  bottom: -1%;
+  width: 92%;
+  height: 94%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 19px 21px rgba(6, 37, 31, .18));
+  animation: applicationDeviceFloat 5.6s ease-in-out infinite;
+  transform-origin: center bottom;
+  transition: transform .4s cubic-bezier(.16, 1, .3, 1), filter .35s ease;
+}
+
+.application-engineering-showcase:hover img {
+  filter: drop-shadow(0 24px 26px rgba(6, 37, 31, .22));
+  transform: translateY(-5px) scale(1.015);
+}
+
+@keyframes applicationDeviceFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+/* PHASES */
+.application-engineering-phases {
+  padding: 50px 0 56px;
+  background: #f7f8f8;
+}
+
+.application-engineering-phases__sr-title {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
+.application-engineering-phases__list {
+  border-top: 1px solid #d9dddb;
+}
+
+.application-engineering-phase {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(30px, 6vw, 92px);
+  padding: 32px 0;
+  border-bottom: 1px solid #d9dddb;
+}
+
+.application-engineering-phase__identity {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.application-engineering-phase__number {
+  color: transparent;
+  -webkit-text-stroke: 1px #8f9692;
+  font-size: clamp(52px, 6.4vw, 82px);
+  font-weight: 300;
+  line-height: .82;
+  letter-spacing: -.055em;
+}
+
+.application-engineering-phase__identity h3 {
+  max-width: 220px;
+  margin: 3px 0 0 !important;
+  color: #151817 !important;
+  -webkit-text-fill-color: #151817 !important;
+  font-size: clamp(20px, 2.4vw, 32px) !important;
+  font-weight: 500 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.03em !important;
+  text-transform: uppercase;
+}
+
+.application-engineering-phase__content {
+  max-width: 560px;
+}
+
+.application-engineering-phase__content p {
+  margin: 0 !important;
+  color: #515754 !important;
+  font-size: 12px;
+  line-height: 1.62;
+}
+
+.application-engineering-phase__content p + p {
+  margin-top: 9px !important;
+}
+
+.application-engineering-phase__lead {
+  color: #292e2b !important;
+  font-weight: 500;
+}
+
+.application-engineering-phase__note {
+  color: #858b88 !important;
+}
+
+.application-engineering-phase__note strong {
+  color: #a2a7a4;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .application-engineering-hero {
+    min-height: 370px;
+    padding: 98px 0 48px;
+  }
+
+  .application-engineering-overview__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .application-engineering-overview__copy {
+    max-width: 680px;
+  }
+
+  .application-engineering-showcase {
+    width: min(100%, 520px);
+    margin: 0 auto;
+  }
+
+  .application-engineering-phase {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .application-engineering-phase__content {
+    max-width: 700px;
+    padding-left: 86px;
+  }
+}
+
+@media (max-width: 680px) {
+  .application-engineering-page .service-page-shell {
+    width: min(calc(100% - 30px), 1180px);
+  }
+
+  .application-engineering-hero {
+    min-height: 330px;
+    padding: 92px 0 42px;
+  }
+
+  .application-engineering-hero h1 {
+    font-size: clamp(34px, 10.5vw, 49px) !important;
+  }
+
+  .application-engineering-overview {
+    padding: 44px 0 48px;
+  }
+
+  .application-engineering-platforms {
+    gap: 16px 18px;
+  }
+
+  .application-engineering-platforms strong {
+    font-size: 15px;
+  }
+
+  .application-engineering-showcase {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+  }
+
+  .application-engineering-showcase img {
+    right: 1%;
+    width: 98%;
+    height: 95%;
+  }
+
+  .application-engineering-phases {
+    padding: 42px 0 48px;
+  }
+
+  .application-engineering-phase {
+    padding: 26px 0;
+  }
+
+  .application-engineering-phase__identity {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .application-engineering-phase__number {
+    font-size: 56px;
+  }
+
+  .application-engineering-phase__content {
+    padding-left: 67px;
+  }
+}
+
+@media (max-width: 430px) {
+  .application-engineering-hero {
+    min-height: 306px;
+    padding-top: 88px;
+  }
+
+  .application-engineering-platforms {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .application-engineering-showcase {
+    aspect-ratio: .95 / 1;
+  }
+
+  .application-engineering-phase__identity {
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+
+  .application-engineering-phase__number {
+    font-size: 50px;
+  }
+
+  .application-engineering-phase__content {
+    padding-left: 61px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .application-engineering-showcase img,
+  .application-engineering-overview__cta {
+    animation: none !important;
+    transition: none !important;
+  }
+}

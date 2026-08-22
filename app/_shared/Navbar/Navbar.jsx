@@ -435,7 +435,7 @@ export default function Navbar({
 
   aboutHref = "/About",
 
-  contactHref = "/contact",
+  contactHref = "/Contact",
 
   ctaHref,
 
@@ -450,8 +450,12 @@ export default function Navbar({
      every non-existing content destination points to Contact.
      ========================================================================== */
 
-  const placeholderHref =
-    contactHref;
+  const caseStudiesHref =
+    "/case-studies";
+
+
+  const insightsHref =
+    "/insights";
 
 
   const resolvedCtaHref =
@@ -592,7 +596,7 @@ export default function Navbar({
         "Case Studies",
 
       href:
-        placeholderHref,
+        caseStudiesHref,
     },
 
     {
@@ -600,7 +604,7 @@ export default function Navbar({
         "Insights",
 
       href:
-        placeholderHref,
+        insightsHref,
     },
 
     {
@@ -660,41 +664,10 @@ export default function Navbar({
   useEffect(() => {
 
     if (
-      navbarVariant === "default"
-    ) {
-
-      setOverTransparentTarget(
-        false,
-      );
-
-      return;
-
-    }
-
-
-    if (
-      navbarVariant === "transparent"
-    ) {
-
-      setOverTransparentTarget(
-        true,
-      );
-
-      return;
-
-    }
-
-
-    if (
+      navbarVariant !== "adaptive" ||
       !transparentTargetId
     ) {
-
-      setOverTransparentTarget(
-        false,
-      );
-
       return;
-
     }
 
 
@@ -705,13 +678,7 @@ export default function Navbar({
 
 
     if (!target) {
-
-      setOverTransparentTarget(
-        false,
-      );
-
       return;
-
     }
 
 
@@ -854,17 +821,6 @@ export default function Navbar({
   /* ==========================================================================
      ACTIVE STATE
      ========================================================================== */
-
-  useEffect(() => {
-
-    setActiveTab(
-      initialActiveTab,
-    );
-
-  }, [
-    initialActiveTab,
-  ]);
-
 
   /* ==========================================================================
      DESKTOP HOVER INTENT
@@ -1917,7 +1873,7 @@ export default function Navbar({
 
             <a
               href={
-                placeholderHref
+                caseStudiesHref
               }
               className={[
                 "mobile-nav-link",
@@ -1945,7 +1901,7 @@ export default function Navbar({
 
             <a
               href={
-                placeholderHref
+                insightsHref
               }
               className={[
                 "mobile-nav-link",

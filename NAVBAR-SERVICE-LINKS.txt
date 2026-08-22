@@ -1,0 +1,39 @@
+TEKCORP NAVBAR — THREE NEW SERVICE LINKS
+========================================
+
+Do NOT replace your entire Navbar if your current mega menu is already working.
+Only update/add these service data items inside SOLUTION_GROUPS.
+
+1) Maintenance & Support
+
+{
+  title: "Maintenance & Support",
+  href: "/services/maintenance-support",
+}
+
+2) UI / UX Design
+
+If you already have this item:
+
+{
+  title: "UI / UX Design",
+}
+
+change it to:
+
+{
+  title: "UI / UX Design",
+  href: "/services/prototyping-ui-ux-design",
+}
+
+3) Quality Assurance & Testing
+
+{
+  title: "Quality Assurance & Testing",
+  href: "/services/quality-assurance-testing",
+}
+
+Recommended grouping:
+- Maintenance & Support -> Engineering
+- Quality Assurance & Testing -> Engineering
+- UI / UX Design -> Product & Design

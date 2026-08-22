@@ -1,1790 +1,226 @@
-/* ==========================================================================
-   TEKCORP
-   LANDINGPAGE 1 — CONTACT
-   ==========================================================================
-
-   REFERENCE TARGET
-
-   - White page background
-   - Large black rounded contact panel
-   - Left-aligned heading/content
-   - Teal Contact Us kicker
-   - Social pill at bottom-left
-   - White form card on right
-   - CLEAR visible borders around every input
-   - Teal submit button
-   - WHITE submit button text
-   - Premium but subtle interactions
-   - Responsive tablet/mobile layout
-
-   ========================================================================== */
-
-
-/* ==========================================================================
-   SECTION VARIABLES
-
-   Main colors for this component can be adjusted here.
-   ========================================================================== */
-
-.lp1-contact {
-  --lp1-contact-black:
-    #020302;
-
-  --lp1-contact-white:
-    #ffffff;
-
-  --lp1-contact-text:
-    #171918;
-
-  --lp1-contact-text-soft:
-    #4b4f4d;
-
-  --lp1-contact-muted:
-    #8c908e;
-
-  --lp1-contact-field-border:
-    #bfc4c1;
-
-  --lp1-contact-field-border-hover:
-    #929895;
-
-  --lp1-contact-field-bg:
-    #ffffff;
-
-  --lp1-contact-social:
-    #303331;
-
-  --lp1-contact-teal:
-    var(
-      --lp1-teal,
-      #1bdbba
-    );
-
-  --lp1-contact-teal-dark:
-    var(
-      --lp1-teal-dark,
-      #149c85
-    );
-
-
-  position: relative;
-
-  width: 100%;
-
-  padding:
-    54px
-    0
-    105px;
-
-  background:
-    var(
-      --lp1-contact-white
-    );
+.tek-contact-section {
+  padding: 54px 0 66px;
+  background: #ffffff;
 }
 
 
-/* ==========================================================================
-   MAIN PANEL
-   ========================================================================== */
-
-.lp1-contact__panel {
-  position: relative;
-
+.tek-contact-section__panel {
   display: grid;
-
-  min-height: 620px;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.18fr
-    )
-    minmax(
-      320px,
-      0.68fr
-    );
-
-  align-items: center;
-
-  gap:
-    clamp(
-      65px,
-      8vw,
-      125px
-    );
-
-  overflow: hidden;
-
-  padding:
-    clamp(
-      58px,
-      6vw,
-      82px
-    )
-    clamp(
-      55px,
-      7vw,
-      92px
-    );
-
-  border-radius:
-    11px;
-
-  background:
-    var(
-      --lp1-contact-black
-    );
-
-  color:
-    var(
-      --lp1-contact-white
-    );
-
-  box-shadow:
-    0
-    1px
-    0
-    rgba(
-      0,
-      0,
-      0,
-      0.03
-    );
+  min-height: 440px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 55px;
+  padding: 55px 70px;
+  border-radius: 8px;
+  background: #050605;
+  color: #ffffff;
 }
 
 
-/* ==========================================================================
-   SUBTLE BLACK PANEL LIGHT
-
-   Very restrained so the reference remains predominantly solid black.
-   ========================================================================== */
-
-.lp1-contact__panel::before {
-  position: absolute;
-
-  top: -220px;
-
-  left: -220px;
-
-  width: 460px;
-  height: 460px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        27,
-        219,
-        186,
-        0.055
-      ),
-      transparent
-      69%
-    );
-
-  content: "";
-
-  pointer-events: none;
-}
-
-
-/* ==========================================================================
-   LEFT CONTENT
-   ========================================================================== */
-
-.lp1-contact__copy {
-  position: relative;
-
-  z-index: 2;
-
+.tek-contact-section__copy {
   display: flex;
-
   min-width: 0;
-
-  min-height: 445px;
-
   flex-direction: column;
-
-  justify-content: space-between;
 }
 
 
-/* ==========================================================================
-   COPY TOP
-   ========================================================================== */
-
-.lp1-contact__copy-top {
-  max-width:
-    520px;
-}
-
-
-/* ==========================================================================
-   KICKER
-   ========================================================================== */
-
-.lp1-contact__kicker {
+.tek-contact-section__copy > p {
   display: flex;
-
   align-items: center;
-
-  gap: 7px;
-
-  margin:
-    0
-    0
-    11px !important;
-
-  color:
-    var(
-      --lp1-contact-teal
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.81rem;
-
-  font-weight:
-    500;
-
-  line-height: 1;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-teal
-    ) !important;
-}
-
-
-/* ==========================================================================
-   KICKER LINE
-   ========================================================================== */
-
-.lp1-contact__kicker-line {
-  display: block;
-
-  width: 25px;
-  height: 1px;
-
-  flex:
-    0
-    0
-    25px;
-
-  background:
-    var(
-      --lp1-contact-teal
-    );
-
-  transform-origin:
-    left center;
-
-  transition:
-    width
-      400ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
-}
-
-
-.lp1-contact__copy:hover
-.lp1-contact__kicker-line {
-  width: 37px;
-}
-
-
-/* ==========================================================================
-   HEADING
-   ========================================================================== */
-
-.lp1-contact__copy h2 {
-  max-width:
-    530px;
-
-  margin: 0 !important;
-
-  color:
-    var(
-      --lp1-contact-white
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    clamp(
-      2rem,
-      3vw,
-      3rem
-    );
-
-  font-weight:
-    500 !important;
-
-  line-height:
-    1.05 !important;
-
-  letter-spacing:
-    -0.048em !important;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-white
-    ) !important;
-}
-
-
-/* ==========================================================================
-   DESCRIPTION
-   ========================================================================== */
-
-.lp1-contact__description {
-  max-width:
-    460px;
-
-  margin:
-    22px
-    0
-    0 !important;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.56
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.72rem;
-
-  font-weight: 400;
-
-  line-height:
-    1.7;
-
-  -webkit-text-fill-color:
-    rgba(
-      255,
-      255,
-      255,
-      0.56
-    ) !important;
-}
-
-
-/* ==========================================================================
-   BOTTOM LEFT CONTENT
-   ========================================================================== */
-
-.lp1-contact__copy-bottom {
-  max-width:
-    470px;
-
-  margin-top:
-    70px;
-}
-
-
-/* ==========================================================================
-   COMPANY COPY
-   ========================================================================== */
-
-.lp1-contact__company-copy {
-  max-width:
-    465px;
-
-  margin:
-    0 !important;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.84
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.71rem;
-
-  font-weight: 400;
-
-  line-height:
-    1.58;
-
-  -webkit-text-fill-color:
-    rgba(
-      255,
-      255,
-      255,
-      0.84
-    ) !important;
-}
-
-
-.lp1-contact__company-copy strong {
-  color:
-    var(
-      --lp1-contact-teal
-    );
-
-  font-weight:
-    500;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-teal
-    );
-}
-
-
-/* ==========================================================================
-   SOCIAL PILL
-   ========================================================================== */
-
-.lp1-contact__socials {
-  display: inline-flex;
-
-  width:
-    max-content;
-
-  align-items: center;
-
-  gap: 1px;
-
-  margin-top:
-    18px;
-
-  padding: 3px;
-
-  border-radius:
-    999px;
-
-  background:
-    var(
-      --lp1-contact-social
-    );
-
-  box-shadow:
-    inset
-    0
-    0
-    0
-    1px
-    rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
-}
-
-
-/* ==========================================================================
-   SOCIAL LINKS
-   ========================================================================== */
-
-.lp1-contact__socials a {
-  display: grid;
-
-  width: 30px;
-  height: 30px;
-
-  place-items: center;
-
-  border-radius: 50%;
-
-  color:
-    var(
-      --lp1-contact-white
-    );
-
-  text-decoration: none;
-
-  transition:
-    background
-      260ms
-      ease,
-    color
-      260ms
-      ease,
-    transform
-      320ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
-}
-
-
-.lp1-contact__socials a:hover {
-  background:
-    var(
-      --lp1-contact-teal
-    );
-
-  color:
-    #06110e;
-
-  transform:
-    translateY(-3px);
-}
-
-
-/* ==========================================================================
-   FORM CARD
-   ========================================================================== */
-
-.lp1-contact__form {
-  position: relative;
-
-  z-index: 3;
-
-  width: 100%;
-
-  max-width:
-    355px;
-
-  margin-left: auto;
-
-  padding:
-    23px
-    22px
-    24px;
-
-  border:
-    1px solid
-    #e3e5e4;
-
-  border-radius:
-    9px;
-
-  background:
-    var(
-      --lp1-contact-white
-    );
-
-  color:
-    var(
-      --lp1-contact-text
-    );
-
-  box-shadow:
-    0
-    20px
-    55px
-    rgba(
-      0,
-      0,
-      0,
-      0.26
-    );
-
-  transition:
-    transform
-      450ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      ),
-    box-shadow
-      450ms
-      ease,
-    border-color
-      300ms
-      ease;
-}
-
-
-/* ==========================================================================
-   FORM HOVER
-   ========================================================================== */
-
-@media (
-  hover: hover
-) and (
-  pointer: fine
-) {
-
-  .lp1-contact__form:hover {
-    border-color:
-      rgba(
-        27,
-        219,
-        186,
-        0.24
-      );
-
-    box-shadow:
-      0
-      30px
-      72px
-      rgba(
-        0,
-        0,
-        0,
-        0.32
-      );
-
-    transform:
-      translateY(-4px);
-  }
-
-}
-
-
-/* ==========================================================================
-   FORM TITLE
-   ========================================================================== */
-
-.lp1-contact__form h3 {
-  margin:
-    0
-    0
-    23px !important;
-
-  color:
-    var(
-      --lp1-contact-text
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    1.05rem;
-
-  font-weight:
-    500 !important;
-
-  line-height:
-    1.1;
-
-  letter-spacing:
-    -0.025em;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-text
-    ) !important;
-}
-
-
-/* ==========================================================================
-   FIELD
-   ========================================================================== */
-
-.lp1-contact__field {
-  display: grid;
-
   gap: 8px;
-
-  margin-top:
-    19px;
+  margin: 0 0 9px !important;
+  color: var(--tek-green) !important;
+  font-size: 0.56rem;
+  font-weight: 600;
+  -webkit-text-fill-color: var(--tek-green) !important;
 }
 
 
-.lp1-contact__form h3
-+ .lp1-contact__field {
-  margin-top: 0;
+.tek-contact-section__copy > p span {
+  width: 23px;
+  height: 1px;
+  background: currentColor;
 }
 
 
-/* ==========================================================================
-   LABEL
-   ========================================================================== */
-
-.lp1-contact__label {
-  color:
-    #292d2b !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    );
-
-  font-size:
-    0.68rem;
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  -webkit-text-fill-color:
-    #292d2b !important;
+.tek-contact-section__copy h2 {
+  max-width: 550px;
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 
-/* ==========================================================================
-   FORM CONTROL WRAPPER
+.tek-contact-section__copy > span {
+  display: block;
+  max-width: 490px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.6rem;
+  line-height: 1.6;
+}
 
-   IMPORTANT:
-   Border is deliberately placed on THIS wrapper rather than
-   depending on the input's own border.
 
-   This avoids global input resets removing the visible border.
-   ========================================================================== */
+.tek-contact-section__bottom-copy {
+  margin-top: auto;
+  padding-top: 42px;
+}
 
-.lp1-contact__control {
-  position: relative;
 
+.tek-contact-section__bottom-copy p {
+  max-width: 480px;
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.6rem;
+  line-height: 1.55;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+
+.tek-contact-section__bottom-copy strong {
+  color: var(--tek-green);
+}
+
+
+.tek-contact-section__form {
+  align-self: center;
+  display: grid;
+  gap: 15px;
+  padding: 24px;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #171918;
+}
+
+
+.tek-contact-section__form h3 {
+  margin: 0 0 2px !important;
+  color: #171918 !important;
+  font-size: 1.15rem;
+  font-weight: 500;
+  -webkit-text-fill-color: #171918 !important;
+}
+
+
+.tek-contact-section__form label {
+  display: grid;
+  gap: 6px;
+}
+
+
+.tek-contact-section__form label > span {
+  color: #464b48;
+  font-size: 0.53rem;
+}
+
+
+.tek-contact-section__form label > div {
   display: flex;
-
-  width: 100%;
-
-  min-height:
-    49px;
-
+  min-height: 47px;
   align-items: center;
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    var(
-      --lp1-contact-field-border
-    ) !important;
-
-  border-radius:
-    6px;
-
-  background:
-    var(
-      --lp1-contact-field-bg
-    );
-
-  box-shadow:
-    inset
-    0
-    0
-    0
-    1px
-    rgba(
-      20,
-      25,
-      23,
-      0.015
-    );
-
-  transition:
-    border-color
-      260ms
-      ease,
-    box-shadow
-      260ms
-      ease,
-    transform
-      260ms
-      ease,
-    background
-      260ms
-      ease;
+  gap: 9px;
+  padding-inline: 12px;
+  border: 1px solid #dce1de;
+  border-radius: 6px;
+  color: #a0a5a2;
 }
 
 
-/* ==========================================================================
-   CONTROL HOVER
-   ========================================================================== */
-
-@media (
-  hover: hover
-) and (
-  pointer: fine
-) {
-
-  .lp1-contact__control:hover {
-    border-color:
-      var(
-        --lp1-contact-field-border-hover
-      ) !important;
-
-    background:
-      #fefefe;
-  }
-
-}
-
-
-/* ==========================================================================
-   INPUT ICON
-   ========================================================================== */
-
-.lp1-contact__control-icon {
-  position: absolute;
-
-  z-index: 2;
-
-  left: 17px;
-
-  color:
-    #afb3b1;
-
-  pointer-events: none;
-
-  transition:
-    color
-      250ms
-      ease,
-    transform
-      300ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
-}
-
-
-/* ==========================================================================
-   INPUT
-
-   Input's border is intentionally removed because wrapper owns it.
-   ========================================================================== */
-
-.lp1-contact__control input {
-  display: block;
-
+.tek-contact-section__form input,
+.tek-contact-section__form textarea {
   width: 100%;
-
-  min-width: 0;
-
-  min-height:
-    47px;
-
-  padding:
-    10px
-    14px
-    10px
-    48px !important;
-
-  border:
-    0 !important;
-
-  border-radius:
-    0 !important;
-
-  outline:
-    0 !important;
-
-  background:
-    transparent !important;
-
-  box-shadow:
-    none !important;
-
-  color:
-    var(
-      --lp1-contact-text
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.72rem;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-text
-    ) !important;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #171918;
+  font-size: 0.62rem;
 }
 
 
-/* ==========================================================================
-   TEXTAREA CONTROL
-   ========================================================================== */
-
-.lp1-contact__control--textarea {
-  min-height:
-    116px;
-
-  align-items:
-    stretch;
+.tek-contact-section__form textarea {
+  min-height: 105px;
+  padding: 11px;
+  border: 1px solid #dce1de;
+  border-radius: 6px;
+  resize: vertical;
 }
 
 
-/* ==========================================================================
-   TEXTAREA
-   ========================================================================== */
-
-.lp1-contact__control textarea {
-  display: block;
-
-  width: 100%;
-
-  min-width: 0;
-
-  min-height:
-    114px;
-
-  padding:
-    13px !important;
-
-  border:
-    0 !important;
-
-  border-radius:
-    0 !important;
-
-  outline:
-    0 !important;
-
-  background:
-    transparent !important;
-
-  box-shadow:
-    none !important;
-
-  color:
-    var(
-      --lp1-contact-text
-    ) !important;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.72rem;
-
-  line-height:
-    1.5;
-
-  resize:
-    vertical;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-text
-    ) !important;
+.tek-contact-section__form label > div:focus-within,
+.tek-contact-section__form textarea:focus {
+  border-color: var(--tek-green-dark);
+  box-shadow: 0 0 0 3px rgba(27, 219, 186, 0.08);
 }
 
 
-/* ==========================================================================
-   AUTOFILL FIX
-
-   Keeps browser autofill from destroying the white design.
-   ========================================================================== */
-
-.lp1-contact__control
-input:-webkit-autofill,
-.lp1-contact__control
-input:-webkit-autofill:hover,
-.lp1-contact__control
-input:-webkit-autofill:focus {
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-text
-    ) !important;
-
-  -webkit-box-shadow:
-    0
-    0
-    0
-    1000px
-    #ffffff
-    inset !important;
-
-  transition:
-    background-color
-    9999s
-    ease-in-out
-    0s;
-}
-
-
-/* ==========================================================================
-   FOCUS STATE
-
-   Strong enough to be obvious without changing the reference design.
-   ========================================================================== */
-
-.lp1-contact__control:focus-within {
-  border-color:
-    var(
-      --lp1-contact-teal
-    ) !important;
-
-  background:
-    #ffffff;
-
-  box-shadow:
-    0
-    0
-    0
-    3px
-    rgba(
-      27,
-      219,
-      186,
-      0.11
-    );
-
-  transform:
-    translateY(-1px);
-}
-
-
-.lp1-contact__control:focus-within
-.lp1-contact__control-icon {
-  color:
-    var(
-      --lp1-contact-teal-dark
-    );
-
-  transform:
-    scale(1.08);
-}
-
-
-/* ==========================================================================
-   SUBMIT BUTTON
-
-   IMPORTANT:
-   Text is explicitly forced WHITE.
-   ========================================================================== */
-
-.lp1-contact__submit {
-  position: relative;
-
-  isolation: isolate;
-
-  display: flex;
-
-  width: 100%;
-
-  min-height:
-    50px;
-
+.tek-contact-section__form button {
+  display: inline-flex;
+  min-height: 43px;
   align-items: center;
   justify-content: center;
-
   gap: 7px;
-
-  margin-top:
-    25px;
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    var(
-      --lp1-contact-teal
-    ) !important;
-
-  border-radius:
-    5px;
-
-  outline: 0;
-
-  background:
-    var(
-      --lp1-contact-teal
-    ) !important;
-
-  color:
-    #ffffff !important;
-
+  border: 0;
+  border-radius: 4px;
+  background: var(--tek-green);
+  color: #08251f;
   cursor: pointer;
-
-  font-family:
-    var(
-      --font-site,
-      "Lufga Regular",
-      sans-serif
-    ) !important;
-
-  font-size:
-    0.68rem;
-
-  font-weight:
-    500;
-
-  line-height: 1;
-
-  -webkit-text-fill-color:
-    #ffffff !important;
-
-  box-shadow:
-    0
-    8px
-    20px
-    rgba(
-      27,
-      219,
-      186,
-      0.12
-    );
-
-  transition:
-    background
-      280ms
-      ease,
-    border-color
-      280ms
-      ease,
-    transform
-      320ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      ),
-    box-shadow
-      320ms
-      ease;
+  font-size: 0.57rem;
+  font-weight: 600;
 }
 
 
-/* ==========================================================================
-   KEEP ALL BUTTON CHILDREN WHITE
-   ========================================================================== */
-
-.lp1-contact__submit span,
-.lp1-contact__submit svg {
-  position: relative;
-
-  z-index: 2;
-
-  color:
-    #ffffff !important;
-
-  -webkit-text-fill-color:
-    #ffffff !important;
+.tek-contact-section__form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 
 
-/* ==========================================================================
-   BUTTON LIGHT SWEEP
-   ========================================================================== */
-
-.lp1-contact__submit::before {
-  position: absolute;
-
-  z-index: 1;
-
-  top: -15%;
-
-  bottom: -15%;
-
-  left: -55%;
-
-  width: 32%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        255,
-        255,
-        255,
-        0.32
-      ),
-      transparent
-    );
-
-  content: "";
-
-  pointer-events: none;
-
-  transform:
-    skewX(-18deg);
-
-  transition:
-    left
-      700ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
+.tek-contact-section__status {
+  margin: -3px 0 0 !important;
+  font-size: 0.53rem;
+  line-height: 1.45;
 }
 
 
-/* ==========================================================================
-   BUTTON HOVER
-   ========================================================================== */
-
-.lp1-contact__submit:hover {
-  border-color:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-
-  background:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-
-  color:
-    #ffffff !important;
-
-  -webkit-text-fill-color:
-    #ffffff !important;
-
-  box-shadow:
-    0
-    15px
-    30px
-    rgba(
-      27,
-      219,
-      186,
-      0.2
-    );
-
-  transform:
-    translateY(-2px);
+.tek-contact-section__status.is-success {
+  color: #168973 !important;
+  -webkit-text-fill-color: #168973 !important;
 }
 
 
-.lp1-contact__submit:hover::before {
-  left: 135%;
+.tek-contact-section__status.is-error {
+  color: #aa3939 !important;
+  -webkit-text-fill-color: #aa3939 !important;
 }
 
 
-.lp1-contact__submit svg {
-  transition:
-    transform
-      300ms
-      cubic-bezier(
-        0.16,
-        1,
-        0.3,
-        1
-      );
+@media (max-width: 850px) {
+  .tek-contact-section__panel {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 42px;
+  }
+
+  .tek-contact-section__bottom-copy {
+    margin-top: 30px;
+    padding-top: 0;
+  }
 }
 
 
-.lp1-contact__submit:hover
-svg {
-  transform:
-    translate(
-      3px,
-      -3px
-    );
-}
-
-
-/* ==========================================================================
-   BUTTON ACTIVE
-   ========================================================================== */
-
-.lp1-contact__submit:active {
-  transform:
-    translateY(0)
-    scale(0.99);
-}
-
-
-/* ==========================================================================
-   SUCCESS BUTTON
-   ========================================================================== */
-
-.lp1-contact__submit.is-submitted {
-  background:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-
-  border-color:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-}
-
-
-/* ==========================================================================
-   SUCCESS MESSAGE
-   ========================================================================== */
-
-.lp1-contact__success {
-  margin:
-    10px
-    0
-    0 !important;
-
-  color:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-
-  font-size:
-    0.55rem;
-
-  line-height:
-    1.45;
-
-  text-align:
-    center;
-
-  -webkit-text-fill-color:
-    var(
-      --lp1-contact-teal-dark
-    ) !important;
-
-  animation:
-    lp1ContactSuccess
-    420ms
-    cubic-bezier(
-      0.16,
-      1,
-      0.3,
-      1
-    )
-    both;
-}
-
-
-/* ==========================================================================
-   SUCCESS ANIMATION
-   ========================================================================== */
-
-@keyframes lp1ContactSuccess {
-
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(6px);
+@media (max-width: 520px) {
+  .tek-contact-section {
+    padding: 44px 0 55px;
   }
 
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0);
+  .tek-contact-section__panel {
+    padding: 28px 18px;
   }
 
-}
-
-
-/* ==========================================================================
-   MEDIUM DESKTOP
-   ========================================================================== */
-
-@media (
-  max-width: 1080px
-) {
-
-  .lp1-contact__panel {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      )
-      minmax(
-        300px,
-        0.7fr
-      );
-
-    gap:
-      55px;
-
-    padding:
-      58px
-      52px;
+  .tek-contact-section__form {
+    padding: 19px 16px;
   }
-
-
-  .lp1-contact__copy h2 {
-    font-size:
-      clamp(
-        2rem,
-        3.4vw,
-        2.7rem
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-@media (
-  max-width: 860px
-) {
-
-  .lp1-contact {
-    padding-top:
-      36px;
-  }
-
-
-  .lp1-contact__panel {
-    min-height: 0;
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      50px;
-
-    padding:
-      48px
-      44px;
-  }
-
-
-  .lp1-contact__copy {
-    min-height:
-      390px;
-  }
-
-
-  .lp1-contact__copy-top {
-    max-width:
-      620px;
-  }
-
-
-  .lp1-contact__copy h2 {
-    max-width:
-      580px;
-  }
-
-
-  .lp1-contact__description {
-    max-width:
-      510px;
-  }
-
-
-  .lp1-contact__copy-bottom {
-    margin-top:
-      52px;
-  }
-
-
-  .lp1-contact__form {
-    width:
-      min(
-        100%,
-        460px
-      );
-
-    max-width: none;
-
-    margin:
-      0
-      auto;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-@media (
-  max-width: 560px
-) {
-
-  .lp1-contact {
-    padding:
-      25px
-      0
-      72px;
-  }
-
-
-  .lp1-contact__panel {
-    gap:
-      39px;
-
-    padding:
-      35px
-      20px
-      27px;
-
-    border-radius:
-      8px;
-  }
-
-
-  .lp1-contact__copy {
-    min-height: 0;
-  }
-
-
-  /* ----------------------------------------------------------------------
-     Kicker
-     ---------------------------------------------------------------------- */
-
-  .lp1-contact__kicker {
-    font-size:
-      0.7rem;
-  }
-
-
-  .lp1-contact__kicker-line {
-    width: 20px;
-
-    flex-basis:
-      20px;
-  }
-
-
-  /* ----------------------------------------------------------------------
-     Heading
-     ---------------------------------------------------------------------- */
-
-  .lp1-contact__copy h2 {
-    max-width: 100%;
-
-    font-size:
-      clamp(
-        1.85rem,
-        8.8vw,
-        2.4rem
-      );
-
-    line-height:
-      1.06 !important;
-  }
-
-
-  /* ----------------------------------------------------------------------
-     Description
-     ---------------------------------------------------------------------- */
-
-  .lp1-contact__description {
-    max-width: 100%;
-
-    margin-top:
-      17px !important;
-
-    font-size:
-      0.69rem;
-  }
-
-
-  /* ----------------------------------------------------------------------
-     Bottom content
-     ---------------------------------------------------------------------- */
-
-  .lp1-contact__copy-bottom {
-    margin-top:
-      46px;
-  }
-
-
-  .lp1-contact__company-copy {
-    max-width: 100%;
-
-    font-size:
-      0.67rem;
-  }
-
-
-  /* ----------------------------------------------------------------------
-     Form
-     ---------------------------------------------------------------------- */
-
-  .lp1-contact__form {
-    width: 100%;
-
-    padding:
-      22px
-      17px
-      20px;
-
-    border-radius:
-      8px;
-  }
-
-
-  .lp1-contact__form h3 {
-    margin-bottom:
-      21px !important;
-  }
-
-
-  .lp1-contact__field {
-    margin-top:
-      18px;
-  }
-
-
-  /* Strong mobile borders */
-
-  .lp1-contact__control {
-    min-height:
-      50px;
-
-    border-width:
-      1px !important;
-
-    border-color:
-      #b6bbb8 !important;
-  }
-
-
-  .lp1-contact__control input {
-    min-height:
-      48px;
-  }
-
-
-  .lp1-contact__control--textarea {
-    min-height:
-      118px;
-  }
-
-
-  .lp1-contact__control textarea {
-    min-height:
-      116px;
-  }
-
-
-  .lp1-contact__submit {
-    min-height:
-      50px;
-
-    margin-top:
-      23px;
-  }
-
-}
-
-
-/* ==========================================================================
-   VERY SMALL MOBILE
-   ========================================================================== */
-
-@media (
-  max-width: 380px
-) {
-
-  .lp1-contact__panel {
-    padding-inline:
-      16px;
-  }
-
-
-  .lp1-contact__copy h2 {
-    font-size:
-      1.8rem;
-  }
-
-
-  .lp1-contact__form {
-    padding-inline:
-      14px;
-  }
-
-
-  .lp1-contact__control-icon {
-    left:
-      14px;
-  }
-
-
-  .lp1-contact__control input {
-    padding-left:
-      42px !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   ACCESSIBILITY
-   ========================================================================== */
-
-.lp1-contact__socials
-a:focus-visible,
-.lp1-contact__submit:focus-visible {
-  outline:
-    2px solid
-    var(
-      --lp1-contact-teal
-    );
-
-  outline-offset:
-    3px;
-}
-
-
-/* ==========================================================================
-   REDUCED MOTION
-   ========================================================================== */
-
-@media (
-  prefers-reduced-motion:
-    reduce
-) {
-
-  .lp1-contact__form,
-  .lp1-contact__kicker-line,
-  .lp1-contact__socials a,
-  .lp1-contact__control,
-  .lp1-contact__control-icon,
-  .lp1-contact__submit,
-  .lp1-contact__submit::before,
-  .lp1-contact__submit svg,
-  .lp1-contact__success {
-    animation:
-      none !important;
-
-    transition-duration:
-      0.01ms !important;
-  }
-
 }

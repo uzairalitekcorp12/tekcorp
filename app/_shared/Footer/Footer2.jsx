@@ -1,5 +1,8 @@
 import "./Footer2.css";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   ArrowUpRight,
 } from "lucide-react";
@@ -88,7 +91,9 @@ function LinkedInIcon() {
    FOOTER
    ========================================================================== */
 
-export default function Footer2() {
+export default function Footer2({
+  ctaHref = "/Contact",
+}) {
   return (
     <footer className="footer2">
 
@@ -138,9 +143,9 @@ export default function Footer2() {
               </h2>
 
 
-              <a
+              <Link
                 className="footer2__call-button"
-                href="#contact-lp1"
+                href={ctaHref}
               >
 
                 <span className="footer2__call-text">
@@ -158,7 +163,7 @@ export default function Footer2() {
 
                 </span>
 
-              </a>
+              </Link>
 
             </div>
 
@@ -183,10 +188,13 @@ export default function Footer2() {
 
               <div className="footer2__phone-image-wrap">
 
-                <img
+                <Image
                   className="footer2__phone-image"
                   src={PHONE_IMAGE}
                   alt=""
+                  width={178}
+                  height={160}
+                  sizes="(max-width: 720px) 125px, (max-width: 1100px) 150px, 178px"
                 />
 
               </div>
@@ -260,34 +268,34 @@ export default function Footer2() {
               </h3>
 
 
-              <a
-                href="#home"
+              <Link
+                href="/About"
                 className="footer2__link"
               >
                 <span>
                   About us
                 </span>
-              </a>
+              </Link>
 
 
-              <a
-                href="#digital-solutions"
+              <Link
+                href="/Home#digital-solutions"
                 className="footer2__link"
               >
                 <span>
                   Services
                 </span>
-              </a>
+              </Link>
 
 
-              <a
-                href="#contact-lp1"
+              <Link
+                href="/Contact"
                 className="footer2__link"
               >
                 <span>
                   Contact Me
                 </span>
-              </a>
+              </Link>
 
             </div>
 

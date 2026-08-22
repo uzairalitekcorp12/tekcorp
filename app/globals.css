@@ -82,6 +82,15 @@
   --text-muted: #64748b;
   --text-light: #94a3b8;
 
+  --tek-heading-gradient:
+    linear-gradient(
+      84.4deg,
+      #17191a 1.6%,
+      rgba(23, 25, 26, 0.55) 31.82%,
+      #17191a 67.87%,
+      rgba(23, 25, 26, 0.55) 103.4%
+    );
+
   /* Borders */
   --border-light: rgba(0, 212, 170, 0.15);
   --border-subtle: #e2e8f0;

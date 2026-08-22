@@ -181,6 +181,46 @@
 }
 
 
+.lp1-articles__empty {
+  display: flex;
+
+  min-height: 180px;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 28px;
+
+  border:
+    1px
+    solid
+    #dfe5e2;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbfa,
+      #ffffff
+    );
+}
+
+
+.lp1-articles__empty p {
+  max-width: 560px;
+
+  margin: 0 !important;
+
+  color: #6f7572 !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.6 !important;
+}
+
+
 /* ==========================================================================
    ARTICLE CARD
    ========================================================================== */

@@ -1,116 +1,43 @@
-/** @type {import("next").NextConfig} */
+const rewrites = [
+  {
+    source: "/Home",
+    destination: "/?view=home",
+  },
+  {
+    source: "/About",
+    destination: "/?view=about",
+  },
+  {
+    source: "/Contact",
+    destination: "/?view=contact",
+  },
+  {
+    source: "/services/web-engineering",
+    destination: "/?view=web-engineering",
+  },
+  {
+    source: "/services/application-engineering",
+    destination: "/?view=application-engineering",
+  },
+  {
+    source: "/services/maintenance-support",
+    destination: "/?view=maintenance-support",
+  },
+  {
+    source: "/services/prototyping-ui-ux-design",
+    destination: "/?view=prototyping-ui-ux-design",
+  },
+  {
+    source: "/services/quality-assurance-testing",
+    destination: "/?view=quality-assurance-testing",
+  },
+];
+
 
 const nextConfig = {
-
-  /*
-   * ==========================================================================
-   * REACT COMPILER
-   * ==========================================================================
-   */
-
-  reactCompiler:
-    true,
-
-
-  /*
-   * ==========================================================================
-   * PRODUCTION HEADER
-   * ==========================================================================
-   */
-
-  poweredByHeader:
-    false,
-
-
-  /*
-   * ==========================================================================
-   * MAIN WEBSITE ROUTING
-   * ==========================================================================
-   *
-   * /
-   *
-   * is handled directly by:
-   *
-   * app/page.js
-   *
-   *
-   * /Home
-   *
-   * internally becomes:
-   *
-   * /?view=home
-   *
-   *
-   * /About
-   *
-   * internally becomes:
-   *
-   * /?view=about
-   *
-   *
-   * /Contact
-   *
-   * internally becomes:
-   *
-   * /?view=contact
-   *
-   *
-   * The browser keeps displaying the clean public URL.
-   *
-   * No separate:
-   *
-   * app/Home/page.jsx
-   * app/About/page.jsx
-   * app/Contact/page.jsx
-   *
-   * is required with this architecture.
-   * ==========================================================================
-   */
-
   async rewrites() {
-    return [
-
-      /* ----------------------------------------------------------------------
-         HOME
-         ---------------------------------------------------------------------- */
-
-      {
-        source:
-          "/Home",
-
-        destination:
-          "/?view=home",
-      },
-
-
-      /* ----------------------------------------------------------------------
-         ABOUT
-         ---------------------------------------------------------------------- */
-
-      {
-        source:
-          "/About",
-
-        destination:
-          "/?view=about",
-      },
-
-
-      /* ----------------------------------------------------------------------
-         CONTACT
-         ---------------------------------------------------------------------- */
-
-      {
-        source:
-          "/Contact",
-
-        destination:
-          "/?view=contact",
-      },
-
-    ];
+    return rewrites;
   },
-
 };
 
 

@@ -1,42 +1,32 @@
 import "./CaseStudies.css";
 
-const cases = [
-  {
-    title:
-      "Empowering Brands Through Mobile-First Digital Transformation",
-    category: "Mobile & Web App",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=82",
-    alt:
-      "Development team collaborating around screens in a modern tech office",
-    delayClass: "d1",
-    href: "#",
-  },
-  {
-    title:
-      "Enterprise Workflow Automation & Scalable Cloud Migration",
-    category: "SaaS & Automation",
-    image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=82",
-    alt:
-      "Software engineers discussing system architecture in front of monitors",
-    delayClass: "d2",
-    href: "#",
-  },
-  {
-    title:
-      "High-Scale E-Commerce & Omnichannel Digital Platform",
-    category: "UI/UX & Platform",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=82",
-    alt:
-      "Digital agency strategy team analyzing dashboard analytics on screen",
-    delayClass: "d3",
-    href: "#",
-  },
+import Link from "next/link";
+
+import CmsImage from
+  "@/app/main-website-components/CmsImage/CmsImage";
+
+
+const delayClasses = [
+  "d1",
+  "d2",
+  "d3",
 ];
 
-export default function CaseStudies() {
+
+export default function CaseStudies({
+  caseStudies = [],
+}) {
+  const visibleCaseStudies =
+    Array.isArray(
+      caseStudies,
+    )
+      ? caseStudies.filter(
+          (caseStudy) =>
+            caseStudy?.slug &&
+            caseStudy?.title,
+        )
+      : [];
+
   return (
     <section className="case-studies">
       <div className="case-studies__container">
@@ -77,21 +67,32 @@ export default function CaseStudies() {
         {/* ==================================================
             CASE STUDY CARDS
         ================================================== */}
-        <div className="case-studies__grid">
-          {cases.map((item) => (
+        {visibleCaseStudies.length > 0 ? (
+          <div className="case-studies__grid">
+          {visibleCaseStudies.map((item, index) => (
             <article
-              key={item.title}
-              className={`case-studies__card sr ${item.delayClass}`}
+              key={item._id || item.slug}
+              className={`case-studies__card sr ${
+                delayClasses[index] ||
+                ""
+              }`}
             >
-              <a
-                href={item.href}
+              <Link
+                href={`/case-studies/${encodeURIComponent(
+                  item.slug,
+                )}`}
                 className="case-studies__link"
               >
-                <img
-                  src={item.image}
-                  alt={item.alt}
+                <CmsImage
+                  src={
+                    item.thumbnail ||
+                    item.heroImage ||
+                    item.gallery?.[0] ||
+                    ""
+                  }
+                  alt=""
                   className="case-studies__image"
-                  loading="lazy"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                 />
 
                 <div
@@ -106,7 +107,7 @@ export default function CaseStudies() {
 
                 <div className="case-studies__content">
                   <span className="case-studies__category">
-                    {item.category}
+                    {item.category || "Case Study"}
                   </span>
 
                   <h4 className="case-studies__title">
@@ -134,10 +135,44 @@ export default function CaseStudies() {
                     </svg>
                   </span>
                 </div>
-              </a>
+              </Link>
             </article>
           ))}
-        </div>
+          </div>
+        ) : (
+          <div className="case-studies__empty sr">
+            <p>
+              New case studies are being prepared. Explore the
+              case-study library for all published work.
+            </p>
+
+            <Link
+              className="case-studies__empty-link"
+              href="/case-studies"
+            >
+              <span>
+                Explore Case Studies
+              </span>
+
+              <svg
+                className="case-studies__arrow"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

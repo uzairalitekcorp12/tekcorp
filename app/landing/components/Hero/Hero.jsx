@@ -1,10 +1,35 @@
 "use client";
 import "./Hero.css";
-import { useEffect, useRef, useState } from "react";
+import {
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
+
+import {
+  submitContactSubmission,
+} from "@/app/_actions/contact";
+
+
+const initialSubmissionState = {
+  success: false,
+  message: "",
+  field: "",
+};
 
 export default function Hero() {
   const heroRef = useRef(null);
+
+  const [
+    submissionState,
+    formAction,
+    isPending,
+  ] = useActionState(
+    submitContactSubmission,
+    initialSubmissionState,
+  );
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -52,12 +77,6 @@ export default function Hero() {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log("Submitted Quote Request:", formData);
   };
 
   return (
@@ -195,9 +214,25 @@ export default function Hero() {
             </h2>
 
             <form
-              onSubmit={handleSubmit}
+              action={formAction}
               className="hero-reference__form"
+              aria-busy={isPending}
             >
+              <input
+                type="hidden"
+                name="source"
+                value="landing-hero"
+              />
+
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: "none" }}
+              />
+
               {/* ROW 1 */}
               <div className="hero-reference__form-row">
                 <input
@@ -252,6 +287,7 @@ export default function Hero() {
                 value={formData.projectDetails}
                 onChange={handleChange}
                 rows={5}
+                required
                 className="hero-reference__textarea"
               />
 
@@ -259,9 +295,28 @@ export default function Hero() {
               <button
                 type="submit"
                 className="hero-reference__button"
+                disabled={isPending}
               >
-                Get Custom Development Quote
+                {isPending
+                  ? "Sending Quote Request..."
+                  : submissionState.success
+                    ? "Quote Request Received"
+                    : "Get Custom Development Quote"}
               </button>
+
+              {submissionState.message && (
+                <p
+                  className="hero-reference__form-status"
+                  role={
+                    submissionState.success
+                      ? "status"
+                      : "alert"
+                  }
+                  aria-live="polite"
+                >
+                  {submissionState.message}
+                </p>
+              )}
             </form>
           </div>
         </div>

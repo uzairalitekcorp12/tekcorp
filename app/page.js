@@ -7,17 +7,16 @@
  *
  * Happy coding lol : (
  *
- * TOTAL HOURS WASTED = 574
+ * TOTAL HOURS WASTED = 575
  */
 
-
 /*
- * ==========================================================================
- * TEKCORP — MAIN WEBSITE PAGE CONTROLLER
- * ==========================================================================
+ * ========================================================================== 
+ * TEKCORP — CENTRAL MAIN WEBSITE PAGE CONTROLLER
+ * ========================================================================== 
  *
- * MAIN WEBSITE ROUTES
- *
+ * PUBLIC MAIN WEBSITE ROUTES
+ * --------------------------------------------------------------------------
  * /
  *      -> Existing/current LandingPage
  *
@@ -30,87 +29,52 @@
  * /Contact
  *      -> Contact page
  *
+ * /services/web-engineering
+ *      -> Web Engineering service page
  *
- * We intentionally continue using one central:
+ * /services/application-engineering
+ *      -> Application Engineering service page
  *
- * app/page.js
+ * /services/maintenance-support
+ *      -> Maintenance & Support service page
  *
+ * /services/prototyping-ui-ux-design
+ *      -> Prototyping & UI/UX Design service page
  *
- * /Home, /About and /Contact are internally rewritten by:
+ * /services/quality-assurance-testing
+ *      -> Quality Assurance & Testing service page
  *
- * next.config.mjs
- *
- *
- * Browser:
- *
- * /Home
- *
- * Internal:
- *
- * /?view=home
- *
- *
- * Browser:
- *
- * /About
- *
- * Internal:
- *
- * /?view=about
- *
- *
- * Browser:
- *
- * /Contact
- *
- * Internal:
- *
- * /?view=contact
- *
- *
- * IMPORTANT:
- *
- * There is no separate App Router folder route required for these
- * main-website pages while this centralized routing architecture is used.
- * ==========================================================================
+ * next.config.mjs rewrites these public URLs into internal `view` values.
+ * The public browser URL remains clean and SEO-friendly.
+ * ========================================================================== 
  */
-
-
-/* ==========================================================================
-   CURRENT ROOT WEBSITE
-   ========================================================================== */
 
 import LandingPage from
   "./landing/LandingPage";
 
-
-/* ==========================================================================
-   HOME PAGE
-   ========================================================================== */
-
 import Home from
   "./main-website-pages/Home/Home";
-
-
-/* ==========================================================================
-   ABOUT PAGE
-   ========================================================================== */
 
 import About from
   "./main-website-pages/About/About";
 
-
-/* ==========================================================================
-   CONTACT PAGE
-   ========================================================================== */
-
 import Contact from
   "./main-website-pages/Contact/Contact";
 
+import WebEngineering from
+  "./main-website-pages/WebEngineering/WebEngineering";
 
-/* ==========================================================================
-   MAIN WEBSITE PAGE REGISTRY
-   ========================================================================== */
+import ApplicationEngineering from
+  "./main-website-pages/ApplicationEngineering/ApplicationEngineering";
+
+import MaintenanceSupport from
+  "./main-website-pages/MaintenanceSupport/MaintenanceSupport";
+
+import PrototypingDesign from
+  "./main-website-pages/PrototypingDesign/PrototypingDesign";
+
+import QualityAssuranceTesting from
+  "./main-website-pages/QualityAssuranceTesting/QualityAssuranceTesting";
 
 const MAIN_WEBSITE_PAGES = {
   home:
@@ -121,52 +85,116 @@ const MAIN_WEBSITE_PAGES = {
 
   contact:
     Contact,
+
+  "web-engineering":
+    WebEngineering,
+
+  "application-engineering":
+    ApplicationEngineering,
+
+  "maintenance-support":
+    MaintenanceSupport,
+
+  "prototyping-ui-ux-design":
+    PrototypingDesign,
+
+  "quality-assurance-testing":
+    QualityAssuranceTesting,
 };
-
-
-/* ==========================================================================
-   PAGE METADATA
-   ========================================================================== */
 
 const PAGE_METADATA = {
   home: {
     title:
       "Home",
 
+    canonical:
+      "/home",
+
     description:
       "TekCorp delivers digital transformation, software engineering, product development and scalable technology solutions.",
   },
-
 
   about: {
     title:
       "About Us",
 
+    canonical:
+      "/about",
+
     description:
       "Learn about TekCorp, our mission, ambition, team, technology partnerships and approach to building scalable digital solutions.",
   },
-
 
   contact: {
     title:
       "Contact Us",
 
+    canonical:
+      "/contact",
+
     description:
       "Start a conversation with TekCorp about your next website, software, AI, mobile, e-commerce or digital transformation project.",
   },
+
+  "web-engineering": {
+    title:
+      "Web Engineering Services",
+
+    canonical:
+      "/services/web-engineering",
+
+    description:
+      "Build fast, scalable and maintainable web platforms with TekCorp web engineering services, from architecture and frontend systems to APIs, performance and delivery.",
+  },
+
+  "application-engineering": {
+    title:
+      "Application Engineering Services",
+
+    canonical:
+      "/services/application-engineering",
+
+    description:
+      "Design and engineer reliable mobile, desktop and cross-platform applications with scalable architecture, polished user experiences and maintainable delivery practices.",
+  },
+
+  "maintenance-support": {
+    title:
+      "Maintenance & Support Services",
+
+    canonical:
+      "/services/maintenance-support",
+
+    description:
+      "Keep digital products reliable with TekCorp maintenance and support services, including tiered technical support, dedicated service ownership, monitoring and ongoing optimization.",
+  },
+
+  "prototyping-ui-ux-design": {
+    title:
+      "Prototyping & UI/UX Design Services",
+
+    canonical:
+      "/services/prototyping-ui-ux-design",
+
+    description:
+      "Validate ideas faster with TekCorp prototyping and UI/UX design services covering discovery, user flows, wireframes, research, high-fidelity interfaces and design systems.",
+  },
+
+  "quality-assurance-testing": {
+    title:
+      "Quality Assurance & Software Testing Services",
+
+    canonical:
+      "/services/quality-assurance-testing",
+
+    description:
+      "Improve product quality and release confidence with TekCorp quality assurance and software testing services, from requirements analysis and test planning to execution and reporting.",
+  },
 };
 
-
-/* ==========================================================================
-   VIEW NORMALIZER
-   ========================================================================== */
-
-function getView(
-  params,
-) {
+function getView(params) {
   const rawView =
     params?.view;
-
 
   if (
     typeof rawView !==
@@ -175,16 +203,10 @@ function getView(
     return "";
   }
 
-
   return rawView
     .trim()
     .toLowerCase();
 }
-
-
-/* ==========================================================================
-   GENERATE METADATA
-   ========================================================================== */
 
 export async function generateMetadata({
   searchParams,
@@ -192,40 +214,57 @@ export async function generateMetadata({
   const params =
     await searchParams;
 
-
   const view =
-    getView(
-      params,
-    );
-
-
-  /* ------------------------------------------------------------------------
-     REGISTERED MAIN WEBSITE PAGE
-     ------------------------------------------------------------------------ */
+    getView(params);
 
   if (
     view &&
-    PAGE_METADATA[
-      view
-    ]
+    Object.hasOwn(
+      PAGE_METADATA,
+      view,
+    )
   ) {
+    const page =
+      PAGE_METADATA[view];
+
     return {
       title:
-        PAGE_METADATA[
-          view
-        ].title,
+        page.title,
 
       description:
-        PAGE_METADATA[
-          view
-        ].description,
+        page.description,
+
+      alternates: {
+        canonical:
+          page.canonical,
+      },
+
+      openGraph: {
+        title:
+          `${page.title} | TekCorp`,
+
+        description:
+          page.description,
+
+        url:
+          page.canonical,
+
+        type:
+          "website",
+      },
+
+      twitter: {
+        card:
+          "summary_large_image",
+
+        title:
+          `${page.title} | TekCorp`,
+
+        description:
+          page.description,
+      },
     };
   }
-
-
-  /* ------------------------------------------------------------------------
-     EXISTING ROOT WEBSITE
-     ------------------------------------------------------------------------ */
 
   return {
     title: {
@@ -238,43 +277,22 @@ export async function generateMetadata({
   };
 }
 
-
-/* ==========================================================================
-   PAGE RENDERER
-   ========================================================================== */
-
 export default async function Page({
   searchParams,
 }) {
   const params =
     await searchParams;
 
-
   const view =
-    getView(
-      params,
-    );
-
-
-  /*
-   * Registered rewritten pages:
-   *
-   * /Home
-   * /About
-   * /Contact
-   *
-   * render from MAIN_WEBSITE_PAGES.
-   *
-   * Anything else — including "/" — keeps rendering
-   * the existing LandingPage.
-   */
+    getView(params);
 
   const SelectedPage =
-    MAIN_WEBSITE_PAGES[
-      view
-    ] ||
-    LandingPage;
-
+    Object.hasOwn(
+      MAIN_WEBSITE_PAGES,
+      view,
+    )
+      ? MAIN_WEBSITE_PAGES[view]
+      : LandingPage;
 
   return (
     <SelectedPage />

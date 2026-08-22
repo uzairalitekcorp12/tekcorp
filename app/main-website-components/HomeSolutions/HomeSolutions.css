@@ -180,14 +180,24 @@
    ========================================================================== */
 
 .lp1-display-heading {
-  background: linear-gradient(84.4deg, #17191A 1.6%, rgba(23, 25, 26, 0.55) 31.82%, #17191A 67.87%, rgba(23, 25, 26, 0.55) 103.4%) !important; 
+  background:
+    linear-gradient(
+      84.4deg,
+      #17191a 1.6%,
+      rgba(23, 25, 26, 0.55) 31.82%,
+      #17191a 67.87%,
+      rgba(23, 25, 26, 0.55) 103.4%
+    ) !important;
+
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
 
   margin: 0;
 
   color:
-    var(
-      --lp1-solutions-text
-    ) !important;
+    transparent !important;
+
+  -webkit-text-fill-color: transparent !important;
 
   font-family:
     var(

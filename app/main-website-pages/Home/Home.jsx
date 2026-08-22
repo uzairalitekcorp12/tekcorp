@@ -1,92 +1,32 @@
-import Navbar from
-  "@/app/_shared/Navbar/Navbar";
+import Navbar from "../../_shared/Navbar/Navbar";
+import ContactSection from "../../_shared/ContactSection/ContactSection";
+import Footer2 from "../../_shared/Footer/Footer2";
+
+import HomeHero from "../../main-website-components/HomeHero/HomeHero";
+import HomeSolutions from "../../main-website-components/HomeSolutions/HomeSolutions";
+import HomePortfolio from "../../main-website-components/HomePortfolio/HomePortfolio";
+import HomePartners from "../../main-website-components/HomePartners/HomePartners";
+import HomeArticles from "../../main-website-components/HomeArticles/HomeArticles";
 
 
-import Footer2 from
-  "@/app/_shared/Footer/Footer2";
-
-
-import HomeHero from
-  "@/app/main-website-components/HomeHero/HomeHero";
-
-
-import HomeSolutions from
-  "@/app/main-website-components/HomeSolutions/HomeSolutions";
-
-
-import HomePartners from
-  "@/app/main-website-components/HomePartners/HomePartners";
-
-
-import HomePortfolio from
-  "@/app/main-website-components/HomePortfolio/HomePortfolio";
-
-
-import HomeArticles from
-  "@/app/main-website-components/HomeArticles/HomeArticles";
-
-
-import ContactSection from
-  "@/app/_shared/ContactSection/ContactSection";
-
-
+/*
+ * HOME
+ * ----
+ * Canonical main website Home composition.
+ */
 export default function Home() {
-
   return (
-
-    <div
-      className="Home"
-      data-page="Home"
-    >
-
-      {/*
-       * ============================================================
-       * ADAPTIVE NAVBAR
-       * ============================================================
-       *
-       * While the Navbar overlaps:
-       *
-       * #Home-hero
-       *
-       * it is transparent.
-       *
-       * When the Hero passes above the Navbar,
-       * it automatically returns to its normal white appearance.
-       *
-       * Scrolling back into the Hero reverses the transition.
-       */}
-
-      <Navbar
-        variant="adaptive"
-        transparentTargetId="Home-hero"
-        initialActiveTab="Home"
-        homeHref="/home"
-        ctaHref="#contact-lp1"
-      />
-
+    <div className="Home">
+      <Navbar />
 
       <HomeHero />
-
-
       <HomeSolutions />
-
-
-      <HomePartners />
-
-
       <HomePortfolio />
-
-
+      <HomePartners />
       <HomeArticles />
-
-
       <ContactSection />
 
-
       <Footer2 />
-
     </div>
-
   );
-
 }

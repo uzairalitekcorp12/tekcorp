@@ -42,6 +42,11 @@ import FAQ from
   "./components/FAQ/FAQ";
 
 
+import {
+  getLandingPageContent,
+} from "@/app/_lib/data/homepage";
+
+
 /*
  * ==========================================================================
  * ORIGINAL TEKCORP LANDING PAGE
@@ -69,7 +74,11 @@ import FAQ from
  */
 
 
-export default function LandingPage() {
+export default async function LandingPage() {
+
+  const {
+    featuredCaseStudies,
+  } = await getLandingPageContent();
 
   return (
 
@@ -118,7 +127,9 @@ export default function LandingPage() {
       <WhyChooseUs />
 
 
-      <CaseStudies />
+      <CaseStudies
+        caseStudies={featuredCaseStudies}
+      />
 
 
       <Process />
