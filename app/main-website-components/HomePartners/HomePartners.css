@@ -1,0 +1,904 @@
+/* ==========================================================================
+   Home — STRATEGIC PARTNERS
+   ========================================================================== */
+
+.lp1-partners {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding:
+    0px
+    0
+    0px;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   MAIN CONTAINER
+   ========================================================================== */
+
+.lp1-partners__container {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(390px, 0.8fr);
+
+  align-items: center;
+
+  column-gap:
+    clamp(
+      65px,
+      8vw,
+      125px
+    );
+}
+
+
+/* ==========================================================================
+   LEFT CONTENT
+   ========================================================================== */
+
+.lp1-partners__content {
+  position: relative;
+
+  z-index: 5;
+
+  max-width:
+    475px;
+}
+
+
+/* ==========================================================================
+   HEADING
+   ========================================================================== */
+
+.lp1-partners__heading {
+  margin:
+    0
+    0
+    24px
+    !important;
+
+  padding:
+    0;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+
+  font-size:
+    clamp(
+      42px,
+      4.4vw,
+      61px
+    )
+    !important;
+
+  font-weight:
+    600
+    !important;
+
+  line-height:
+    0.98
+    !important;
+
+  letter-spacing:
+    -0.052em
+    !important;
+
+ background: linear-gradient(84.4deg, #17191A 1.6%, rgba(23, 25, 26, 0.55) 31.82%, #17191A 67.87%, rgba(23, 25, 26, 0.55) 103.4%);
+
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+}
+
+
+/* ==========================================================================
+   BODY COPY
+   ========================================================================== */
+
+.lp1-partners__text {
+  max-width:
+    440px;
+
+  margin:
+    0
+    0
+    19px
+    !important;
+
+  padding:
+    0;
+
+  color:
+    #777b79
+    !important;
+
+  -webkit-text-fill-color:
+    #777b79
+    !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+
+  font-size:
+    13px
+    !important;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.52
+    !important;
+
+  letter-spacing:
+    -0.012em;
+}
+
+
+.lp1-partners__text:last-of-type {
+  margin-bottom:
+    0
+    !important;
+}
+
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+
+.lp1-partners__button {
+  display:
+    inline-flex;
+
+  min-width:
+    143px;
+
+  min-height:
+    51px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  margin-top:
+    24px;
+
+  padding:
+    0
+    20px;
+
+  border:
+    1px
+    solid
+    rgba(
+      0,
+      0,
+      0,
+      0.04
+    );
+
+  border-radius:
+    6px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #777a79 0%,
+      #696c6b 100%
+    );
+
+  color:
+    #ffffff;
+
+  box-shadow:
+    0
+    8px
+    20px
+    rgba(
+      35,
+      38,
+      37,
+      0.08
+    );
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+
+  font-size:
+    12px;
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  text-decoration:
+    none;
+
+  transition:
+    transform
+      0.28s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    background
+      0.28s
+      ease,
+    box-shadow
+      0.28s
+      ease;
+}
+
+
+.lp1-partners__button svg {
+  flex-shrink:
+    0;
+
+  transition:
+    transform
+      0.28s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+.lp1-partners__button:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #343837 0%,
+      #242827 100%
+    );
+
+  box-shadow:
+    0
+    12px
+    28px
+    rgba(
+      20,
+      26,
+      24,
+      0.16
+    );
+
+  transform:
+    translateY(
+      -2px
+    );
+}
+
+
+.lp1-partners__button:hover svg {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* ==========================================================================
+   RIGHT VISUAL
+   ========================================================================== */
+
+.lp1-partners__visual {
+  position: relative;
+
+  width:
+    min(
+      100%,
+      470px
+    );
+
+  min-height:
+    405px;
+
+  justify-self:
+    end;
+}
+
+
+/* ==========================================================================
+   MINT CIRCLE
+   ========================================================================== */
+
+.lp1-partners__circle {
+  position: absolute;
+
+  top:
+    50%;
+
+  right:
+    12px;
+
+  width:
+    335px;
+
+  height:
+    335px;
+
+  border-radius:
+    50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #19dfbe 0%,
+      #10cba9 100%
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  transform:
+    translateY(
+      -47%
+    );
+}
+
+
+/* ==========================================================================
+   OUTER ORBIT
+   ========================================================================== */
+
+.lp1-partners__orbit {
+  position: absolute;
+
+  top:
+    24px;
+
+  right:
+    -15px;
+
+  width:
+    390px;
+
+  height:
+    390px;
+
+  border:
+    1px
+    dashed
+    rgba(
+      27,
+      219,
+      186,
+      0.23
+    );
+
+  border-radius:
+    50%;
+
+  opacity:
+    0.7;
+
+  pointer-events:
+    none;
+
+  animation:
+    lp1PartnersOrbit
+    32s
+    linear
+    infinite;
+}
+
+
+/* ==========================================================================
+   PERSON
+   ========================================================================== */
+
+.lp1-partners__photo {
+  position: absolute;
+
+  z-index:
+    3;
+
+  right:
+    1px;
+
+  bottom:
+    -2px;
+
+  width:
+    355px;
+
+  height:
+    405px;
+
+  overflow:
+    hidden;
+
+  pointer-events:
+    none;
+}
+
+
+.lp1-partners__photo img {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    block;
+
+  object-fit:
+    contain;
+
+  object-position:
+    center
+    bottom;
+
+  filter:
+    drop-shadow(
+      0
+      18px
+      24px
+      rgba(
+        27,
+        48,
+        42,
+        0.10
+      )
+    );
+
+  transform:
+    scale(
+      1.01
+    );
+
+  transform-origin:
+    bottom
+    center;
+}
+
+
+
+/* ==========================================================================
+   SUBTLE VISUAL HOVER
+   ========================================================================== */
+
+@media (
+  hover:
+  hover
+) and (
+  pointer:
+  fine
+) {
+
+  .lp1-partners__visual:hover
+  .lp1-partners__circle {
+    box-shadow:
+      0
+      18px
+      50px
+      rgba(
+        27,
+        219,
+        186,
+        0.12
+      );
+  }
+
+
+  .lp1-partners__visual:hover
+  .lp1-partners__photo img {
+    transform:
+      scale(
+        1.025
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes lp1PartnersOrbit {
+
+  from {
+    transform:
+      rotate(
+        0deg
+      );
+  }
+
+
+  to {
+    transform:
+      rotate(
+        360deg
+      );
+  }
+
+}
+
+
+@keyframes lp1PartnersCardFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(
+        0
+      );
+  }
+
+
+  50% {
+    transform:
+      translateY(
+        -6px
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 1000px
+   ========================================================================== */
+
+@media (
+  max-width:
+  1000px
+) {
+
+  .lp1-partners__container {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        340px,
+        0.9fr
+      );
+
+    column-gap:
+      45px;
+  }
+
+
+  .lp1-partners__visual {
+    min-height:
+      380px;
+  }
+
+
+  .lp1-partners__circle {
+    width:
+      305px;
+
+    height:
+      305px;
+  }
+
+
+  .lp1-partners__orbit {
+    width:
+      355px;
+
+    height:
+      355px;
+  }
+
+
+  .lp1-partners__photo {
+    width:
+      325px;
+
+    height:
+      380px;
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 820px
+   ========================================================================== */
+
+@media (
+  max-width:
+  820px
+) {
+
+  .lp1-partners {
+    padding:
+      78px
+      0
+      82px;
+  }
+
+
+  .lp1-partners__container {
+    grid-template-columns:
+      1fr;
+
+    row-gap:
+      58px;
+  }
+
+
+  .lp1-partners__content {
+    max-width:
+      560px;
+  }
+
+
+  .lp1-partners__visual {
+    width:
+      min(
+        100%,
+        470px
+      );
+
+    min-height:
+      405px;
+
+    justify-self:
+      center;
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 560px
+   ========================================================================== */
+
+@media (
+  max-width:
+  560px
+) {
+
+  .lp1-partners {
+    padding:
+      68px
+      0
+      70px;
+  }
+
+
+  .lp1-partners__heading {
+    margin-bottom:
+      20px
+      !important;
+
+    font-size:
+      clamp(
+        38px,
+        11vw,
+        48px
+      )
+      !important;
+  }
+
+
+  .lp1-partners__text {
+    font-size:
+      12.5px
+      !important;
+  }
+
+
+  .lp1-partners__button {
+    min-width:
+      132px;
+
+    min-height:
+      47px;
+  }
+
+
+  .lp1-partners__visual {
+    min-height:
+      335px;
+  }
+
+
+  .lp1-partners__circle {
+    right:
+      0;
+
+    width:
+      255px;
+
+    height:
+      255px;
+  }
+
+
+  .lp1-partners__orbit {
+    top:
+      22px;
+
+    right:
+      -18px;
+
+    width:
+      300px;
+
+    height:
+      300px;
+  }
+
+
+  .lp1-partners__photo {
+    right:
+      -2px;
+
+    width:
+      270px;
+
+    height:
+      325px;
+  }
+
+
+  .lp1-partners__odoo-card {
+    left:
+      0;
+
+    bottom:
+      4px;
+
+    min-width:
+      135px;
+
+    min-height:
+      65px;
+  }
+
+
+  .lp1-partners__odoo-logo {
+    font-size:
+      31px;
+  }
+
+
+  .lp1-partners__stars span {
+    font-size:
+      12px;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY SMALL MOBILE
+   ========================================================================== */
+
+@media (
+  max-width:
+  390px
+) {
+
+  .lp1-partners__visual {
+    min-height:
+      305px;
+  }
+
+
+  .lp1-partners__circle {
+    width:
+      225px;
+
+    height:
+      225px;
+  }
+
+
+  .lp1-partners__orbit {
+    width:
+      265px;
+
+    height:
+      265px;
+  }
+
+
+  .lp1-partners__photo {
+    width:
+      240px;
+
+    height:
+      295px;
+  }
+
+
+  .lp1-partners__odoo-card {
+    min-width:
+      125px;
+
+    padding:
+      9px
+      14px;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .lp1-partners__orbit,
+  .lp1-partners__odoo-card,
+  .lp1-partners__button,
+  .lp1-partners__button svg,
+  .lp1-partners__photo img {
+    animation:
+      none
+      !important;
+
+    transition:
+      none
+      !important;
+  }
+
+}

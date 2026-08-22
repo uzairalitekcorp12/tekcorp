@@ -1,0 +1,811 @@
+/* ==========================================================================
+   PAIN POINTS / BUSINESS CHALLENGES
+   ========================================================================== */
+
+.pain-reference {
+  width: 100%;
+
+  position: relative;
+
+  padding: 72px 0 82px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.pain-reference__container {
+  width: calc(100% - 64px);
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   TOP INTRO
+   ========================================================================== */
+
+.pain-reference__intro {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  column-gap: 72px;
+
+  align-items: start;
+
+  margin-bottom: 50px;
+}
+
+/* ==========================================================================
+   LEFT HEADING
+   ========================================================================== */
+
+.pain-reference__heading {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: clamp(31px, 3vw, 40px) !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.2 !important;
+
+  letter-spacing: -0.045em !important;
+}
+
+/*
+  Each line gets a continuous left-to-right gradient.
+  This closely matches your screenshot.
+*/
+
+.pain-reference__heading-line {
+  display: block;
+
+  width: max-content;
+
+  max-width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #1c1b1b 0%,
+    #252323 26%,
+    #332f30 48%,
+    #4a4546 72%,
+    #686263 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.pain-reference__heading-line + .pain-reference__heading-line {
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   RIGHT INTRO
+   ========================================================================== */
+
+.pain-reference__intro-right {
+  padding-top: 1px;
+}
+
+.pain-reference__intro-description {
+  margin: 0 !important;
+
+  max-width: 510px;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 18px !important;
+
+  font-weight: 400;
+
+  line-height: 1.35 !important;
+
+  letter-spacing: -0.015em;
+
+  color: #555253 !important;
+}
+
+.pain-reference__intro-strong {
+  width: max-content;
+
+  max-width: 100%;
+
+  margin: 15px 0 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 16px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.4 !important;
+
+  /*
+    Subtle dark-to-gray gradient to match
+    the visual language of the Hero.
+  */
+  background: linear-gradient(
+    90deg,
+    #201d1e 0%,
+    #2c292a 40%,
+    #4f4b4c 75%,
+    #686364 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   MAIN INTERACTIVE GRID
+   ========================================================================== */
+
+.pain-reference__content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
+  gap: 56px;
+
+  align-items: start;
+}
+
+/* ==========================================================================
+   PAIN POINT LIST
+   ========================================================================== */
+
+.pain-reference__list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.pain-reference__item {
+  width: 100%;
+
+  min-height: 66px;
+
+  display: grid;
+
+  grid-template-columns:
+    36px
+    minmax(0, 1fr)
+    30px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 16px;
+
+  text-align: left;
+
+  border: 1px solid #edf0ef;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.pain-reference__item:hover {
+  border-color: rgba(27, 219, 186, 0.35);
+
+  background: #f6fcfa;
+
+  transform: translateX(3px);
+}
+
+/* ACTIVE ITEM */
+
+.pain-reference__item.is-active {
+  background: #1bd9b8;
+
+  border-color: #1bd9b8;
+
+  transform: translateX(4px);
+
+  box-shadow:
+    0 10px 28px rgba(27, 217, 184, 0.18);
+}
+
+/* NUMBER */
+
+.pain-reference__number {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #aaa7a7;
+
+  transition: color 0.25s ease;
+}
+
+.pain-reference__item.is-active
+.pain-reference__number {
+  color: rgba(20, 30, 28, 0.55);
+}
+
+/* TITLE */
+
+.pain-reference__item-title {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  color: #3b3939;
+
+  transition: color 0.25s ease;
+}
+
+.pain-reference__item.is-active
+.pain-reference__item-title {
+  font-weight: 700;
+
+  color: #181b1a;
+}
+
+/* ARROW */
+
+.pain-reference__arrow {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  justify-self: end;
+
+  border-radius: 50%;
+
+  color: #969393;
+
+  background: #f6f7f7;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pain-reference__item:hover
+.pain-reference__arrow {
+  transform: translateX(2px);
+}
+
+.pain-reference__item.is-active
+.pain-reference__arrow {
+  color: #151918;
+
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* ==========================================================================
+   ACTIVE CARD
+   ========================================================================== */
+
+.pain-reference__card {
+  width: 100%;
+
+  overflow: hidden;
+
+  border:
+    1px
+    solid
+    rgba(27, 219, 186, 0.16);
+
+  border-radius: 18px;
+
+  background: #f2fbf8;
+
+  box-shadow:
+    0 16px 42px rgba(20, 38, 34, 0.06);
+
+  animation:
+    painCardEnter 0.45s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes painCardEnter {
+  from {
+    opacity: 0;
+
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   IMAGE
+   ========================================================================== */
+
+.pain-reference__image-wrap {
+  width: 100%;
+
+  height: 245px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.pain-reference__image {
+  object-fit: cover;
+
+  transition: transform 0.7s ease;
+}
+
+.pain-reference__card:hover
+.pain-reference__image {
+  transform: scale(1.025);
+}
+
+/* Overlay */
+
+.pain-reference__image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(12, 18, 17, 0.04) 40%,
+    rgba(12, 18, 17, 0.25) 100%
+  );
+
+  pointer-events: none;
+}
+
+/* ISSUE BADGE */
+
+.pain-reference__issue-badge {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  z-index: 3;
+
+  padding: 6px 10px;
+
+  border:
+    1px
+    solid
+    rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  background: rgba(18, 22, 21, 0.72);
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #1ee0be;
+
+  letter-spacing: 0.025em;
+}
+
+/* ==========================================================================
+   CARD BODY
+   ========================================================================== */
+
+.pain-reference__card-body {
+  position: relative;
+
+  padding: 25px 27px 28px;
+
+  border-left: 4px solid #1bd9b8;
+}
+
+.pain-reference__card-number {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #16b899;
+}
+
+.pain-reference__card-title {
+  margin: 0 0 10px !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 20px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.28 !important;
+
+  letter-spacing: -0.025em !important;
+
+  color: #232525 !important;
+}
+
+.pain-reference__card-description {
+  margin: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 14px !important;
+
+  font-weight: 400;
+
+  line-height: 1.55 !important;
+
+  color: #646969 !important;
+}
+
+/* ==========================================================================
+   INDICATORS
+   ========================================================================== */
+
+.pain-reference__indicators {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 14px;
+}
+
+.pain-reference__indicator {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  background: #dfe6e4;
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.pain-reference__indicator:hover {
+  background: #bfcac7;
+}
+
+.pain-reference__indicator.is-active {
+  width: 28px;
+
+  background: #1bd9b8;
+}
+
+/* ==========================================================================
+   RESPONSIVE — LAPTOP
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .pain-reference__container {
+    width: calc(100% - 56px);
+  }
+
+  .pain-reference__intro {
+    column-gap: 48px;
+  }
+
+  .pain-reference__content {
+    gap: 42px;
+  }
+
+  .pain-reference__image-wrap {
+    height: 225px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .pain-reference {
+    padding:
+      60px
+      0
+      70px;
+  }
+
+  .pain-reference__container {
+    width: calc(100% - 48px);
+
+    max-width: 760px;
+  }
+
+  .pain-reference__intro {
+    grid-template-columns: 1fr;
+
+    gap: 23px;
+
+    margin-bottom: 40px;
+  }
+
+  .pain-reference__intro-description {
+    max-width: 600px;
+  }
+
+  .pain-reference__content {
+    grid-template-columns: 1fr;
+
+    gap: 34px;
+  }
+
+  .pain-reference__image-wrap {
+    height: 300px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .pain-reference {
+    padding:
+      50px
+      0
+      58px;
+  }
+
+  .pain-reference__container {
+    width: calc(100% - 32px);
+  }
+
+  .pain-reference__intro {
+    gap: 18px;
+
+    margin-bottom: 32px;
+  }
+
+  .pain-reference__heading {
+    font-size:
+      clamp(
+        29px,
+        8vw,
+        35px
+      ) !important;
+
+    line-height: 1.17 !important;
+  }
+
+  .pain-reference__heading-line {
+    width: 100%;
+  }
+
+  .pain-reference__intro-description {
+    font-size: 16px !important;
+
+    line-height: 1.45 !important;
+  }
+
+  .pain-reference__intro-strong {
+    width: 100%;
+
+    margin-top: 11px !important;
+
+    font-size: 15px !important;
+  }
+
+  .pain-reference__desktop-break {
+    display: none;
+  }
+
+  /* LIST */
+
+  .pain-reference__list {
+    gap: 8px;
+  }
+
+  .pain-reference__item {
+    min-height: 62px;
+
+    grid-template-columns:
+      30px
+      minmax(0, 1fr)
+      28px;
+
+    gap: 9px;
+
+    padding:
+      12px
+      13px;
+
+    border-radius: 10px;
+  }
+
+  .pain-reference__item-title {
+    font-size: 13px;
+  }
+
+  .pain-reference__arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* CARD */
+
+  .pain-reference__card {
+    border-radius: 14px;
+  }
+
+  .pain-reference__image-wrap {
+    height: 220px;
+  }
+
+  .pain-reference__card-body {
+    padding:
+      21px
+      19px
+      23px;
+  }
+
+  .pain-reference__card-title {
+    font-size: 18px !important;
+  }
+
+  .pain-reference__card-description {
+    font-size: 13.5px !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 420px) {
+  .pain-reference {
+    padding-top: 44px;
+  }
+
+  .pain-reference__container {
+    width: calc(100% - 26px);
+  }
+
+  .pain-reference__heading {
+    font-size: 28px !important;
+  }
+
+  .pain-reference__intro-description {
+    font-size: 15px !important;
+  }
+
+  .pain-reference__intro-strong {
+    font-size: 14px !important;
+  }
+
+  .pain-reference__item {
+    grid-template-columns:
+      27px
+      minmax(0, 1fr)
+      26px;
+
+    padding:
+      11px
+      11px;
+  }
+
+  .pain-reference__number {
+    font-size: 11px;
+  }
+
+  .pain-reference__item-title {
+    font-size: 12.5px;
+  }
+
+  .pain-reference__image-wrap {
+    height: 195px;
+  }
+
+  .pain-reference__card-body {
+    padding:
+      18px
+      16px
+      20px;
+  }
+}

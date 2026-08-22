@@ -1,0 +1,18 @@
+TEKCORP REWRITE VALIDATION
+===========================
+
+Checked before packaging:
+- No generated application file references the retired Landingpage1/LandingPage name.
+- Root /Home /About /Contact controller mappings are normalized.
+- /insights and /case-studies are real App Router routes.
+- Historical Insights / CaseStudies capitalization redirects are included.
+- MongoDB-first data access is implemented.
+- Local/offline dummy data fallback is development-only.
+- Case-study filters match both category and tags.
+- Insights search is server-side and pagination-aware.
+- Pure non-JSX JS/MJS modules passed Node syntax parsing.
+- Demo SVG assets passed XML parsing.
+- Generated CSS files passed brace-balance checks.
+
+The package is designed as an overlay for the project structure supplied by the user.
+Existing unrelated components/assets can remain in place.

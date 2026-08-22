@@ -1,0 +1,28 @@
+.tek-content-loading {
+  display: flex;
+  min-height: 52vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(180deg, #fafbfa, #ffffff);
+  color: #6f7572;
+  font-size: 0.63rem;
+}
+
+
+.tek-content-loading__mark {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(27, 219, 186, 0.17);
+  border-top-color: var(--tek-green-dark);
+  border-radius: 50%;
+  animation: tekContentSpin 750ms linear infinite;
+}
+
+
+@keyframes tekContentSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

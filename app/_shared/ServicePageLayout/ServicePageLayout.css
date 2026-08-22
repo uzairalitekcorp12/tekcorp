@@ -1,0 +1,51 @@
+/* Shared readability floor for every service detail route. */
+.tek-service-route .service-inline-cta {
+  margin-top: 1.125rem;
+}
+
+.tek-service-route :where(p, li) {
+  line-height: 1.65;
+}
+
+.tek-service-route :where(
+  .application-engineering-overview__copy > p,
+  .application-engineering-phase__content p,
+  .web-engineering-step__content p,
+  .web-engineering-step__content li,
+  .quality-assurance-card p,
+  .quality-assurance-benefits__copy p,
+  .quality-assurance-benefits__copy li,
+  .prototyping-design-overview__copy > p,
+  .prototyping-design-process-row__copy > p,
+  .prototyping-design-phase-card p,
+  .maintenance-support-page p,
+  .maintenance-support-page li,
+  .service-projects__header > p,
+  .service-project-card__copy p
+) {
+  font-size: clamp(0.9rem, 0.86rem + 0.16vw, 1rem) !important;
+  line-height: 1.7 !important;
+}
+
+.tek-service-route .web-engineering-capability-card p {
+  font-size: clamp(0.625rem, 0.6rem + 0.08vw, 0.7rem) !important;
+  line-height: 1.6 !important;
+}
+
+.tek-service-route :where(
+  .application-engineering-kicker,
+  .web-engineering-kicker,
+  .quality-assurance-kicker,
+  .prototyping-design-kicker
+) {
+  font-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.825rem) !important;
+  line-height: 1.4 !important;
+}
+
+.tek-service-route :where(
+  .application-engineering-platforms span,
+  .service-project-card__category
+) {
+  font-size: clamp(0.78rem, 0.75rem + 0.1vw, 0.85rem) !important;
+  line-height: 1.5 !important;
+}

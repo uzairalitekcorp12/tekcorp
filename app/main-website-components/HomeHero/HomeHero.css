@@ -1,0 +1,1120 @@
+/* ==========================================================================
+   TEKCORP
+   LANDINGPAGE 1 HERO
+   ==========================================================================
+
+   TARGET DESIGN
+
+   - Full-screen video background
+   - Dark professional overlay
+   - Content aligned left
+   - Small teal eyebrow
+   - Large white heading
+   - Compact white/grey paragraph
+   - One minimal "Contact Now" CTA
+   - Small "Scroll Down" at bottom-left
+
+   No extra hero buttons.
+   No micro KPIs.
+   No video pause button.
+
+   ========================================================================== */
+
+
+/* ==========================================================================
+   HERO ROOT
+   ========================================================================== */
+
+.lp1-hero {
+  position: relative;
+
+  isolation: isolate;
+
+  width: 100%;
+
+  min-height:
+    max(
+      640px,
+      100svh
+    );
+
+  overflow: hidden;
+
+  background:
+    #09100f;
+
+  color:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   BACKGROUND MEDIA
+   ========================================================================== */
+
+.lp1-hero__media,
+.lp1-hero__overlay,
+.lp1-hero__noise {
+  position: absolute;
+
+  inset: 0;
+}
+
+
+.lp1-hero__media {
+  z-index: -5;
+
+  overflow: hidden;
+
+  background:
+    #0b1110;
+}
+
+
+/* ==========================================================================
+   VIDEO / FALLBACK IMAGE
+   ========================================================================== */
+
+.lp1-hero__video,
+.lp1-hero__fallback {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.lp1-hero__video {
+  object-position:
+    center center;
+
+  transform:
+    scale(1.015);
+}
+
+
+.lp1-hero__fallback {
+  object-position:
+    center center;
+}
+
+
+/* ==========================================================================
+   YOUTUBE BACKGROUND
+   ========================================================================== */
+
+.lp1-hero__video--embed {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width:
+    max(
+      100%,
+      177.7778vh
+    );
+
+  height:
+    max(
+      100%,
+      56.25vw
+    );
+
+  border: 0;
+
+  pointer-events: none;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+/* ==========================================================================
+   VIDEO OVERLAY
+
+   Stronger on the left where the text sits.
+
+   The right side remains visible so the actual
+   video/image subject is still clear.
+   ========================================================================== */
+
+.lp1-hero__overlay {
+  z-index: -4;
+
+  background:
+
+    linear-gradient(
+      90deg,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.86
+      )
+      0%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.74
+      )
+      29%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.53
+      )
+      49%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.24
+      )
+      72%,
+
+      rgba(
+        3,
+        10,
+        9,
+        0.27
+      )
+      100%
+    ),
+
+    linear-gradient(
+      180deg,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.14
+      )
+      0%,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.05
+      )
+      55%,
+
+      rgba(
+        2,
+        8,
+        7,
+        0.54
+      )
+      100%
+    );
+}
+
+
+/* ==========================================================================
+   SUBTLE FILM TEXTURE
+   ========================================================================== */
+
+.lp1-hero__noise {
+  z-index: -3;
+
+  pointer-events: none;
+
+  opacity: 0.075;
+
+  background-image:
+    radial-gradient(
+      rgba(
+        255,
+        255,
+        255,
+        0.42
+      )
+      0.45px,
+
+      transparent
+      0.45px
+    );
+
+  background-size:
+    5px
+    5px;
+
+  mix-blend-mode:
+    soft-light;
+}
+
+
+/* ==========================================================================
+   LIGHT BRAND AURA
+
+   Very subtle.
+   The reference does not need large glowing decorations.
+   ========================================================================== */
+
+.lp1-hero__aura {
+  position: absolute;
+
+  z-index: -2;
+
+  bottom: -260px;
+
+  left: -190px;
+
+  width: 470px;
+  height: 470px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+
+      rgba(
+        23,
+        211,
+        190,
+        0.13
+      ),
+
+      transparent
+      68%
+    );
+
+  filter:
+    blur(18px);
+}
+
+
+/* ==========================================================================
+   SITE SHELL
+   ========================================================================== */
+
+.lp1-shell {
+  width:
+    min(
+      calc(
+        100%
+        -
+        56px
+      ),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* ==========================================================================
+   HERO INNER
+   ========================================================================== */
+
+.lp1-hero__inner {
+  display: flex;
+
+  min-height:
+    inherit;
+
+  align-items: center;
+
+  padding-top:
+    clamp(
+      130px,
+      17vh,
+      170px
+    );
+
+  padding-bottom:
+    110px;
+}
+
+
+/* ==========================================================================
+   CONTENT
+
+   Approximate width follows the reference screenshot.
+   ========================================================================== */
+
+.lp1-hero__content {
+  position: relative;
+
+  width: 100%;
+
+  max-width:
+    600px;
+}
+
+
+/* ==========================================================================
+   EYEBROW
+   ========================================================================== */
+
+.lp1-hero__eyebrow {
+  margin:
+    0
+    0
+    12px;
+
+  color:
+    var(
+      --lp1-teal,
+      #18d5c0
+    );
+
+  font-size:
+    clamp(
+      0.66rem,
+      0.9vw,
+      0.78rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1.3;
+
+  letter-spacing:
+    -0.015em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   MAIN TITLE
+   ========================================================================== */
+
+.lp1-hero__title {
+  display: grid;
+
+  gap: 0;
+
+  max-width:
+    590px;
+
+  margin: 0;
+
+  color:
+    #ffffff !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+
+  font-size:
+    clamp(
+      3.55rem,
+      5vw,
+      4.9rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1.01;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+/* ==========================================================================
+   TITLE LINES
+   ========================================================================== */
+
+.lp1-hero__title > span {
+  display: block;
+
+  width:
+    fit-content;
+}
+
+
+/* ==========================================================================
+   SUPPORTING COPY
+
+   Kept compact like the supplied reference.
+   ========================================================================== */
+
+.lp1-hero__copy {
+  max-width:
+    535px;
+
+  margin:
+    18px
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size:
+    clamp(
+      0.71rem,
+      0.9vw,
+      0.82rem
+    );
+
+  font-weight:
+    400;
+
+  line-height:
+    1.63;
+
+  letter-spacing:
+    -0.012em;
+}
+
+
+/* ==========================================================================
+   CONTACT NOW
+
+   Reference uses a very simple text CTA rather than
+   a large capsule button.
+   ========================================================================== */
+
+.lp1-hero__contact {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top:
+    25px;
+
+  padding-bottom:
+    3px;
+
+  color:
+    #ffffff;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    600;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      220ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CONTACT UNDERLINE
+   ========================================================================== */
+
+.lp1-hero__contact::after {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 0;
+
+  left: 0;
+
+  height: 1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.65
+    );
+
+  content: "";
+
+  transform:
+    scaleX(1);
+
+  transform-origin:
+    right;
+
+  transition:
+    background
+      240ms
+      ease,
+    transform
+      240ms
+      ease;
+}
+
+
+.lp1-hero__contact svg {
+  transition:
+    transform
+      240ms
+      ease;
+}
+
+
+.lp1-hero__contact:hover {
+  color:
+    var(
+      --lp1-teal,
+      #18d5c0
+    );
+}
+
+
+.lp1-hero__contact:hover::after {
+  background:
+    var(
+      --lp1-teal,
+      #18d5c0
+    );
+
+  transform:
+    scaleX(0.72);
+}
+
+
+.lp1-hero__contact:hover svg {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* ==========================================================================
+   SCROLL DOWN
+
+   Positioned bottom-left like the supplied design.
+   ========================================================================== */
+
+.lp1-hero__scroll {
+  position: absolute;
+
+  z-index: 5;
+
+  bottom:
+    25px;
+
+  left:
+    max(
+      28px,
+      calc(
+        (
+          100vw
+          -
+          min(
+            calc(
+              100vw
+              -
+              56px
+            ),
+            1180px
+          )
+        )
+        /
+        2
+      )
+    );
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    400;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      240ms
+      ease;
+}
+
+
+.lp1-hero__scroll svg {
+  transition:
+    transform
+      280ms
+      ease;
+}
+
+
+.lp1-hero__scroll:hover {
+  color:
+    #ffffff;
+}
+
+
+.lp1-hero__scroll:hover svg {
+  transform:
+    translateY(
+      3px
+    );
+}
+
+
+/* ==========================================================================
+   LARGE LAPTOP
+   ========================================================================== */
+
+@media (
+  max-width: 1200px
+) {
+
+  .lp1-hero__content {
+    max-width:
+      560px;
+  }
+
+
+  .lp1-hero__title {
+    font-size:
+      clamp(
+        3.45rem,
+        5.25vw,
+        4.45rem
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (
+  max-width: 900px
+) {
+
+  .lp1-hero {
+    min-height:
+      max(
+        660px,
+        100svh
+      );
+  }
+
+
+  .lp1-hero__inner {
+    padding-top:
+      140px;
+
+    padding-bottom:
+      100px;
+  }
+
+
+  .lp1-hero__content {
+    max-width:
+      540px;
+  }
+
+
+  .lp1-hero__title {
+    max-width:
+      540px;
+
+    font-size:
+      clamp(
+        3.2rem,
+        7vw,
+        4rem
+      );
+  }
+
+
+  .lp1-hero__copy {
+    max-width:
+      490px;
+  }
+
+
+  /*
+   * Slightly stronger tablet overlay.
+   */
+
+  .lp1-hero__overlay {
+    background:
+
+      linear-gradient(
+        90deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.91
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.77
+        )
+        48%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.36
+        )
+        100%
+      ),
+
+      linear-gradient(
+        180deg,
+
+        rgba(
+          2,
+          8,
+          7,
+          0.16
+        ),
+
+        rgba(
+          2,
+          8,
+          7,
+          0.58
+        )
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (
+  max-width: 760px
+) {
+
+  .lp1-shell {
+    width:
+      min(
+        calc(
+          100%
+          -
+          30px
+        ),
+        1180px
+      );
+  }
+
+
+  .lp1-hero {
+    min-height:
+      max(
+        640px,
+        100svh
+      );
+  }
+
+
+  .lp1-hero__inner {
+    align-items:
+      center;
+
+    padding-top:
+      118px;
+
+    padding-bottom:
+      92px;
+  }
+
+
+  .lp1-hero__content {
+    max-width:
+      100%;
+  }
+
+
+  /* ======================================================================
+     MOBILE BACKGROUND READABILITY
+     ====================================================================== */
+
+  .lp1-hero__overlay {
+    background:
+
+      linear-gradient(
+        90deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.89
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.69
+        )
+        100%
+      ),
+
+      linear-gradient(
+        180deg,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.27
+        )
+        0%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.25
+        )
+        48%,
+
+        rgba(
+          3,
+          10,
+          9,
+          0.75
+        )
+        100%
+      );
+  }
+
+
+  /* ======================================================================
+     MOBILE EYEBROW
+     ====================================================================== */
+
+  .lp1-hero__eyebrow {
+    max-width:
+      90%;
+
+    margin-bottom:
+      11px;
+
+    font-size:
+      0.62rem;
+
+    line-height:
+      1.45;
+  }
+
+
+  /* ======================================================================
+     MOBILE TITLE
+     ====================================================================== */
+
+  .lp1-hero__title {
+    max-width:
+      100%;
+
+    font-size:
+      clamp(
+        2.8rem,
+        11.7vw,
+        4rem
+      );
+
+    line-height:
+      1;
+
+    letter-spacing:
+      -0.052em;
+  }
+
+
+  /* ======================================================================
+     MOBILE COPY
+     ====================================================================== */
+
+  .lp1-hero__copy {
+    max-width:
+      94%;
+
+    margin-top:
+      18px;
+
+    font-size:
+      0.73rem;
+
+    line-height:
+      1.65;
+  }
+
+
+  .lp1-hero__contact {
+    margin-top:
+      22px;
+  }
+
+
+  .lp1-hero__scroll {
+    bottom:
+      22px;
+
+    left:
+      15px;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (
+  max-width: 480px
+) {
+
+  /*
+   * On narrow phones, allowing the individual title spans
+   * to wrap naturally avoids overflowing horizontally.
+   */
+
+  .lp1-hero__title {
+    display: block;
+
+    font-size:
+      clamp(
+        2.55rem,
+        12.3vw,
+        3.45rem
+      );
+  }
+
+
+  .lp1-hero__title > span {
+    width: auto;
+  }
+
+
+  .lp1-hero__copy {
+    max-width:
+      100%;
+  }
+
+
+  /*
+   * Position video more centrally for portrait screens.
+   */
+
+  .lp1-hero__video,
+  .lp1-hero__fallback {
+    object-position:
+      center center;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY SMALL DEVICES
+   ========================================================================== */
+
+@media (
+  max-width: 360px
+) {
+
+  .lp1-hero__inner {
+    padding-top:
+      105px;
+  }
+
+
+  .lp1-hero__title {
+    font-size:
+      2.5rem;
+  }
+
+
+  .lp1-hero__eyebrow {
+    font-size:
+      0.57rem;
+  }
+
+
+  .lp1-hero__copy {
+    font-size:
+      0.69rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .lp1-hero__contact,
+  .lp1-hero__contact::after,
+  .lp1-hero__contact svg,
+  .lp1-hero__scroll,
+  .lp1-hero__scroll svg {
+    transition-duration:
+      0.01ms !important;
+  }
+
+}

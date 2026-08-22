@@ -1,0 +1,30 @@
+in the case study page check when i click ui ux design page goes to bottom we donot want that page remains there and add a slight animation of fetching or etc to make the component better . in this way it remains best . &#x20;
+
+in the insights main page verify the dates coming and etc are coming from db infuture and etc make these pages best by technalicatlity and hover animations and etc best .&#x20;
+
+in the insights ineer there is no profile picture of the posted blogger also handle it from the database . \
+**TekCorp Editorial**Product EngineeringAugust 20, 2026   for all dimensions and etc as user posted normally or generally . and for local use any png from assets of man or women . etc 1-5 png i guess .&#x20;
+
+Testimonials
+
+### Our Clients Love Working with Us! at this section in customer support service page use the homeportfolio component there and make it fixable there&#x20;
+
+
+
+also the 15+ anc 1000+ will come when user coming on the page buttom they increase and when hover they also increase and animate .&#x20;
+
+
+
+now in any service page this component **Selected Product Work**
+
+## Our Recent Projects
+
+A selection of digital products shaped through strategy, prototyping, interface design and close engineering collaboration. &#x20;
+
+
+
+will be removed and instead of that the component section of digital system from Home page will be used here in all sevices section present . which has this project component .&#x20;
+
+
+
+also by checking all the project structure make sure to make the website look good on all screens including phones mobiles laptops big screens and etc above 1600px above 2200 and etc screens so write queries in that way try to target all or etc . also when u check that project component is not usable renamve that and its using files to delete .&#x20;

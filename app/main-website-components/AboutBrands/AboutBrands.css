@@ -1,0 +1,868 @@
+/* ==========================================================================
+   TEKCORP
+   About — TRUSTED BRANDS
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION THEME
+   ========================================================================== */
+
+.tek-About-brands {
+  --tek-brands-bg:
+    #ffffff;
+
+  --tek-brands-cell:
+    #ffffff;
+
+  --tek-brands-cell-soft:
+    #f6f6f6;
+
+  /*
+   * KEEP THIS SOLID COLOR.
+   *
+   * Other elements can continue using this normally.
+   */
+  --tek-brands-heading:
+    #393735;
+
+  /*
+   * NEW:
+   * Dedicated gradient only for the brands heading.
+   *
+   * The fallback colors are important.
+   * If the global hero variables are unavailable,
+   * this gradient will STILL work.
+   */
+  --tek-brands-heading-gradient:
+    linear-gradient(84.4deg, #17191A 1.6%, rgba(23, 25, 26, 0.55) 31.82%, #17191A 67.87%, rgba(23, 25, 26, 0.55) 103.4%);
+
+
+  --tek-brands-text:
+    #767675;
+
+  --tek-brands-kicker:
+    #535452;
+
+  --tek-brands-teal:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+
+  position:
+    relative;
+
+  width:
+    100%;
+
+  overflow:
+    hidden;
+
+  padding:
+    69px
+    0
+    92px;
+
+  background:
+    var(
+      --tek-brands-bg
+    );
+}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.tek-About-brands__header {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  margin-bottom:
+    31px;
+
+  text-align:
+    center;
+}
+
+
+/* ==========================================================================
+   KICKER
+
+   Trusted Brands —
+   ========================================================================== */
+
+.tek-About-brands__kicker {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    4px;
+
+  margin:
+    0
+    0
+    7px !important;
+
+  color:
+    var(
+      --tek-brands-kicker
+    ) !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    ) !important;
+
+  font-size:
+    0.58rem !important;
+
+  font-weight:
+    500 !important;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.01em;
+
+  -webkit-text-fill-color:
+    var(
+      --tek-brands-kicker
+    ) !important;
+}
+
+
+/* ==========================================================================
+   KICKER LINE
+   ========================================================================== */
+
+.tek-About-brands__kicker > span {
+  display:
+    block;
+
+  width:
+    13px;
+
+  height:
+    1px;
+
+  background:
+    currentColor;
+}
+
+
+/* ==========================================================================
+   HEADING
+
+   IMPORTANT:
+   ----------
+   Gradient colors cannot be assigned to "color".
+
+   Instead:
+   1. Put gradient on background
+   2. Clip background to text
+   3. Make actual text transparent
+
+   width: fit-content ensures the gradient runs across the letters instead
+   of the full header/container width.
+   ========================================================================== */
+
+.tek-About-brands__header h2 {
+  display:
+    inline-block;
+
+  width:
+    fit-content;
+
+  max-width:
+    100%;
+
+  margin:
+    0 !important;
+
+
+  /* ------------------------------------------------------------------------
+     GRADIENT TEXT
+     ------------------------------------------------------------------------ */
+
+  background:
+    var(
+      --tek-brands-heading-gradient
+    ) !important;
+
+  background-size:
+    100%
+    100% !important;
+
+  background-position:
+    center !important;
+
+  background-repeat:
+    no-repeat !important;
+
+
+  /* Standard */
+  background-clip:
+    text !important;
+
+
+  /* Chrome / Safari / Edge */
+  -webkit-background-clip:
+    text !important;
+
+
+  /*
+   * Required.
+   *
+   * Do NOT put a gradient inside color or
+   * -webkit-text-fill-color.
+   */
+  color:
+    transparent !important;
+
+  -webkit-text-fill-color:
+    transparent !important;
+
+
+  /* ------------------------------------------------------------------------
+     TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    ) !important;
+
+  font-size:
+    clamp(
+      1.55rem,
+      2.45vw,
+      2.15rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.05 !important;
+
+  letter-spacing:
+    -0.045em !important;
+}
+
+
+/* ==========================================================================
+   GRID WRAPPER
+   ========================================================================== */
+
+.tek-About-brands__grid {
+  display:
+    grid;
+
+  width:
+    100%;
+
+  max-width:
+    890px;
+
+  margin-inline:
+    auto;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0;
+}
+
+
+/* ==========================================================================
+   BRAND CELL
+   ========================================================================== */
+
+.tek-About-brand-card {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  display:
+    flex;
+
+  min-width:
+    0;
+
+  min-height:
+    168px;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-start;
+
+  overflow:
+    hidden;
+
+  padding:
+    33px
+    22px
+    25px;
+
+  background:
+    var(
+      --tek-brands-cell
+    );
+
+  transition:
+    background
+      380ms
+      ease,
+    box-shadow
+      420ms
+      ease,
+    transform
+      430ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+
+  transition-delay:
+    var(
+      --tek-About-brand-delay,
+      0ms
+    );
+}
+
+
+/* ==========================================================================
+   SOFT CELLS
+   ========================================================================== */
+
+.tek-About-brand-card--soft {
+  background:
+    var(
+      --tek-brands-cell-soft
+    );
+}
+
+
+/* ==========================================================================
+   BRAND LOGO AREA
+   ========================================================================== */
+
+.tek-About-brand-card__logo {
+  display:
+    flex;
+
+  width:
+    100%;
+
+  height:
+    36px;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-start;
+}
+
+
+/* ==========================================================================
+   LOGO IMAGE
+   ========================================================================== */
+
+.tek-About-brand-card__logo img {
+  display:
+    block;
+
+  width:
+    auto;
+
+  height:
+    auto;
+
+  max-width:
+    89px;
+
+  max-height:
+    28px;
+
+  object-fit:
+    contain;
+
+  object-position:
+    left
+    center;
+
+  transform-origin:
+    left
+    center;
+
+  transition:
+    filter
+      350ms
+      ease,
+    transform
+      450ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+/* ==========================================================================
+   DESCRIPTION
+   ========================================================================== */
+
+.tek-About-brand-card > p {
+  max-width:
+    167px;
+
+  margin:
+    14px
+    0
+    0 !important;
+
+  color:
+    var(
+      --tek-brands-text
+    ) !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    ) !important;
+
+  font-size:
+    0.59rem !important;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.48 !important;
+
+  letter-spacing:
+    -0.01em;
+
+  -webkit-text-fill-color:
+    var(
+      --tek-brands-text
+    ) !important;
+}
+
+
+/* ==========================================================================
+   HOVER ACCENT
+   ========================================================================== */
+
+.tek-About-brand-card__accent {
+  position:
+    absolute;
+
+  bottom:
+    0;
+
+  left:
+    0;
+
+  width:
+    100%;
+
+  height:
+    2px;
+
+  background:
+    var(
+      --tek-brands-teal
+    );
+
+  opacity:
+    0;
+
+  transform:
+    scaleX(
+      0
+    );
+
+  transform-origin:
+    left
+    center;
+
+  transition:
+    opacity
+      300ms
+      ease,
+    transform
+      500ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+/* ==========================================================================
+   SUBTLE BACKGROUND GLOW
+   ========================================================================== */
+
+.tek-About-brand-card::before {
+  position:
+    absolute;
+
+  z-index:
+    -1;
+
+  top:
+    -95px;
+
+  right:
+    -95px;
+
+  width:
+    190px;
+
+  height:
+    190px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+
+      rgba(
+        27,
+        219,
+        186,
+        0.09
+      ),
+
+      transparent
+      68%
+    );
+
+  content:
+    "";
+
+  opacity:
+    0;
+
+  pointer-events:
+    none;
+
+  transform:
+    scale(
+      0.7
+    );
+
+  transition:
+    opacity
+      380ms
+      ease,
+    transform
+      550ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+}
+
+
+/* ==========================================================================
+   DESKTOP HOVER
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .tek-About-brand-card:hover {
+    z-index:
+      4;
+
+    background:
+      #ffffff;
+
+    box-shadow:
+      0
+      18px
+      42px
+      rgba(
+        21,
+        45,
+        38,
+        0.075
+      );
+
+    transform:
+      translateY(
+        -4px
+      );
+  }
+
+
+  .tek-About-brand-card:hover::before {
+    opacity:
+      1;
+
+    transform:
+      scale(
+        1
+      );
+  }
+
+
+  .tek-About-brand-card:hover
+  .tek-About-brand-card__logo
+  img {
+    transform:
+      translateY(
+        -2px
+      )
+      scale(
+        1.035
+      );
+  }
+
+
+  .tek-About-brand-card:hover
+  .tek-About-brand-card__accent {
+    opacity:
+      1;
+
+    transform:
+      scaleX(
+        1
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 840px) {
+
+  .tek-About-brands {
+    padding:
+      68px
+      0
+      82px;
+  }
+
+
+  .tek-About-brands__grid {
+    max-width:
+      600px;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .tek-About-brand-card {
+    min-height:
+      165px;
+
+    padding:
+      31px
+      26px;
+  }
+
+
+  .tek-About-brand-card > p {
+    max-width:
+      195px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 560px) {
+
+  .tek-About-brands {
+    padding:
+      60px
+      0
+      70px;
+  }
+
+
+  .tek-About-brands__header {
+    margin-bottom:
+      27px;
+  }
+
+
+  .tek-About-brands__header h2 {
+    font-size:
+      clamp(
+        1.55rem,
+        8vw,
+        2rem
+      ) !important;
+  }
+
+
+  .tek-About-brands__grid {
+    max-width:
+      100%;
+  }
+
+
+  .tek-About-brand-card {
+    min-height:
+      150px;
+
+    padding:
+      27px
+      20px;
+  }
+
+
+  .tek-About-brand-card__logo {
+    height:
+      31px;
+  }
+
+
+  .tek-About-brand-card__logo img {
+    max-width:
+      80px;
+
+    max-height:
+      25px;
+  }
+
+
+  .tek-About-brand-card > p {
+    max-width:
+      170px;
+
+    margin-top:
+      12px !important;
+
+    font-size:
+      0.56rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 390px) {
+
+  .tek-About-brands__grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .tek-About-brand-card {
+    min-height:
+      135px;
+
+    padding:
+      25px
+      24px;
+  }
+
+
+  .tek-About-brand-card:nth-child(
+    odd
+  ) {
+    background:
+      var(
+        --tek-brands-cell-soft
+      );
+  }
+
+
+  .tek-About-brand-card:nth-child(
+    even
+  ) {
+    background:
+      var(
+        --tek-brands-cell
+      );
+  }
+
+
+  .tek-About-brand-card > p {
+    max-width:
+      240px;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tek-About-brand-card,
+  .tek-About-brand-card::before,
+  .tek-About-brand-card__logo img,
+  .tek-About-brand-card__accent {
+    transition-duration:
+      0.01ms !important;
+  }
+
+}

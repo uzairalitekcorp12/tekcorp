@@ -1,0 +1,58 @@
+.tek-content-pagination {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+
+.tek-content-pagination__page,
+.tek-content-pagination__arrow {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 1px solid #e4e7e5;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #313533;
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 250ms var(--tek-ease);
+}
+
+
+.tek-content-pagination__page:hover,
+.tek-content-pagination__arrow:hover {
+  border-color: #171918;
+  background: #171918;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+
+.tek-content-pagination__page.is-active {
+  border-color: var(--tek-green);
+  background: var(--tek-green);
+  color: #08251f;
+}
+
+
+.tek-content-pagination__arrow.is-disabled {
+  opacity: 0.3;
+}
+
+
+.tek-content-pagination__ellipsis {
+  display: grid;
+  width: 25px;
+  height: 35px;
+  place-items: center;
+  color: #8a8f8c;
+  font-size: 0.65rem;
+}
