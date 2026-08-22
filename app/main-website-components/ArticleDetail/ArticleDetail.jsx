@@ -13,11 +13,15 @@ import {
 } from "lucide-react";
 
 import {
+  useEffect,
   useMemo,
   useState,
 } from "react";
 
 import CmsImage from "../CmsImage/CmsImage";
+import {
+  contentImage,
+} from "../CmsImage/contentImages";
 
 
 const DATE_FORMATTER =
@@ -142,7 +146,16 @@ function ArticleVisual({
   return (
     <span className="article-detail__image">
       <CmsImage
-        src={src}
+        src={
+          src ||
+          contentImage(
+            {
+              title:
+                alt,
+            },
+            "insight",
+          )
+        }
         alt={alt}
         fallbackClassName="article-detail__image-fallback"
         fallbackLabel={alt || "TekCorp Insight"}
@@ -496,6 +509,13 @@ export default function ArticleDetail({
 
   const slug =
     safeSlug(article.slug);
+
+  useEffect(() => {
+    window.scrollTo(
+      0,
+      0,
+    );
+  }, [slug]);
 
   const category =
     textValue(article.category) ||

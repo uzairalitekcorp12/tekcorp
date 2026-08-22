@@ -5,12 +5,14 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  Search,
-  X,
 } from "lucide-react";
 
 import CmsImage from "../CmsImage/CmsImage";
+import {
+  contentImage,
+} from "../CmsImage/contentImages";
 import ContentPagination from "../ContentPagination/ContentPagination";
+import InsightsSearch from "./InsightsSearch";
 
 
 const DATE_FORMATTER =
@@ -87,7 +89,11 @@ function ArticleImage({
     <CmsImage
       src={
         article?.thumbnail ||
-        article?.heroImage
+        article?.heroImage ||
+        contentImage(
+          article,
+          "insight",
+        )
       }
       alt={textValue(article?.title)}
       className={className}
@@ -308,62 +314,9 @@ export default function InsightsPage({
           </nav>
 
 
-          <form
-            className="insights-page__search"
-            action="/insights"
-            method="get"
-            role="search"
-          >
-            <Search
-              size={18}
-              strokeWidth={1.7}
-              aria-hidden="true"
-            />
-
-            <label
-              className="tek-sr-only"
-              htmlFor="insights-search"
-            >
-              Search articles
-            </label>
-
-            <input
-              id="insights-search"
-              type="search"
-              name="search"
-              defaultValue={safeSearch}
-              placeholder="Search here..."
-              maxLength={100}
-              autoComplete="off"
-            />
-
-            {safeSearch ? (
-              <Link
-                className="insights-page__search-clear"
-                href="/insights"
-                aria-label="Clear article search"
-              >
-                <X
-                  size={15}
-                  strokeWidth={1.9}
-                />
-              </Link>
-            ) : null}
-
-            <button
-              type="submit"
-              className="insights-page__search-submit"
-            >
-              <span>
-                Search
-              </span>
-
-              <ArrowRight
-                size={14}
-                strokeWidth={1.9}
-              />
-            </button>
-          </form>
+          <InsightsSearch
+            initialSearch={safeSearch}
+          />
         </div>
       </section>
 

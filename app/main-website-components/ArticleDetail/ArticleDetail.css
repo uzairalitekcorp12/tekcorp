@@ -19,11 +19,12 @@
   grid-template-columns: minmax(0, 1fr) 270px;
   align-items: center;
   gap: 60px;
-  padding: 44px 0;
+  padding: 88px 0 44px;
 }
 
 
 .article-detail__masthead h1 {
+  min-width: 0;
   max-width: 720px;
   margin: 0 !important;
   background: var(--tek-heading-gradient);
@@ -35,12 +36,14 @@
   letter-spacing: -0.052em;
   line-height: 1.08;
   text-wrap: balance;
+  overflow-wrap: anywhere;
   -webkit-text-fill-color: transparent !important;
 }
 
 
 .article-detail__breadcrumb {
   display: flex;
+  min-width: 0;
   max-width: 760px;
   align-items: center;
   gap: 5px;
@@ -245,6 +248,8 @@
 
 
 .article-detail__prose p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
   margin: 0 0 18px !important;
   color: #3a3e3b !important;
   font-size: 0.72rem;
@@ -263,6 +268,7 @@
 
 
 .article-detail__prose h2 {
+  overflow-wrap: anywhere;
   margin: 27px 0 14px !important;
   color: #171918 !important;
   font-size: clamp(1.75rem, 2.8vw, 2.5rem);
@@ -285,6 +291,8 @@
 
 
 .article-detail__content-image figcaption {
+  max-width: calc(100% - 20px);
+  overflow-wrap: anywhere;
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -459,6 +467,8 @@
 
 
 .article-related__copy h3 {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin: 0 !important;
   color: #171918 !important;
   font-size: 0.78rem;
@@ -545,6 +555,8 @@
 
 
 .article-detail__more > header h2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin: 0 !important;
   color: #454947 !important;
   font-size: clamp(1.9rem, 3.2vw, 2.65rem);
@@ -609,7 +621,7 @@
 @media (max-width: 620px) {
   .article-detail__masthead-grid {
     min-height: 0;
-    padding: 39px 0;
+    padding: 74px 0 39px;
   }
 
   .article-detail__masthead h1 {

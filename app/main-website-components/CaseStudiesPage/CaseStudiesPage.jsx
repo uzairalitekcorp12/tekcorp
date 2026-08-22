@@ -7,6 +7,9 @@ import {
 } from "lucide-react";
 
 import CmsImage from "../CmsImage/CmsImage";
+import {
+  contentImage,
+} from "../CmsImage/contentImages";
 import ContentPagination from "../ContentPagination/ContentPagination";
 
 
@@ -120,7 +123,11 @@ function CaseStudyCard({
         <CmsImage
           src={
             caseStudy.thumbnail ||
-            caseStudy.heroImage
+            caseStudy.heroImage ||
+            contentImage(
+              caseStudy,
+              "case-study",
+            )
           }
           alt={caseStudy.title}
           className="case-studies-page__image"

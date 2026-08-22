@@ -37,6 +37,7 @@
 
 
 .case-detail__masthead h1 {
+  min-width: 0;
   max-width: 960px;
   margin: 0 !important;
   background: var(--tek-heading-gradient);
@@ -48,12 +49,14 @@
   letter-spacing: -0.06em !important;
   line-height: 0.99 !important;
   text-wrap: balance;
+  overflow-wrap: anywhere;
   -webkit-text-fill-color: transparent !important;
 }
 
 
 .case-detail__breadcrumb {
   display: flex;
+  min-width: 0;
   max-width: 780px;
   align-items: center;
   gap: 5px;
@@ -159,6 +162,7 @@
 
 
 .case-detail__lead h2 {
+  overflow-wrap: anywhere;
   margin: 0 0 17px !important;
   color: #454947 !important;
   font-size: clamp(2.1rem, 3.8vw, 3.35rem);
@@ -171,6 +175,8 @@
 
 .case-detail__lead p,
 .case-detail__section p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
   margin: 0 0 17px !important;
   color: #6d7470 !important;
   font-size: 0.69rem;
@@ -235,6 +241,8 @@
 
 
 .case-detail__section h3 {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin: -3px 0 10px !important;
   color: #171918 !important;
   font-size: clamp(1.13rem, 1.8vw, 1.5rem);
@@ -270,6 +278,8 @@
 
 
 .case-detail__gallery-item figcaption {
+  max-width: calc(100% - 22px);
+  overflow-wrap: anywhere;
   position: absolute;
   right: 11px;
   bottom: 10px;

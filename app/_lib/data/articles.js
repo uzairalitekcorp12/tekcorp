@@ -62,6 +62,83 @@ function escapeRegex(value) {
 }
 
 
+function searchTerms(value) {
+  return Array.from(
+    new Set(
+      String(
+        value ?? "",
+      )
+        .normalize(
+          "NFKC",
+        )
+        .toLowerCase()
+        .match(
+          /[\p{L}\p{N}]+/gu,
+        ) || [],
+    ),
+  )
+    .filter(
+      (term) => term.length > 1,
+    )
+    .slice(
+      0,
+      12,
+    );
+}
+
+
+function articleSearchText(article) {
+  return [
+    article.title,
+    article.excerpt,
+    article.category,
+    article.author?.name,
+    ...(Array.isArray(article.tags)
+      ? article.tags
+      : []),
+    ...(Array.isArray(article.content)
+      ? article.content.flatMap(
+          (block) => [
+            block?.text,
+            block?.alt,
+          ],
+        )
+      : []),
+  ]
+    .map(textValue)
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+
+function articleRelevance(article, terms) {
+  const title =
+    textValue(article.title).toLowerCase();
+  const category =
+    textValue(article.category).toLowerCase();
+  const tags =
+    (Array.isArray(article.tags)
+      ? article.tags
+      : [])
+      .map(textValue)
+      .join(" ")
+      .toLowerCase();
+  const searchable =
+    articleSearchText(article);
+
+  return terms.reduce(
+    (score, term) =>
+      score +
+      (title.includes(term) ? 12 : 0) +
+      (category.includes(term) ? 8 : 0) +
+      (tags.includes(term) ? 6 : 0) +
+      (searchable.includes(term) ? 1 : 0),
+    0,
+  );
+}
+
+
 function normalizeRouteSlug(value) {
   let clean =
     textValue(value);
@@ -104,59 +181,35 @@ function serialize(value) {
 
 
 function buildSearchCondition(search) {
-  const value =
-    textValue(
-      search,
-    );
+  const terms =
+    searchTerms(search);
 
-  if (!value) {
+  if (!terms.length) {
     return {};
   }
 
-  const regex =
-    new RegExp(
-      escapeRegex(
-        value,
-      ),
-      "i",
-    );
-
   return {
-    $or: [
-      {
-        title:
-          regex,
-      },
+    $and: terms.map(
+      (term) => {
+        const regex =
+          new RegExp(
+            escapeRegex(term),
+            "i",
+          );
 
-      {
-        excerpt:
-          regex,
+        return {
+          $or: [
+            { title: regex },
+            { excerpt: regex },
+            { category: regex },
+            { tags: regex },
+            { "author.name": regex },
+            { "content.text": regex },
+            { "content.alt": regex },
+          ],
+        };
       },
-
-      {
-        category:
-          regex,
-      },
-
-      {
-        tags:
-          regex,
-      },
-
-      {
-        "author.name":
-          regex,
-      },
-
-      {
-        "content.text":
-          regex,
-      },
-        {
-          "content.alt":
-            regex,
-        },
-    ],
+    ),
   };
 }
 
@@ -165,12 +218,10 @@ function localSearchMatches(
   article,
   search,
 ) {
-  const value =
-    textValue(
-      search,
-    ).toLowerCase();
+  const terms =
+    searchTerms(search);
 
-  if (!value) {
+  if (!terms.length) {
     return true;
   }
 
@@ -209,8 +260,11 @@ function localSearchMatches(
       )
       .toLowerCase();
 
-  return searchable.includes(
-    value,
+  return terms.every(
+    (term) =>
+      searchable.includes(
+        term,
+      ),
   );
 }
 
@@ -403,6 +457,61 @@ export async function getArticles({
         };
       },
   });
+}
+
+
+export async function getArticleSuggestions({
+  search = "",
+  limit = 6,
+} = {}) {
+  const terms =
+    searchTerms(search);
+
+  if (!terms.length) {
+    return [];
+  }
+
+  const result =
+    await getArticles({
+      search,
+      page: 1,
+      limit: 24,
+    });
+
+  return result.articles
+    .map(
+      (article, index) => ({
+        article,
+        index,
+        score: articleRelevance(
+          article,
+          terms,
+        ),
+      }),
+    )
+    .sort(
+      (left, right) =>
+        right.score - left.score ||
+        left.index - right.index,
+    )
+    .slice(0, limit)
+    .map(
+      ({ article }) => ({
+        _id: article._id,
+        title: article.title,
+        slug: article.slug,
+        category: article.category,
+        excerpt: article.excerpt,
+        thumbnail:
+          article.thumbnail ||
+          article.heroImage ||
+          "",
+        publishedAt:
+          article.publishedAt ||
+          article.createdAt ||
+          "",
+      }),
+    );
 }
 
 

@@ -23,19 +23,27 @@ import "server-only";
 
 
 const ARTICLE_IMAGES = [
-  "/assets/Service-assets/Projects/project-01.png",
-  "/assets/Service-assets/Projects/project-02.png",
-  "/assets/Service-assets/Projects/project-03.png",
-  "/assets/Service-assets/Projects/project-04.png",
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85",
 ];
 
 
 const CASE_STUDY_IMAGES = [
-  "/assets/Service-assets/Projects/project-01.png",
-  "/assets/Service-assets/Projects/project-02.png",
-  "/assets/Service-assets/Projects/project-03.png",
-  "/assets/Service-assets/Projects/project-04.png",
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1800&q=85",
 ];
+
+
+const LONG_ARTICLE_BODY =
+  "A production content page rarely contains only a short summary. Teams may need to explain the original constraint, the decisions that shaped the implementation, the trade-offs that were accepted and the operational lessons that followed. This longer fixture intentionally exercises readable paragraph rhythm, line wrapping, search indexing and responsive behavior across the article detail layout. It also gives future CMS records a realistic baseline for content length without requiring a component rewrite.\n\nWhen content becomes more detailed, the page should remain calm and scannable. Headings should create useful pauses, images should stay inside their containers, captions should wrap naturally and long URLs should never push the page wider than the viewport. These are ordinary editorial conditions, so the local content mirrors them during development.";
+
+
+const LONG_CASE_STUDY_BODY =
+  "The project involved several teams, competing priorities and a workflow that had grown over time. Before implementation, TekCorp mapped the main user journeys, clarified ownership across the system and identified the moments where unclear information created repeated work. This made it possible to prioritize the highest-value improvements while keeping the delivery plan practical.\n\nThe final experience needed to work for everyday users as well as internal operators. That meant balancing a clear interface with dependable data handling, responsive behavior, accessible actions and an architecture that could accept future integrations. The case study content intentionally includes multiple paragraphs so the detail page can be evaluated with realistic client-provided copy.";
 
 
 function makeArticle({
@@ -132,7 +140,7 @@ function makeArticle({
           "paragraph",
 
         text:
-          "Successful digital products connect business goals, user experience and technical decisions early. That creates a roadmap where the product can grow without adding unnecessary complexity every time a new feature is introduced.",
+          `${LONG_ARTICLE_BODY}`,
       },
 
       {
@@ -387,7 +395,7 @@ function makeCaseStudy({
           "The challenge",
 
         content:
-          "The existing workflow introduced unnecessary operational friction and made important actions harder for users and internal teams to complete consistently.",
+          `${LONG_CASE_STUDY_BODY}`,
       },
 
       {
@@ -395,7 +403,7 @@ function makeCaseStudy({
           "Our approach",
 
         content:
-          "Discovery, interface design and engineering were treated as one delivery flow. Reusable components, explicit data contracts and measurable acceptance criteria kept the implementation aligned.",
+          `${LONG_CASE_STUDY_BODY} Discovery, interface design and engineering were treated as one delivery flow. Reusable components, explicit data contracts and measurable acceptance criteria kept the implementation aligned.`,
       },
 
       {
@@ -403,7 +411,7 @@ function makeCaseStudy({
           "The outcome",
 
         content:
-          "The resulting product improved usability, reduced repeated work and established a stronger technical foundation for future releases and integrations.",
+          `${LONG_CASE_STUDY_BODY} The resulting product improved usability, reduced repeated work and established a stronger technical foundation for future releases and integrations.`,
       },
     ],
 

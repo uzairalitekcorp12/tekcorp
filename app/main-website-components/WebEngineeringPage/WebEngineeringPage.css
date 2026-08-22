@@ -144,6 +144,7 @@
   border-color: rgba(27, 219, 186, .22);
   box-shadow: 0 13px 28px rgba(20, 40, 34, .06);
   transform: translateY(-3px);
+  background: rgba(27, 219, 186, .03);
 }
 
 .web-engineering-capability-card__icon {

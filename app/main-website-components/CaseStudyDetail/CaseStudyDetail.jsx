@@ -1,12 +1,21 @@
+"use client";
+
 import "./CaseStudyDetail.css";
 
 import Link from "next/link";
+
+import {
+  useEffect,
+} from "react";
 
 import {
   ArrowUpRight,
 } from "lucide-react";
 
 import CmsImage from "../CmsImage/CmsImage";
+import {
+  contentImage,
+} from "../CmsImage/contentImages";
 
 
 function textValue(value) {
@@ -78,7 +87,16 @@ function DetailImage({
   return (
     <span className="case-detail__image">
       <CmsImage
-        src={src}
+        src={
+          src ||
+          contentImage(
+            {
+              title:
+                alt,
+            },
+            "case-study",
+          )
+        }
         alt={alt}
         fallbackClassName="case-detail__image-fallback"
         fallbackLabel={alt}
@@ -93,6 +111,16 @@ function DetailImage({
 export default function CaseStudyDetail({
   caseStudy = {},
 }) {
+  const slug =
+    textValue(caseStudy.slug);
+
+  useEffect(() => {
+    window.scrollTo(
+      0,
+      0,
+    );
+  }, [slug]);
+
   const title =
     textValue(caseStudy.title) ||
     "TekCorp Case Study";
