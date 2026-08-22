@@ -348,10 +348,16 @@
 
 
 .case-studies-page__details:hover > span:last-child {
-  border-color: var(--tek-green);
-  background: var(--tek-green);
-  color: #08251f;
+  border-color: var(--lp1-teal, #1bdbba);
+  background: #171918;
+  color: var(--lp1-teal, #1bdbba);
   transform: rotate(45deg);
+}
+
+
+.case-studies-page__details:hover > span:last-child svg {
+  color: var(--lp1-teal, #1bdbba);
+  stroke: currentColor;
 }
 
 

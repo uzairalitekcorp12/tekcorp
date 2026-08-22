@@ -63,10 +63,19 @@ function escapeRegex(value) {
 
 
 function normalizeRouteSlug(value) {
-  const clean =
-    textValue(
-      value,
-    )
+  let clean =
+    textValue(value);
+
+  try {
+    clean = decodeURIComponent(clean);
+  } catch {
+    return "";
+  }
+
+  clean =
+    clean
+      .split(/[?#]/, 1)[0]
+      .replace(/^https?:\/\/[^/]+/i, "")
       .toLowerCase()
       .replace(
         /^\/?insights\//i,
@@ -143,6 +152,10 @@ function buildSearchCondition(search) {
         "content.text":
           regex,
       },
+        {
+          "content.alt":
+            regex,
+        },
     ],
   };
 }
@@ -176,11 +189,15 @@ function localSearchMatches(
         article.content,
       )
         ? article.content.map(
-            (block) =>
+            (block) => [
               block?.text,
+              block?.alt,
+              block?.image,
+            ],
           )
         : []),
     ]
+      .flat()
       .map(
         textValue,
       )

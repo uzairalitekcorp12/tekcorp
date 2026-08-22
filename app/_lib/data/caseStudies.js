@@ -73,10 +73,19 @@ function escapeRegex(value) {
 
 
 function normalizeRouteSlug(value) {
-  const clean =
-    textValue(
-      value,
-    )
+  let clean =
+    textValue(value);
+
+  try {
+    clean = decodeURIComponent(clean);
+  } catch {
+    return "";
+  }
+
+  clean =
+    clean
+      .split(/[?#]/, 1)[0]
+      .replace(/^https?:\/\/[^/]+/i, "")
       .toLowerCase()
       .replace(
         /^\/?case-studies\//i,
@@ -126,28 +135,9 @@ function buildCategoryCondition(category) {
       "i",
     );
 
-  /*
-   * Filter by either the main category or one of the project tags.
-   *
-   * Example:
-   *
-   * category: "Products"
-   * tags: ["UI/UX Design", "JavaScript"]
-   *
-   * The same project can correctly appear under all three filters.
-   */
   return {
-    $or: [
-      {
-        category:
-          exact,
-      },
-
-      {
-        tags:
-          exact,
-      },
-    ],
+    category:
+      exact,
   };
 }
 
@@ -169,22 +159,9 @@ function localCategoryMatches(
     return true;
   }
 
-  return [
+  return textValue(
     caseStudy.category,
-    ...(Array.isArray(
-      caseStudy.tags,
-    )
-      ? caseStudy.tags
-      : []),
-  ]
-    .map(
-      textValue,
-    )
-    .some(
-      (item) =>
-        item.toLowerCase() ===
-        value,
-    );
+  ).toLowerCase() === value;
 }
 
 
@@ -453,36 +430,20 @@ export async function getCaseStudyCategories() {
       async () => {
         await connectMongoDB();
 
-        const [
-          categories,
-          tags,
-        ] =
-          await Promise.all([
-            CaseStudy.distinct(
-              "category",
-              {
-                status:
-                  "published",
-              },
-            ),
-
-            CaseStudy.distinct(
-              "tags",
-              {
-                status:
-                  "published",
-              },
-            ),
-          ]);
+        const categories =
+          await CaseStudy.distinct(
+            "category",
+            {
+              status:
+                "published",
+            },
+          );
 
 
         const unique =
           Array.from(
             new Map(
-              [
-                ...categories,
-                ...tags,
-              ]
+              categories
                 .map(
                   textValue,
                 )
@@ -510,15 +471,9 @@ export async function getCaseStudyCategories() {
           Array.from(
             new Map(
               LOCAL_CASE_STUDIES
-                .flatMap(
-                  (caseStudy) => [
+                .map(
+                  (caseStudy) =>
                     caseStudy.category,
-                    ...(Array.isArray(
-                      caseStudy.tags,
-                    )
-                      ? caseStudy.tags
-                      : []),
-                  ],
                 )
                 .map(
                   textValue,

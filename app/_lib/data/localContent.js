@@ -23,22 +23,18 @@ import "server-only";
 
 
 const ARTICLE_IMAGES = [
-  "/assets/About-assets/1.png",
-  "/assets/About-assets/2.png",
-  "/assets/About-assets/3.png",
-  "/assets/About-assets/4.png",
-  "/assets/About-assets/5.png",
-  "/assets/Home-assets/home-img-1.png",
+  "/assets/Service-assets/Projects/project-01.png",
+  "/assets/Service-assets/Projects/project-02.png",
+  "/assets/Service-assets/Projects/project-03.png",
+  "/assets/Service-assets/Projects/project-04.png",
 ];
 
 
 const CASE_STUDY_IMAGES = [
-  "/assets/About-assets/1.png",
-  "/assets/About-assets/2.png",
-  "/assets/About-assets/3.png",
-  "/assets/About-assets/4.png",
-  "/assets/About-assets/5.png",
-  "/assets/Home-assets/home-img-1.png",
+  "/assets/Service-assets/Projects/project-01.png",
+  "/assets/Service-assets/Projects/project-02.png",
+  "/assets/Service-assets/Projects/project-03.png",
+  "/assets/Service-assets/Projects/project-04.png",
 ];
 
 

@@ -32,8 +32,19 @@ function textValue(value) {
 
 
 function safeSlug(value) {
-  const slug =
-    textValue(value)
+  let slug =
+    textValue(value);
+
+  try {
+    slug = decodeURIComponent(slug);
+  } catch {
+    return "";
+  }
+
+  slug =
+    slug
+      .split(/[?#]/, 1)[0]
+      .replace(/^https?:\/\/[^/]+/i, "")
       .toLowerCase()
       .replace(/^\/?insights\//i, "")
       .replace(/^\/+|\/+$/g, "");

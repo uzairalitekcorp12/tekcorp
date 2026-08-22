@@ -18,8 +18,19 @@ function textValue(value) {
 
 
 function safeSlug(value) {
-  const slug =
-    textValue(value)
+  let slug =
+    textValue(value);
+
+  try {
+    slug = decodeURIComponent(slug);
+  } catch {
+    return "";
+  }
+
+  slug =
+    slug
+      .split(/[?#]/, 1)[0]
+      .replace(/^https?:\/\/[^/]+/i, "")
       .toLowerCase()
       .replace(
         /^\/?case-studies\//i,
@@ -296,19 +307,27 @@ export default function CaseStudiesPage({
         ) : (
           <div className="case-studies-page__empty">
             <span>
-              NO MATCH
+              {activeCategory.toLowerCase() === "all"
+                ? "NO CASE STUDIES"
+                : "NO CATEGORY MATCH"}
             </span>
 
             <h2>
-              No case studies were found.
+              {activeCategory.toLowerCase() === "all"
+                ? "No case studies are available right now."
+                : `No case studies found in ${activeCategory}.`}
             </h2>
 
             <p>
-              Choose another category or return to the complete portfolio.
+              {activeCategory.toLowerCase() === "all"
+                ? "Published projects will appear here when they are ready."
+                : "Choose another category or return to the complete portfolio."}
             </p>
 
             <Link href="/case-studies">
-              View all projects
+              {activeCategory.toLowerCase() === "all"
+                ? "Refresh projects"
+                : "View all projects"}
             </Link>
           </div>
         )}
