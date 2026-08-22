@@ -17,7 +17,10 @@ import HomeArticles from "../../main-website-components/HomeArticles/HomeArticle
 export default function Home() {
   return (
     <div className="Home">
-      <Navbar />
+      <Navbar
+        variant="adaptive"
+        transparentTargetId="Home-hero"
+      />
 
       <HomeHero />
       <HomeSolutions />
