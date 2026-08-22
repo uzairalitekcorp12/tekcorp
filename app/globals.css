@@ -344,6 +344,34 @@
 }
 
 
+/* Shared shell for the public content routes. */
+
+.tek-content-shell {
+  width: min(1180px, calc(100% - 108px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.tek-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+@media (max-width: 700px) {
+  .tek-content-shell {
+    width: calc(100% - 30px);
+  }
+}
+
+
 .section-padding {
   padding-top: 5rem;
   padding-bottom: 5rem;
