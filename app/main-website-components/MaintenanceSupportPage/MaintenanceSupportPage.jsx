@@ -26,7 +26,6 @@ function ArrowUpRightIcon({
       aria-hidden="true"
     >
       <path d="M7 17 17 7" />
-
       <path d="M7 7h10v10" />
     </svg>
   );
@@ -49,7 +48,6 @@ function ArrowLeftIcon({
       aria-hidden="true"
     >
       <path d="M19 12H5" />
-
       <path d="m11 18-6-6 6-6" />
     </svg>
   );
@@ -72,7 +70,6 @@ function ArrowRightIcon({
       aria-hidden="true"
     >
       <path d="M5 12h14" />
-
       <path d="m13 6 6 6-6 6" />
     </svg>
   );
@@ -103,7 +100,6 @@ function SupportIcon() {
       />
 
       <path d="M9 12h6" />
-
       <path d="M12 9v6" />
     </svg>
   );
@@ -124,7 +120,6 @@ function ExperienceIcon() {
       aria-hidden="true"
     >
       <path d="m12 3 2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2L7.8 16l.8-4.7L5.2 8l4.7-.7L12 3Z" />
-
       <path d="M8 20h8" />
     </svg>
   );
@@ -145,11 +140,8 @@ function OptimizationIcon() {
       aria-hidden="true"
     >
       <path d="M4 19V9" />
-
       <path d="M10 19V5" />
-
       <path d="M16 19v-7" />
-
       <path d="M22 19V3" />
     </svg>
   );
@@ -297,7 +289,7 @@ export default function MaintenanceSupportPage() {
 
 
   /* ==========================================================================
-     TESTIMONIAL SCROLL
+     TESTIMONIAL CAROUSEL
      ========================================================================== */
 
   function scrollTestimonials(
@@ -312,18 +304,24 @@ export default function MaintenanceSupportPage() {
     }
 
 
-    const amount =
-      Math.max(
-        260,
-        track.clientWidth * 0.72,
+    const firstCard =
+      track.querySelector(
+        ".maintenance-support-testimonial-card",
       );
+
+
+    const cardWidth =
+      firstCard
+        ?.getBoundingClientRect()
+        .width ||
+      280;
 
 
     track.scrollBy({
       left:
         direction === "next"
-          ? amount
-          : -amount,
+          ? cardWidth + 14
+          : -(cardWidth + 14),
 
       behavior:
         "smooth",
@@ -366,7 +364,7 @@ export default function MaintenanceSupportPage() {
             </a>
 
 
-            <span>
+            <span aria-hidden="true">
               ›
             </span>
 
@@ -376,7 +374,7 @@ export default function MaintenanceSupportPage() {
             </a>
 
 
-            <span>
+            <span aria-hidden="true">
               ›
             </span>
 
@@ -479,18 +477,17 @@ export default function MaintenanceSupportPage() {
 
         <div className="service-page-shell maintenance-support-managers__grid">
 
+          {/* COPY */}
+
           <div
             className="maintenance-support-managers__copy"
             data-reveal="left"
           >
 
-            <span className="maintenance-support-section-kicker">
-              Dedicated service ownership
-            </span>
-
-
             <h2>
-              Dedicated Account Managers
+              Dedicated Account
+              <br />
+              Managers
             </h2>
 
 
@@ -510,11 +507,14 @@ export default function MaintenanceSupportPage() {
 
 
             <a
-              href="/Contact"
+              href="/contact"
               className="maintenance-support-link"
             >
 
-              Start Now
+              <span>
+                Start Now
+              </span>
+
 
               <ArrowUpRightIcon />
 
@@ -523,38 +523,90 @@ export default function MaintenanceSupportPage() {
           </div>
 
 
+          {/* VISUAL */}
+
           <div
             className="maintenance-support-managers__media"
             data-reveal="right"
           >
 
-            <div
-              className="maintenance-support-managers__media-ring"
-              aria-hidden="true"
-            />
+            <div className="maintenance-support-manager-visual">
+
+              {/* subtle glow */}
+
+              <span
+                className="maintenance-support-manager-visual__glow"
+                aria-hidden="true"
+              />
 
 
-            <div
-              className="maintenance-support-managers__orbit maintenance-support-managers__orbit--one"
-              aria-hidden="true"
-            />
+              {/* outer orbital circles */}
+
+              <span
+                className="maintenance-support-manager-visual__orbit maintenance-support-manager-visual__orbit--outer"
+                aria-hidden="true"
+              />
 
 
-            <div
-              className="maintenance-support-managers__orbit maintenance-support-managers__orbit--two"
-              aria-hidden="true"
-            />
+              <span
+                className="maintenance-support-manager-visual__orbit maintenance-support-manager-visual__orbit--inner"
+                aria-hidden="true"
+              />
 
 
-            <Image
-              src="/assets/Service-assets/MaintenanceSupport/dedicated-account-manager.png"
-              alt="Dedicated technology support account manager"
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 700px) 330px, (max-width: 900px) 360px, 430px"
-              className="maintenance-support-managers__image"
-            />
+              {/* teal circle */}
+
+              <div
+                className="maintenance-support-manager-visual__disc"
+                aria-hidden="true"
+              >
+
+                <span className="maintenance-support-manager-visual__curve maintenance-support-manager-visual__curve--one" />
+
+                <span className="maintenance-support-manager-visual__curve maintenance-support-manager-visual__curve--two" />
+
+                <span className="maintenance-support-manager-visual__curve maintenance-support-manager-visual__curve--three" />
+
+              </div>
+
+
+              {/* small ambient dots */}
+
+              <span
+                className="maintenance-support-manager-visual__dot maintenance-support-manager-visual__dot--one"
+                aria-hidden="true"
+              />
+
+
+              <span
+                className="maintenance-support-manager-visual__dot maintenance-support-manager-visual__dot--two"
+                aria-hidden="true"
+              />
+
+
+              <span
+                className="maintenance-support-manager-visual__dot maintenance-support-manager-visual__dot--three"
+                aria-hidden="true"
+              />
+
+
+              {/* actual transparent PNG */}
+
+              <div className="maintenance-support-manager-visual__image-stage">
+
+                <Image
+                  src="/assets/Service-assets/MaintenanceSupport/dedicated-account-manager.png"
+                  alt="Dedicated technology support account manager"
+                  fill
+                  priority
+                  unoptimized
+                  sizes="(max-width: 520px) 88vw, (max-width: 800px) 390px, 460px"
+                  className="maintenance-support-managers__image"
+                />
+
+              </div>
+
+            </div>
 
           </div>
 
@@ -607,12 +659,18 @@ export default function MaintenanceSupportPage() {
 
             <div className="maintenance-support-channels__media">
 
+              <span
+                className="maintenance-support-channels__ambient"
+                aria-hidden="true"
+              />
+
+
               <Image
                 src="/assets/Service-assets/MaintenanceSupport/support-channels.png"
                 alt="Mobile support channels and service portal interfaces"
                 fill
                 unoptimized
-                sizes="(max-width: 700px) calc(100vw - 74px), (max-width: 900px) 45vw, 540px"
+                sizes="(max-width: 700px) calc(100vw - 74px), (max-width: 900px) 45vw, 520px"
                 className="maintenance-support-channels__image"
               />
 
@@ -636,9 +694,7 @@ export default function MaintenanceSupportPage() {
 
         <div className="service-page-shell maintenance-support-proof__grid">
 
-          {/* ==============================================================
-              LEFT
-              ============================================================== */}
+          {/* METRICS */}
 
           <div
             className="maintenance-support-proof__metrics"
@@ -652,9 +708,7 @@ export default function MaintenanceSupportPage() {
 
             <h2 id="maintenance-proof-title">
               Transforming Visions into
-
               <br />
-
               pixel-perfect Reality
             </h2>
 
@@ -664,9 +718,7 @@ export default function MaintenanceSupportPage() {
               <article className="maintenance-support-metric-card">
 
                 <span className="maintenance-support-metric-card__icon">
-
                   <ExperienceIcon />
-
                 </span>
 
 
@@ -691,9 +743,7 @@ export default function MaintenanceSupportPage() {
               <article className="maintenance-support-metric-card">
 
                 <span className="maintenance-support-metric-card__icon">
-
                   <OptimizationIcon />
-
                 </span>
 
 
@@ -719,9 +769,7 @@ export default function MaintenanceSupportPage() {
           </div>
 
 
-          {/* ==============================================================
-              RIGHT — TESTIMONIAL CAROUSEL
-              ============================================================== */}
+          {/* TESTIMONIALS */}
 
           <div
             className="maintenance-support-proof__testimonials"
@@ -755,7 +803,7 @@ export default function MaintenanceSupportPage() {
                       "previous",
                     )
                   }
-                  aria-label="View previous testimonials"
+                  aria-label="View previous testimonial"
                 >
                   <ArrowLeftIcon />
                 </button>
@@ -768,7 +816,7 @@ export default function MaintenanceSupportPage() {
                       "next",
                     )
                   }
-                  aria-label="View next testimonials"
+                  aria-label="View next testimonial"
                 >
                   <ArrowRightIcon />
                 </button>
