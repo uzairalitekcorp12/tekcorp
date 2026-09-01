@@ -1,0 +1,24 @@
+/* Icons communicate campaign stages more clearly than decorative numbering. */
+.social-engine h3 {
+  margin-top: 3.75rem;
+}
+
+.social-campaign__steps div {
+  grid-template-columns: 2.5rem 1fr;
+  min-height: 3.5rem;
+}
+
+.social-campaign__steps span {
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  border-radius: .55rem;
+  background: rgba(27, 219, 186, .09);
+  color: var(--cap-teal-dark);
+}
+
+.social-campaign__steps strong {
+  font-size: .9rem;
+  line-height: 1.4;
+}

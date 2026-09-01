@@ -22,7 +22,7 @@
 
 .solution-detail__hero {
   position: relative;
-  padding: 56px 0 64px;
+  padding: 42px 0 48px;
   background: #fff;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .solution-detail__overview-section {
-  padding: 68px 0;
+  padding: 56px 0;
   background: #f5f6f6;
 }
 
@@ -233,7 +233,7 @@
 
 .solution-detail__benefits-section,
 .solution-detail__services-section {
-  padding: 80px 0;
+  padding: 56px 0;
   background: #fff;
 }
 
@@ -605,7 +605,7 @@
   display: grid;
   width: min(calc(100% - 56px), 1180px);
   min-height: 380px;
-  margin: 68px auto 78px;
+  margin: 56px auto;
   place-items: center;
   overflow: hidden;
   border: 1px solid rgba(22, 65, 55, .14);
@@ -818,7 +818,7 @@
   }
 
   .solution-detail__hero {
-    padding: 56px 0 72px;
+    padding: 40px 0 44px;
   }
 
   .solution-detail__hero h1 {

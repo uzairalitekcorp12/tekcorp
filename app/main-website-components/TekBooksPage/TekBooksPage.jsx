@@ -4,12 +4,17 @@ import "./TekBooksPage.polish.css";
 
 import Link from "next/link";
 import {
+  ArrowRight,
   ArrowUpRight,
   BarChart3,
   BookOpen,
   Check,
+  CircleDollarSign,
+  ClipboardCheck,
   FileText,
+  Link2,
   Receipt,
+  TrendingUp,
   Users,
 } from "lucide-react";
 import CapabilityMedia from "../CapabilityMedia/CapabilityMedia";
@@ -40,6 +45,20 @@ const modules = [
     "See the financial pulse of the business without digging through disconnected spreadsheets.",
     BarChart3,
   ],
+];
+
+const smeOutcomes = [
+  [Link2, "Less fragmentation", "Bring core bookkeeping activity into one connected product."],
+  [ClipboardCheck, "Better discipline", "Keep transactions attached to the customer, supplier and business event behind them."],
+  [TrendingUp, "Clearer decisions", "Make routine financial information easier to review and discuss."],
+];
+
+const financialFlow = [
+  [Users, "Customer / Supplier"],
+  [Receipt, "Invoice / Expense"],
+  [CircleDollarSign, "Payment / Settlement"],
+  [BookOpen, "Ledger Movement"],
+  [BarChart3, "Business Report"],
 ];
 
 export default function TekBooksPage() {
@@ -104,13 +123,13 @@ export default function TekBooksPage() {
               A practical finance workspace for the work SMEs do every day.
             </h2>
           </header>
-          <div className="tekbooks-modules__grid">
+          <div className="tekbooks-modules__grid" role="list">
             {modules.map(([title, text, Icon], index) => (
-              <article key={title} className={index === 0 ? "is-featured" : ""}>
-                <span className="tekbooks-modules__icon">
+              <article key={title} className={index === 0 ? "is-featured" : ""} role="listitem">
+                <span className="tekbooks-modules__icon" aria-hidden="true">
                   <Icon aria-hidden="true" size={18} />
                 </span>
-                <em>0{index + 1}</em>
+                <em aria-hidden="true">0{index + 1}</em>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>
@@ -142,18 +161,12 @@ export default function TekBooksPage() {
               mean.
             </p>
           </div>
-          <div className="tekbooks-flow__rail">
-            {[
-              "Customer / Supplier",
-              "Invoice / Expense",
-              "Payment / Settlement",
-              "Ledger Movement",
-              "Business Report",
-            ].map((item, index) => (
-              <div key={item}>
-                <span>0{index + 1}</span>
+          <div className="tekbooks-flow__rail" role="list">
+            {financialFlow.map(([Icon, item], index) => (
+              <div key={item} role="listitem">
+                <span className="tekbooks-flow__icon" aria-hidden="true"><Icon size={18} /></span>
                 <strong>{item}</strong>
-                {index < 4 ? <i aria-hidden="true">→</i> : null}
+                {index < financialFlow.length - 1 ? <i aria-hidden="true"><ArrowRight size={15} /></i> : null}
               </div>
             ))}
           </div>
@@ -209,27 +222,14 @@ export default function TekBooksPage() {
               Useful enough for finance. Simple enough for everyday operations.
             </h2>
           </header>
-          <div className="tekbooks-sme__grid">
-            <article>
-              <span>01</span>
-              <strong>Less fragmentation</strong>
-              <p>Bring core bookkeeping activity into one connected product.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <strong>Better discipline</strong>
-              <p>
-                Keep transactions attached to the customer, supplier and
-                business event behind them.
-              </p>
-            </article>
-            <article>
-              <span>03</span>
-              <strong>Clearer decisions</strong>
-              <p>
-                Make routine financial information easier to review and discuss.
-              </p>
-            </article>
+          <div className="tekbooks-sme__grid" role="list">
+            {smeOutcomes.map(([Icon, title, text]) => (
+              <article key={title} role="listitem">
+                <span className="tekbooks-sme__icon" aria-hidden="true"><Icon size={18} /></span>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

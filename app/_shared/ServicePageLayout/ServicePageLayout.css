@@ -6,6 +6,292 @@
   --tek-detail-body: clamp(.9375rem, .9rem + .15vw, 1rem);
   --tek-detail-label: .75rem;
   --tek-detail-breadcrumb: .8125rem;
+  --tek-detail-section-space: clamp(3rem, 4.1vw, 3.5rem);
+  --tek-detail-hero-space: clamp(2.25rem, 3vw, 2.75rem);
+  --tek-detail-card-copy: clamp(.8125rem, .79rem + .1vw, .875rem);
+}
+
+/* Match every service detail page to the compact rhythm of the UI/UX route. */
+.tek-service-route .cap-page > section {
+  padding-top: var(--tek-detail-section-space) !important;
+  padding-bottom: var(--tek-detail-section-space) !important;
+}
+
+/* Default nav routes already include a spacer, so their first section needs
+   only a compact content inset. Overlay nav routes keep their safer clearance. */
+.tek-service-route:not(.tek-service-route--overlay-nav) .cap-page > section:first-child {
+  padding-top: var(--tek-detail-hero-space) !important;
+  padding-bottom: var(--tek-detail-hero-space) !important;
+}
+
+/* Transparent navbars sit on top of the hero instead of reserving a spacer. */
+.tek-service-route--overlay-nav .cap-page > section:first-child {
+  padding-top: clamp(5.75rem, 7vw, 6.75rem) !important;
+}
+
+/* These strips intentionally attach to the section above them. */
+.tek-service-route .cap-page > :is(
+  .ads-economics,
+  .agents-cta,
+  .chatbot-cta,
+  .mcp-cta,
+  .rag-cta,
+  .seo-measure,
+  .teklms-cta,
+  .voice-cta
+) {
+  padding-top: 0 !important;
+}
+
+/* Bring older and structured service routes onto the same vertical rhythm. */
+.tek-service-route :is(
+  .web-engineering-page,
+  .application-engineering-page,
+  .maintenance-support-page,
+  .quality-assurance-page,
+  .quality-assurance-testing-page,
+  .structured-service-page
+) > section:not(:first-child) {
+  padding-top: var(--tek-detail-section-space) !important;
+  padding-bottom: var(--tek-detail-section-space) !important;
+}
+
+.tek-service-route .maintenance-support-page > .maintenance-support-channels {
+  padding-top: 0 !important;
+}
+
+/* Readable utility cards with less fixed empty space around their content. */
+.tek-service-route .cap-page :where(article, [role="listitem"]) > :where(span, em):first-child {
+  font-size: .6875rem !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .cap-page :where(article, [role="listitem"]) > p,
+.tek-service-route .cap-page :where(article, [role="listitem"]) > div > p {
+  margin-top: .375rem !important;
+  font-size: var(--tek-detail-card-copy) !important;
+  line-height: 1.55 !important;
+}
+
+.tek-service-route .cap-page :where(article, [role="listitem"]):not(.feature):not(.is-featured):not(.large) > :where(h3, strong),
+.tek-service-route .cap-page [role="listitem"] > div > :where(h3, strong) {
+  font-size: clamp(.9375rem, .9rem + .12vw, 1rem) !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .cap-page [role="listitem"] {
+  min-height: 0 !important;
+}
+
+.tek-service-route .cap-page [role="listitem"] > :where(h3, strong) {
+  margin-top: 1rem !important;
+}
+
+.tek-service-route .cap-page :where(ul, ol) > li {
+  font-size: var(--tek-detail-card-copy) !important;
+  line-height: 1.5 !important;
+}
+
+/* Numbered rails and decision cards without explicit list roles. */
+.tek-service-route .cap-page :is(
+  .agents-anatomy__layers,
+  .agents-pipeline__rail,
+  .agents-cases__grid,
+  .agents-governance__score,
+  .chatbot-cases__grid,
+  .rag-pipeline__rail,
+  .rag-sources__cards,
+  .rag-quality__compare,
+  .rag-usecases__grid,
+  .seo-measure__panel
+) :where(article, div) {
+  min-height: 0 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .agents-anatomy__layers,
+  .agents-pipeline__rail,
+  .agents-cases__grid,
+  .agents-governance__score,
+  .chatbot-cases__grid,
+  .rag-pipeline__rail,
+  .rag-sources__cards,
+  .rag-quality__compare,
+  .rag-usecases__grid,
+  .seo-measure__panel
+) :where(span, em) {
+  font-size: .6875rem !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .agents-anatomy__layers,
+  .agents-pipeline__rail,
+  .agents-cases__grid,
+  .agents-governance__score,
+  .chatbot-cases__grid,
+  .rag-pipeline__rail,
+  .rag-sources__cards,
+  .rag-quality__compare,
+  .rag-usecases__grid,
+  .seo-measure__panel
+) :where(h3, strong) {
+  font-size: clamp(.9375rem, .9rem + .12vw, 1rem) !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .agents-anatomy__layers,
+  .agents-pipeline__rail,
+  .agents-cases__grid,
+  .agents-governance__score,
+  .chatbot-cases__grid,
+  .rag-pipeline__rail,
+  .rag-sources__cards,
+  .rag-quality__compare,
+  .rag-usecases__grid,
+  .seo-measure__panel
+) p {
+  font-size: var(--tek-detail-card-copy) !important;
+  line-height: 1.55 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .agents-pipeline__rail,
+  .agents-cases__grid,
+  .chatbot-cases__grid,
+  .rag-pipeline__rail,
+  .rag-sources__cards,
+  .rag-quality__compare,
+  .rag-usecases__grid
+) :where(h3, strong) {
+  margin-top: 1.75rem !important;
+}
+
+/* The examples called out in the SEO and AI pages. */
+.tek-service-route .seo-measure__panel > div {
+  min-height: 7rem !important;
+  padding: 1rem !important;
+}
+
+.tek-service-route .seo-measure__panel strong {
+  margin-top: .875rem !important;
+}
+
+.tek-service-route .seo-flywheel__node {
+  width: 10.25rem !important;
+  padding: .75rem .875rem !important;
+}
+
+.tek-service-route .seo-flywheel__node span {
+  font-size: .6875rem !important;
+}
+
+.tek-service-route .seo-flywheel__node strong {
+  margin-top: .3rem !important;
+  font-size: .8125rem !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .agents-governance__score > div {
+  min-height: 4.75rem !important;
+  padding: .875rem 1rem !important;
+}
+
+.tek-service-route .agents-governance__score span {
+  font-size: .75rem !important;
+}
+
+.tek-service-route .agents-governance__score strong {
+  font-size: .9375rem !important;
+}
+
+/*
+ * Older capability pages used fixed card heights and large artificial title
+ * offsets. Keep media stages intact, but normalize the content-only grids.
+ */
+.tek-service-route .cap-page :is(
+  .ads-loop__grid,
+  .ads-economics__grid,
+  .brand-foundation__grid,
+  .content-pillars__grid,
+  .mcp-model__zones,
+  .mcp-capabilities__cards,
+  .product-platform__feature-grid,
+  .product-platform__workflow-grid,
+  .seo-diagnostic__grid,
+  .social-engine__grid,
+  .social-channels__matrix,
+  .social-report__cards,
+  .strategy-foundation__grid,
+  .strategy-decisions__cards,
+  .voice-lifecycle ol,
+  .voice-quality__grid
+) > :where(article, div, li) {
+  min-height: 0 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .ads-loop__grid,
+  .brand-foundation__grid,
+  .content-pillars__grid,
+  .mcp-model__zones,
+  .mcp-capabilities__cards,
+  .product-platform__feature-grid,
+  .product-platform__workflow-grid,
+  .seo-diagnostic__grid,
+  .social-engine__grid,
+  .social-report__cards,
+  .strategy-foundation__grid,
+  .strategy-decisions__cards,
+  .voice-lifecycle ol,
+  .voice-quality__grid
+) > :where(article, div, li) > :where(h3, strong) {
+  margin-top: 1.5rem !important;
+  font-size: var(--tek-detail-card-title) !important;
+  line-height: 1.35 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .ads-loop__grid,
+  .ads-economics__grid,
+  .brand-foundation__grid,
+  .content-pillars__grid,
+  .mcp-model__zones,
+  .mcp-capabilities__cards,
+  .product-platform__feature-grid,
+  .product-platform__workflow-grid,
+  .seo-diagnostic__grid,
+  .social-engine__grid,
+  .social-channels__matrix,
+  .social-report__cards,
+  .strategy-foundation__grid,
+  .strategy-decisions__cards,
+  .voice-lifecycle ol,
+  .voice-quality__grid
+) > :where(article, div, li) > p {
+  margin-top: .4rem !important;
+  font-size: var(--tek-detail-card-copy) !important;
+  line-height: 1.55 !important;
+}
+
+.tek-service-route .cap-page :is(
+  .ads-loop__grid,
+  .brand-foundation__grid,
+  .content-pillars__grid,
+  .mcp-model__zones,
+  .mcp-capabilities__cards,
+  .product-platform__feature-grid,
+  .product-platform__workflow-grid,
+  .seo-diagnostic__grid,
+  .social-engine__grid,
+  .social-report__cards,
+  .strategy-foundation__grid,
+  .strategy-decisions__cards,
+  .voice-lifecycle ol,
+  .voice-quality__grid
+) > :where(article, div, li) {
+  padding: clamp(1rem, 1.4vw, 1.25rem) !important;
 }
 
 /*
@@ -21,7 +307,7 @@
   .quality-assurance-hero
 ) {
   min-height: 0 !important;
-  padding-top: 48px !important;
+  padding: 40px 0 44px !important;
 }
 
 .tek-service-route :is(
@@ -144,6 +430,20 @@
 }
 
 @media (max-width: 700px) {
+  .tek-service-route {
+    --tek-detail-section-space: 2.75rem;
+    --tek-detail-hero-space: 2.125rem;
+  }
+
+  .tek-service-route .seo-flywheel__node {
+    width: 8.5rem !important;
+    padding: .7rem .75rem !important;
+  }
+
+  .tek-service-route--overlay-nav .cap-page > section:first-child {
+    padding-top: 4.75rem !important;
+  }
+
   .tek-service-route :is(
     .web-engineering-hero,
     .application-engineering-hero,
@@ -151,7 +451,7 @@
     .prototyping-design-hero,
     .quality-assurance-hero
   ) {
-    padding-top: 40px !important;
+    padding: 34px 0 38px !important;
   }
 
   .tek-service-route :is(

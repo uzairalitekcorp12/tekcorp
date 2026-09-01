@@ -33,6 +33,13 @@ const roles = [
   },
 ];
 
+const outcomes = [
+  [ClipboardCheck, "Less admin fragmentation"],
+  [GraduationCap, "Clearer student experience"],
+  [BarChart3, "More visible progress"],
+  [BookOpen, "Scalable learning operations"],
+];
+
 export default function TekLMSPage() {
   return (
     <div className="cap-page teklms-page">
@@ -82,13 +89,13 @@ export default function TekLMSPage() {
               confusing.
             </h2>
           </header>
-          <div className="teklms-roles__grid">
+          <div className="teklms-roles__grid" role="list">
             {roles.map(({ title, text, icon: Icon }, index) => (
-              <article key={title}>
-                <span className="teklms-roles__icon">
+              <article key={title} role="listitem">
+                <span className="teklms-roles__icon" aria-hidden="true">
                   <Icon aria-hidden="true" size={18} />
                 </span>
-                <em>0{index + 1}</em>
+                <em aria-hidden="true">0{index + 1}</em>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>
@@ -188,8 +195,8 @@ export default function TekLMSPage() {
               A digital campus made from practical building blocks.
             </h2>
           </header>
-          <div className="teklms-bento__grid">
-            <article className="large">
+          <div className="teklms-bento__grid" role="list">
+            <article className="large" role="listitem">
               <Video aria-hidden="true" size={19} />
               <h3>Live & blended delivery</h3>
               <p>
@@ -197,17 +204,17 @@ export default function TekLMSPage() {
                 follow-up around each session.
               </p>
             </article>
-            <article>
+            <article role="listitem">
               <ClipboardCheck aria-hidden="true" size={18} />
               <h3>Assessments</h3>
               <p>Organize assignments, quizzes and evaluation workflows.</p>
             </article>
-            <article>
+            <article role="listitem">
               <BarChart3 aria-hidden="true" size={18} />
               <h3>Progress</h3>
               <p>Give staff and learners visibility into academic activity.</p>
             </article>
-            <article>
+            <article role="listitem">
               <Users aria-hidden="true" size={18} />
               <h3>Administration</h3>
               <p>
@@ -215,7 +222,7 @@ export default function TekLMSPage() {
                 learning.
               </p>
             </article>
-            <article>
+            <article role="listitem">
               <BookOpen aria-hidden="true" size={18} />
               <h3>Content Library</h3>
               <p>
@@ -227,23 +234,13 @@ export default function TekLMSPage() {
       </section>
 
       <section className="teklms-outcomes" aria-label="TekLMS outcomes">
-        <div className="cap-shell teklms-outcomes__panel">
-          <div>
-            <span>01</span>
-            <strong>Less admin fragmentation</strong>
-          </div>
-          <div>
-            <span>02</span>
-            <strong>Clearer student experience</strong>
-          </div>
-          <div>
-            <span>03</span>
-            <strong>More visible progress</strong>
-          </div>
-          <div>
-            <span>04</span>
-            <strong>Scalable learning operations</strong>
-          </div>
+        <div className="cap-shell teklms-outcomes__panel" role="list">
+          {outcomes.map(([Icon, title]) => (
+            <div key={title} role="listitem">
+              <span aria-hidden="true"><Icon size={17} /></span>
+              <strong>{title}</strong>
+            </div>
+          ))}
         </div>
       </section>
       <section className="teklms-cta" aria-labelledby="teklms-cta-title">

@@ -52,9 +52,9 @@
 
   padding:
     clamp(
-      72px,
-      8vw,
-      112px
+      52px,
+      5vw,
+      64px
     )
     0;
 
@@ -343,9 +343,9 @@
 .home-video-testimonials {
   padding:
     clamp(
-      76px,
-      8vw,
-      108px
+      52px,
+      5vw,
+      64px
     )
     0;
 }
@@ -388,9 +388,9 @@
 
   margin-bottom:
     clamp(
-      38px,
-      5vw,
-      64px
+      26px,
+      3vw,
+      38px
     );
 
   align-items:
@@ -2145,7 +2145,7 @@ button:hover {
 
   .video-testimonials {
     padding:
-      68px
+      48px
       0;
   }
 
@@ -2351,7 +2351,7 @@ button:hover {
 
   .home-video-testimonials {
     padding:
-      64px
+      44px
       0;
   }
 

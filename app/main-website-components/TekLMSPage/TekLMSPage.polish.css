@@ -48,6 +48,160 @@
 .teklms-page .cap-chip { font-size: 12px; }
 .teklms-page a:focus-visible { outline: 3px solid rgba(27,219,186,.48); outline-offset: 3px; }
 
+/* Compact role, lifecycle, capability, and outcome cards. */
+.teklms-page .teklms-roles__grid {
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.teklms-page .teklms-roles article {
+  min-height: 0;
+  padding: 17px;
+}
+
+.teklms-page .teklms-roles em {
+  top: 17px;
+  right: 17px;
+  display: grid;
+  min-width: 27px;
+  min-height: 24px;
+  place-items: center;
+  padding: 3px 6px;
+  border: 1px solid var(--cap-border);
+  border-radius: 999px;
+  background: #f7f9f8;
+  color: #7a827e;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.teklms-page .teklms-roles h3 {
+  margin: 28px 0 8px;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.teklms-page .teklms-roles p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.teklms-page .teklms-lifecycle__rail {
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.teklms-page .teklms-lifecycle__rail div {
+  min-height: 0;
+  padding: 14px;
+}
+
+.teklms-page .teklms-lifecycle__rail span {
+  display: grid;
+  width: 28px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid rgba(27, 219, 186, .18);
+  border-radius: 999px;
+  background: rgba(27, 219, 186, .06);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.teklms-page .teklms-lifecycle__rail strong {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.teklms-page .teklms-lifecycle__rail small {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.teklms-page .teklms-bento__grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.teklms-page .teklms-bento article,
+.teklms-page .teklms-bento article.large {
+  min-height: 0;
+  grid-column: auto;
+  grid-row: auto;
+  padding: 16px;
+}
+
+.teklms-page .teklms-bento h3,
+.teklms-page .teklms-bento .large h3 {
+  margin: 28px 0 8px;
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+}
+
+.teklms-page .teklms-bento p,
+.teklms-page .teklms-bento .large p {
+  max-width: none;
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.teklms-page .teklms-outcomes {
+  padding-top: 44px !important;
+  padding-bottom: 44px !important;
+}
+
+.teklms-page .teklms-outcomes__panel {
+  gap: 10px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+}
+
+.teklms-page .teklms-outcomes__panel div {
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  gap: 11px;
+  padding: 15px;
+  border: 1px solid var(--cap-border);
+  border-radius: 12px;
+  background: #f7f9f8;
+}
+
+.teklms-page .teklms-outcomes__panel span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(27, 219, 186, .09);
+  color: var(--cap-teal-dark);
+}
+
+.teklms-page .teklms-outcomes__panel strong {
+  margin-top: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (max-width: 1120px) {
+  .teklms-page .teklms-bento__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .teklms-page .teklms-bento__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 620px) {
   .teklms-ui-preview { inset: 18px 14px 62px; padding: 13px; }
   .teklms-ui-preview__bar span { display: none; }
@@ -55,4 +209,14 @@
   .teklms-ui-preview__courses div:nth-child(2) { display: none; }
   .teklms-progress-preview { inset: 18px 14px 38px; padding: 15px; }
   .teklms-progress-preview__rows > div { grid-template-columns: 85px 1fr 28px; }
+
+  .teklms-page .teklms-lifecycle__rail div {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .teklms-page .teklms-bento__grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -29,9 +29,9 @@
   overflow: hidden;
 
   padding:
-    102px
+    56px
     0
-    28px;
+    24px;
 
   background:
     linear-gradient(
@@ -59,7 +59,7 @@
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 42px;
+  margin-bottom: 28px;
 
   text-align: center;
 }
@@ -330,7 +330,7 @@
   padding:
     9px
     0
-    50px !important;
+    32px !important;
 
   cursor: grab;
 }
@@ -1493,14 +1493,14 @@
 
   .lp1-portfolio {
     padding:
-      86px
+      52px
       0
-      92px;
+      56px;
   }
 
 
   .lp1-portfolio__heading {
-    margin-bottom: 34px;
+    margin-bottom: 28px;
   }
 
 
@@ -1530,7 +1530,7 @@
     padding:
       40px
       0
-      46px;
+      42px;
   }
 
 
@@ -1571,7 +1571,7 @@
     padding:
       7px
       0
-      44px !important;
+      28px !important;
   }
 
 

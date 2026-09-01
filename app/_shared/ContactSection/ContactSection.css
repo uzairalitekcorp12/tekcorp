@@ -1,5 +1,5 @@
 .tek-contact-section {
-  padding: 54px 0 66px;
+  padding: 42px 0 52px;
   background: #ffffff;
 }
 
@@ -319,7 +319,7 @@
 
 @media (max-width: 520px) {
   .tek-contact-section {
-    padding: 44px 0 55px;
+    padding: 36px 0 44px;
   }
 
   .tek-contact-section__panel {

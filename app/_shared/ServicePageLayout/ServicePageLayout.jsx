@@ -18,6 +18,8 @@ export default async function ServicePageLayout({
   navbarProps = {},
   footerProps = {},
 }) {
+  const usesOverlayNavbar = navbarProps.variant === "adaptive" || navbarProps.variant === "transparent";
+
   const [projectResult, articleResult] = await Promise.allSettled([
     Array.isArray(projects)
       ? Promise.resolve({ caseStudies: projects })
@@ -41,7 +43,7 @@ export default async function ServicePageLayout({
 
   return (
     <SitePageLayout
-      className="tek-service-route"
+      className={`tek-service-route${usesOverlayNavbar ? " tek-service-route--overlay-nav" : ""}`}
       dataPage={page}
       navbarProps={{
         variant: "default",

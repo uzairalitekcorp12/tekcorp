@@ -83,9 +83,9 @@
   overflow: hidden;
 
   padding:
-    92px
+    56px
     0
-    28px;
+    24px;
 
   background:
     var(
@@ -126,7 +126,7 @@
     );
 
   margin-bottom:
-    43px;
+    30px;
 }
 
 
@@ -1223,9 +1223,9 @@ h3 {
 
   .lp1-solutions {
     padding:
-      86px
+      52px
       0
-      96px;
+      56px;
   }
 
 
@@ -1276,7 +1276,7 @@ h3 {
       20px;
 
     margin-bottom:
-      38px;
+      30px;
   }
 
 
@@ -1354,15 +1354,15 @@ h3 {
 
   .lp1-solutions {
     padding:
-      68px
+      44px
       0
-      76px;
+      48px;
   }
 
 
   .lp1-solutions__intro {
     margin-bottom:
-      31px;
+      26px;
   }
 
 
@@ -1479,7 +1479,7 @@ h3 {
 
   .lp1-solutions {
     padding-top:
-      62px;
+      40px;
   }
 
 

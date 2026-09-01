@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: clamp(54px, 6vw, 82px) 0 clamp(50px, 5vw, 72px);
+  padding: clamp(48px, 4.1vw, 56px) 0;
   background: linear-gradient(180deg, #fff 0%, #fafbfb 58%, #fff 100%);
 }
 

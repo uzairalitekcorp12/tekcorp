@@ -46,6 +46,156 @@
 .tekbooks-page .cap-chip { font-size: 12px; }
 .tekbooks-page a:focus-visible { outline: 3px solid rgba(27,219,186,.48); outline-offset: 3px; }
 
+.tekbooks-page .tekbooks-flow__rail {
+  gap: .6rem;
+  margin-top: 1.8rem;
+}
+
+.tekbooks-page .tekbooks-flow__rail > div {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.tekbooks-flow__icon {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid rgba(27, 219, 186, .18);
+  border-radius: .68rem;
+  background: rgba(27, 219, 186, .08);
+  color: var(--cap-teal);
+}
+
+.tekbooks-page .tekbooks-flow__rail strong {
+  margin-top: 1.25rem !important;
+  font-size: .875rem;
+  line-height: 1.35;
+}
+
+.tekbooks-page .tekbooks-flow__rail i {
+  top: 50%;
+  right: -.8rem;
+  display: grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #111614;
+  transform: translateY(-50%);
+}
+
+/* Keep the five finance modules dense and consistent instead of forcing a
+   two-row featured card with large empty title offsets. */
+.tekbooks-page .tekbooks-modules__grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.tekbooks-page .tekbooks-modules article,
+.tekbooks-page .tekbooks-modules article.is-featured {
+  display: flex;
+  min-height: 0;
+  grid-column: auto;
+  grid-row: auto;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.tekbooks-page .tekbooks-modules__icon {
+  width: 36px;
+  height: 36px;
+}
+
+.tekbooks-page .tekbooks-modules em {
+  top: 16px;
+  right: 16px;
+  display: grid;
+  min-width: 27px;
+  min-height: 24px;
+  place-items: center;
+  padding: 3px 6px;
+  border: 1px solid var(--cap-border);
+  border-radius: 999px;
+  background: #f7f9f8;
+  color: #7a827e;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.tekbooks-page .tekbooks-modules .is-featured em {
+  border-color: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .62);
+}
+
+.tekbooks-page .tekbooks-modules h3,
+.tekbooks-page .tekbooks-modules .is-featured h3 {
+  margin: 26px 0 8px;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.tekbooks-page .tekbooks-modules p,
+.tekbooks-page .tekbooks-modules .is-featured p {
+  max-width: none;
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.tekbooks-page .tekbooks-modules .is-featured p {
+  color: rgba(255, 255, 255, .66);
+}
+
+.tekbooks-page .tekbooks-sme__grid {
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.tekbooks-page .tekbooks-sme article {
+  min-height: 0;
+  padding: 18px;
+}
+
+.tekbooks-sme__icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(27, 219, 186, .09);
+  color: var(--cap-teal-dark);
+}
+
+.tekbooks-page .tekbooks-sme strong {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.tekbooks-page .tekbooks-sme p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 1120px) {
+  .tekbooks-page .tekbooks-modules__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .tekbooks-page .tekbooks-modules__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 620px) {
   .tekbooks-ui-preview { inset: 18px 14px 62px; padding: 13px; }
   .tekbooks-ui-preview__bar span, .tekbooks-ui-preview__activity { display: none; }
@@ -53,4 +203,31 @@
   .tekbooks-report-preview { inset: 18px 14px 38px; padding: 15px; }
   .tekbooks-report-preview__bars { height: 80px; }
   .tekbooks-report-preview__total strong { font-size: 17px; }
+
+  .tekbooks-page .tekbooks-flow__rail > div {
+    display: grid;
+    grid-template-columns: 2.35rem 1fr;
+    align-items: center;
+    gap: .8rem;
+  }
+
+  .tekbooks-page .tekbooks-flow__rail strong {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .tekbooks-page .tekbooks-modules__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tekbooks-page .tekbooks-modules article,
+  .tekbooks-page .tekbooks-modules article.is-featured {
+    padding: 15px;
+  }
+
+  .tekbooks-page .tekbooks-modules h3,
+  .tekbooks-page .tekbooks-modules .is-featured h3 {
+    margin-top: 20px;
+  }
 }

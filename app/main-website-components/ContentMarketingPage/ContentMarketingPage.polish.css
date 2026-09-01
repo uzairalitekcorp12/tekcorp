@@ -1,0 +1,210 @@
+/* Balanced hero and icon-led distribution system. */
+.content-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(30rem, 1.08fr);
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.content-hero__copy h1 {
+  max-width: 42rem;
+  font-size: clamp(3.25rem, 5.2vw, 4.75rem) !important;
+}
+
+.content-hero__copy .cap-copy {
+  max-width: 38rem;
+  margin: 1.25rem 0 0;
+}
+
+.content-hero__copy > .cap-button {
+  margin-top: 1.4rem;
+}
+
+.content-hero__visual {
+  position: relative;
+  min-height: 28rem;
+  overflow: hidden;
+  border: 1px solid var(--cap-border);
+  border-radius: 1.35rem;
+  background: #f4f7f6;
+  box-shadow: 0 1.8rem 4.5rem rgba(18, 30, 25, .12);
+}
+
+.content-hero__visual .content-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.content-hero__visual-note {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 3;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: .85rem;
+  background: rgba(8, 15, 12, .82);
+  color: #fff;
+  backdrop-filter: blur(14px);
+}
+
+.content-hero__visual-note span,
+.content-hero__proof span {
+  display: block;
+  color: var(--cap-teal);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.content-hero__visual-note strong {
+  display: block;
+  max-width: 31rem;
+  margin-top: .35rem;
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+.content-hero__proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  margin-top: 1.75rem;
+}
+
+.content-hero__proof article {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: .8rem;
+  min-height: 0 !important;
+  padding: 1rem;
+  border: 1px solid var(--cap-border);
+  border-radius: .9rem;
+  background: #fff;
+}
+
+.content-hero__proof article > svg,
+.content-repurpose__rail article > svg {
+  color: var(--cap-teal-dark);
+}
+
+.content-hero__proof strong {
+  display: block;
+  margin-top: .35rem !important;
+  color: #242926;
+  font-size: .94rem !important;
+  line-height: 1.4;
+}
+
+.content-hero__proof p {
+  margin: .35rem 0 0 !important;
+  color: #7c847f;
+  font-size: .8rem !important;
+}
+
+.content-pillars h3 {
+  margin-top: 2.75rem;
+}
+
+.content-repurpose__rail article {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-repurpose__rail {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .625rem;
+}
+
+.content-repurpose__rail > div,
+.content-repurpose__rail article {
+  min-height: 8.5rem;
+  padding: .9rem;
+}
+
+.content-repurpose__rail .source {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.content-repurpose__rail .source strong,
+.content-repurpose__rail article strong {
+  margin-top: 2.35rem !important;
+  font-size: .9rem !important;
+  line-height: 1.35;
+}
+
+.content-repurpose__rail .source span,
+.content-repurpose__rail article span {
+  margin-top: .4rem;
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+.content-repurpose__rail .source span {
+  color: rgba(255, 255, 255, .55);
+}
+
+.content-repurpose__rail article strong {
+  color: #333936;
+}
+
+.content-repurpose__rail article span {
+  margin-top: .4rem;
+  color: #737c77;
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1050px) {
+  .content-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-hero__visual {
+    min-height: 27rem;
+  }
+
+  .content-repurpose__rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .content-hero__copy h1 {
+    font-size: clamp(2.55rem, 12vw, 3.5rem) !important;
+  }
+
+  .content-hero__visual {
+    min-height: 20rem;
+  }
+
+  .content-hero__proof {
+    grid-template-columns: 1fr;
+  }
+
+  .content-repurpose__rail {
+    grid-template-columns: 1fr;
+  }
+
+  .content-hero__proof article {
+    padding: .9rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .content-hero__visual {
+    min-height: 16.5rem;
+    border-radius: 1rem;
+  }
+
+  .content-hero__visual-note {
+    right: .65rem;
+    bottom: .65rem;
+    left: .65rem;
+    padding: .75rem;
+  }
+}
