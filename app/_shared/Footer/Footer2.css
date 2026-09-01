@@ -1,0 +1,2232 @@
+/* ==========================================================================
+   TEKCORP — FOOTER 2
+   ========================================================================== */
+
+.footer2 {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  overflow:
+    hidden;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+}
+
+
+/* ==========================================================================
+   MAIN DARK AREA
+   ========================================================================== */
+
+.footer2__main {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  width:
+    100%;
+
+  overflow:
+    hidden;
+
+  background:
+    linear-gradient(
+      115deg,
+      #171918 0%,
+      #161817 50%,
+      #171918 100%
+    );
+
+  color:
+    #ffffff;
+}
+
+
+.footer2__main::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  left:
+    0;
+
+  z-index:
+    4;
+
+  height:
+    1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .15
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+/* ==========================================================================
+   AMBIENT BACKGROUND
+   ========================================================================== */
+
+.footer2__ambient {
+  position:
+    absolute;
+
+  z-index:
+    -1;
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
+
+  filter:
+    blur(
+      18px
+    );
+}
+
+
+.footer2__ambient--one {
+  top:
+    -280px;
+
+  right:
+    -200px;
+
+  width:
+    580px;
+
+  height:
+    580px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        255,
+        255,
+        255,
+        .032
+      ),
+      transparent 70%
+    );
+
+  animation:
+    footer2AmbientOne
+    16s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+.footer2__ambient--two {
+  bottom:
+    -320px;
+
+  left:
+    -270px;
+
+  width:
+    540px;
+
+  height:
+    540px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        27,
+        219,
+        186,
+        .025
+      ),
+      transparent 70%
+    );
+
+  animation:
+    footer2AmbientTwo
+    19s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* ==========================================================================
+   MAIN CONTAINER
+   ========================================================================== */
+
+.footer2__container {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  width:
+    min(
+      calc(
+        100% - 96px
+      ),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+
+  padding:
+    58px
+    0
+    28px;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.footer2__hero {
+  display:
+    grid;
+
+  min-height:
+    214px;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    300px;
+
+  align-items:
+    center;
+
+  gap:
+    76px;
+}
+
+
+/* ==========================================================================
+   HERO COPY
+   ========================================================================== */
+
+.footer2__hero-copy {
+  max-width:
+    535px;
+}
+
+
+.footer2__eyebrow {
+  margin:
+    0
+    0
+    10px
+    !important;
+
+  color:
+    #9fa3a1
+    !important;
+
+  -webkit-text-fill-color:
+    #9fa3a1
+    !important;
+
+  font-size:
+    9px
+    !important;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.3
+    !important;
+
+  letter-spacing:
+    .01em;
+}
+
+
+/* ==========================================================================
+   MAIN TITLE
+   ========================================================================== */
+
+.footer2__title {
+  max-width:
+    520px;
+
+  margin:
+    0
+    !important;
+
+  padding:
+    0;
+
+  background:
+    linear-gradient(
+      84.4deg,
+      #ffffff 1.6%,
+      rgba(
+        255,
+        255,
+        255,
+        .67
+      ) 31.82%,
+      #ffffff 67.87%,
+      rgba(
+        255,
+        255,
+        255,
+        .56
+      ) 103.4%
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+
+  font-size:
+    clamp(
+      35px,
+      4vw,
+      45px
+    )
+    !important;
+
+  font-weight:
+    500
+    !important;
+
+  line-height:
+    1.08
+    !important;
+
+  letter-spacing:
+    -.048em
+    !important;
+}
+
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+
+.footer2__call-button {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  display:
+    inline-flex;
+
+  width:
+    227px;
+
+  height:
+    40px;
+
+  overflow:
+    hidden;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  margin-top:
+    22px;
+
+  padding:
+    0
+    4px
+    0
+    15px;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      .88
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    transparent;
+
+  color:
+    #ffffff;
+
+  font-size:
+    10.5px;
+
+  font-weight:
+    500;
+
+  text-decoration:
+    none;
+
+  transition:
+    border-color
+      .28s
+      ease,
+    box-shadow
+      .28s
+      ease,
+    transform
+      .3s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__call-button::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    -1;
+
+  border-radius:
+    inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        27,
+        219,
+        186,
+        .15
+      ),
+      rgba(
+        27,
+        219,
+        186,
+        .045
+      )
+    );
+
+  content:
+    "";
+
+  transform:
+    translateX(
+      -102%
+    );
+
+  transition:
+    transform
+      .4s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__call-button:hover::before {
+  transform:
+    translateX(
+      0
+    );
+}
+
+
+.footer2__call-text {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.footer2__call-icon {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  width:
+    32px;
+
+  height:
+    32px;
+
+  flex:
+    0
+    0
+    32px;
+
+  place-items:
+    center;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      .88
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .01
+    );
+
+  color:
+    #ffffff;
+
+  transition:
+    background-color
+      .28s
+      ease,
+    border-color
+      .28s
+      ease,
+    color
+      .28s
+      ease,
+    transform
+      .36s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__call-button:hover {
+  border-color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  box-shadow:
+    0
+    10px
+    26px
+    rgba(
+      0,
+      0,
+      0,
+      .15
+    );
+
+  transform:
+    translateY(
+      -2px
+    );
+}
+
+
+.footer2__call-button:hover
+.footer2__call-icon {
+  border-color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  background:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  color:
+    #07110f;
+
+  transform:
+    rotate(
+      45deg
+    );
+}
+
+
+/* ==========================================================================
+   PHONE
+   ========================================================================== */
+
+.footer2__phone-area {
+  position:
+    relative;
+
+  display:
+    flex;
+
+  width:
+    100%;
+
+  min-height:
+    205px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+
+.footer2__phone-image-wrap {
+  position:
+    relative;
+
+  z-index:
+    4;
+
+  display:
+    flex;
+
+  width:
+    235px;
+
+  height:
+    210px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  transform-origin:
+    50%
+    70%;
+
+  animation:
+    footer2PhoneCalling
+    4.8s
+    ease-in-out
+    infinite;
+}
+
+
+.footer2__phone-image {
+  display:
+    block;
+
+  width:
+    100%;
+
+  max-width:
+    225px;
+
+  max-height:
+    205px;
+
+  object-fit:
+    contain;
+
+  object-position:
+    center;
+
+  opacity:
+    .96;
+
+  user-select:
+    none;
+
+  pointer-events:
+    none;
+}
+
+
+.footer2__phone-glow {
+  position:
+    absolute;
+
+  z-index:
+    1;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  width:
+    185px;
+
+  height:
+    185px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        255,
+        255,
+        255,
+        .05
+      ),
+      transparent 70%
+    );
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  animation:
+    footer2PhoneGlow
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+.footer2__phone-ring {
+  position:
+    absolute;
+
+  z-index:
+    2;
+
+  top:
+    27%;
+
+  right:
+    12%;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      .11
+    );
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
+}
+
+
+.footer2__phone-ring--one {
+  width:
+    66px;
+
+  height:
+    66px;
+
+  animation:
+    footer2PhoneRing
+    2.8s
+    ease-out
+    infinite;
+}
+
+
+.footer2__phone-ring--two {
+  width:
+    90px;
+
+  height:
+    90px;
+
+  margin-top:
+    -12px;
+
+  margin-right:
+    -12px;
+
+  animation:
+    footer2PhoneRing
+    2.8s
+    .55s
+    ease-out
+    infinite;
+}
+
+
+/* ==========================================================================
+   DIVIDER
+   ========================================================================== */
+
+.footer2__divider {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  height:
+    1px;
+
+  overflow:
+    hidden;
+
+  margin:
+    24px
+    0
+    26px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .075
+    );
+}
+
+
+.footer2__divider > span {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  left:
+    -18%;
+
+  width:
+    14%;
+
+  height:
+    100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        255,
+        255,
+        255,
+        .22
+      ),
+      transparent
+    );
+
+  animation:
+    footer2DividerSweep
+    10s
+    ease-in-out
+    infinite;
+}
+
+
+/* ==========================================================================
+   MAIN INFORMATION GRID
+   ========================================================================== */
+
+.footer2__grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      285px,
+      1.55fr
+    )
+    .75fr
+    .95fr
+    .65fr
+    .55fr;
+
+  align-items:
+    start;
+
+  gap:
+    clamp(
+      24px,
+      3vw,
+      48px
+    );
+}
+
+
+/* ==========================================================================
+   COLUMNS
+   ========================================================================== */
+
+.footer2__column {
+  display:
+    flex;
+
+  min-width:
+    0;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+}
+
+
+.footer2__column h3 {
+  margin:
+    0
+    0
+    9px
+    !important;
+
+  color:
+    #8f9491
+    !important;
+
+  -webkit-text-fill-color:
+    #8f9491
+    !important;
+
+  font-size:
+    10px
+    !important;
+
+  font-weight:
+    400
+    !important;
+
+  line-height:
+    1.3
+    !important;
+}
+
+
+/* ==========================================================================
+   CONNECT COLUMN
+   ========================================================================== */
+
+.footer2__column--connect {
+  max-width:
+    315px;
+}
+
+
+.footer2__contact-group {
+  display:
+    flex;
+
+  width:
+    100%;
+
+  flex-direction:
+    column;
+
+  gap:
+    12px;
+}
+
+
+.footer2__office {
+  display:
+    flex;
+
+  width:
+    100%;
+
+  flex-direction:
+    column;
+
+  gap:
+    4px;
+}
+
+
+.footer2__office-title {
+  display:
+    block;
+
+  margin:
+    1px
+    0
+    2px;
+
+  color:
+    #d7dad8;
+
+  font-size:
+    10px;
+
+  font-weight:
+    500;
+
+  line-height:
+    1.4;
+}
+
+
+/* ==========================================================================
+   CONTACT LINKS
+   ========================================================================== */
+
+.footer2__contact-link {
+  display:
+    flex;
+
+  width:
+    fit-content;
+
+  max-width:
+    100%;
+
+  align-items:
+    flex-start;
+
+  gap:
+    7px;
+
+  color:
+    #f0f2f1;
+
+  font-size:
+    10.5px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.5;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      .22s
+      ease,
+    transform
+      .28s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__contact-link svg {
+  flex:
+    0
+    0
+    auto;
+
+  margin-top:
+    2px;
+
+  color:
+    #818783;
+
+  transition:
+    color
+      .22s
+      ease,
+    transform
+      .28s
+      ease;
+}
+
+
+.footer2__contact-link span {
+  min-width:
+    0;
+}
+
+
+.footer2__contact-link--address {
+  max-width:
+    305px;
+}
+
+
+.footer2__contact-link:hover {
+  color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  transform:
+    translateX(
+      3px
+    );
+}
+
+
+.footer2__contact-link:hover svg {
+  color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+/* ==========================================================================
+   STANDARD FOOTER LINKS
+   ========================================================================== */
+
+.footer2__link {
+  position:
+    relative;
+
+  display:
+    inline-flex;
+
+  width:
+    fit-content;
+
+  margin-top:
+    7px;
+
+  overflow:
+    hidden;
+
+  color:
+    #eceeed;
+
+  font-size:
+    10.5px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.35;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      .25s
+      ease,
+    transform
+      .3s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__link::after {
+  position:
+    absolute;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  left:
+    0;
+
+  height:
+    1px;
+
+  background:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  content:
+    "";
+
+  transform:
+    scaleX(
+      0
+    );
+
+  transform-origin:
+    right
+    center;
+
+  transition:
+    transform
+      .32s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__link > span {
+  display:
+    inline-block;
+
+  padding-bottom:
+    2px;
+
+  transition:
+    transform
+      .3s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__link:hover {
+  color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  transform:
+    translateX(
+      3px
+    );
+}
+
+
+.footer2__link:hover::after {
+  transform:
+    scaleX(
+      1
+    );
+
+  transform-origin:
+    left
+    center;
+}
+
+
+.footer2__link:hover > span {
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+/* ==========================================================================
+   SOCIAL COLUMN
+   ========================================================================== */
+
+.footer2__column--social {
+  justify-self:
+    end;
+}
+
+
+/* ==========================================================================
+   SOCIAL ICONS
+   ========================================================================== */
+
+.footer2__socials {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    9px;
+
+  margin-top:
+    3px;
+}
+
+
+.footer2__socials a {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  display:
+    grid;
+
+  width:
+    35px;
+
+  height:
+    35px;
+
+  overflow:
+    hidden;
+
+  place-items:
+    center;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      .73
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    transparent;
+
+  color:
+    #ffffff;
+
+  text-decoration:
+    none;
+
+  transition:
+    border-color
+      .28s
+      ease,
+    color
+      .28s
+      ease,
+    box-shadow
+      .28s
+      ease,
+    transform
+      .32s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__socials a::before {
+  position:
+    absolute;
+
+  inset:
+    3px;
+
+  z-index:
+    -1;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  content:
+    "";
+
+  transform:
+    scale(
+      0
+    );
+
+  transition:
+    transform
+      .34s
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      );
+}
+
+
+.footer2__socials a:hover::before {
+  transform:
+    scale(
+      1
+    );
+}
+
+
+.footer2__socials a:hover {
+  border-color:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  color:
+    #07110f;
+
+  box-shadow:
+    0
+    8px
+    20px
+    rgba(
+      27,
+      219,
+      186,
+      .17
+    );
+
+  transform:
+    translateY(
+      -3px
+    );
+}
+
+
+.footer2__socials a svg {
+  width:
+    14px;
+
+  height:
+    14px;
+
+  transition:
+    transform
+      .3s
+      ease;
+}
+
+
+.footer2__socials a:hover svg {
+  transform:
+    scale(
+      1.08
+    );
+}
+
+
+/* ==========================================================================
+   BOTTOM DIVIDER
+   ========================================================================== */
+
+.footer2__bottom-line {
+  width:
+    100%;
+
+  height:
+    1px;
+
+  margin-top:
+    31px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .065
+    );
+}
+
+
+/* ==========================================================================
+   COPYRIGHT
+   ========================================================================== */
+
+.footer2__copyright {
+  display:
+    flex;
+
+  width:
+    100%;
+
+  min-height:
+    58px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    12px
+    20px;
+
+  background:
+    #ffffff;
+}
+
+
+.footer2__copyright p {
+  margin:
+    0
+    !important;
+
+  color:
+    #777c79
+    !important;
+
+  -webkit-text-fill-color:
+    #777c79
+    !important;
+
+  font-size:
+    9.5px
+    !important;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.4
+    !important;
+
+  text-align:
+    center;
+}
+
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes footer2PhoneCalling {
+
+  0%,
+  100% {
+    transform:
+      translateY(
+        0
+      )
+      rotate(
+        0deg
+      );
+  }
+
+
+  36% {
+    transform:
+      translateY(
+        -4px
+      )
+      rotate(
+        -1deg
+      );
+  }
+
+
+  42% {
+    transform:
+      translateY(
+        -4px
+      )
+      rotate(
+        1.2deg
+      );
+  }
+
+
+  48% {
+    transform:
+      translateY(
+        -5px
+      )
+      rotate(
+        -.7deg
+      );
+  }
+
+
+  55% {
+    transform:
+      translateY(
+        -4px
+      )
+      rotate(
+        0deg
+      );
+  }
+
+}
+
+
+@keyframes footer2PhoneGlow {
+
+  0%,
+  100% {
+    opacity:
+      .38;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        .94
+      );
+  }
+
+
+  50% {
+    opacity:
+      .75;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1.07
+      );
+  }
+
+}
+
+
+@keyframes footer2PhoneRing {
+
+  0% {
+    opacity:
+      0;
+
+    transform:
+      scale(
+        .55
+      );
+  }
+
+
+  22% {
+    opacity:
+      .22;
+  }
+
+
+  70% {
+    opacity:
+      0;
+  }
+
+
+  100% {
+    opacity:
+      0;
+
+    transform:
+      scale(
+        1.35
+      );
+  }
+
+}
+
+
+@keyframes footer2DividerSweep {
+
+  0% {
+    left:
+      -18%;
+
+    opacity:
+      0;
+  }
+
+
+  10% {
+    opacity:
+      .55;
+  }
+
+
+  27% {
+    left:
+      104%;
+
+    opacity:
+      0;
+  }
+
+
+  100% {
+    left:
+      104%;
+
+    opacity:
+      0;
+  }
+
+}
+
+
+@keyframes footer2AmbientOne {
+
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+
+  to {
+    transform:
+      translate3d(
+        -38px,
+        24px,
+        0
+      );
+  }
+
+}
+
+
+@keyframes footer2AmbientTwo {
+
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+
+  to {
+    transform:
+      translate3d(
+        40px,
+        -26px,
+        0
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 1100
+   ========================================================================== */
+
+@media (
+  max-width:
+  1100px
+) {
+
+  .footer2__container {
+    width:
+      calc(
+        100% - 64px
+      );
+  }
+
+
+  .footer2__hero {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      240px;
+
+    gap:
+      48px;
+  }
+
+
+  .footer2__phone-image-wrap {
+    width:
+      190px;
+
+    height:
+      180px;
+  }
+
+
+  .footer2__phone-image {
+    max-width:
+      185px;
+
+    max-height:
+      175px;
+  }
+
+
+  .footer2__grid {
+    grid-template-columns:
+      minmax(
+        260px,
+        1.4fr
+      )
+      .75fr
+      .9fr
+      .65fr;
+
+    gap:
+      34px
+      38px;
+  }
+
+
+  /*
+   * Follow moves onto second grid row.
+   */
+
+  .footer2__column--social {
+    justify-self:
+      start;
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 850
+   ========================================================================== */
+
+@media (
+  max-width:
+  850px
+) {
+
+  .footer2__container {
+    width:
+      calc(
+        100% - 48px
+      );
+
+    padding-top:
+      50px;
+  }
+
+
+  .footer2__hero {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      180px;
+
+    gap:
+      30px;
+  }
+
+
+  .footer2__phone-area {
+    min-height:
+      160px;
+  }
+
+
+  .footer2__phone-image-wrap {
+    width:
+      165px;
+
+    height:
+      155px;
+  }
+
+
+  .footer2__phone-image {
+    max-width:
+      155px;
+
+    max-height:
+      150px;
+  }
+
+
+  .footer2__grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      34px
+      46px;
+  }
+
+
+  .footer2__column--connect {
+    max-width:
+      360px;
+  }
+
+
+  .footer2__column--social {
+    justify-self:
+      start;
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 620
+   ========================================================================== */
+
+@media (
+  max-width:
+  620px
+) {
+
+  .footer2__container {
+    width:
+      calc(
+        100% - 32px
+      );
+
+    padding:
+      44px
+      0
+      24px;
+  }
+
+
+  .footer2__hero {
+    grid-template-columns:
+      1fr;
+
+    min-height:
+      auto;
+
+    gap:
+      25px;
+  }
+
+
+  .footer2__hero-copy {
+    max-width:
+      100%;
+  }
+
+
+  .footer2__title {
+    max-width:
+      440px;
+
+    font-size:
+      clamp(
+        31px,
+        9vw,
+        40px
+      )
+      !important;
+  }
+
+
+  .footer2__call-button {
+    width:
+      min(
+        100%,
+        227px
+      );
+  }
+
+
+  /* PHONE */
+
+  .footer2__phone-area {
+    width:
+      180px;
+
+    min-height:
+      125px;
+
+    justify-content:
+      flex-start;
+  }
+
+
+  .footer2__phone-image-wrap {
+    width:
+      135px;
+
+    height:
+      125px;
+  }
+
+
+  .footer2__phone-image {
+    max-width:
+      130px;
+
+    max-height:
+      123px;
+  }
+
+
+  .footer2__phone-glow {
+    left:
+      68px;
+
+    width:
+      110px;
+
+    height:
+      110px;
+  }
+
+
+  .footer2__phone-ring {
+    display:
+      none;
+  }
+
+
+  .footer2__divider {
+    margin:
+      22px
+      0
+      27px;
+  }
+
+
+  .footer2__grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      30px
+      24px;
+  }
+
+
+  .footer2__column--connect {
+    grid-column:
+      1 / -1;
+
+    max-width:
+      390px;
+  }
+
+
+  .footer2__contact-link {
+    font-size:
+      10.5px;
+  }
+
+
+  .footer2__bottom-line {
+    margin-top:
+      28px;
+  }
+
+}
+
+
+/* ==========================================================================
+   <= 430
+   ========================================================================== */
+
+@media (
+  max-width:
+  430px
+) {
+
+  /*
+   * Phone graphic becomes unnecessary on very narrow devices.
+   */
+
+  .footer2__phone-area {
+    display:
+      none;
+  }
+
+
+  .footer2__grid {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      27px;
+  }
+
+
+  .footer2__column--connect {
+    grid-column:
+      auto;
+
+    max-width:
+      100%;
+  }
+
+
+  .footer2__contact-link--address {
+    max-width:
+      100%;
+  }
+
+
+  .footer2__column--social {
+    justify-self:
+      start;
+  }
+
+
+  .footer2__copyright {
+    min-height:
+      58px;
+  }
+
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+.footer2__call-button:focus-visible,
+.footer2__link:focus-visible,
+.footer2__contact-link:focus-visible,
+.footer2__socials a:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .footer2__ambient,
+  .footer2__phone-image-wrap,
+  .footer2__phone-glow,
+  .footer2__phone-ring,
+  .footer2__divider > span {
+    animation:
+      none
+      !important;
+  }
+
+
+  .footer2__call-button,
+  .footer2__call-button::before,
+  .footer2__call-icon,
+  .footer2__link,
+  .footer2__link::after,
+  .footer2__link > span,
+  .footer2__contact-link,
+  .footer2__contact-link svg,
+  .footer2__socials a,
+  .footer2__socials a::before,
+  .footer2__socials a svg {
+    transition:
+      none
+      !important;
+  }
+
+}

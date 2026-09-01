@@ -1,0 +1,957 @@
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hero-reference {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  background: #f4fdfc;
+
+  padding: 118px 28px 24px 41px;
+}
+
+.hero-reference::before,
+.hero-reference::after {
+  display: none;
+}
+
+/* ==========================================================================
+   HERO LAYOUT
+   ========================================================================== */
+
+.hero-reference__inner {
+  width: 100%;
+  max-width: 1031px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 518px)
+    minmax(0, 436px);
+
+  column-gap: 49px;
+
+  align-items: start;
+}
+
+.hero-reference__left,
+.hero-reference__right {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   MAIN HEADING
+   ========================================================================== */
+
+.hero-reference__heading {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 42px !important;
+  font-weight: 800 !important;
+
+  line-height: 1.29 !important;
+  letter-spacing: -0.045em !important;
+
+  color: #191919 !important;
+}
+
+.hero-reference__heading span {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+}
+
+/* ==========================================================================
+   HEADING LINE STRUCTURE
+   ========================================================================== */
+
+.hero-reference__first-line {
+  display: flex;
+  align-items: baseline;
+
+  width: max-content;
+  max-width: 100%;
+
+  white-space: nowrap;
+}
+
+.hero-reference__second-line {
+  display: block;
+
+  width: max-content;
+  max-width: 100%;
+
+  margin-top: 1px;
+
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   BUILD GRADIENT
+   ========================================================================== */
+
+.hero-reference__gradient-build {
+  display: inline-block;
+
+  margin-right: 7px;
+
+  background: linear-gradient(
+    90deg,
+    #151515 0%,
+    #252525 45%,
+    #505050 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   DIGITAL SYSTEMS TEAL HIGHLIGHT
+   ========================================================================== */
+
+.hero-reference__highlight {
+  display: inline-block;
+
+  margin-right: 7px;
+
+  padding: 0 5px;
+
+  background: #1dd8b8;
+
+  color: #282828 !important;
+
+  -webkit-text-fill-color: #282828 !important;
+
+  border-radius: 0;
+
+  box-shadow: none;
+
+  line-height: 1.08;
+  font-weight: 900 !important;
+}
+
+/* ==========================================================================
+   THAT GRADIENT
+   ========================================================================== */
+
+.hero-reference__gradient-that {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #2d2d2d 0%,
+    #454545 55%,
+    #626262 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   POWER BUSINESS GROWTH GRADIENT
+   ========================================================================== */
+
+.hero-reference__gradient-main {
+  background: linear-gradient(
+    90deg,
+    #151515 0%,
+    #202020 15%,
+    #303030 35%,
+    #454545 60%,
+    #575757 80%,
+    #656565 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   SUPPORTING TEXT
+   Technology should move your...
+   ========================================================================== */
+
+.hero-reference__lead {
+  width: 100%;
+  max-width: 520px;
+
+  margin: 15px 0 0 !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 29px !important;
+  font-weight: 600 !important;
+
+  line-height: 1.29 !important;
+  letter-spacing: -0.035em;
+
+  /*
+    NEW GRADIENT
+
+    Starts almost black and becomes gray toward
+    the right side, matching your reference.
+  */
+  background: linear-gradient(
+    90deg,
+    #202020 0%,
+    #282828 20%,
+    #393939 42%,
+    #4b4b4b 65%,
+    #5b5b5b 82%,
+    #686868 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-reference__desktop-break {
+  display: block;
+}
+
+/* ==========================================================================
+   DESCRIPTION
+   ========================================================================== */
+
+.hero-reference__description {
+  width: 100%;
+  max-width: 515px;
+
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 17px !important;
+  font-weight: 400;
+
+  line-height: 1.3 !important;
+
+  letter-spacing: 0;
+
+  color: #555c5c !important;
+}
+
+/* ==========================================================================
+   PARTNER CARD
+   ========================================================================== */
+
+.hero-reference__partners {
+  width: 487px;
+  max-width: 100%;
+
+  min-height: 91px;
+
+  margin-top: 26px;
+
+  padding: 13px 0 10px;
+
+  background: #ffffff;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  box-shadow: none;
+}
+
+.hero-reference__partner-title {
+  margin: 0 0 7px !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 12px !important;
+  font-weight: 500;
+
+  line-height: 1.2 !important;
+
+  color: #262626 !important;
+}
+
+.hero-reference__partner-number {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  color: #1bdbba !important;
+
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   LOGOS
+   ========================================================================== */
+
+.hero-reference__logos {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    90px
+    117px
+    48px
+    111px
+    45px;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  column-gap: 0;
+}
+
+.hero-reference__logo {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+}
+
+.hero-reference__logo img,
+.hero-reference__logo-image {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  max-width: 100% !important;
+
+  object-fit: contain !important;
+
+  opacity: 1 !important;
+
+  filter: none !important;
+
+  transform: none !important;
+}
+
+.hero-reference__logo--google {
+  width: 90px;
+  justify-content: flex-start;
+}
+
+.hero-reference__logo--clutch {
+  width: 117px;
+  justify-content: center;
+}
+
+.hero-reference__logo--certification {
+  width: 48px;
+  justify-content: center;
+}
+
+.hero-reference__logo--meta {
+  width: 111px;
+  justify-content: center;
+}
+
+.hero-reference__logo--gdpr {
+  width: 45px;
+  justify-content: flex-end;
+}
+
+/* ==========================================================================
+   FORM CARD
+   ========================================================================== */
+
+.hero-reference__form-card {
+  width: 436px;
+  max-width: 100%;
+
+  min-height: 395px;
+
+  padding: 21px 26px 20px;
+
+  background: #ffffff;
+
+  border: none;
+
+  border-radius: 14px;
+
+  box-shadow: none;
+}
+
+.hero-reference__form-heading {
+  width: 100%;
+  max-width: 365px;
+
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 20px !important;
+  font-weight: 700 !important;
+
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+
+  color: #202020 !important;
+}
+
+/* ==========================================================================
+   FORM
+   ========================================================================== */
+
+.hero-reference__form {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+.hero-reference__form-row {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   INPUTS
+   ========================================================================== */
+
+.hero-reference__field {
+  width: 100%;
+  height: 44px;
+
+  margin: 0;
+
+  padding: 0 10px;
+
+  appearance: none;
+
+  background: #f6f6f6;
+
+  border: 1px solid transparent;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 400;
+
+  line-height: normal;
+
+  color: #454545;
+
+  box-shadow: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-reference__field::placeholder {
+  color: #555555;
+
+  opacity: 1;
+}
+
+/* ==========================================================================
+   TEXTAREA
+   ========================================================================== */
+
+.hero-reference__textarea {
+  display: block;
+
+  width: 100%;
+  height: 111px;
+
+  margin: 0;
+
+  padding: 13px 15px;
+
+  resize: none;
+
+  appearance: none;
+
+  background: #f6f6f6;
+
+  border: 1px solid transparent;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #454545;
+
+  box-shadow: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-reference__textarea::placeholder {
+  color: #555555;
+
+  opacity: 1;
+}
+
+.hero-reference__field:focus,
+.hero-reference__textarea:focus {
+  background: #ffffff;
+
+  border-color: #1bdbba;
+
+  box-shadow:
+    0 0 0 2px rgba(27, 219, 186, 0.1);
+}
+
+/* ==========================================================================
+   BUTTON
+   ========================================================================== */
+
+.hero-reference__button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 16px;
+
+  padding: 0 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  appearance: none;
+
+  border: 0;
+
+  border-radius: 6px;
+
+  background: #1bdbba;
+
+  color: #111111;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  box-shadow: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-reference__button:hover {
+  background: #19c9ac;
+
+  transform: translateY(-1px);
+}
+
+.hero-reference__button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE — 1280
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  .hero-reference {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .hero-reference__inner {
+    max-width: 1000px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 420px);
+
+    column-gap: 40px;
+  }
+
+  .hero-reference__heading {
+    font-size: 40px !important;
+  }
+
+  .hero-reference__lead {
+    font-size: 27px !important;
+  }
+
+  .hero-reference__partners {
+    width: 100%;
+
+    max-width: 480px;
+  }
+
+  .hero-reference__logos {
+    grid-template-columns:
+      82px
+      105px
+      45px
+      100px
+      42px;
+  }
+
+  .hero-reference__logo--google {
+    width: 82px;
+  }
+
+  .hero-reference__logo--clutch {
+    width: 105px;
+  }
+
+  .hero-reference__logo--certification {
+    width: 45px;
+  }
+
+  .hero-reference__logo--meta {
+    width: 100px;
+  }
+
+  .hero-reference__logo--gdpr {
+    width: 42px;
+  }
+
+  .hero-reference__form-card {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .hero-reference {
+    padding-top: 96px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 50px;
+  }
+
+  .hero-reference__inner {
+    max-width: 850px;
+
+    grid-template-columns: 1fr;
+
+    row-gap: 45px;
+  }
+
+  .hero-reference__heading {
+    font-size: clamp(36px, 5.5vw, 42px) !important;
+
+    line-height: 1.2 !important;
+  }
+
+  .hero-reference__lead {
+    max-width: 650px;
+
+    font-size: clamp(25px, 3.5vw, 29px) !important;
+  }
+
+  .hero-reference__description {
+    max-width: 650px;
+
+    font-size: 16px !important;
+
+    line-height: 1.45 !important;
+  }
+
+  .hero-reference__partners {
+    width: 100%;
+
+    max-width: 650px;
+  }
+
+  .hero-reference__right {
+    display: flex;
+
+    justify-content: center;
+  }
+
+  .hero-reference__form-card {
+    width: 100%;
+
+    max-width: 650px;
+
+    min-height: auto;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .hero-reference {
+    padding-top: 90px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 45px;
+  }
+
+  .hero-reference__inner {
+    row-gap: 38px;
+  }
+
+  .hero-reference__first-line,
+  .hero-reference__second-line {
+    width: 100%;
+
+    white-space: normal;
+  }
+
+  .hero-reference__first-line {
+    display: block;
+  }
+
+  .hero-reference__gradient-build,
+  .hero-reference__highlight,
+  .hero-reference__gradient-that {
+    display: inline;
+  }
+
+  .hero-reference__heading {
+    font-size: clamp(32px, 7vw, 38px) !important;
+
+    line-height: 1.18 !important;
+  }
+
+  .hero-reference__lead {
+    margin-top: 18px !important;
+
+    max-width: 100%;
+
+    font-size: clamp(25px, 4.5vw, 27px) !important;
+
+    line-height: 1.3 !important;
+  }
+
+  .hero-reference__desktop-break {
+    display: none;
+  }
+
+  .hero-reference__description {
+    margin-top: 12px !important;
+
+    font-size: 15.5px !important;
+
+    line-height: 1.5 !important;
+  }
+
+  .hero-reference__partners {
+    min-height: auto;
+
+    padding: 14px;
+
+    border-radius: 10px;
+  }
+
+  .hero-reference__logos {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 14px 18px;
+  }
+
+  .hero-reference__form-card {
+    padding: 22px 20px 20px;
+
+    border-radius: 12px;
+  }
+
+  .hero-reference__form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  .hero-reference {
+    padding-top: 88px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 38px;
+  }
+
+  .hero-reference__heading {
+    font-size: clamp(30px, 8vw, 35px) !important;
+  }
+
+  .hero-reference__lead {
+    font-size: clamp(21px, 6vw, 24px) !important;
+  }
+
+  .hero-reference__description {
+    font-size: 15px !important;
+  }
+
+  .hero-reference__form-card {
+    padding: 20px 16px 18px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — PHONE
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .hero-reference {
+    padding-top: 82px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 32px;
+  }
+
+  .hero-reference__heading {
+    font-size: 29px !important;
+
+    line-height: 1.18 !important;
+  }
+
+  .hero-reference__highlight {
+    padding: 0 3px;
+  }
+
+  .hero-reference__lead {
+    font-size: 20px !important;
+
+    line-height: 1.32 !important;
+  }
+
+  .hero-reference__description {
+    font-size: 14.5px !important;
+
+    line-height: 1.52 !important;
+  }
+
+  .hero-reference__form-card {
+    padding: 18px 14px 16px;
+  }
+}
+
+/* ==========================================================================
+   VERY SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 375px) {
+  .hero-reference {
+    padding-top: 76px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 28px;
+  }
+
+  .hero-reference__heading {
+    font-size: 27px !important;
+  }
+
+  .hero-reference__lead {
+    font-size: 19px !important;
+  }
+
+  .hero-reference__description {
+    font-size: 14px !important;
+  }
+
+  .hero-reference__form-card {
+    padding: 16px 12px 15px;
+  }
+}

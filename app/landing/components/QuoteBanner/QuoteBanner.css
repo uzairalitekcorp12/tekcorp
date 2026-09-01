@@ -1,0 +1,462 @@
+/* ==========================================================================
+   QUOTE BANNER
+   ========================================================================== */
+
+.quote-banner {
+  width: 100%;
+  min-height: 181px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: #1bdbba;
+}
+
+
+/* ==========================================================================
+   DOTTED BACKGROUND
+
+   Reference:
+   - dots mainly through the center
+   - soft fade at left/right
+   - slightly faded vertically
+   ========================================================================== */
+
+.quote-banner__dots {
+  position: absolute;
+
+  top: 18px;
+  bottom: 18px;
+
+  left: 50%;
+
+  width: min(80%, 900px);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.55) 1.15px,
+      transparent 1.25px
+    );
+
+  background-size: 9px 9px;
+
+  opacity: 0.78;
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 0%,
+      #000 45%,
+      rgba(0, 0, 0, 0.72) 68%,
+      transparent 100%
+    );
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 0%,
+      #000 45%,
+      rgba(0, 0, 0, 0.72) 68%,
+      transparent 100%
+    );
+}
+
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.quote-banner__container {
+  width: calc(100% - 80px);
+
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
+.quote-banner__content {
+  width: 100%;
+
+  min-height: 181px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0;
+
+  padding: 28px 105px;
+}
+
+
+/* ==========================================================================
+   TEXT
+   ========================================================================== */
+
+.quote-banner__text {
+  width: 100%;
+
+  max-width: 810px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  position: relative;
+
+  z-index: 2;
+
+  font-family:
+    var(--font-site, "Lufga Regular", sans-serif) !important;
+
+  font-size: 25px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.24 !important;
+
+  letter-spacing: -0.025em;
+
+  text-align: center;
+
+  color: #ffffff !important;
+
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   QUOTE MARKS
+   ========================================================================== */
+
+.quote-banner__mark {
+  position: absolute;
+
+  z-index: 3;
+
+  color: #187d70;
+
+  pointer-events: none;
+
+  opacity: 0.98;
+}
+
+
+.quote-banner__mark svg {
+  display: block;
+
+  width: 58px;
+  height: 44px;
+
+  overflow: visible;
+}
+
+
+/* Opening quote — upper left */
+.quote-banner__mark--left {
+  top: 37px;
+  left: 31px;
+}
+
+
+/* Closing quote — lower right */
+.quote-banner__mark--right {
+  right: 31px;
+  bottom: 35px;
+
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   LARGE DESKTOP
+   ========================================================================== */
+
+@media (min-width: 1400px) {
+
+  .quote-banner__container {
+    max-width: 1180px;
+  }
+
+
+  .quote-banner__text {
+    max-width: 860px;
+
+    font-size: 26px !important;
+  }
+
+
+  .quote-banner__mark--left {
+    left: 38px;
+  }
+
+
+  .quote-banner__mark--right {
+    right: 38px;
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+
+  .quote-banner {
+    min-height: 170px;
+  }
+
+
+  .quote-banner__container {
+    width:
+      calc(100% - 56px);
+  }
+
+
+  .quote-banner__content {
+    min-height: 170px;
+
+    padding:
+      30px
+      82px;
+  }
+
+
+  .quote-banner__text {
+    max-width: 700px;
+
+    font-size:
+      clamp(
+        20px,
+        2.8vw,
+        24px
+      ) !important;
+  }
+
+
+   .quote-banner__mark svg {
+    width: 50px;
+    height: 38px;
+  }
+
+  .quote-banner__mark--left {
+    top: 31px;
+    left: 22px;
+  }
+
+  .quote-banner__mark--right {
+    right: 22px;
+    bottom: 30px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 700px) {
+
+  .quote-banner {
+    min-height: 190px;
+  }
+
+
+  .quote-banner__container {
+    width:
+      calc(100% - 30px);
+  }
+
+
+  .quote-banner__content {
+    min-height: 190px;
+
+    padding:
+      42px
+      44px;
+  }
+
+
+  .quote-banner__dots {
+    top: 14px;
+    bottom: 14px;
+
+    width: 96%;
+
+    background-size:
+      8px
+      8px;
+  }
+
+
+  .quote-banner__text {
+    max-width: 100%;
+
+    font-size:
+      clamp(
+        17px,
+        4.6vw,
+        21px
+      ) !important;
+
+    line-height:
+      1.3 !important;
+  }
+
+
+  .quote-banner__desktop-break {
+    display: none;
+  }
+
+
+   .quote-banner__mark svg {
+    width: 39px;
+    height: 30px;
+  }
+
+  .quote-banner__mark--left {
+    top: 24px;
+    left: 5px;
+  }
+
+  .quote-banner__mark--right {
+    right: 5px;
+    bottom: 23px;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+  .quote-banner {
+    min-height: 205px;
+  }
+
+
+  .quote-banner__container {
+    width:
+      calc(100% - 24px);
+  }
+
+
+  .quote-banner__content {
+    min-height: 205px;
+
+    padding:
+      46px
+      28px;
+  }
+
+
+  .quote-banner__text {
+    font-size:
+      clamp(
+        16px,
+        5vw,
+        19px
+      ) !important;
+
+    line-height:
+      1.34 !important;
+  }
+
+
+   .quote-banner__mark svg {
+    width: 33px;
+    height: 26px;
+  }
+
+
+  .quote-banner__mark--left {
+    top: 24px;
+    left: 0;
+  }
+
+
+  .quote-banner__mark--right {
+    right: 0;
+    bottom: 23px;
+  }
+
+
+  .quote-banner__dots {
+    opacity: 0.65;
+
+    background-size:
+      8px
+      8px;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 360px) {
+
+  .quote-banner__content {
+    padding:
+      44px
+      22px;
+  }
+
+
+  .quote-banner__text {
+    font-size:
+      15.5px !important;
+  }
+
+
+  .quote-banner__mark svg {
+    width: 25px;
+    height: 25px;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .quote-banner .sr {
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    transition: none !important;
+  }
+
+}

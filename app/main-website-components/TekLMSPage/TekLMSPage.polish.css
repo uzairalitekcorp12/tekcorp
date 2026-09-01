@@ -1,0 +1,58 @@
+.teklms-ui-preview,
+.teklms-progress-preview {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(21, 21, 21, .08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 25px 58px rgba(22, 42, 34, .16);
+}
+
+.teklms-ui-preview { inset: 30px 28px 68px; padding: 18px; }
+.teklms-ui-preview__bar { display: flex; align-items: center; gap: 13px; padding-bottom: 15px; border-bottom: 1px solid #e7ece9; }
+.teklms-ui-preview__bar strong { color: #202623; font-size: 16px; }
+.teklms-ui-preview__bar span { margin-right: auto; color: #737c77; font-size: 10px; }
+.teklms-ui-preview__bar i { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #dff8f2; color: #147765; font-size: 9px; font-style: normal; font-weight: 700; }
+.teklms-ui-preview__welcome { margin-top: 18px; }
+.teklms-ui-preview__welcome span { display: block; color: #75807a; font-size: 10px; }
+.teklms-ui-preview__welcome strong { display: block; margin-top: 5px; color: #242a27; font-size: 21px; }
+.teklms-ui-preview__courses { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
+.teklms-ui-preview__courses div { display: grid; grid-template-columns: 35px 1fr auto; align-items: center; gap: 8px; padding: 12px; border-radius: 10px; background: #f4f8f6; }
+.teklms-ui-preview__courses i { width: 35px; height: 35px; border-radius: 9px; background: linear-gradient(135deg, #1bdbba, #148f7a); }
+.teklms-ui-preview__courses div:nth-child(2) i { background: linear-gradient(135deg, #202a26, #749087); }
+.teklms-ui-preview__courses span { color: #4f5853; font-size: 10px; }
+.teklms-ui-preview__courses strong { color: #168672; font-size: 10px; }
+.teklms-ui-preview__schedule { margin-top: 14px; padding: 14px; border: 1px solid #e5eae7; border-radius: 10px; }
+.teklms-ui-preview__schedule span { display: block; color: #7a837e; font-size: 10px; }
+.teklms-ui-preview__schedule strong { display: block; margin-top: 6px; color: #303733; font-size: 12px; }
+
+.teklms-progress-preview { inset: 30px; padding: 20px; }
+.teklms-progress-preview__head { display: flex; justify-content: space-between; }
+.teklms-progress-preview__head span { color: #242a27; font-size: 15px; font-weight: 600; }
+.teklms-progress-preview__head strong { color: #7b847f; font-size: 10px; }
+.teklms-progress-preview__score { display: flex; align-items: baseline; gap: 10px; margin-top: 25px; }
+.teklms-progress-preview__score i { color: #149c85; font-size: 38px; font-style: normal; font-weight: 700; letter-spacing: -.05em; }
+.teklms-progress-preview__score span { color: #717a75; font-size: 10px; }
+.teklms-progress-preview__rows { display: grid; gap: 16px; margin-top: 25px; }
+.teklms-progress-preview__rows > div { display: grid; grid-template-columns: 105px 1fr 30px; align-items: center; gap: 10px; }
+.teklms-progress-preview__rows span { color: #555e59; font-size: 10px; }
+.teklms-progress-preview__rows i { height: 7px; overflow: hidden; border-radius: 999px; background: #e5ebe8; }
+.teklms-progress-preview__rows b { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #149c85, #1bdbba); }
+.teklms-progress-preview__rows strong { color: #4f5853; font-size: 10px; }
+
+.teklms-page .teklms-hero__class-card span, .teklms-page .teklms-roles em, .teklms-page .teklms-lifecycle__rail span, .teklms-page .teklms-outcomes span, .teklms-page .cap-media__label { font-size: 11px; }
+.teklms-page .teklms-hero__class-card strong, .teklms-page .teklms-lifecycle__rail strong, .teklms-page .teklms-outcomes strong { font-size: 13px; }
+.teklms-page .teklms-roles p, .teklms-page .teklms-learning li, .teklms-page .teklms-bento p { color: #5f6762; font-size: 14px; line-height: 1.55; }
+.teklms-page .teklms-lifecycle__rail small { color: rgba(255,255,255,.62); font-size: 11px; }
+.teklms-page .teklms-bento .large p { color: rgba(255,255,255,.68); }
+.teklms-page .cap-chip { font-size: 12px; }
+.teklms-page a:focus-visible { outline: 3px solid rgba(27,219,186,.48); outline-offset: 3px; }
+
+@media (max-width: 620px) {
+  .teklms-ui-preview { inset: 18px 14px 62px; padding: 13px; }
+  .teklms-ui-preview__bar span { display: none; }
+  .teklms-ui-preview__courses { grid-template-columns: 1fr; }
+  .teklms-ui-preview__courses div:nth-child(2) { display: none; }
+  .teklms-progress-preview { inset: 18px 14px 38px; padding: 15px; }
+  .teklms-progress-preview__rows > div { grid-template-columns: 85px 1fr 28px; }
+}

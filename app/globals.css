@@ -1,0 +1,2490 @@
+@import "tailwindcss";
+
+
+/* ==========================================================================
+   LOCAL LUFGА FONT
+
+   IMPORTANT:
+   We intentionally keep the family name "Lufga Regular"
+   because the existing TekCorp components already use that name.
+
+   The three local files below provide Light, Regular and Medium+
+   weights through one shared CSS font family.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaMedium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga Regular";
+  src: url("/fonts/LufgaLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+
+@theme {
+  --color-teal: #00d4aa;
+  --color-teal-hover: #00b894;
+  --color-teal-dark: #008f73;
+  --color-teal-light: #e6f9f5;
+  --color-bg-dark: #0d131a;
+
+  --color-text-dark: #0f172a;
+  --color-text-body: #334155;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+
+  --font-h: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-b: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sora: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-dmsans: "Lufga Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+:root {
+  /* Brand */
+  --teal: #00d4aa;
+  --teal-hover: #00b894;
+  --teal-dark: #008f73;
+  --teal-light: #e6f9f5;
+  --teal-glow: rgba(0, 212, 170, 0.35);
+
+  /* Backgrounds */
+  --bg: #f2f9f6;
+
+  /* 5% card background — keep this for cards */
+  --bg-card: rgba(76, 78, 79, 0.05);
+
+  --bg-dark: #0d131a;
+  --bg-section: #f8fdfb;
+
+  /* Solid/glass white surface */
+  --surface-glass: rgba(255, 255, 255, 0.95);
+
+  /* Text */
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --tek-heading-gradient:
+    linear-gradient(
+      84.4deg,
+      #17191a 1.6%,
+      rgba(23, 25, 26, 0.55) 31.82%,
+      #17191a 67.87%,
+      rgba(23, 25, 26, 0.55) 103.4%
+    );
+
+  /* Borders */
+  --border-light: rgba(0, 212, 170, 0.15);
+  --border-subtle: #e2e8f0;
+  --border-card: rgba(0, 212, 170, 0.12);
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.10);
+  --shadow-xl: 0 30px 70px rgba(15, 23, 42, 0.14);
+  --shadow-teal: 0 10px 30px rgba(0, 212, 170, 0.25);
+
+  /* Motion */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* ================================================================
+     FONT
+
+     Components written previously use:
+     var(--font-site, "Lufga Regular", sans-serif)
+
+     So we define --font-site here as well.
+     ================================================================ */
+
+  --font-site:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-h:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-b:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-sora:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-dmsans:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+/* ==========================================================================
+   CORE RESETS & BASE
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-body);
+
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    font-size: 1rem;
+    line-height: 1.65;
+
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    color: var(--text-dark);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+
+    font-weight: 700;
+  }
+
+
+  p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+
+  a {
+    color: inherit;
+
+    text-decoration: none;
+
+    transition:
+      color
+      var(--transition-fast);
+  }
+
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+  }
+
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family:
+      "Lufga Regular",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+
+    font-size: inherit;
+  }
+
+
+  ::selection {
+    background: var(--teal);
+    color: #ffffff;
+  }
+
+
+  /* Custom scrollbar */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--teal);
+
+    border-radius:
+      var(--radius-full);
+  }
+
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--teal-hover);
+  }
+}
+
+
+/* ==========================================================================
+   LAYOUT — CONTAINERS & SECTION WRAPPERS
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+
+@media (min-width: 640px) {
+  .wrap {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+
+.wrap-full {
+  width: 100%;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+/* Shared shell for the public content routes. */
+
+.tek-content-shell {
+  width: min(1180px, calc(100% - 108px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.tek-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+@media (max-width: 700px) {
+  .tek-content-shell {
+    width: calc(100% - 30px);
+  }
+}
+
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+
+/* Section with light teal tint background */
+
+.section-alt {
+  background-color: var(--bg-section);
+}
+
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
+}
+
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0
+      rgba(0, 212, 170, 0.4);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 14px
+      rgba(0, 212, 170, 0);
+  }
+}
+
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.animate-float {
+  animation:
+    floatSlow
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+.animate-pulse-glow {
+  animation:
+    pulseGlow
+    2.5s
+    infinite;
+}
+
+
+.animate-fade-up {
+  animation:
+    fadeUp
+    0.6s
+    ease-out
+    both;
+}
+
+
+/* ==========================================================================
+   LEGACY / UNASSIGNED — ACHIEVE / OUTCOMES
+   ========================================================================== */
+
+.achieve-section {
+  background: var(--bg);
+
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+
+.achieve-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 3rem;
+
+  align-items: center;
+}
+
+
+@media (min-width: 1024px) {
+  .achieve-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap: 5rem;
+  }
+}
+
+
+.achieve-list {
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.875rem;
+
+  margin-top: 1.5rem;
+}
+
+
+.achieve-list li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.75rem;
+
+  font-size: 0.9375rem;
+
+  color: var(--text-body);
+
+  line-height: 1.6;
+}
+
+
+.achieve-check {
+  width: 22px;
+  height: 22px;
+
+  min-width: 22px;
+
+  background: var(--teal);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1px;
+}
+
+
+.achieve-check svg {
+  width: 12px;
+  height: 12px;
+
+  color: #ffffff;
+}
+
+
+.achieve-img-wrap {
+  border-radius:
+    var(--radius-xl);
+
+  overflow: hidden;
+
+  box-shadow:
+    var(--shadow-xl);
+
+  aspect-ratio:
+    4 / 3;
+}
+
+
+.achieve-img-wrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn-teal {
+  background-color: var(--teal);
+
+  color: #ffffff;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  font-weight: 600;
+
+  font-size: 0.9375rem;
+
+  padding:
+    0.85rem
+    1.75rem;
+
+  border-radius:
+    var(--radius-full);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  box-shadow:
+    var(--shadow-teal);
+
+  transition:
+    background-color
+      320ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow
+      320ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    color
+      220ms
+      ease,
+    transform
+      320ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+
+  cursor: pointer;
+
+  border: none;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+.btn-teal:hover {
+  background-color:
+    var(--teal-hover);
+
+  transform:
+    translateY(-3px)
+    scale(1.015);
+
+  box-shadow:
+    0
+    12px
+    35px
+    rgba(
+      0,
+      212,
+      170,
+      0.35
+    );
+
+  color: #ffffff;
+}
+
+
+.btn-teal:active {
+  box-shadow:
+    0
+    5px
+    14px
+    rgba(
+      0,
+      160,
+      130,
+      0.22
+    );
+
+  transform:
+    translateY(0)
+    scale(0.985);
+}
+
+
+.btn-outline {
+  background-color: transparent;
+
+  color: var(--text-dark);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  font-weight: 600;
+
+  font-size: 0.9375rem;
+
+  padding:
+    0.8rem
+    1.65rem;
+
+  border-radius:
+    var(--radius-full);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  border:
+    1.5px
+    solid
+    var(--border-subtle);
+
+  transition:
+    background-color
+      300ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    border-color
+      300ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow
+      300ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+    color
+      220ms
+      ease,
+    transform
+      300ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+
+  cursor: pointer;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+.btn-outline:hover {
+  border-color:
+    var(--teal);
+
+  color:
+    var(--teal);
+
+  transform:
+    translateY(-3px)
+    scale(1.015);
+
+  background:
+    var(--teal-light);
+
+  box-shadow:
+    0
+    12px
+    26px
+    rgba(
+      20,
+      156,
+      133,
+      0.13
+    );
+}
+
+
+.btn-outline:active {
+  box-shadow:
+    none;
+
+  transform:
+    translateY(0)
+    scale(0.985);
+}
+
+
+.btn-sm {
+  padding:
+    0.55rem
+    1.1rem;
+
+  font-size:
+    0.8125rem;
+}
+
+
+.btn-lg {
+  padding:
+    1.05rem
+    2.25rem;
+
+  font-size:
+    1rem;
+}
+
+
+/* ==========================================================================
+   GLASS / CARD UTILITIES
+   ========================================================================== */
+
+.glass-card {
+  background:
+    var(--surface-glass)
+    !important;
+
+  backdrop-filter:
+    blur(16px)
+    !important;
+
+  -webkit-backdrop-filter:
+    blur(16px)
+    !important;
+
+  border:
+    1px
+    solid
+    var(--border-light)
+    !important;
+
+  box-shadow:
+    var(--shadow-md)
+    !important;
+
+  border-radius:
+    var(--radius-lg)
+    !important;
+
+  transition:
+    transform
+      var(--transition-smooth),
+    box-shadow
+      var(--transition-smooth),
+    border-color
+      var(--transition-smooth)
+    !important;
+}
+
+
+.glass-card:hover {
+  transform:
+    translateY(-4px)
+    !important;
+
+  box-shadow:
+    var(--shadow-lg)
+    !important;
+
+  border-color:
+    rgba(
+      0,
+      212,
+      170,
+      0.35
+    )
+    !important;
+}
+
+
+/* ==========================================================================
+   BADGE / PILL UTILITIES
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.375rem;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  padding:
+    0.3rem
+    0.75rem;
+
+  border-radius:
+    var(--radius-full);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  letter-spacing:
+    0.02em;
+}
+
+
+.badge-teal {
+  background:
+    var(--teal-light);
+
+  color:
+    var(--teal-dark);
+
+  border:
+    1px
+    solid
+    rgba(
+      0,
+      212,
+      170,
+      0.2
+    );
+}
+
+
+.badge-dark {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+}
+
+
+/* ==========================================================================
+   STATS / NUMBERS ROW
+   ========================================================================== */
+
+.stats-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+}
+
+
+@media (min-width: 640px) {
+  .stats-row {
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
+  }
+}
+
+
+.stat-item {
+  text-align: center;
+
+  padding:
+    1.5rem
+    1rem;
+
+  background:
+    var(--bg-card);
+
+  border:
+    1px
+    solid
+    var(--border-subtle);
+
+  border-radius:
+    var(--radius-lg);
+}
+
+
+.stat-value {
+  font-size:
+    clamp(
+      1.75rem,
+      3vw,
+      2.5rem
+    );
+
+  font-weight: 800;
+
+  color:
+    var(--teal);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  line-height: 1;
+
+  margin-bottom:
+    0.375rem;
+}
+
+
+.stat-label {
+  font-size:
+    0.8125rem;
+
+  color:
+    var(--text-muted);
+}
+
+
+/* ==========================================================================
+   VIDEO MODAL OVERLAY
+   ========================================================================== */
+
+.video-modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  background-color:
+    rgba(
+      13,
+      19,
+      26,
+      0.85
+    );
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  animation:
+    fadeUp
+    0.3s
+    ease-out;
+}
+
+
+.video-modal-inner {
+  width: 100%;
+
+  max-width: 960px;
+
+  border-radius:
+    var(--radius-xl);
+
+  overflow: hidden;
+
+  box-shadow:
+    0
+    40px
+    100px
+    rgba(
+      0,
+      0,
+      0,
+      0.6
+    );
+
+  position: relative;
+}
+
+
+.video-modal-close {
+  position: absolute;
+
+  top: 1rem;
+
+  right: 1rem;
+
+  z-index: 10;
+
+  width: 36px;
+
+  height: 36px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.5
+    );
+
+  border: none;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background
+    var(--transition-fast);
+}
+
+
+.video-modal-close:hover {
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.8
+    );
+}
+
+
+/* ==========================================================================
+   DIVIDER
+   ========================================================================== */
+
+.divider {
+  width: 100%;
+
+  height: 1px;
+
+  background:
+    var(--border-subtle);
+
+  margin: 0;
+}
+
+
+.divider-teal {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--teal),
+      transparent
+    );
+
+  opacity: 0.3;
+}
+
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.375rem;
+}
+
+
+.form-label {
+  font-size:
+    0.8125rem;
+
+  font-weight: 600;
+
+  color:
+    var(--text-dark);
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+
+  background:
+    var(--bg);
+
+  border:
+    1.5px
+    solid
+    var(--border-subtle);
+
+  border-radius:
+    var(--radius-md);
+
+  padding:
+    0.75rem
+    1rem;
+
+  font-size:
+    0.9375rem;
+
+  color:
+    var(--text-dark);
+
+  transition:
+    border-color
+      var(--transition-fast),
+    box-shadow
+      var(--transition-fast);
+
+  outline: none;
+
+  appearance: none;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color:
+    var(--teal);
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      0,
+      212,
+      170,
+      0.12
+    );
+}
+
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color:
+    var(--text-light);
+}
+
+
+/* ==========================================================================
+   UTILITY HELPERS
+   ========================================================================== */
+
+.text-teal {
+  color:
+    var(--teal)
+    !important;
+}
+
+
+.text-dark {
+  color:
+    var(--text-dark)
+    !important;
+}
+
+
+.text-muted {
+  color:
+    var(--text-muted)
+    !important;
+}
+
+
+.text-white {
+  color:
+    #ffffff
+    !important;
+}
+
+
+.text-light {
+  color:
+    var(--text-light)
+    !important;
+}
+
+
+.bg-teal {
+  background-color:
+    var(--teal)
+    !important;
+}
+
+
+.bg-teal-light {
+  background-color:
+    var(--teal-light)
+    !important;
+}
+
+
+.bg-dark {
+  background-color:
+    var(--bg-dark)
+    !important;
+}
+
+
+.bg-card {
+  background-color:
+    var(--bg-card)
+    !important;
+}
+
+
+.bg-section {
+  background-color:
+    var(--bg-section)
+    !important;
+}
+
+
+.flex-center {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.flex-between {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.flex-col {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.mt-section {
+  margin-top: 5rem;
+}
+
+
+.mb-section {
+  margin-bottom: 5rem;
+}
+
+
+.font-sora {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+}
+
+
+.font-dmsans {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+}
+
+
+/* ==========================================================================
+   FORCE OVERRIDE
+   ========================================================================== */
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6,
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+
+  color:
+    var(--text-dark);
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4,
+.bg-dark h5,
+.bg-dark h6,
+.industries-section h1,
+.industries-section h2,
+.industries-section h3,
+.footer h1,
+.footer h2,
+.footer h3 {
+  color:
+    #ffffff
+    !important;
+}
+
+
+section p,
+section li,
+main p,
+main li {
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+
+button.btn-teal,
+a.btn-teal,
+[class*="btn-primary"] {
+  background-color:
+    var(--teal)
+    !important;
+
+  color:
+    #ffffff
+    !important;
+
+  border-radius:
+    var(--radius-full)
+    !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif
+    !important;
+
+  font-weight:
+    600
+    !important;
+
+  box-shadow:
+    var(--shadow-teal)
+    !important;
+}
+
+
+button.btn-teal:hover,
+a.btn-teal:hover,
+[class*="btn-primary"]:hover {
+  background-color:
+    var(--teal-hover)
+    !important;
+
+  color:
+    #ffffff
+    !important;
+
+  transform:
+    translateY(-3px)
+    scale(1.015)
+    !important;
+}
+
+
+.service-card,
+.testimonial-card,
+.why-card,
+.work-card {
+  background-color:
+    var(--bg-card)
+    !important;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE TYPOGRAPHY SCALE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size:
+      clamp(
+        1.875rem,
+        6vw,
+        2.5rem
+      );
+  }
+
+
+  .section-title {
+    font-size:
+      clamp(
+        1.5rem,
+        5vw,
+        2rem
+      );
+  }
+
+
+  .section-padding {
+    padding-top:
+      3.5rem;
+
+    padding-bottom:
+      3.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  .navbar,
+  .footer {
+    display: none;
+  }
+
+
+  body {
+    background:
+      #ffffff;
+  }
+}
+
+/* ==========================================================================
+   Home — GLOBAL DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  --lp1-teal: #1bdbba;
+  --lp1-teal-bright: #22e6c4;
+  --lp1-teal-dark: #149c85;
+  --lp1-teal-soft: rgba(27, 219, 186, 0.12);
+
+  --lp1-ink: #151515;
+  --lp1-ink-soft: #252525;
+  --lp1-ink-muted: #505050;
+
+  --lp1-paper: #ffffff;
+  --lp1-paper-soft: #fbfbfa;
+  --lp1-paper-muted: #f5f5f4;
+
+  --lp1-heading-gradient:
+    linear-gradient(84.4deg, #17191A 1.6%, rgba(23, 25, 26, 0.55) 31.82%, #17191A 67.87%, rgba(23, 25, 26, 0.55) 103.4%);
+
+
+  --lp1-shadow-soft:
+    0 18px 50px rgba(19, 41, 35, 0.08);
+
+  --lp1-shadow-medium:
+    0 24px 65px rgba(19, 41, 35, 0.12);
+
+  --lp1-ease:
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Shared container used by the new main-website components */
+
+.lp1-shell {
+  width:
+    min(
+      calc(100% - 56px),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* Home page isolation */
+
+.Home {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #ffffff;
+}
+
+
+/*
+ * Existing globals.css applies heading colors globally.
+ * These scoped rules make sure Home intentional
+ * dark surfaces and gradient headings are not overridden.
+ */
+
+.Home .lp1-display-heading {
+  background:
+    var(--lp1-heading-gradient)
+    !important;
+
+  -webkit-background-clip:
+    text
+    !important;
+
+  background-clip:
+    text
+    !important;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+}
+
+
+.Home .lp1-hero__title,
+.Home .lp1-contact__copy h2,
+.Home .lp1-solution-card--featured h3 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+/* ==========================================================================
+   PREMIUM SITE SCROLLBAR
+   ========================================================================== */
+
+html {
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    var(--lp1-teal)
+    #111715;
+}
+
+
+::-webkit-scrollbar {
+  width:
+    11px;
+
+  height:
+    11px;
+}
+
+
+::-webkit-scrollbar-track {
+  background:
+    linear-gradient(
+      180deg,
+      #111715,
+      #18201e
+    );
+}
+
+
+::-webkit-scrollbar-thumb {
+  min-height:
+    70px;
+
+  border:
+    3px
+    solid
+    transparent;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--lp1-teal-bright),
+      var(--lp1-teal),
+      var(--lp1-teal-dark)
+    );
+
+  background-clip:
+    padding-box;
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255,255,255,.28);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #42edd0,
+      var(--lp1-teal)
+    );
+
+  background-clip:
+    padding-box;
+}
+
+
+::-webkit-scrollbar-corner {
+  background:
+    #111715;
+}
+
+
+/* ==========================================================================
+   Home RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .lp1-shell {
+    width:
+      min(
+        calc(100% - 30px),
+        1180px
+      );
+  }
+}
+
+@media (min-width: 1600px) {
+  .lp1-shell {
+    width: min(calc(100% - 120px), 1380px);
+  }
+
+  .tek-content-shell {
+    width: min(calc(100% - 140px), 1320px);
+  }
+}
+
+@media (min-width: 2200px) {
+  .lp1-shell {
+    width: min(calc(100% - 180px), 1520px);
+  }
+
+  .tek-content-shell {
+    width: min(calc(100% - 180px), 1480px);
+  }
+}
+
+
+/* ==========================================================================
+   Home REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .Home *,
+  .Home *::before,
+  .Home *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+}
+
+/* ==========================================================================
+   TEKCORP — MAIN WEBSITE ROUTING SHELL
+   ========================================================================== */
+
+.tekcorp-main {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    hidden;
+}
+
+
+/* ==========================================================================
+   About PAGE — GLOBAL DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------
+     About BRAND COLORS
+     --------------------------------------------------------------- */
+
+  --About-teal:
+    #1bdbba;
+
+  --About-teal-bright:
+    #22e6c4;
+
+  --About-teal-dark:
+    #149c85;
+
+  --About-teal-soft:
+    rgba(
+      27,
+      219,
+      186,
+      0.12
+    );
+
+
+  /* ---------------------------------------------------------------
+     About DARK COLORS
+     --------------------------------------------------------------- */
+
+  --About-black:
+    #040605;
+
+  --About-dark:
+    #151817;
+
+  --About-dark-soft:
+    #242625;
+
+
+  /* ---------------------------------------------------------------
+     About LIGHT COLORS
+     --------------------------------------------------------------- */
+
+  --About-white:
+    #ffffff;
+
+  --About-paper:
+    #fbfbfa;
+
+  --About-paper-muted:
+    #f6f6f5;
+
+
+  /* ---------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------- */
+
+  --About-heading-gradient:
+    linear-gradient(
+      90deg,
+      #151515 0%,
+      #252525 45%,
+      #505050 100%
+    );
+
+
+  /* ---------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------- */
+
+  --About-shadow-soft:
+    0
+    18px
+    45px
+    rgba(
+      20,
+      44,
+      39,
+      0.08
+    );
+
+
+  --About-shadow-medium:
+    0
+    24px
+    65px
+    rgba(
+      20,
+      44,
+      39,
+      0.12
+    );
+
+
+  /* ---------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------- */
+
+  --About-ease:
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    );
+}
+
+
+/* ==========================================================================
+   About PAGE ROOT
+   ========================================================================== */
+
+.tek-About-page {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    clip;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   About SHARED CONTAINER
+
+   Used by all new About components.
+   ========================================================================== */
+
+.tek-About-shell {
+  width:
+    min(
+      calc(
+        100% - 56px
+      ),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* ==========================================================================
+   About — GRADIENT HEADING UTILITY
+   ========================================================================== */
+
+.tek-About-gradient-heading {
+  background:
+    var(
+      --About-heading-gradient
+    );
+
+  background-clip:
+    text;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+}
+
+
+/* ==========================================================================
+   GLOBAL HEADING OVERRIDE COMPATIBILITY
+
+   Your older globals contain:
+
+   section h1,
+   section h2,
+   ...
+
+   These scoped rules guarantee that intentional About dark surfaces
+   always keep white typography.
+   ========================================================================== */
+
+.tek-About-page
+.tek-About-contact__copy
+h2 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+.tek-About-page
+.tek-About-about__value-card
+h3 {
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+}
+
+
+/* ==========================================================================
+   ANCHOR SCROLL OFFSET
+
+   Prevents the fixed Navbar from covering section headings when
+   clicking navigation links.
+   ========================================================================== */
+
+html {
+  scroll-padding-top:
+    90px;
+}
+
+
+.tek-About-page section[id] {
+  scroll-margin-top:
+    90px;
+  padding: 20px 0px 20px
+
+}
+
+
+/* ==========================================================================
+   About LINKS / INTERACTIONS
+   ========================================================================== */
+
+.tek-About-page a,
+.tek-About-page button {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+/* ==========================================================================
+   About IMAGE QUALITY
+   ========================================================================== */
+
+.tek-About-page img {
+  backface-visibility:
+    hidden;
+
+  transform-style:
+    preserve-3d;
+}
+
+
+/* ==========================================================================
+   About RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (max-width: 760px) {
+
+  .tek-About-shell {
+    width:
+      min(
+        calc(
+          100% - 30px
+        ),
+        1180px
+      );
+  }
+
+
+  html {
+    scroll-padding-top:
+      78px;
+  }
+
+
+  .tek-About-page section[id] {
+    scroll-margin-top:
+      78px;
+   padding: 0px 0px 20px
+  }
+
+}
+
+
+/* ==========================================================================
+   About — ACCESSIBILITY / REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .tek-About-page *,
+  .tek-About-page *::before,
+  .tek-About-page *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+
+}
+
+
+
+
+/* ==========================================================================
+   Contact PAGE — GLOBAL INTEGRATION
+   ==========================================================================
+
+   CONTACT STRUCTURE
+   -----------------
+
+   app/main-website-pages/Contact/Contact.jsx
+
+   app/main-website-components/ContactPage/
+   ├── ContactPage.jsx
+   └── ContactPage.css
+
+
+   IMPORTANT
+   ---------
+
+   ContactPage.css owns the Contact-page visual design.
+
+   These globals only provide:
+
+   - route/page isolation
+   - shared anchor offset
+   - global heading-rule compatibility
+   - image rendering safety
+   - tap behavior
+   - reduced-motion accessibility
+
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Contact PAGE ROOT
+   ========================================================================== */
+
+.tek-contact-page {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow-x:
+    clip;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   Contact — GLOBAL HEADING COMPATIBILITY
+
+   Older global rules contain:
+
+   section h1,
+   section h2,
+   ...
+
+   ContactPage.css already defines the final page colors, but these rules
+   make the intended Contact typography explicit at the global level too.
+   ========================================================================== */
+
+.tek-contact-page
+.tek-contact-hero
+h1 {
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+}
+
+
+.tek-contact-page
+.tek-contact-brief
+h2,
+.tek-contact-page
+.tek-contact-form-card
+h3 {
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+}
+
+
+/* ==========================================================================
+   Contact — ANCHOR OFFSET
+   ========================================================================== */
+
+.tek-contact-page
+section[id] {
+  scroll-margin-top:
+    90px;
+}
+
+
+/* ==========================================================================
+   Contact — INTERACTIONS / MEDIA
+   ========================================================================== */
+
+.tek-contact-page
+a,
+.tek-contact-page
+button {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.tek-contact-page
+img {
+  backface-visibility:
+    hidden;
+}
+
+
+/* ==========================================================================
+   Contact — RESPONSIVE GLOBALS
+   ========================================================================== */
+
+@media (
+  max-width:
+    760px
+) {
+
+  .tek-contact-page
+  section[id] {
+    scroll-margin-top:
+      78px;
+  }
+
+}
+
+
+/* ==========================================================================
+   Contact — REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .tek-contact-page *,
+  .tek-contact-page *::before,
+  .tek-contact-page *::after {
+    scroll-behavior:
+      auto
+      !important;
+
+    animation-duration:
+      0.01ms
+      !important;
+
+    animation-iteration-count:
+      1
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+
+  .footer2 {
+    display:
+      none
+      !important;
+  }
+
+}
+
+/* ==========================================================================
+   TEKCORP — SHARED NAVIGATION TOKENS
+   ========================================================================== */
+
+:root {
+  --tek-nav-accent:
+    var(
+      --lp1-teal,
+      #1bdbba
+    );
+
+  --tek-nav-accent-dark:
+    var(
+      --lp1-teal-dark,
+      #149c85
+    );
+
+  --tek-nav-accent-soft:
+    rgba(
+      27,
+      219,
+      186,
+      .08
+    );
+
+
+  --tek-nav-heading-gradient:
+    var(
+      --lp1-heading-gradient,
+      linear-gradient(
+        84.4deg,
+        #17191a 1.6%,
+        rgba(23, 25, 26, .55) 31.82%,
+        #17191a 67.87%,
+        rgba(23, 25, 26, .55) 103.4%
+      )
+    );
+}
+
+
+/* ==========================================================================
+   FIXED NAVIGATION OFFSET
+   ========================================================================== */
+
+html {
+  scroll-padding-top:
+    86px;
+}
+
+
+main section[id] {
+  scroll-margin-top:
+    86px;
+}
+
+
+/* ==========================================================================
+   MOBILE OFFSET
+   ========================================================================== */
+
+@media (
+  max-width:
+    760px
+) {
+
+  html {
+    scroll-padding-top:
+      76px;
+  }
+
+
+  main section[id] {
+    scroll-margin-top:
+      76px;
+  }
+
+}

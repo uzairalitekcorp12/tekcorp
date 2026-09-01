@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop stop-color="#2c3b39"/>
+          <stop offset="1" stop-color="#101715"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="720" fill="url(#bg)"/>
+      <circle cx="1050" cy="80" r="230" fill="#1bdbba" opacity=".12"/>
+      <circle cx="80" cy="650" r="250" fill="#ffffff" opacity=".08"/>
+
+        <rect x="115" y="95" width="970" height="520" rx="34" fill="#fff" opacity=".94"/>
+        <rect x="155" y="140" width="180" height="430" rx="18" fill="#151c1b"/>
+        <rect x="375" y="140" width="660" height="180" rx="20" fill="#1bdbba" opacity=".2"/>
+        <rect x="375" y="350" width="315" height="220" rx="20" fill="#edf3f1"/>
+        <rect x="720" y="350" width="315" height="220" rx="20" fill="#edf3f1"/>
+        <path d="M420 280c80-120 170-30 240-95s140 50 230-10" fill="none" stroke="#1bdbba" stroke-width="14" stroke-linecap="round"/>
+
+      <text x="60" y="670" fill="#ffffff" opacity=".78" font-family="Arial, sans-serif" font-size="26" font-weight="700">Operations Dashboard</text>
+    </svg>

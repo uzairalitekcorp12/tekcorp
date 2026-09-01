@@ -1,0 +1,57 @@
+.cap-media {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #e8ecea;
+  background-image: linear-gradient(145deg, #e9eeec 0%, #d6dedb 48%, #f8faf9 100%);
+  background-position: var(--cap-media-position, center);
+  background-size: cover;
+  transform: translateZ(0);
+}
+
+.cap-media__image {
+  z-index: 0;
+  object-fit: contain;
+  object-position: var(--cap-media-position, center);
+}
+
+.cap-media::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 78% 20%, rgba(27, 219, 186, .18), transparent 32%);
+  content: "";
+  opacity: .35;
+  transition: opacity .35s ease, transform .55s cubic-bezier(.16, 1, .3, 1);
+}
+
+.cap-media:hover::before {
+  opacity: .6;
+  transform: scale(1.04);
+}
+
+.cap-media__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(4, 9, 7, .01), rgba(4, 9, 7, .16));
+  pointer-events: none;
+}
+
+.cap-media__label {
+  position: absolute;
+  right: 13px;
+  bottom: 13px;
+  z-index: 3;
+  display: inline-flex;
+  min-height: 27px;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid rgba(255, 255, 255, .34);
+  border-radius: 999px;
+  background: rgba(5, 11, 9, .38);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}

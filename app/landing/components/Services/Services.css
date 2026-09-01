@@ -1,0 +1,630 @@
+/* ==========================================================================
+   SERVICES SECTION — REFERENCE DESIGN
+   ========================================================================== */
+
+.services-reference {
+  width: 100%;
+
+  padding: 74px 0 78px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.services-reference__container {
+  width: calc(100% - 64px);
+
+  max-width: 1160px;
+
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.services-reference__header {
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: 0 auto 52px;
+
+  text-align: center;
+}
+
+/* ==========================================================================
+   MAIN SECTION HEADING
+
+   Screenshot treatment:
+   dark → softer gray → dark
+   ========================================================================== */
+
+.services-reference__heading {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: clamp(32px, 3.1vw, 42px) !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.17 !important;
+
+  letter-spacing: -0.042em !important;
+}
+
+.services-reference__heading-line {
+  display: block;
+
+  width: max-content;
+  max-width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  /*
+    Not plain black/gray.
+
+    This recreates the reference:
+    dark on the outer words,
+    softer charcoal through the middle.
+  */
+  background: linear-gradient(
+    90deg,
+    #1c1a1a 0%,
+    #252222 20%,
+    #635d5e 47%,
+    #454041 68%,
+    #211e1f 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   SECTION DESCRIPTION
+   ========================================================================== */
+
+.services-reference__intro {
+  max-width: 480px;
+
+  margin: 16px auto 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 14px !important;
+
+  font-weight: 400;
+
+  line-height: 1.35 !important;
+
+  letter-spacing: -0.01em;
+
+  color: #555152 !important;
+}
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
+.services-reference__grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 24px 38px;
+
+  align-items: stretch;
+}
+
+/*
+  Reference screenshot:
+  final EdTech card remains on the LEFT
+  and keeps half-grid width.
+*/
+.services-reference__card--half {
+  grid-column: 1 / 2;
+}
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.services-reference__card {
+  width: 100%;
+
+  min-height: 0;
+
+  position: relative;
+
+  padding: 30px 24px 28px;
+
+  border: 0;
+
+  border-radius: 5px;
+
+  background: #f7f7f7;
+
+  box-shadow: none;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.55s ease var(--service-delay, 0ms),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1)
+      var(--service-delay, 0ms),
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+/* reveal */
+
+.services-reference--visible
+.services-reference__card {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* hover */
+
+.services-reference__card:hover {
+  transform: translateY(-3px);
+
+  background: #f8faf9;
+
+  box-shadow:
+    0 15px 35px rgba(24, 36, 33, 0.055);
+}
+
+/* tiny teal accent on hover */
+
+.services-reference__card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #1bd9b8,
+    #21dfbf
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.services-reference__card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   CARD TITLE
+
+   Same dark → gray → dark treatment from screenshot.
+   ========================================================================== */
+
+.services-reference__card-title {
+  width: max-content;
+
+  max-width: 100%;
+
+  margin: 0 0 19px !important;
+
+  padding: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 23px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.15 !important;
+
+  letter-spacing: -0.035em !important;
+
+  background: linear-gradient(
+    90deg,
+    #1b1919 0%,
+    #242121 20%,
+    #655f60 48%,
+    #484344 68%,
+    #211f1f 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   CARD SUBTITLE
+   ========================================================================== */
+
+.services-reference__card-subtitle {
+  margin: 0 0 13px !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1.35 !important;
+
+  letter-spacing: -0.01em;
+
+  color: #282526 !important;
+}
+
+/* ==========================================================================
+   BODY COPY
+   ========================================================================== */
+
+.services-reference__body {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.services-reference__body p {
+  margin: 0 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 12px !important;
+
+  font-weight: 400;
+
+  line-height: 1.45 !important;
+
+  letter-spacing: -0.005em;
+
+  color: #686465 !important;
+}
+
+/* ==========================================================================
+   ITALIC TEXT
+   ========================================================================== */
+
+.services-reference__italic {
+  margin: 13px 0 18px !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 12px !important;
+
+  font-weight: 500;
+
+  font-style: italic;
+
+  line-height: 1.4 !important;
+
+  color: #282526 !important;
+}
+
+/* ==========================================================================
+   TAGS
+   ========================================================================== */
+
+.services-reference__tags {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px 9px;
+}
+
+.services-reference__tag {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 23px;
+
+  padding: 4px 10px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  /*
+    Tags in reference are solid teal,
+    not dark/gray text gradients.
+  */
+  background: #1bd9b8;
+
+  color: #154039 !important;
+
+  font-family:
+    "Lufga Regular",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
+
+  font-size: 9px !important;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  cursor: default;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.services-reference__tag:hover {
+  background: #17caaa;
+
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   RESPONSIVE — LAPTOP
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .services-reference__container {
+    width: calc(100% - 56px);
+
+    max-width: 1080px;
+  }
+
+  .services-reference__grid {
+    column-gap: 28px;
+  }
+
+  .services-reference__card {
+    padding: 27px 22px 26px;
+  }
+
+  .services-reference__card-title {
+    font-size: 21px !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .services-reference {
+    padding:
+      64px
+      0
+      68px;
+  }
+
+  .services-reference__container {
+    width: calc(100% - 48px);
+
+    max-width: 760px;
+  }
+
+  .services-reference__header {
+    margin-bottom: 42px;
+  }
+
+  .services-reference__grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .services-reference__card--half {
+    grid-column: auto;
+  }
+
+  .services-reference__card {
+    padding:
+      28px
+      24px;
+  }
+
+  .services-reference__card-title {
+    font-size: 22px !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .services-reference {
+    padding:
+      54px
+      0
+      58px;
+  }
+
+  .services-reference__container {
+    width: calc(100% - 32px);
+  }
+
+  .services-reference__header {
+    max-width: 100%;
+
+    margin-bottom: 34px;
+  }
+
+  .services-reference__heading {
+    font-size:
+      clamp(
+        29px,
+        8vw,
+        35px
+      ) !important;
+
+    line-height: 1.16 !important;
+  }
+
+  .services-reference__heading-line {
+    width: 100%;
+  }
+
+  .services-reference__intro {
+    margin-top: 13px !important;
+
+    max-width: 380px;
+
+    font-size: 13.5px !important;
+
+    line-height: 1.45 !important;
+  }
+
+  .services-reference__desktop-break {
+    display: none;
+  }
+
+  .services-reference__grid {
+    gap: 16px;
+  }
+
+  .services-reference__card {
+    padding:
+      24px
+      20px;
+
+    border-radius: 7px;
+  }
+
+  .services-reference__card-title {
+    margin-bottom: 16px !important;
+
+    font-size: 20px !important;
+  }
+
+  .services-reference__card-subtitle {
+    font-size: 12.5px !important;
+  }
+
+  .services-reference__body p {
+    font-size: 12.5px !important;
+
+    line-height: 1.5 !important;
+  }
+
+  .services-reference__italic {
+    font-size: 12.5px !important;
+  }
+
+  .services-reference__tag {
+    min-height: 24px;
+
+    padding:
+      5px
+      10px;
+
+    font-size: 9.5px !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 420px) {
+  .services-reference {
+    padding:
+      46px
+      0
+      50px;
+  }
+
+  .services-reference__container {
+    width: calc(100% - 26px);
+  }
+
+  .services-reference__heading {
+    font-size: 28px !important;
+  }
+
+  .services-reference__intro {
+    font-size: 13px !important;
+  }
+
+  .services-reference__card {
+    padding:
+      22px
+      17px;
+  }
+
+  .services-reference__card-title {
+    font-size: 19px !important;
+  }
+
+  .services-reference__tags {
+    gap: 7px;
+  }
+
+  .services-reference__tag {
+    padding:
+      5px
+      9px;
+
+    font-size: 9px !important;
+  }
+}

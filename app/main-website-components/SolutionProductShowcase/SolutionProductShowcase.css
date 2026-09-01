@@ -1,0 +1,460 @@
+/* ========================================================================== 
+   TEKCORP — REUSABLE SOLUTION / PRODUCT SHOWCASE
+   ========================================================================== */
+
+.tek-showcase {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(54px, 6vw, 82px) 0 clamp(50px, 5vw, 72px);
+  background: linear-gradient(180deg, #fff 0%, #fafbfb 58%, #fff 100%);
+}
+
+.tek-showcase__shell {
+  width: min(calc(100% - 56px), 1180px);
+  margin-inline: auto;
+}
+
+.tek-showcase__heading {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.tek-showcase__eyebrow {
+  margin: 0 0 7px !important;
+  color: #6f7672 !important;
+  font-size: .76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: #6f7672 !important;
+}
+
+.tek-showcase__heading h2 {
+  max-width: 700px;
+  margin: 0 !important;
+  background: linear-gradient(90deg, #151515 0%, #252525 48%, #505050 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: clamp(2rem, 3.4vw, 3rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.04em !important;
+}
+
+.tek-showcase__subtitle {
+  max-width: 620px;
+  margin: 10px auto 0 !important;
+  color: #767d79 !important;
+  font-size: 1rem !important;
+  line-height: 1.62 !important;
+  -webkit-text-fill-color: #767d79 !important;
+}
+
+.tek-showcase__stage {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.tek-showcase__glow {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 72%;
+  height: 82%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27, 219, 186, .09) 0%, rgba(27, 219, 186, .025) 44%, transparent 72%);
+  filter: blur(36px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.tek-showcase-swiper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 9px 0 48px !important;
+}
+
+.tek-showcase-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.tek-showcase-swiper .swiper-slide {
+  display: flex;
+  height: auto !important;
+  opacity: .76;
+  transform: scale(.975);
+  transition: opacity 550ms ease, transform 550ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.tek-showcase-swiper .swiper-slide-visible {
+  opacity: .94;
+  transform: scale(.99);
+}
+
+.tek-showcase-swiper .swiper-slide-active {
+  z-index: 4;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tek-showcase-card {
+  display: flex;
+  width: 100%;
+  min-height: 430px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(45, 53, 49, .25);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(22, 37, 32, .035);
+  transition: transform 420ms cubic-bezier(.16, 1, .3, 1), border-color 300ms ease, box-shadow 420ms ease;
+}
+
+.tek-showcase-card__visual {
+  position: relative;
+  display: block;
+  height: 232px;
+  flex: 0 0 232px;
+  overflow: hidden;
+  background: #13cdb0;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tek-showcase-card__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 750ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.tek-showcase-card__teal,
+.tek-showcase-card__shade,
+.tek-showcase-card__sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tek-showcase-card__teal {
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(13, 207, 176, .62) 0%, rgba(16, 208, 178, .4) 42%, rgba(13, 193, 167, .14) 74%, rgba(7, 54, 48, .06) 100%);
+  mix-blend-mode: multiply;
+  transition: opacity 450ms ease;
+}
+
+.tek-showcase-card__shade {
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(4, 20, 17, .03) 0%, rgba(4, 27, 23, .05) 48%, rgba(4, 27, 23, .40) 100%);
+}
+
+.tek-showcase-card__sweep {
+  z-index: 3;
+  top: -28%;
+  left: -72%;
+  width: 40%;
+  height: 165%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .16), transparent);
+  opacity: 0;
+  transform: rotate(13deg);
+  transition: left 850ms cubic-bezier(.16, 1, .3, 1), opacity 250ms ease;
+}
+
+.tek-showcase-card__number,
+.tek-showcase-card__category,
+.tek-showcase-card__visual h3,
+.tek-showcase-card__floating-arrow {
+  position: absolute;
+  z-index: 5;
+}
+
+.tek-showcase-card__number {
+  top: 16px;
+  right: 16px;
+  color: rgba(255, 255, 255, .72);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.tek-showcase-card__category {
+  top: 16px;
+  left: 17px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, .94);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.tek-showcase-card__category::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+}
+
+.tek-showcase-card__visual h3 {
+  left: 17px;
+  bottom: 19px;
+  width: calc(100% - 58px);
+  margin: 0 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: clamp(17px, 1.5vw, 21px) !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  transition: transform 400ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.tek-showcase-card__floating-arrow {
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 50%;
+  background: rgba(4, 35, 30, .22);
+  color: #fff;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+  transform: translateY(8px) rotate(-20deg) scale(.9);
+  transition: opacity 300ms ease, transform 450ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.tek-showcase-card__body {
+  display: flex;
+  min-height: 198px;
+  flex: 1;
+  flex-direction: column;
+  padding: 18px;
+  background: #fff;
+}
+
+.tek-showcase-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tek-showcase-card__meta strong {
+  color: #171a18;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.tek-showcase-card__meta > span {
+  width: 25px;
+  height: 1px;
+  background: var(--lp1-teal, #1bdbba);
+  transition: width 350ms ease;
+}
+
+.tek-showcase-card__body p {
+  margin: 10px 0 18px !important;
+  color: #616864 !important;
+  font-size: .94rem !important;
+  line-height: 1.6 !important;
+  -webkit-text-fill-color: #616864 !important;
+}
+
+.tek-showcase-card__link {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  margin-left: auto;
+  color: var(--lp1-teal-dark, #149c85);
+  font-size: .86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 250ms ease, color 250ms ease;
+}
+
+.tek-showcase-card__link svg {
+  transition: transform 260ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tek-showcase-card:hover {
+    z-index: 8;
+    border-color: rgba(20, 156, 133, .65);
+    box-shadow: 0 24px 54px rgba(17, 59, 50, .13);
+    transform: translateY(-7px);
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__visual img {
+    transform: scale(1.075);
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__teal {
+    opacity: .84;
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__sweep {
+    left: 140%;
+    opacity: 1;
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__visual h3 {
+    transform: translateY(-3px);
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__floating-arrow {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg) scale(1);
+  }
+
+  .tek-showcase-card:hover .tek-showcase-card__meta > span {
+    width: 40px;
+  }
+
+  .tek-showcase-card__link:hover {
+    gap: 9px;
+    color: #0f806c;
+  }
+
+  .tek-showcase-card__link:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.tek-showcase-swiper .swiper-pagination {
+  bottom: 6px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tek-showcase-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  margin: 0 4px !important;
+  border-radius: 999px;
+  background: #9fa8a5;
+  opacity: .38;
+  transition: width 300ms ease, opacity 300ms ease, background 300ms ease;
+}
+
+.tek-showcase-swiper .swiper-pagination-bullet-active {
+  width: 28px;
+  opacity: 1;
+  background: linear-gradient(90deg, #1bdbba, #149c85);
+}
+
+.tek-showcase__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.tek-showcase__cta {
+  display: inline-flex;
+  min-height: 43px;
+  align-items: center;
+  gap: 18px;
+  padding: 0 6px 0 16px;
+  border: 1px solid #686d6b;
+  border-radius: 999px;
+  color: #262a29;
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 250ms ease, color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+}
+
+.tek-showcase__cta > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0f2f1;
+  transition: background 250ms ease, transform 320ms ease;
+}
+
+.tek-showcase__cta:hover {
+  border-color: var(--lp1-teal-dark, #149c85);
+  color: var(--lp1-teal-dark, #149c85);
+  box-shadow: 0 12px 28px rgba(20, 156, 133, .1);
+  transform: translateY(-2px);
+}
+
+.tek-showcase__cta:hover > span {
+  background: var(--lp1-teal, #1bdbba);
+  color: #07110f;
+  transform: rotate(-35deg);
+}
+
+@media (max-width: 700px) {
+  .tek-showcase__shell {
+    width: min(calc(100% - 30px), 1180px);
+  }
+
+  .tek-showcase {
+    padding: 46px 0 48px;
+  }
+
+  .tek-showcase__heading {
+    margin-bottom: 25px;
+  }
+
+  .tek-showcase__subtitle {
+    font-size: .94rem !important;
+  }
+
+  .tek-showcase-card {
+    min-height: 402px;
+  }
+
+  .tek-showcase-card__visual {
+    height: 210px;
+    flex-basis: 210px;
+  }
+
+  .tek-showcase-swiper {
+    padding-bottom: 43px !important;
+  }
+}
+
+@media (hover: none) {
+  .tek-showcase-card__floating-arrow {
+    opacity: .85;
+    transform: translateY(0) rotate(0) scale(.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tek-showcase *,
+  .tek-showcase *::before,
+  .tek-showcase *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}

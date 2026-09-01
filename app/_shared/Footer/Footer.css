@@ -1,0 +1,799 @@
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 64px 0 32px;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+}
+
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.footer-container {
+  width: calc(100% - 64px);
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   MAIN GRID
+   ========================================================================== */
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    minmax(0, 1.15fr);
+
+  align-items: start;
+
+  gap: 64px;
+
+  margin-bottom: 64px;
+}
+
+
+/* ==========================================================================
+   BRAND
+   ========================================================================== */
+
+.footer-brand {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 28px;
+}
+
+
+.footer-brand-logo {
+  position: relative;
+
+  width: 224px;
+  height: 56px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.footer-brand-logo:hover {
+  transform: scale(1.02);
+}
+
+
+/* ==========================================================================
+   GENERIC IMAGE
+   ========================================================================== */
+
+.footer-image-contain {
+  object-fit: contain;
+
+  object-position: left center;
+}
+
+
+/* ==========================================================================
+   SCHEDULE CALL BUTTON
+   ========================================================================== */
+
+.footer-call-button {
+  width: 100%;
+
+  max-width: 240px;
+
+  min-height: 56px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding:
+    7px
+    8px
+    7px
+    24px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.015em;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+
+.footer-call-button:hover {
+  border-color: #00d4aa;
+
+  background:
+    rgba(0, 212, 170, 0.08);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 212, 170, 0.1);
+}
+
+
+.footer-call-button:active {
+  transform: scale(0.98);
+}
+
+
+/* ==========================================================================
+   CTA ARROW
+   ========================================================================== */
+
+.footer-call-arrow {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+.footer-call-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+.footer-call-button:hover
+.footer-call-arrow {
+  background: #00d4aa;
+
+  color: #10201d;
+
+  transform: rotate(45deg);
+}
+
+
+/* ==========================================================================
+   COMMON HEADING
+   ========================================================================== */
+
+.footer-heading {
+  margin:
+    0
+    0
+    24px;
+
+  padding: 0;
+
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.02em;
+
+  color:
+    rgba(255, 255, 255, 0.82);
+}
+
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+
+.footer-contact-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+.footer-contact-link {
+  width: max-content;
+
+  max-width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.footer-contact-icon {
+  width: 20px;
+  height: 20px;
+
+  flex: 0 0 20px;
+
+  color:
+    rgba(255, 255, 255, 0.58);
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.footer-contact-link:hover,
+.footer-contact-link:hover
+.footer-contact-icon {
+  color: #00d4aa;
+}
+
+
+/* ==========================================================================
+   BADGES
+   ========================================================================== */
+
+.footer-badges {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   BADGE GROUPS
+   ========================================================================== */
+
+.footer-badge-groups {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+/* ==========================================================================
+   BADGE ROW
+   ========================================================================== */
+
+.footer-badge-row {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: nowrap;
+}
+
+
+.footer-badge-row--top {
+  gap: 20px;
+}
+
+
+.footer-badge-row--bottom {
+  gap: 24px;
+}
+
+
+/* ==========================================================================
+   INDIVIDUAL BADGE
+   ========================================================================== */
+
+.footer-badge {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+.footer-badge:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+
+/* ==========================================================================
+   DESKTOP BADGE DIMENSIONS
+   ========================================================================== */
+
+.footer-badge--google {
+  width: 144px;
+  height: 40px;
+}
+
+
+.footer-badge--clutch {
+  width: 112px;
+  height: 36px;
+}
+
+
+.footer-badge--tsdc {
+  width: 80px;
+  height: 56px;
+}
+
+
+.footer-badge--gdpr {
+  width: 96px;
+  height: 96px;
+}
+
+
+.footer-badge--meta {
+  width: 144px;
+  height: 40px;
+}
+
+
+/* ==========================================================================
+   FOOTER BOTTOM
+   ========================================================================== */
+
+.footer-bottom {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 32px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+}
+
+
+.footer-copyright {
+  margin: 0;
+
+  padding: 0;
+
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color:
+    rgba(255, 255, 255, 0.42);
+}
+
+
+/* ==========================================================================
+   LEGAL LINKS
+   ========================================================================== */
+
+.footer-legal {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+}
+
+
+.footer-legal a {
+  font-family: var(--font-site, "Lufga Regular", sans-serif);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color:
+    rgba(255, 255, 255, 0.42);
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.footer-legal a:hover {
+  color: #00d4aa;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+  .footer-main {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap:
+      50px
+      48px;
+  }
+
+
+  .footer-badges {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .footer-badge-groups {
+    max-width: 430px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 639px) {
+
+  .footer {
+    padding:
+      46px
+      0
+      28px;
+  }
+
+
+  .footer-container {
+    width:
+      calc(100% - 44px);
+  }
+
+
+  .footer-main {
+    grid-template-columns:
+      1fr;
+
+    gap: 44px;
+
+    margin-bottom: 54px;
+  }
+
+
+  .footer-badges {
+    grid-column: auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     LOGO
+     ---------------------------------------------------------- */
+
+  .footer-brand-logo {
+    width: 185px;
+    height: 48px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CTA
+     ---------------------------------------------------------- */
+
+  .footer-call-button {
+    max-width: 232px;
+
+    min-height: 56px;
+  }
+
+
+  /* ----------------------------------------------------------
+     BADGE AREA
+     ---------------------------------------------------------- */
+
+  .footer-badge-groups {
+    width: 100%;
+
+    max-width: 330px;
+
+    gap: 20px;
+  }
+
+
+  /*
+    ROW 1:
+    Google | Clutch | TSDC
+  */
+
+  .footer-badge-row--top {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  /*
+    ROW 2:
+        GDPR | META
+
+    Two equal columns keep them centered.
+  */
+
+  .footer-badge-row--bottom {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    align-items: center;
+
+    gap: 16px;
+  }
+
+
+  .footer-badge {
+    justify-self: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     MOBILE BADGE SIZES
+     ---------------------------------------------------------- */
+
+  .footer-badge--google {
+    width: 100px;
+    height: 32px;
+  }
+
+
+  .footer-badge--clutch {
+    width: 80px;
+    height: 28px;
+  }
+
+
+  .footer-badge--tsdc {
+    width: 54px;
+    height: 46px;
+  }
+
+
+  .footer-badge--gdpr {
+    width: 70px;
+    height: 70px;
+  }
+
+
+  .footer-badge--meta {
+    width: 105px;
+    height: 34px;
+  }
+
+
+  /* ----------------------------------------------------------
+     FOOTER BOTTOM
+     ---------------------------------------------------------- */
+
+  .footer-bottom {
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    padding-top: 28px;
+
+    text-align: center;
+  }
+
+
+  .footer-copyright {
+    text-align: center;
+  }
+
+
+  .footer-legal {
+    justify-content: center;
+
+    gap: 24px;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 390px) {
+
+  .footer-container {
+    width:
+      calc(100% - 36px);
+  }
+
+
+  .footer-badge-groups {
+    max-width: 300px;
+  }
+
+
+  .footer-badge-row--top {
+    gap: 7px;
+  }
+
+
+  .footer-badge-row--bottom {
+    gap: 12px;
+  }
+
+
+  .footer-badge--google {
+    width: 91px;
+    height: 29px;
+  }
+
+
+  .footer-badge--clutch {
+    width: 73px;
+    height: 26px;
+  }
+
+
+  .footer-badge--tsdc {
+    width: 49px;
+    height: 42px;
+  }
+
+
+  .footer-badge--gdpr {
+    width: 64px;
+    height: 64px;
+  }
+
+
+  .footer-badge--meta {
+    width: 96px;
+    height: 31px;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 340px) {
+
+  .footer-badge-groups {
+    max-width: 274px;
+  }
+
+
+  .footer-badge--google {
+    width: 82px;
+    height: 27px;
+  }
+
+
+  .footer-badge--clutch {
+    width: 67px;
+    height: 24px;
+  }
+
+
+  .footer-badge--tsdc {
+    width: 44px;
+    height: 38px;
+  }
+
+
+  .footer-badge--gdpr {
+    width: 59px;
+    height: 59px;
+  }
+
+
+  .footer-badge--meta {
+    width: 89px;
+    height: 29px;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer-brand-logo,
+  .footer-call-button,
+  .footer-call-arrow,
+  .footer-badge,
+  .footer-contact-link,
+  .footer-contact-icon {
+    transition: none !important;
+  }
+
+}

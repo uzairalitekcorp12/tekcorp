@@ -1,0 +1,7 @@
+Add these final assets here:
+
+hero.jpg
+overview.jpg
+spotlight.jpg
+
+The page gracefully renders a TekCorp-themed fallback until each asset exists.

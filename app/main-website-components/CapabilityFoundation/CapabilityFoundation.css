@@ -1,0 +1,153 @@
+/* ==========================================================================\n   TEKCORP — CAPABILITY PAGE FOUNDATION\n   Shared only for typography, shell sizing and CTA language.\n   Individual pages keep their own layouts and visual systems.\n   ========================================================================== */
+
+.cap-page {
+  --cap-teal: var(--lp1-teal, #1bdbba);
+  --cap-teal-dark: var(--lp1-teal-dark, #149c85);
+  --cap-ink: #151515;
+  --cap-ink-soft: #252525;
+  --cap-muted: #6d736f;
+  --cap-border: rgba(21, 21, 21, .09);
+  --cap-heading-gradient: linear-gradient(90deg, #151515 0%, #252525 45%, #505050 100%);
+  --cap-white-gradient: linear-gradient(90deg, #ffffff 0%, #dfe3e1 46%, #ffffff 100%);
+  --cap-ease: cubic-bezier(.16, 1, .3, 1);
+  width: 100%;
+  overflow: clip;
+  background: #fff;
+  color: var(--cap-ink);
+}
+
+.cap-shell {
+  width: min(calc(100% - 56px), 1180px);
+  margin-inline: auto;
+}
+
+.cap-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 11px;
+  color: var(--cap-teal-dark);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cap-kicker::after {
+  width: 30px;
+  height: 1px;
+  background: var(--cap-teal);
+  content: "";
+}
+
+.cap-heading {
+  margin: 0 !important;
+  background: var(--cap-heading-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: var(--font-site, "Lufga Regular", sans-serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.045em !important;
+}
+
+.cap-heading--white {
+  background: var(--cap-white-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.cap-copy {
+  color: var(--cap-muted) !important;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.cap-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 1px solid rgba(21, 21, 21, .12);
+  border-radius: 999px;
+  background: #171918;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .28s var(--cap-ease), background .24s ease, border-color .24s ease, color .24s ease, box-shadow .28s ease;
+}
+
+.cap-button:hover {
+  border-color: var(--cap-teal);
+  background: var(--cap-teal);
+  color: #07110f;
+  box-shadow: 0 13px 30px rgba(27, 219, 186, .16);
+  transform: translateY(-2px);
+}
+
+.cap-button:focus-visible {
+  outline: 3px solid rgba(27, 219, 186, .38);
+  outline-offset: 3px;
+}
+
+.cap-button--ghost {
+  background: transparent;
+  color: #202422;
+}
+
+.cap-button--ghost:hover {
+  color: #07110f;
+}
+
+.cap-chip {
+  display: inline-flex;
+  min-height: 29px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid rgba(21, 21, 21, .08);
+  border-radius: 999px;
+  background: rgba(21, 21, 21, .025);
+  color: #545a56;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.cap-dark {
+  background: #0b0f0e;
+  color: #fff;
+}
+
+.cap-dark .cap-kicker {
+  color: var(--cap-teal);
+}
+
+.cap-dark .cap-copy {
+  color: rgba(255, 255, 255, .56) !important;
+}
+
+@media (max-width: 720px) {
+  .cap-shell {
+    width: calc(100% - 30px);
+  }
+
+  .cap-copy {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-page *,
+  .cap-page *::before,
+  .cap-page *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

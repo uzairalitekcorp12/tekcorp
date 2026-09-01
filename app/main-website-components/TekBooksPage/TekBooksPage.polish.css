@@ -1,0 +1,56 @@
+.tekbooks-ui-preview,
+.tekbooks-report-preview {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(21, 21, 21, .08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 25px 58px rgba(22, 42, 34, .16);
+}
+
+.tekbooks-ui-preview { inset: 30px 28px 68px; padding: 18px; }
+.tekbooks-ui-preview__bar { display: flex; align-items: center; gap: 16px; padding-bottom: 15px; border-bottom: 1px solid #e7ece9; }
+.tekbooks-ui-preview__bar strong { margin-right: auto; color: #202623; font-size: 16px; }
+.tekbooks-ui-preview__bar span, .tekbooks-ui-preview__bar i { color: #6c7570; font-size: 10px; font-style: normal; }
+.tekbooks-ui-preview__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 15px; }
+.tekbooks-ui-preview__stats div { padding: 13px; border-radius: 10px; background: #f4f8f6; }
+.tekbooks-ui-preview__stats span { display: block; color: #747d78; font-size: 10px; }
+.tekbooks-ui-preview__stats strong { display: block; margin-top: 7px; color: #242a27; font-size: 16px; }
+.tekbooks-ui-preview__stats i { display: block; margin-top: 4px; color: #168672; font-size: 9px; font-style: normal; }
+.tekbooks-ui-preview__chart { display: flex; height: 105px; align-items: flex-end; gap: 7px; margin-top: 14px; padding: 14px 12px 0; border-radius: 10px; background: #f8faf9; }
+.tekbooks-ui-preview__chart span { position: absolute; color: #626a66; font-size: 10px; }
+.tekbooks-ui-preview__chart i { width: 14.285%; border-radius: 4px 4px 0 0; background: #bdcbc5; }
+.tekbooks-ui-preview__chart i:nth-of-type(1) { height: 32%; } .tekbooks-ui-preview__chart i:nth-of-type(2) { height: 55%; } .tekbooks-ui-preview__chart i:nth-of-type(3) { height: 47%; } .tekbooks-ui-preview__chart i:nth-of-type(4) { height: 75%; background: #1bdbba; } .tekbooks-ui-preview__chart i:nth-of-type(5) { height: 63%; } .tekbooks-ui-preview__chart i:nth-of-type(6) { height: 82%; background: #1bdbba; } .tekbooks-ui-preview__chart i:nth-of-type(7) { height: 70%; }
+.tekbooks-ui-preview__activity { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin-top: 13px; color: #69716d; font-size: 10px; }
+.tekbooks-ui-preview__activity strong { color: #168672; }
+
+.tekbooks-report-preview { inset: 30px; padding: 20px; }
+.tekbooks-report-preview__head { display: flex; justify-content: space-between; }
+.tekbooks-report-preview__head span { color: #242a27; font-size: 15px; font-weight: 600; }
+.tekbooks-report-preview__head strong { color: #7b847f; font-size: 10px; }
+.tekbooks-report-preview__total { margin-top: 18px; padding: 15px; border-radius: 11px; background: #f4f8f6; }
+.tekbooks-report-preview__total span { display: block; color: #737c77; font-size: 10px; }
+.tekbooks-report-preview__total strong { display: inline-block; margin-top: 7px; color: #202623; font-size: 23px; }
+.tekbooks-report-preview__total i { float: right; margin-top: 12px; padding: 5px 8px; border-radius: 999px; background: #dff8f2; color: #147765; font-size: 9px; font-style: normal; }
+.tekbooks-report-preview__bars { display: flex; height: 130px; align-items: flex-end; gap: 8px; margin-top: 18px; padding: 12px 10px 0; border-bottom: 1px solid #dce3df; }
+.tekbooks-report-preview__bars i { width: 12.5%; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, #1bdbba, #149c85); }
+.tekbooks-report-preview__bars i:nth-child(1) { height: 32%; } .tekbooks-report-preview__bars i:nth-child(2) { height: 48%; } .tekbooks-report-preview__bars i:nth-child(3) { height: 41%; } .tekbooks-report-preview__bars i:nth-child(4) { height: 67%; } .tekbooks-report-preview__bars i:nth-child(5) { height: 58%; } .tekbooks-report-preview__bars i:nth-child(6) { height: 78%; } .tekbooks-report-preview__bars i:nth-child(7) { height: 71%; } .tekbooks-report-preview__bars i:nth-child(8) { height: 88%; }
+.tekbooks-report-preview__legend { display: flex; gap: 15px; margin-top: 13px; color: #68716c; font-size: 10px; }
+.tekbooks-report-preview__legend strong { margin-left: auto; color: #8a928e; font-weight: 500; }
+
+.tekbooks-page .tekbooks-hero__proof strong, .tekbooks-page .tekbooks-modules em, .tekbooks-page .tekbooks-flow__rail span, .tekbooks-page .tekbooks-sme span, .tekbooks-page .cap-media__label { font-size: 11px; }
+.tekbooks-page .tekbooks-hero__proof span, .tekbooks-page .tekbooks-float-card strong { font-size: 13px; }
+.tekbooks-page .tekbooks-float-card span { font-size: 11px; }
+.tekbooks-page .tekbooks-modules p, .tekbooks-page .tekbooks-dashboard li, .tekbooks-page .tekbooks-sme p { color: #5f6762; font-size: 14px; line-height: 1.55; }
+.tekbooks-page .tekbooks-flow__rail strong { font-size: 13px; }
+.tekbooks-page .cap-chip { font-size: 12px; }
+.tekbooks-page a:focus-visible { outline: 3px solid rgba(27,219,186,.48); outline-offset: 3px; }
+
+@media (max-width: 620px) {
+  .tekbooks-ui-preview { inset: 18px 14px 62px; padding: 13px; }
+  .tekbooks-ui-preview__bar span, .tekbooks-ui-preview__activity { display: none; }
+  .tekbooks-ui-preview__chart { height: 70px; }
+  .tekbooks-report-preview { inset: 18px 14px 38px; padding: 15px; }
+  .tekbooks-report-preview__bars { height: 80px; }
+  .tekbooks-report-preview__total strong { font-size: 17px; }
+}

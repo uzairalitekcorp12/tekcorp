@@ -1,0 +1,166 @@
+/* Shared type and spacing system for every service detail route. */
+.tek-service-route {
+  --tek-detail-display: clamp(2.75rem, 5.2vw, 4.5rem);
+  --tek-detail-heading: clamp(2rem, 3.25vw, 3rem);
+  --tek-detail-card-title: clamp(1rem, .95rem + .2vw, 1.125rem);
+  --tek-detail-body: clamp(.9375rem, .9rem + .15vw, 1rem);
+  --tek-detail-label: .75rem;
+  --tek-detail-breadcrumb: .8125rem;
+}
+
+/*
+ * Navbar already renders the fixed-header spacer. These routes therefore use
+ * only a small visual inset inside the hero instead of adding a second nav
+ * offset and vertically centering the content below it.
+ */
+.tek-service-route :is(
+  .web-engineering-hero,
+  .application-engineering-hero,
+  .maintenance-support-hero,
+  .prototyping-design-hero,
+  .quality-assurance-hero
+) {
+  min-height: 0 !important;
+  padding-top: 48px !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-hero h1,
+  .application-engineering-hero h1,
+  .maintenance-support-hero h1,
+  .prototyping-design-hero h1,
+  .quality-assurance-hero h1
+) {
+  font-size: var(--tek-detail-display) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.05em !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-hero__eyebrow,
+  .application-engineering-hero__eyebrow,
+  .maintenance-support-eyebrow,
+  .prototyping-design-eyebrow,
+  .quality-assurance-eyebrow
+) {
+  font-size: var(--tek-detail-label) !important;
+  font-weight: 650 !important;
+  letter-spacing: .1em !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-breadcrumb,
+  .application-engineering-breadcrumb,
+  .maintenance-support-breadcrumb,
+  .prototyping-design-breadcrumb,
+  .quality-assurance-breadcrumb
+) {
+  font-size: var(--tek-detail-breadcrumb) !important;
+  line-height: 1.4 !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-capabilities__intro h2,
+  .web-engineering-process__header h2,
+  .application-engineering-overview__copy h2,
+  .prototyping-design-overview__copy h2,
+  .prototyping-design-process-row__copy h2,
+  .prototyping-design-capabilities__header h2,
+  .maintenance-support-levels__header h2,
+  .maintenance-support-managers__copy h2,
+  .maintenance-support-channels__copy h2,
+  .quality-assurance-process__header h2,
+  .quality-assurance-benefits__copy h2
+) {
+  font-size: var(--tek-detail-heading) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.04em !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-capability-card h3,
+  .web-engineering-step__content h3,
+  .application-engineering-phase__identity h3,
+  .prototyping-design-phase-card h3,
+  .prototyping-design-capabilities__grid h3,
+  .maintenance-support-level-card h3,
+  .maintenance-support-proof__heading h3,
+  .quality-assurance-card h3
+) {
+  font-size: var(--tek-detail-card-title) !important;
+  line-height: 1.25 !important;
+}
+
+/* Shared readability floor for every service detail route. */
+.tek-service-route .service-inline-cta {
+  margin-top: 1.125rem;
+}
+
+.tek-service-route :where(p, li) {
+  line-height: 1.65;
+}
+
+.tek-service-route :where(
+  .application-engineering-overview__copy > p,
+  .application-engineering-phase__content p,
+  .web-engineering-step__content p,
+  .web-engineering-step__content li,
+  .quality-assurance-card p,
+  .quality-assurance-benefits__copy p,
+  .quality-assurance-benefits__copy li,
+  .prototyping-design-overview__copy > p,
+  .prototyping-design-process-row__copy > p,
+  .prototyping-design-phase-card p,
+  .maintenance-support-page p,
+  .maintenance-support-page li,
+  .service-projects__header > p,
+  .service-project-card__copy p
+) {
+  font-size: var(--tek-detail-body) !important;
+  line-height: 1.7 !important;
+}
+
+.tek-service-route .web-engineering-capability-card p {
+  font-size: var(--tek-detail-body) !important;
+  line-height: 1.6 !important;
+}
+
+.tek-service-route :where(
+  .application-engineering-kicker,
+  .web-engineering-kicker,
+  .quality-assurance-kicker,
+  .prototyping-design-kicker
+) {
+  font-size: var(--tek-detail-label) !important;
+  line-height: 1.4 !important;
+}
+
+.tek-service-route :where(
+  .application-engineering-platforms span,
+  .service-project-card__category
+) {
+  font-size: var(--tek-detail-label) !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 700px) {
+  .tek-service-route :is(
+    .web-engineering-hero,
+    .application-engineering-hero,
+    .maintenance-support-hero,
+    .prototyping-design-hero,
+    .quality-assurance-hero
+  ) {
+    padding-top: 40px !important;
+  }
+
+  .tek-service-route :is(
+    .web-engineering-hero h1,
+    .application-engineering-hero h1,
+    .maintenance-support-hero h1,
+    .prototyping-design-hero h1,
+    .quality-assurance-hero h1
+  ) {
+    font-size: clamp(2.1875rem, 10.5vw, 3.125rem) !important;
+  }
+}
