@@ -1,8 +1,0 @@
-Add these final assets here:
-
-hero.png
-dashboard.png
-workflow.png
-cta.jpg
-
-The page gracefully renders a TekCorp-themed fallback until each asset exists.

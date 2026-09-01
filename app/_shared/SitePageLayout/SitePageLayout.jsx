@@ -6,6 +6,7 @@ export default function SitePageLayout({
   className,
   dataPage,
   navbarProps = {},
+  navbar,
   footerProps = {},
   mainClassName,
   useMain = true,
@@ -13,7 +14,7 @@ export default function SitePageLayout({
 }) {
   return (
     <div className={className} data-page={dataPage}>
-      <Navbar {...navbarProps} />
+      {navbar || <Navbar {...navbarProps} />}
 
       {useMain ? <main className={mainClassName}>{children}</main> : children}
 

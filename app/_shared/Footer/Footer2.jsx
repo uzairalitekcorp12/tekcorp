@@ -511,33 +511,33 @@ export default function Footer2({
               </h3>
 
 
-              <a
-                href="#"
+              <Link
+                href="/legal/refund-policy"
                 className="footer2__link"
               >
                 <span>
                   Refund Policy
                 </span>
-              </a>
+              </Link>
 
 
-              <a
-                href="#"
+              <Link
+                href="/legal/privacy-policy"
                 className="footer2__link"
               >
                 <span>
-                  Privacy policy
+                  Privacy Policy
                 </span>
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/legal/terms-and-conditions"
                 className="footer2__link"
               >
                 <span>
                   Terms & Conditions
                 </span>
-              </a>
+              </Link>
 
 
             </div>

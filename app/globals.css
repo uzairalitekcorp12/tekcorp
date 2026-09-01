@@ -206,6 +206,7 @@
     line-height: 1.65;
 
     overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
   }
 
@@ -1896,6 +1897,9 @@ html {
 
   overflow-x:
     hidden;
+
+  overflow-x:
+    clip;
 }
 
 

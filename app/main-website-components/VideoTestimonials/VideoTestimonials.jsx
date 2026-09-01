@@ -5,6 +5,7 @@ import "./VideoTestimonials.css";
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -19,12 +20,15 @@ import {
 /* ==========================================================================
    DEFAULT CONTENT
 
-   You can remove this later and always pass testimonials as a prop.
+   This component intentionally displays a maximum of TWO testimonials.
 
-   Recommended video format:
-   - MP4 / H.264
-   - optimized for web
-   - poster JPG/WebP
+   You can replace these URLs/content later without changing the component.
+
+   Supported video sources:
+   - YouTube
+   - YouTube Shorts
+   - Direct MP4/WebM/CDN video URLs
+
    ========================================================================== */
 
 const DEFAULT_TESTIMONIALS = [
@@ -79,46 +83,16 @@ const DEFAULT_TESTIMONIALS = [
     previewDuration:
       4.5,
   },
-
-  {
-    id:
-      "sarah-khan",
-
-    name:
-      "Sarah Khan",
-
-    role:
-      "Marketing Manager",
-
-    company:
-      "GFO",
-
-    video:
-      "https://www.youtube.com/shorts/txWzWgjN7pE",
-
-    poster:
-      "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=1200",
-
-    previewStart:
-      4,
-
-    previewDuration:
-      4.5,
-  },
 ];
 
 
-/* ===========================================================================
-   MEDIA URLS
-
-   Native video elements play direct media files (for example, public S3,
-   CloudFront, or CDN MP4/WebM URLs). YouTube links need an embed player.
-   =========================================================================== */
+/* ==========================================================================
+   YOUTUBE HELPERS
+   ========================================================================== */
 
 function getYouTubeVideoId(
   videoUrl,
 ) {
-
   if (
     typeof videoUrl !==
     "string"
@@ -126,8 +100,8 @@ function getYouTubeVideoId(
     return null;
   }
 
-  try {
 
+  try {
     const normalizedUrl =
       /^https?:\/\//i.test(
         videoUrl,
@@ -135,10 +109,12 @@ function getYouTubeVideoId(
         ? videoUrl
         : `https://${videoUrl}`;
 
+
     const url =
       new URL(
         normalizedUrl,
       );
+
 
     const hostname =
       url.hostname
@@ -151,8 +127,14 @@ function getYouTubeVideoId(
           "",
         );
 
+
     let videoId =
       null;
+
+
+    /* ----------------------------------------------------------------------
+       YOUTU.BE
+       ---------------------------------------------------------------------- */
 
     if (
       hostname ===
@@ -162,9 +144,16 @@ function getYouTubeVideoId(
         url.pathname
           .split("/")
           .filter(Boolean)[0];
-    } else if (
+    }
+
+
+    /* ----------------------------------------------------------------------
+       YOUTUBE.COM
+       ---------------------------------------------------------------------- */
+
+    else if (
       hostname ===
-      "youtube.com" ||
+        "youtube.com" ||
       hostname.endsWith(
         ".youtube.com",
       )
@@ -173,6 +162,7 @@ function getYouTubeVideoId(
         url.pathname
           .split("/")
           .filter(Boolean);
+
 
       if (
         [
@@ -185,7 +175,10 @@ function getYouTubeVideoId(
       ) {
         videoId =
           pathParts[1];
-      } else if (
+      }
+
+
+      else if (
         pathParts[0] ===
         "watch"
       ) {
@@ -195,6 +188,7 @@ function getYouTubeVideoId(
           );
       }
     }
+
 
     return /^[A-Za-z0-9_-]{11}$/.test(
       videoId ||
@@ -206,9 +200,12 @@ function getYouTubeVideoId(
   } catch {
     return null;
   }
-
 }
 
+
+/* ==========================================================================
+   YOUTUBE EMBED URL
+   ========================================================================== */
 
 function getYouTubeEmbedUrl(
   videoUrl,
@@ -218,14 +215,13 @@ function getYouTubeEmbedUrl(
 
     start =
       0,
-  } =
-    {},
+  } = {},
 ) {
-
   const videoId =
     getYouTubeVideoId(
       videoUrl,
     );
+
 
   if (
     !videoId
@@ -236,10 +232,20 @@ function getYouTubeEmbedUrl(
 
   const parameters =
     new URLSearchParams({
-      playsinline: "1",
-      rel: "0",
-      modestbranding: "1",
+      playsinline:
+        "1",
+
+      rel:
+        "0",
+
+      modestbranding:
+        "1",
     });
+
+
+  /* ------------------------------------------------------------------------
+     MUTED CARD PREVIEW
+     ------------------------------------------------------------------------ */
 
   if (
     preview
@@ -248,53 +254,84 @@ function getYouTubeEmbedUrl(
       "autoplay",
       "1",
     );
+
+
     parameters.set(
       "mute",
       "1",
     );
+
+
     parameters.set(
       "controls",
       "0",
     );
+
+
     parameters.set(
       "loop",
       "1",
     );
+
+
     parameters.set(
       "playlist",
       videoId,
     );
+
+
     parameters.set(
       "start",
       String(
         Math.max(
           0,
-          Number(start) ||
-          0,
+          Number(
+            start,
+          ) ||
+            0,
         ),
       ),
     );
-  } else {
+  }
+
+
+  /* ------------------------------------------------------------------------
+     FULL MODAL VIDEO
+     ------------------------------------------------------------------------ */
+
+  else {
     parameters.set(
       "autoplay",
       "1",
     );
+
+
     parameters.set(
       "controls",
       "1",
     );
+
+
+    /*
+     * Every popup opening starts from the beginning.
+     */
+
     parameters.set(
       "start",
       "0",
     );
   }
 
-  return `https://www.youtube-nocookie.com/embed/${videoId}?${parameters.toString()}`;
+
+  return (
+    `https://www.youtube-nocookie.com/embed/` +
+    `${videoId}?${parameters.toString()}`
+  );
 }
 
 
 /* ==========================================================================
-   PLAY ICON
+   CARD PLAY BUTTON
    ========================================================================== */
 
 function CardPlayButton() {
@@ -314,7 +351,7 @@ function CardPlayButton() {
 
 
 /* ==========================================================================
-   COMPONENT
+   VIDEO TESTIMONIALS
    ========================================================================== */
 
 export default function VideoTestimonials({
@@ -333,6 +370,38 @@ export default function VideoTestimonials({
   className =
     "",
 }) {
+
+  /* ==========================================================================
+     ONLY TWO VIDEOS
+
+     Even if somebody accidentally provides 3, 4 or 10 items later, this
+     component intentionally displays the first two only.
+
+     This protects the two-card design.
+     ========================================================================== */
+
+  const visibleTestimonials =
+    useMemo(
+      () => {
+        if (
+          !Array.isArray(
+            testimonials,
+          )
+        ) {
+          return [];
+        }
+
+
+        return testimonials.slice(
+          0,
+          2,
+        );
+      },
+      [
+        testimonials,
+      ],
+    );
+
 
   /* ==========================================================================
      STATE
@@ -373,7 +442,7 @@ export default function VideoTestimonials({
 
 
   /* ==========================================================================
-     RESET PREVIEW VIDEO
+     RESET NATIVE PREVIEW
      ========================================================================== */
 
   const resetPreview =
@@ -382,7 +451,6 @@ export default function VideoTestimonials({
         video,
         testimonial,
       ) => {
-
         if (
           !video ||
           !testimonial
@@ -393,6 +461,7 @@ export default function VideoTestimonials({
 
         video.pause();
 
+
         video.muted =
           true;
 
@@ -402,239 +471,240 @@ export default function VideoTestimonials({
             testimonial.previewStart ??
             0;
         } catch {
-          // Metadata may not yet be loaded.
+          /*
+           * Metadata may not yet be available.
+           */
         }
-
       },
       [],
     );
 
 
   /* ==========================================================================
-     PLAY VIDEO EXCERPTS
+     NATIVE VIDEO PREVIEWS
 
-     - muted
-     - short preview only
-     - every card plays while the section is visible
+     Direct MP4/WebM videos:
+
+     - play muted
+     - only while the section is visible
+     - stop when modal is opened
+     - restart from previewStart when returning
      ========================================================================== */
 
-  useEffect(() => {
-
-    if (
-      selectedVideo !== null
-    ) {
-      previewRefs.current.forEach(
-        (
-          video,
-          index,
-        ) => {
-
-          resetPreview(
-            video,
-            testimonials[
-              index
-            ],
-          );
-
-        },
-      );
-
-
-      return undefined;
-    }
-
-
-    const reducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-
-    if (
-      reducedMotion
-    ) {
-      return undefined;
-    }
-
-
-    const section =
-      sectionRef.current;
-
-
-    if (
-      !section
-    ) {
-      return undefined;
-    }
-
-
-    let visible =
-      false;
-
-
-    const startPreview =
-      () => {
-
+  useEffect(
+    () => {
+      if (
+        selectedVideo !==
+        null
+      ) {
         previewRefs.current.forEach(
           (
             video,
             index,
           ) => {
-
-            const testimonial =
-              testimonials[
-                index
-              ];
-
-
-            if (
-              !video ||
-              !testimonial
-            ) {
-              return;
-            }
-
-
-            video.muted =
-              true;
-
-
-            video.volume =
-              0;
-
-
-            const startAt =
-              testimonial.previewStart ??
-              0;
-
-
-            try {
-
-              if (
-                Math.abs(
-                  video.currentTime -
-                  startAt,
-                ) >
-                .8
-              ) {
-                video.currentTime =
-                  startAt;
-              }
-
-            } catch {
-              // Ignore until metadata is available.
-            }
-
-
-            const playPromise =
-              video.play();
-
-
-            if (
-              playPromise
-                ?.catch
-            ) {
-              playPromise.catch(
-                () => {},
-              );
-            }
-
-          },
-        );
-
-      };
-
-
-    const stopPreview =
-      () => {
-
-        previewRefs.current.forEach(
-          (
-            video,
-            index,
-          ) => {
-
             resetPreview(
               video,
-              testimonials[
+              visibleTestimonials[
                 index
               ],
             );
-
           },
         );
 
-      };
+
+        return undefined;
+      }
 
 
-    const observer =
-      new IntersectionObserver(
-        (
-          entries,
-        ) => {
-
-          const entry =
-            entries[0];
-
-
-          visible =
-            Boolean(
-              entry?.isIntersecting,
-            );
-
-
-          if (
-            visible
-          ) {
-            startPreview();
-          } else {
-            stopPreview();
-          }
-
-        },
-        {
-          threshold:
-            .28,
-        },
-      );
-
-
-    observer.observe(
-      section,
-    );
-
-
-    return () => {
-
-      observer.disconnect();
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
 
       if (
-        !visible
+        reducedMotion
       ) {
-        stopPreview();
+        return undefined;
       }
 
-    };
 
-  }, [
-    resetPreview,
-    selectedVideo,
-    testimonials,
-  ]);
+      const section =
+        sectionRef.current;
+
+
+      if (
+        !section
+      ) {
+        return undefined;
+      }
+
+
+      let visible =
+        false;
+
+
+      /* ----------------------------------------------------------------------
+         START
+         ---------------------------------------------------------------------- */
+
+      const startPreview =
+        () => {
+          previewRefs.current.forEach(
+            (
+              video,
+              index,
+            ) => {
+              const testimonial =
+                visibleTestimonials[
+                  index
+                ];
+
+
+              if (
+                !video ||
+                !testimonial
+              ) {
+                return;
+              }
+
+
+              video.muted =
+                true;
+
+
+              video.volume =
+                0;
+
+
+              const startAt =
+                testimonial.previewStart ??
+                0;
+
+
+              try {
+                if (
+                  Math.abs(
+                    video.currentTime -
+                    startAt,
+                  ) >
+                  .8
+                ) {
+                  video.currentTime =
+                    startAt;
+                }
+              } catch {
+                /*
+                 * Metadata may not yet exist.
+                 */
+              }
+
+
+              const playPromise =
+                video.play();
+
+
+              if (
+                playPromise
+                  ?.catch
+              ) {
+                playPromise.catch(
+                  () => {},
+                );
+              }
+            },
+          );
+        };
+
+
+      /* ----------------------------------------------------------------------
+         STOP
+         ---------------------------------------------------------------------- */
+
+      const stopPreview =
+        () => {
+          previewRefs.current.forEach(
+            (
+              video,
+              index,
+            ) => {
+              resetPreview(
+                video,
+                visibleTestimonials[
+                  index
+                ],
+              );
+            },
+          );
+        };
+
+
+      /* ----------------------------------------------------------------------
+         OBSERVER
+         ---------------------------------------------------------------------- */
+
+      const observer =
+        new IntersectionObserver(
+          (
+            entries,
+          ) => {
+            const entry =
+              entries[0];
+
+
+            visible =
+              Boolean(
+                entry?.isIntersecting,
+              );
+
+
+            if (
+              visible
+            ) {
+              startPreview();
+            } else {
+              stopPreview();
+            }
+          },
+          {
+            threshold:
+              .28,
+          },
+        );
+
+
+      observer.observe(
+        section,
+      );
+
+
+      return () => {
+        observer.disconnect();
+
+
+        if (
+          !visible
+        ) {
+          stopPreview();
+        }
+      };
+    },
+    [
+      resetPreview,
+      selectedVideo,
+      visibleTestimonials,
+    ],
+  );
 
 
   /* ==========================================================================
-     PREVIEW LOOP
-
-     Each testimonial can have its own previewStart and previewDuration.
+     LOOP SHORT NATIVE PREVIEW
      ========================================================================== */
 
   function handlePreviewTimeUpdate(
     event,
     testimonial,
   ) {
-
     const video =
       event.currentTarget;
 
@@ -651,9 +721,9 @@ export default function VideoTestimonials({
 
     if (
       video.currentTime >=
-      start + duration
+      start +
+        duration
     ) {
-
       video.currentTime =
         start;
 
@@ -670,20 +740,17 @@ export default function VideoTestimonials({
           () => {},
         );
       }
-
     }
-
   }
 
 
   /* ==========================================================================
-     OPEN MODAL
+     OPEN VIDEO
      ========================================================================== */
 
   function openVideo(
     index,
   ) {
-
     const previewVideo =
       previewRefs.current[
         index
@@ -705,18 +772,16 @@ export default function VideoTestimonials({
     setSelectedVideo(
       index,
     );
-
   }
 
 
   /* ==========================================================================
-     CLOSE MODAL
+     CLOSE VIDEO
      ========================================================================== */
 
   const closeVideo =
     useCallback(
       () => {
-
         const video =
           modalVideoRef.current;
 
@@ -726,8 +791,10 @@ export default function VideoTestimonials({
         ) {
           video.pause();
 
+
           video.muted =
             true;
+
 
           video.volume =
             0;
@@ -737,7 +804,9 @@ export default function VideoTestimonials({
             video.currentTime =
               0;
           } catch {
-            // Ignore.
+            /*
+             * Ignore if metadata isn't ready.
+             */
           }
         }
 
@@ -750,7 +819,6 @@ export default function VideoTestimonials({
         setSelectedVideo(
           null,
         );
-
       },
       [],
     );
@@ -759,144 +827,147 @@ export default function VideoTestimonials({
   /* ==========================================================================
      MODAL INITIALIZATION
 
-     Because opening is caused by a genuine user click, playback can begin
-     with audio enabled.
+     When opened:
+     - lock body scroll
+     - direct video starts from 0
+     - direct video starts with audio
+     - YouTube iframe starts from 0 through its fresh iframe URL
 
      When closed:
-     - video resets
-     - audio state resets
-     - next opening begins from zero again
+     - component unmounts modal
+     - playback stops
+     - reopening starts from beginning
      ========================================================================== */
 
-  useEffect(() => {
-
-    if (
-      selectedVideo ===
-      null
-    ) {
-      return undefined;
-    }
-
-
-    const previousOverflow =
-      document.body.style
-        .overflow;
-
-
-    document.body.style.overflow =
-      "hidden";
-
-
-    const video =
-      modalVideoRef.current;
-
-
-    if (
-      video
-    ) {
-
-      try {
-        video.currentTime =
-          0;
-      } catch {
-        // Metadata may still be loading.
-      }
-
-
-      video.muted =
-        false;
-
-      video.volume =
-        1;
-
-
-      const playPromise =
-        video.play();
-
-
+  useEffect(
+    () => {
       if (
-        playPromise
-          ?.then
+        selectedVideo ===
+        null
       ) {
-
-        playPromise
-          .then(
-            () => {
-              setModalPlaying(
-                true,
-              );
-            },
-          )
-          .catch(
-            () => {
-              /*
-               * Some browsers can still reject programmatic playback.
-               * Native controls remain available so the user can play.
-               */
-              setModalPlaying(
-                false,
-              );
-            },
-          );
-
+        return undefined;
       }
 
-    }
 
+      const previousOverflow =
+        document.body.style
+          .overflow;
 
-    requestAnimationFrame(
-      () => {
-        closeButtonRef.current
-          ?.focus();
-      },
-    );
-
-
-    function handleKeyDown(
-      event,
-    ) {
-
-      if (
-        event.key ===
-        "Escape"
-      ) {
-        closeVideo();
-      }
-
-    }
-
-
-    document.addEventListener(
-      "keydown",
-      handleKeyDown,
-    );
-
-
-    return () => {
 
       document.body.style.overflow =
-        previousOverflow;
+        "hidden";
 
 
-      document.removeEventListener(
+      const video =
+        modalVideoRef.current;
+
+
+      if (
+        video
+      ) {
+        try {
+          video.currentTime =
+            0;
+        } catch {
+          /*
+           * Metadata may still be loading.
+           */
+        }
+
+
+        video.muted =
+          false;
+
+
+        video.volume =
+          1;
+
+
+        const playPromise =
+          video.play();
+
+
+        if (
+          playPromise
+            ?.then
+        ) {
+          playPromise
+            .then(
+              () => {
+                setModalPlaying(
+                  true,
+                );
+              },
+            )
+            .catch(
+              () => {
+                /*
+                 * Browser autoplay restrictions can still apply.
+                 * Native controls remain available.
+                 */
+
+                setModalPlaying(
+                  false,
+                );
+              },
+            );
+        }
+      }
+
+
+      requestAnimationFrame(
+        () => {
+          closeButtonRef.current
+            ?.focus();
+        },
+      );
+
+
+      /* ----------------------------------------------------------------------
+         ESCAPE
+         ---------------------------------------------------------------------- */
+
+      function handleKeyDown(
+        event,
+      ) {
+        if (
+          event.key ===
+          "Escape"
+        ) {
+          closeVideo();
+        }
+      }
+
+
+      document.addEventListener(
         "keydown",
         handleKeyDown,
       );
 
-    };
 
-  }, [
-    closeVideo,
-    selectedVideo,
-  ]);
+      return () => {
+        document.body.style.overflow =
+          previousOverflow;
+
+
+        document.removeEventListener(
+          "keydown",
+          handleKeyDown,
+        );
+      };
+    },
+    [
+      closeVideo,
+      selectedVideo,
+    ],
+  );
 
 
   /* ==========================================================================
-     MODAL PLAY / PAUSE
+     NATIVE MODAL PLAY / PAUSE
      ========================================================================== */
 
   function toggleModalPlayback() {
-
     const video =
       modalVideoRef.current;
 
@@ -911,9 +982,9 @@ export default function VideoTestimonials({
     if (
       video.paused
     ) {
-
       video.muted =
         false;
+
 
       video.volume =
         1;
@@ -931,17 +1002,17 @@ export default function VideoTestimonials({
         .catch(
           () => {},
         );
+    }
 
-    } else {
 
+    else {
       video.pause();
+
 
       setModalPlaying(
         false,
       );
-
     }
-
   }
 
 
@@ -950,30 +1021,32 @@ export default function VideoTestimonials({
      ========================================================================== */
 
   if (
-    !Array.isArray(
-      testimonials,
-    ) ||
-    testimonials.length ===
-      0
+    visibleTestimonials.length ===
+    0
   ) {
     return null;
   }
 
 
+  /* ==========================================================================
+     SELECTED TESTIMONIAL
+     ========================================================================== */
+
   const selectedTestimonial =
     selectedVideo ===
     null
       ? null
-      : testimonials[
+      : visibleTestimonials[
           selectedVideo
         ];
+
 
   const selectedYouTubeEmbedUrl =
     getYouTubeEmbedUrl(
       selectedTestimonial?.video,
       {
         start:
-          selectedTestimonial?.previewStart,
+          0,
       },
     );
 
@@ -984,12 +1057,20 @@ export default function VideoTestimonials({
 
   return (
     <section
-      ref={sectionRef}
+      ref={
+        sectionRef
+      }
       className={[
         "video-testimonials",
 
-        testimonials.length === 1
+        visibleTestimonials.length ===
+          1
           ? "video-testimonials--single"
+          : "",
+
+        visibleTestimonials.length ===
+          2
+          ? "video-testimonials--pair"
           : "",
 
         className,
@@ -1008,7 +1089,10 @@ export default function VideoTestimonials({
 
         <header className="video-testimonials__header">
 
-          <div className="video-testimonials__heading" data-reveal="left">
+          <div
+            className="video-testimonials__heading"
+            data-reveal="left"
+          >
 
             {eyebrow ? (
               <span className="video-testimonials__eyebrow">
@@ -1035,12 +1119,12 @@ export default function VideoTestimonials({
 
 
         {/* ==================================================================
-            CARDS
+            TWO VIDEO CARDS
             ================================================================== */}
 
         <div className="video-testimonials__grid">
 
-          {testimonials.map(
+          {visibleTestimonials.map(
             (
               testimonial,
               index,
@@ -1057,37 +1141,45 @@ export default function VideoTestimonials({
                   },
                 );
 
+
               return (
                 <article
                   key={
                     testimonial.id ||
                     `${testimonial.name}-${index}`
                   }
-                  className={[
-                    "video-testimonials__card",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
+                  className="video-testimonials__card"
+                  data-reveal={
+                    index === 0
+                      ? "left"
+                      : "right"
+                  }
                 >
 
                   <button
                     type="button"
                     className="video-testimonials__card-button"
-                    onClick={() => {
+                    onClick={() =>
                       openVideo(
                         index,
-                      );
-                    }}
+                      )
+                    }
                     aria-label={`Play testimonial from ${testimonial.name}`}
                   >
 
                     {/* ======================================================
-                        VIDEO
+                        VIDEO AREA
                         ====================================================== */}
 
                     <div className="video-testimonials__media">
 
+
+                      {/* ----------------------------------------------------
+                          YOUTUBE
+                          ---------------------------------------------------- */}
+
                       {youtubePreviewUrl ? (
+
                         <iframe
                           className="video-testimonials__youtube"
                           src={
@@ -1100,14 +1192,24 @@ export default function VideoTestimonials({
                           allow="autoplay; encrypted-media; picture-in-picture"
                           referrerPolicy="strict-origin-when-cross-origin"
                         />
+
                       ) : (
+
+                        /* --------------------------------------------------
+                           DIRECT VIDEO
+                           -------------------------------------------------- */
+
                         <video
-                          ref={(element) => {
-                            previewRefs.current[
-                              index
-                            ] =
-                              element;
-                          }}
+                          ref={
+                            (
+                              element,
+                            ) => {
+                              previewRefs.current[
+                                index
+                              ] =
+                                element;
+                            }
+                          }
                           className="video-testimonials__video"
                           src={
                             testimonial.video
@@ -1123,17 +1225,15 @@ export default function VideoTestimonials({
                             (
                               event,
                             ) => {
-
                               try {
-
                                 event.currentTarget.currentTime =
                                   testimonial.previewStart ??
                                   0;
-
                               } catch {
-                                // Ignore.
+                                /*
+                                 * Ignore.
+                                 */
                               }
-
                             }
                           }
                           onTimeUpdate={
@@ -1146,11 +1246,12 @@ export default function VideoTestimonials({
                               )
                           }
                         />
+
                       )}
 
 
                       {/* ====================================================
-                          CINEMATIC OVERLAYS
+                          OVERLAYS
                           ==================================================== */}
 
                       <span
@@ -1166,7 +1267,7 @@ export default function VideoTestimonials({
 
 
                       {/* ====================================================
-                          PLAY
+                          PLAY BUTTON
                           ==================================================== */}
 
                       <CardPlayButton />
@@ -1175,7 +1276,7 @@ export default function VideoTestimonials({
 
 
                     {/* ======================================================
-                        INFORMATION
+                        PERSON INFORMATION
                         ====================================================== */}
 
                     <div className="video-testimonials__card-footer">
@@ -1190,20 +1291,20 @@ export default function VideoTestimonials({
                         <p>
                           {testimonial.role}
 
-                          {testimonial.company
-                            ? (
-                              <>
-                                {" "}
-                                <span>
-                                  at
-                                </span>
-                                {" "}
-                                {
-                                  testimonial.company
-                                }
-                              </>
-                            )
-                            : null}
+
+                          {testimonial.company ? (
+                            <>
+                              {" "}
+
+                              <span>
+                                at
+                              </span>
+
+                              {" "}
+
+                              {testimonial.company}
+                            </>
+                          ) : null}
                         </p>
 
                       </div>
@@ -1228,29 +1329,28 @@ export default function VideoTestimonials({
 
 
       {/* ====================================================================
-          VIDEO MODAL
+          MODAL
           ==================================================================== */}
 
       {selectedVideo !==
-        null && (
+        null &&
+      selectedTestimonial ? (
 
         <div
           className="video-testimonials-modal"
           role="dialog"
           aria-modal="true"
-          aria-label={`Video testimonial from ${testimonials[selectedVideo]?.name}`}
+          aria-label={`Video testimonial from ${selectedTestimonial.name}`}
           onMouseDown={
             (
               event,
             ) => {
-
               if (
                 event.target ===
                 event.currentTarget
               ) {
                 closeVideo();
               }
-
             }
           }
         >
@@ -1259,7 +1359,7 @@ export default function VideoTestimonials({
 
 
             {/* ==============================================================
-                TOP BAR
+                MODAL TOP
                 ============================================================== */}
 
             <div className="video-testimonials-modal__top">
@@ -1272,11 +1372,7 @@ export default function VideoTestimonials({
 
 
                 <strong>
-                  {
-                    testimonials[
-                      selectedVideo
-                    ]?.name
-                  }
+                  {selectedTestimonial.name}
                 </strong>
 
               </div>
@@ -1303,36 +1399,48 @@ export default function VideoTestimonials({
 
 
             {/* ==============================================================
-                VIDEO
+                MODAL VIDEO
                 ============================================================== */}
 
             <div className="video-testimonials-modal__media">
 
+
+              {/* ------------------------------------------------------------
+                  YOUTUBE
+                  ------------------------------------------------------------ */}
+
               {selectedYouTubeEmbedUrl ? (
+
                 <iframe
-                  key={`modal-youtube-${selectedTestimonial?.id || selectedVideo}`}
+                  key={`modal-youtube-${selectedTestimonial.id || selectedVideo}`}
                   className="video-testimonials-modal__youtube"
                   src={
                     selectedYouTubeEmbedUrl
                   }
-                  title={`Full testimonial from ${selectedTestimonial?.name}`}
+                  title={`Full testimonial from ${selectedTestimonial.name}`}
                   allow="autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
                   referrerPolicy="strict-origin-when-cross-origin"
                 />
+
               ) : (
+
+                /* ----------------------------------------------------------
+                   DIRECT VIDEO
+                   ---------------------------------------------------------- */
+
                 <>
                   <video
-                    key={`modal-video-${selectedTestimonial?.id || selectedVideo}`}
+                    key={`modal-video-${selectedTestimonial.id || selectedVideo}`}
                     ref={
                       modalVideoRef
                     }
                     className="video-testimonials-modal__video"
                     src={
-                      selectedTestimonial?.video
+                      selectedTestimonial.video
                     }
                     poster={
-                      selectedTestimonial?.poster
+                      selectedTestimonial.poster
                     }
                     controls
                     autoPlay
@@ -1342,31 +1450,35 @@ export default function VideoTestimonials({
                       (
                         event,
                       ) => {
-
                         try {
+                          /*
+                           * Always begin from zero when opened.
+                           */
+
                           event.currentTarget.currentTime =
                             0;
                         } catch {
-                          // Metadata can be unavailable briefly on slow networks.
+                          /*
+                           * Metadata can briefly be unavailable.
+                           */
                         }
-
                       }
                     }
-                    onPlay={() => {
+                    onPlay={() =>
                       setModalPlaying(
                         true,
-                      );
-                    }}
-                    onPause={() => {
+                      )
+                    }
+                    onPause={() =>
                       setModalPlaying(
                         false,
-                      );
-                    }}
-                    onEnded={() => {
+                      )
+                    }
+                    onEnded={() =>
                       setModalPlaying(
                         false,
-                      );
-                    }}
+                      )
+                    }
                   />
 
 
@@ -1406,13 +1518,14 @@ export default function VideoTestimonials({
 
                   </button>
                 </>
+
               )}
 
             </div>
 
 
             {/* ==============================================================
-                FOOTER
+                MODAL FOOTER
                 ============================================================== */}
 
             <div className="video-testimonials-modal__footer">
@@ -1420,32 +1533,16 @@ export default function VideoTestimonials({
               <div>
 
                 <strong>
-                  {
-                    testimonials[
-                      selectedVideo
-                    ]?.name
-                  }
+                  {selectedTestimonial.name}
                 </strong>
 
 
                 <span>
-                  {
-                    testimonials[
-                      selectedVideo
-                    ]?.role
-                  }
+                  {selectedTestimonial.role}
 
-                  {
-                    testimonials[
-                      selectedVideo
-                    ]?.company
-                      ? ` · ${
-                          testimonials[
-                            selectedVideo
-                          ].company
-                        }`
-                      : ""
-                  }
+                  {selectedTestimonial.company
+                    ? ` · ${selectedTestimonial.company}`
+                    : ""}
                 </span>
 
               </div>
@@ -1466,7 +1563,7 @@ export default function VideoTestimonials({
 
         </div>
 
-      )}
+      ) : null}
 
     </section>
   );

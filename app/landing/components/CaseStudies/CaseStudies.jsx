@@ -54,7 +54,7 @@ export default function CaseStudies({
           <div className="case-studies__header-right">
             <h3 className="case-studies__focus-heading">
               <span className="case-studies__focus-line">
-                Each Project Reflects Our Focus On
+                Each Project Reflects Our Focus On{" "}
               </span>
 
               <span className="case-studies__focus-line case-studies__focus-line--second">
@@ -82,6 +82,7 @@ export default function CaseStudies({
                   item.slug,
                 )}`}
                 className="case-studies__link"
+                aria-label={`View case study: ${item.title}`}
               >
                 <CmsImage
                   src={
@@ -90,7 +91,7 @@ export default function CaseStudies({
                     item.gallery?.[0] ||
                     ""
                   }
-                  alt=""
+                  alt={`${item.client || item.title} case study preview`}
                   className="case-studies__image"
                   sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                 />

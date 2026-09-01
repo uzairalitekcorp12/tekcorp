@@ -247,7 +247,7 @@
 
 
 /* ==========================================================================
-   GRID
+   TWO-CARD GRID
    ========================================================================== */
 
 .video-testimonials__grid {
@@ -256,28 +256,73 @@
 
   grid-template-columns:
     repeat(
-      3,
+      2,
       minmax(
         0,
-        1fr
+        360px
       )
     );
 
+  justify-content:
+    center;
+
   gap:
-    20px;
+    26px;
+
+  width:
+    100%;
+
+  max-width:
+    780px;
+
+  margin-inline:
+    auto;
 }
 
+
+/*
+ * Explicit two-card mode.
+ *
+ * Keeping this class means the styling is protected even if the generic
+ * component is reused elsewhere later.
+ */
+
+.video-testimonials--pair
+.video-testimonials__grid {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        360px
+      )
+    );
+
+  justify-content:
+    center;
+
+  max-width:
+    780px;
+}
+
+
+/* ==========================================================================
+   SINGLE
+   ========================================================================== */
 
 .video-testimonials--single
 .video-testimonials__grid {
   grid-template-columns:
     minmax(
       0,
-      760px
+      420px
     );
 
   justify-content:
     center;
+
+  max-width:
+    420px;
 }
 
 
@@ -289,12 +334,11 @@
 }
 
 
-/* ===========================================================================
+/* ==========================================================================
    HOME VARIANT
 
-   A focused three-up presentation inspired by the supplied reference: a
-   quiet editorial header, tall video frames, and a compact black caption bar.
-   =========================================================================== */
+   Two centered vertical client videos.
+   ========================================================================== */
 
 .home-video-testimonials {
   padding:
@@ -318,6 +362,10 @@
     );
 }
 
+
+/* ==========================================================================
+   HOME HEADER
+   ========================================================================== */
 
 .home-video-testimonials
 .video-testimonials__header {
@@ -387,15 +435,51 @@
 }
 
 
+/* ==========================================================================
+   HOME TWO-CARD LAYOUT
+   ========================================================================== */
+
 .home-video-testimonials
 .video-testimonials__grid {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        340px
+      )
+    );
+
+  justify-content:
+    center;
+
   gap:
-    18px;
+    clamp(
+      20px,
+      3vw,
+      28px
+    );
+
+  width:
+    100%;
+
+  max-width:
+    720px;
+
+  margin-inline:
+    auto;
 }
 
 
+/* ==========================================================================
+   HOME CARD
+   ========================================================================== */
+
 .home-video-testimonials
 .video-testimonials__card {
+  width:
+    100%;
+
   border-color:
     rgba(
       0,
@@ -450,6 +534,10 @@
 }
 
 
+/* ==========================================================================
+   HOME MEDIA
+   ========================================================================== */
+
 .home-video-testimonials
 .video-testimonials__media {
   aspect-ratio:
@@ -482,6 +570,9 @@
 
   content:
     "";
+
+  pointer-events:
+    none;
 }
 
 
@@ -590,7 +681,7 @@
 
   padding:
     13px
-    30px
+    24px
     14px;
 }
 
@@ -710,17 +801,6 @@
 }
 
 
-.video-testimonials__card.is-previewing {
-  border-color:
-    rgba(
-      27,
-      219,
-      186,
-      .18
-    );
-}
-
-
 /* ==========================================================================
    CARD BUTTON
    ========================================================================== */
@@ -806,7 +886,7 @@
       .7s
       var(
         --vt-ease
-  );
+      );
 }
 
 
@@ -857,7 +937,7 @@
 
 
 /* ==========================================================================
-   MEDIA SHADE
+   SHADE
    ========================================================================== */
 
 .video-testimonials__media-shade {
@@ -909,7 +989,7 @@
 
 
 /* ==========================================================================
-   SUBTLE TEAL AMBIENCE
+   TEAL AMBIENCE
    ========================================================================== */
 
 .video-testimonials__media-glow {
@@ -962,142 +1042,10 @@
 
 .video-testimonials__card:hover
 .video-testimonials__media-glow,
-.video-testimonials__card.is-previewing
+.video-testimonials__card:focus-within
 .video-testimonials__media-glow {
   opacity:
     1;
-}
-
-
-/* ==========================================================================
-   PREVIEW STATUS
-   ========================================================================== */
-
-.video-testimonials__preview-status {
-  position:
-    absolute;
-
-  top:
-    18px;
-
-  left:
-    18px;
-
-  z-index:
-    5;
-
-  display:
-    inline-flex;
-
-  min-height:
-    27px;
-
-  align-items:
-    center;
-
-  gap:
-    7px;
-
-  padding:
-    0
-    10px;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .20
-    );
-
-  border-radius:
-    999px;
-
-  background:
-    rgba(
-      6,
-      11,
-      9,
-      .35
-    );
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .79
-    );
-
-  font-size:
-    8px;
-
-  font-weight:
-    500;
-
-  letter-spacing:
-    .035em;
-
-  backdrop-filter:
-    blur(
-      12px
-    );
-
-  -webkit-backdrop-filter:
-    blur(
-      12px
-    );
-}
-
-
-.video-testimonials__preview-status
-> span {
-  width:
-    5px;
-
-  height:
-    5px;
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .48
-    );
-}
-
-
-.video-testimonials__card.is-previewing
-.video-testimonials__preview-status
-> span {
-  background:
-    var(
-      --vt-teal
-    );
-
-  box-shadow:
-    0
-    0
-    0
-    4px
-    rgba(
-      27,
-      219,
-      186,
-      .10
-    );
-
-  animation:
-    videoTestimonialPulse
-    1.7s
-    ease-in-out
-    infinite;
 }
 
 
@@ -1214,91 +1162,6 @@
   transform:
     translateY(
       -3px
-    );
-}
-
-
-/* ==========================================================================
-   EXPAND
-   ========================================================================== */
-
-.video-testimonials__expand {
-  position:
-    absolute;
-
-  top:
-    18px;
-
-  right:
-    18px;
-
-  z-index:
-    6;
-
-  display:
-    grid;
-
-  width:
-    31px;
-
-  height:
-    31px;
-
-  place-items:
-    center;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .19
-    );
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(
-      6,
-      11,
-      9,
-      .32
-    );
-
-  color:
-    #ffffff;
-
-  opacity:
-    .66;
-
-  backdrop-filter:
-    blur(
-      10px
-    );
-
-  transition:
-    opacity
-      .25s
-      ease,
-    transform
-      .28s
-      var(
-        --vt-ease
-      );
-}
-
-
-.video-testimonials__card:hover
-.video-testimonials__expand {
-  opacity:
-    1;
-
-  transform:
-    rotate(
-      5deg
     );
 }
 
@@ -1553,6 +1416,9 @@ span {
    ========================================================================== */
 
 .video-testimonials-modal__dialog {
+  display:
+    flex;
+
   width:
     min(
       430px,
@@ -1565,9 +1431,6 @@ span {
     calc(
       100dvh - 32px
     );
-
-  display:
-    flex;
 
   flex-direction:
     column;
@@ -2133,41 +1996,6 @@ button:hover {
    ANIMATIONS
    ========================================================================== */
 
-@keyframes videoTestimonialPulse {
-
-  0%,
-  100% {
-    box-shadow:
-      0
-      0
-      0
-      2px
-      rgba(
-        27,
-        219,
-        186,
-        .06
-      );
-  }
-
-
-  50% {
-    box-shadow:
-      0
-      0
-      0
-      5px
-      rgba(
-        27,
-        219,
-        186,
-        .13
-      );
-  }
-
-}
-
-
 @keyframes videoTestimonialModalBackdrop {
 
   from {
@@ -2225,11 +2053,19 @@ button:hover {
     900px
 ) {
 
+  .video-testimonials__header,
   .home-video-testimonials
   .video-testimonials__header {
     grid-template-columns:
       1fr;
 
+    gap:
+      18px;
+  }
+
+
+  .home-video-testimonials
+  .video-testimonials__header {
     text-align:
       center;
   }
@@ -2247,6 +2083,19 @@ button:hover {
   }
 
 
+  .video-testimonials__intro {
+    max-width:
+      620px;
+  }
+
+
+  /*
+   * Still two cards on tablet.
+   */
+
+  .video-testimonials__grid,
+  .video-testimonials--pair
+  .video-testimonials__grid,
   .home-video-testimonials
   .video-testimonials__grid {
     grid-template-columns:
@@ -2257,26 +2106,12 @@ button:hover {
           1fr
         )
       );
-  }
 
-  .video-testimonials__header {
-    grid-template-columns:
-      1fr;
+    max-width:
+      700px;
 
     gap:
       18px;
-  }
-
-
-  .video-testimonials__intro {
-    max-width:
-      620px;
-  }
-
-
-  .video-testimonials__grid {
-    gap:
-      14px;
   }
 
 
@@ -2307,6 +2142,25 @@ button:hover {
   max-width:
     720px
 ) {
+
+  .video-testimonials {
+    padding:
+      68px
+      0;
+  }
+
+
+  .video-testimonials__shell {
+    width:
+      calc(
+        100% - 30px
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     HEADER
+     ------------------------------------------------------------------------ */
 
   .home-video-testimonials
   .video-testimonials__header {
@@ -2343,6 +2197,83 @@ button:hover {
   }
 
 
+  /* ------------------------------------------------------------------------
+     TWO CARDS STACK CLEANLY ON MOBILE
+
+     No sideways page overflow.
+     No oversized full-tablet card.
+     ------------------------------------------------------------------------ */
+
+  .video-testimonials__grid,
+  .video-testimonials--pair
+  .video-testimonials__grid,
+  .home-video-testimonials
+  .video-testimonials__grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        390px
+      );
+
+    grid-auto-flow:
+      row;
+
+    justify-content:
+      center;
+
+    gap:
+      18px;
+
+    width:
+      100%;
+
+    max-width:
+      390px;
+
+    margin-inline:
+      auto;
+
+    overflow:
+      visible;
+
+    padding:
+      0;
+
+    scroll-snap-type:
+      none;
+  }
+
+
+  .video-testimonials__card,
+  .home-video-testimonials
+  .video-testimonials__card {
+    width:
+      100%;
+
+    max-width:
+      390px;
+
+    margin-inline:
+      auto;
+  }
+
+
+  .video-testimonials__card:hover,
+  .video-testimonials__card:focus-within {
+    transform:
+      translateY(
+        -3px
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     HOME MEDIA
+     ------------------------------------------------------------------------ */
+
   .home-video-testimonials
   .video-testimonials__media {
     aspect-ratio:
@@ -2371,148 +2302,16 @@ button:hover {
     top:
       58px;
 
-    right:
-      auto;
-
-    bottom:
-      auto;
-
-    left:
-      50%;
-
-    width:
-      320%;
-
     height:
       calc(
         100% - 58px
       );
-
-    transform:
-      translateX(
-        -50%
-      );
   }
 
 
-  .video-testimonials {
-    padding:
-      68px
-      0;
-  }
-
-
-  .video-testimonials__shell {
-    width:
-      calc(
-        100% - 30px
-      );
-  }
-
-
-  .video-testimonials__grid {
-    display:
-      grid;
-
-    grid-auto-columns:
-      minmax(
-        255px,
-        84%
-      );
-
-    grid-auto-flow:
-      column;
-
-    grid-template-columns:
-      none;
-
-    gap:
-      13px;
-
-    overflow-x:
-      auto;
-
-    overflow-y:
-      hidden;
-
-    padding:
-      2px
-      2px
-      17px;
-
-    scroll-behavior:
-      smooth;
-
-    scroll-snap-type:
-      x
-      mandatory;
-
-    scroll-padding-inline:
-      2px;
-
-    scrollbar-width:
-      none;
-
-    overscroll-behavior-inline:
-      contain;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__grid {
-    display:
-      grid;
-
-    grid-auto-columns:
-      auto;
-
-    grid-auto-flow:
-      row;
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      18px;
-
-    overflow:
-      visible;
-
-    padding:
-      0;
-
-    scroll-snap-type:
-      none;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__card {
-    width:
-      100%;
-  }
-
-
-  .video-testimonials__grid::-webkit-scrollbar {
-    display:
-      none;
-  }
-
-
-  .video-testimonials__card {
-    scroll-snap-align:
-      start;
-  }
-
-
-  .video-testimonials__card:hover,
-  .video-testimonials__card:focus-within {
-    transform:
-      translateY(
-        -3px
-      );
-  }
-
+  /* ------------------------------------------------------------------------
+     MODAL
+     ------------------------------------------------------------------------ */
 
   .video-testimonials-modal {
     padding:
@@ -2577,7 +2376,8 @@ button:hover {
       !important;
 
     line-height:
-      1.02;
+      1.02
+      !important;
   }
 
 
@@ -2602,19 +2402,40 @@ button:hover {
   }
 
 
+  /* ------------------------------------------------------------------------
+     CARDS
+     ------------------------------------------------------------------------ */
+
+  .video-testimonials__grid,
+  .video-testimonials--pair
+  .video-testimonials__grid,
   .home-video-testimonials
   .video-testimonials__grid {
-    grid-auto-columns:
+    grid-template-columns:
       minmax(
-        252px,
-        88%
+        0,
+        100%
       );
 
-    gap:
-      12px;
+    max-width:
+      360px;
 
-    padding-bottom:
-      12px;
+    gap:
+      16px;
+  }
+
+
+  .video-testimonials__card,
+  .home-video-testimonials
+  .video-testimonials__card {
+    max-width:
+      360px;
+  }
+
+
+  .video-testimonials__media {
+    aspect-ratio:
+      4 / 5;
   }
 
 
@@ -2637,30 +2458,6 @@ button:hover {
   }
 
 
-  .video-testimonials__media {
-    aspect-ratio:
-      4 / 5;
-  }
-
-
-  .video-testimonials__preview-status {
-    top:
-      13px;
-
-    left:
-      13px;
-  }
-
-
-  .video-testimonials__expand {
-    top:
-      13px;
-
-    right:
-      13px;
-  }
-
-
   .video-testimonials__play {
     bottom:
       16px;
@@ -2678,6 +2475,10 @@ button:hover {
       12px;
   }
 
+
+  /* ------------------------------------------------------------------------
+     MODAL
+     ------------------------------------------------------------------------ */
 
   .video-testimonials-modal__top {
     min-height:
@@ -2741,19 +2542,37 @@ button:hover {
     380px
 ) {
 
-  .video-testimonials__grid {
-    grid-auto-columns:
-      91%;
+  .video-testimonials__shell,
+  .home-video-testimonials
+  .video-testimonials__shell {
+    width:
+      calc(
+        100% - 24px
+      );
   }
 
 
+  .video-testimonials__grid,
+  .video-testimonials--pair
+  .video-testimonials__grid,
   .home-video-testimonials
   .video-testimonials__grid {
-    grid-auto-columns:
-      minmax(
-        235px,
-        90%
-      );
+    width:
+      100%;
+
+    max-width:
+      100%;
+  }
+
+
+  .video-testimonials__card,
+  .home-video-testimonials
+  .video-testimonials__card {
+    width:
+      100%;
+
+    max-width:
+      100%;
   }
 
 
@@ -2803,19 +2622,13 @@ button:focus-visible {
 
 
 /* ==========================================================================
-   TOUCH DEVICES
+   TOUCH
    ========================================================================== */
 
 @media (
   hover:
     none
 ) {
-
-  .video-testimonials__expand {
-    opacity:
-      .85;
-  }
-
 
   .video-testimonials__card {
     transform:

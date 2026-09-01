@@ -162,6 +162,10 @@ export default function HomeArticles({
           )
       : [];
 
+  const shouldLoopArticles = articleCards.length > 3;
+  const shouldRewindArticles =
+    articleCards.length > 1 && !shouldLoopArticles;
+
   return (
     <section
       className={["lp1-articles", className].filter(Boolean).join(" ")}
@@ -208,8 +212,8 @@ export default function HomeArticles({
           <Swiper
             className="lp1-articles__carousel"
             modules={[A11y, Autoplay, Pagination]}
-            loop={articleCards.length > 3}
-            loopAdditionalSlides={3}
+            loop={shouldLoopArticles}
+            rewind={shouldRewindArticles}
             speed={900}
             grabCursor
             roundLengths
@@ -218,6 +222,7 @@ export default function HomeArticles({
               delay: 1700,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
+              stopOnLastSlide: false,
             }}
             pagination={{ clickable: true, dynamicBullets: true }}
             breakpoints={{
