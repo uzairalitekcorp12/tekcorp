@@ -176,7 +176,7 @@ export default function AboutTeam() {
    * Keep the selected member centered.
    *
    * The default selected member is the 4th card — Jenny,
-   * TekCorp's CEO — so on desktop she naturally sits in the
+   * Tekcorp's CEO — so on desktop she naturally sits in the
    * middle and on tablet/mobile the horizontal strip opens
    * with her already visible in the center.
    */
@@ -367,7 +367,7 @@ export default function AboutTeam() {
           </h2>
 
           <p>
-            Meet the people behind TekCorp —
+            Meet the people behind Tekcorp —
             combining strategy, technology,
             product thinking and design to build
             digital experiences that create real
@@ -383,7 +383,7 @@ export default function AboutTeam() {
         <div
           className="tek-About-team__stage"
           role="list"
-          aria-label="TekCorp team members"
+          aria-label="Tekcorp team members"
         >
           {team.map(
             (member, index) => {

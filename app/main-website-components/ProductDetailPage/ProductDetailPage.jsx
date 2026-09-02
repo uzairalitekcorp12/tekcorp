@@ -164,7 +164,7 @@ export default function ProductDetailPage({
         items={showcaseItems}
         eyebrow="MORE PRODUCTS"
         title="Check out our other products we've developed"
-        subtitle="Explore TekCorp products built to improve operations, collaboration and digital customer experiences."
+        subtitle="Explore Tekcorp products built to improve operations, collaboration and digital customer experiences."
         sectionId={`more-products-${page.slug}`}
         ctaHref="/contact"
         ctaLabel="Discuss a Product"

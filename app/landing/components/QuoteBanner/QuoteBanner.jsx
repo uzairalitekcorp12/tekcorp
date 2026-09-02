@@ -58,7 +58,7 @@ export default function QuoteBanner() {
 
           {/* Quote Text */}
           <p className="quote-banner__text">
-            TekCorp helps businesses replace outdated systems with modern
+            Tekcorp helps businesses replace outdated systems with modern
             <br className="quote-banner__desktop-break" />
             digital solutions designed for performance and growth.
           </p>

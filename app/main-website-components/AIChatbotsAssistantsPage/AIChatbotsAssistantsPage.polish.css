@@ -1,0 +1,4 @@
+.chatbot-page .chatbot-integrations__rail > span {
+  font-size: clamp(.75rem, .72rem + .12vw, .8125rem);
+  line-height: 1.35;
+}

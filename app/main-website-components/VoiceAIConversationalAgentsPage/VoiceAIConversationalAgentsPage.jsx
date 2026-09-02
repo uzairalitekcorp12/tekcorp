@@ -1,6 +1,7 @@
 import "../CapabilityFoundation/CapabilityFoundation.css";
 import "./VoiceAIConversationalAgentsPage.css";
 import "../AICapabilityRefinements/AICapabilityRefinements.css";
+import "./VoiceAIConversationalAgentsPage.polish.css";
 
 import Link from "next/link";
 import {

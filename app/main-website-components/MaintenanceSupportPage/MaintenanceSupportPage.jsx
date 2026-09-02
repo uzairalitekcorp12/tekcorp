@@ -199,7 +199,7 @@ const testimonials = [
       "SEO Client",
 
     quote:
-      "We partnered with TekCorp for our website's SEO, and their clear communication, professional reporting and consistent work significantly improved our online presence.",
+      "We partnered with Tekcorp for our website's SEO, and their clear communication, professional reporting and consistent work significantly improved our online presence.",
   },
 
   {
@@ -213,7 +213,7 @@ const testimonials = [
       "LMS Platform Client",
 
     quote:
-      "TekCorp delivered our website and LMS portal professionally, met every requirement and completed the project within the agreed timeline.",
+      "Tekcorp delivered our website and LMS portal professionally, met every requirement and completed the project within the agreed timeline.",
   },
 
   {
@@ -241,7 +241,7 @@ const testimonials = [
       "Raza Foundation",
 
     quote:
-      "TekCorp met our expectations perfectly and remained available throughout the process while building our global welfare website.",
+      "Tekcorp met our expectations perfectly and remained available throughout the process while building our global welfare website.",
   },
 
   {

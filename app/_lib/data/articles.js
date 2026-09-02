@@ -14,16 +14,6 @@ import {
   textValue,
 } from "./mongoContent";
 
-import {
-  runContentQuery,
-} from "./dataSource";
-
-import {
-  LOCAL_ARTICLES,
-  cloneLocalData,
-} from "./localContent";
-
-
 const SLUG_PATTERN =
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -182,11 +172,6 @@ async function getDatabaseArticles() {
 }
 
 
-function getLocalArticles() {
-  return cloneLocalData(LOCAL_ARTICLES);
-}
-
-
 export async function getArticles({
   page = 1,
   limit = 6,
@@ -196,20 +181,10 @@ export async function getArticles({
   const safeLimit = toPositiveInteger(limit, 6, 24);
   const safeSearch = textValue(search).slice(0, 100);
 
-  return runContentQuery({
-    label: "articles:list",
-    database: async () =>
-      paginatedArticles(await getDatabaseArticles(), {
-        page: safePage,
-        limit: safeLimit,
-        search: safeSearch,
-      }),
-    local: () =>
-      paginatedArticles(getLocalArticles(), {
-        page: safePage,
-        limit: safeLimit,
-        search: safeSearch,
-      }),
+  return paginatedArticles(await getDatabaseArticles(), {
+    page: safePage,
+    limit: safeLimit,
+    search: safeSearch,
   });
 }
 
@@ -273,19 +248,10 @@ export async function getTrendingArticles({
 } = {}) {
   const safeLimit = toPositiveInteger(limit, 5, 12);
 
-  return runContentQuery({
-    label: "articles:trending",
-    database: async () =>
-      trendingArticles(
-        await getDatabaseArticles(),
-        safeLimit,
-      ),
-    local: () =>
-      trendingArticles(
-        getLocalArticles(),
-        safeLimit,
-      ),
-  });
+  return trendingArticles(
+    await getDatabaseArticles(),
+    safeLimit,
+  );
 }
 
 
@@ -306,11 +272,7 @@ export async function getLatestArticles({
       .sort(newestFirst)
       .slice(0, safeLimit);
 
-  return runContentQuery({
-    label: "articles:latest",
-    database: async () => selectLatest(await getDatabaseArticles()),
-    local: () => selectLatest(getLocalArticles()),
-  });
+  return selectLatest(await getDatabaseArticles());
 }
 
 
@@ -321,20 +283,9 @@ async function findArticleBySlug(slug) {
     return null;
   }
 
-  return runContentQuery({
-    label: `articles:slug:${safeSlug}`,
-    database: async () => {
-      const articles = await getDatabaseArticles();
+  const articles = await getDatabaseArticles();
 
-      return articles.find((article) => article.slug === safeSlug) || null;
-    },
-    local: () =>
-      getLocalArticles().find(
-        (article) =>
-          article.slug === safeSlug &&
-          article.status === "published",
-      ) || null,
-  });
+  return articles.find((article) => article.slug === safeSlug) || null;
 }
 
 

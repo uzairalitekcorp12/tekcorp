@@ -148,7 +148,7 @@ export default function ApplicationEngineeringPage() {
 
               <Image
                 src="/assets/Service-assets/ApplicationEngineering/application-showcase.png"
-                alt="Mobile application interface engineered by TekCorp"
+                alt="Mobile application interface engineered by Tekcorp"
                 fill
                 sizes="(max-width: 900px) min(100vw - 30px, 520px), 500px"
                 priority

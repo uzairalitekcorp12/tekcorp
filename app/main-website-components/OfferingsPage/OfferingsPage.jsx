@@ -36,7 +36,7 @@ export default function OfferingsPage({
 
           <Breadcrumb
             className="offerings-page__breadcrumb"
-            items={["TekCorp", sectionName]}
+            items={["Tekcorp", sectionName]}
             separator="›"
             trailing={(
               <ArrowUpRight

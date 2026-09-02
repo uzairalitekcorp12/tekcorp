@@ -304,7 +304,8 @@
   .application-engineering-hero,
   .maintenance-support-hero,
   .prototyping-design-hero,
-  .quality-assurance-hero
+  .quality-assurance-hero,
+  .structured-service-hero
 ) {
   min-height: 0 !important;
   padding: 40px 0 44px !important;
@@ -315,7 +316,8 @@
   .application-engineering-hero h1,
   .maintenance-support-hero h1,
   .prototyping-design-hero h1,
-  .quality-assurance-hero h1
+  .quality-assurance-hero h1,
+  .structured-service-hero h1
 ) {
   font-size: var(--tek-detail-display) !important;
   line-height: 1.02 !important;
@@ -327,7 +329,8 @@
   .application-engineering-hero__eyebrow,
   .maintenance-support-eyebrow,
   .prototyping-design-eyebrow,
-  .quality-assurance-eyebrow
+  .quality-assurance-eyebrow,
+  .structured-service-eyebrow
 ) {
   font-size: var(--tek-detail-label) !important;
   font-weight: 650 !important;
@@ -337,12 +340,25 @@
 .tek-service-route :is(
   .web-engineering-breadcrumb,
   .application-engineering-breadcrumb,
+  .cms-page .service-capability__breadcrumb,
+  .ecommerce-page .service-capability__breadcrumb,
+  .branding-page .service-capability__breadcrumb,
   .maintenance-support-breadcrumb,
   .prototyping-design-breadcrumb,
-  .quality-assurance-breadcrumb
+  .quality-assurance-breadcrumb,
+  .structured-service-breadcrumb
 ) {
   font-size: var(--tek-detail-breadcrumb) !important;
   line-height: 1.4 !important;
+}
+
+.tek-service-route :is(
+  .web-engineering-breadcrumb,
+  .application-engineering-breadcrumb,
+  .prototyping-design-breadcrumb,
+  .structured-service-breadcrumb
+) a:hover {
+  color: var(--lp1-teal, #1bdbba) !important;
 }
 
 .tek-service-route :is(
@@ -449,7 +465,8 @@
     .application-engineering-hero,
     .maintenance-support-hero,
     .prototyping-design-hero,
-    .quality-assurance-hero
+    .quality-assurance-hero,
+    .structured-service-hero
   ) {
     padding: 34px 0 38px !important;
   }
@@ -459,7 +476,8 @@
     .application-engineering-hero h1,
     .maintenance-support-hero h1,
     .prototyping-design-hero h1,
-    .quality-assurance-hero h1
+    .quality-assurance-hero h1,
+    .structured-service-hero h1
   ) {
     font-size: clamp(2.1875rem, 10.5vw, 3.125rem) !important;
   }

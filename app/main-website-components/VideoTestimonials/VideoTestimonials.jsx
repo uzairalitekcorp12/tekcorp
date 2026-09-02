@@ -5,347 +5,1426 @@ import "./VideoTestimonials.css";
 import {
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
 } from "react";
 
 import {
-  Pause,
-  Play,
-  X,
+  Volume1,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 
 /* ==========================================================================
-   DEFAULT CONTENT
+   FALLBACK POSTER
 
-   This component intentionally displays a maximum of TWO testimonials.
+   Physical file:
+   public/assets/Home-assets/videofallback.png
 
-   You can replace these URLs/content later without changing the component.
-
-   Supported video sources:
-   - YouTube
-   - YouTube Shorts
-   - Direct MP4/WebM/CDN video URLs
-
+   Browser URL:
+   /assets/Home-assets/videofallback.png
    ========================================================================== */
 
-const DEFAULT_TESTIMONIALS = [
+const DEFAULT_POSTER =
+  "/assets/Home-assets/videofallback.png";
+
+
+/* ==========================================================================
+   TESTIMONIAL DATA
+
+   SINGLE SOURCE OF TRUTH
+   --------------------------------------------------------------------------
+
+   Future clients are added ONLY here.
+
+   Home.jsx does not need to change.
+
+   Example:
+
+   {
+     id: "future-client",
+     name: "Future Client",
+     role: "Founder",
+     company: "Company Name",
+     video: "https://your-cdn.com/future-client.mp4",
+     poster: "https://your-cdn.com/future-client.webp",
+     description: "Future client testimonial.",
+     objectPosition: "50% 50%",
+     defaultVolume: 0.75,
+     uploadDate: "2026-09-02",
+   }
+
+   VIDEO BEHAVIOUR
+   --------------------------------------------------------------------------
+
+   - Direct S3 / CDN video only
+   - No YouTube
+   - Full video plays
+   - No short preview
+   - No seeking to previewStart
+   - Native loop of complete video
+   - Autoplay muted
+   - Custom mute / volume control
+   - No popup
+   - No play button
+   - No native video controls
+   - Offscreen video pauses for performance
+   - Full uncropped frame using object-fit: contain
+   ========================================================================== */
+
+export const TESTIMONIALS = [
   {
     id:
-      "john-smith",
+      "moosa-khan",
 
     name:
-      "John Smith",
+      "Moosa Khan",
 
     role:
       "Founder",
 
     company:
-      "Client",
+      "",
 
     video:
-      "https://www.youtube.com/shorts/ImsFH9bjtCI",
+      "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/moosa-khan-testimonial-1.mp4",
 
     poster:
-      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      DEFAULT_POSTER,
 
-    previewStart:
-      0,
+    description:
+      "Moosa Khan shares his experience of working with TekCorp and the value created through the digital solution we delivered.",
 
-    previewDuration:
-      4.5,
+    objectPosition:
+      "50% 50%",
+
+    defaultVolume:
+      0.75,
+
+    uploadDate:
+      "",
   },
+
 
   {
     id:
-      "michelle-jawing",
+      "haris-siddique",
 
     name:
-      "Michelle Jawing",
+      "Haris Siddique",
 
     role:
-      "Marketing Manager",
+      "Founder & CEO",
 
     company:
-      "GFO",
+      "",
 
     video:
-      "https://youtube.com/shorts/FQagzMsmJfo?si=_dv2jxEufndTxdaS",
+      "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/haris-sid-testimonial-2.mp4",
 
     poster:
-      "https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      DEFAULT_POSTER,
 
-    previewStart:
-      2,
+    description:
+      "Haris Siddique shares his experience with TekCorp, including collaboration, delivery and the value created through the engagement.",
 
-    previewDuration:
-      4.5,
+    objectPosition:
+      "50% 50%",
+
+    defaultVolume:
+      0.75,
+
+    uploadDate:
+      "",
   },
+
+
+  /* =========================================================================
+     FUTURE CLIENT EXAMPLE
+
+  {
+    id:
+      "future-client",
+
+    name:
+      "Future Client",
+
+    role:
+      "Founder",
+
+    company:
+      "Company Name",
+
+    video:
+      "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/future-client.mp4",
+
+    poster:
+      "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/future-client.webp",
+
+    description:
+      "Future client testimonial about working with TekCorp.",
+
+    objectPosition:
+      "50% 50%",
+
+    defaultVolume:
+      0.75,
+
+    uploadDate:
+      "2026-09-02",
+  },
+
+     ========================================================================= */
 ];
 
 
 /* ==========================================================================
-   YOUTUBE HELPERS
+   BASIC HELPERS
    ========================================================================== */
 
-function getYouTubeVideoId(
-  videoUrl,
-) {
-  if (
-    typeof videoUrl !==
-    "string"
-  ) {
-    return null;
-  }
-
-
-  try {
-    const normalizedUrl =
-      /^https?:\/\//i.test(
-        videoUrl,
-      )
-        ? videoUrl
-        : `https://${videoUrl}`;
-
-
-    const url =
-      new URL(
-        normalizedUrl,
-      );
-
-
-    const hostname =
-      url.hostname
-        .replace(
-          /^www\./i,
-          "",
-        )
-        .replace(
-          /^m\./i,
-          "",
-        );
-
-
-    let videoId =
-      null;
-
-
-    /* ----------------------------------------------------------------------
-       YOUTU.BE
-       ---------------------------------------------------------------------- */
-
-    if (
-      hostname ===
-      "youtu.be"
-    ) {
-      videoId =
-        url.pathname
-          .split("/")
-          .filter(Boolean)[0];
-    }
-
-
-    /* ----------------------------------------------------------------------
-       YOUTUBE.COM
-       ---------------------------------------------------------------------- */
-
-    else if (
-      hostname ===
-        "youtube.com" ||
-      hostname.endsWith(
-        ".youtube.com",
-      )
-    ) {
-      const pathParts =
-        url.pathname
-          .split("/")
-          .filter(Boolean);
-
-
-      if (
-        [
-          "shorts",
-          "embed",
-          "live",
-        ].includes(
-          pathParts[0],
-        )
-      ) {
-        videoId =
-          pathParts[1];
-      }
-
-
-      else if (
-        pathParts[0] ===
-        "watch"
-      ) {
-        videoId =
-          url.searchParams.get(
-            "v",
-          );
-      }
-    }
-
-
-    return /^[A-Za-z0-9_-]{11}$/.test(
-      videoId ||
-      "",
-    )
-      ? videoId
-      : null;
-
-  } catch {
-    return null;
-  }
+function textValue(value) {
+  return typeof value === "string"
+    ? value.trim()
+    : "";
 }
 
 
 /* ==========================================================================
-   YOUTUBE EMBED URL
+   NUMBER
    ========================================================================== */
 
-function getYouTubeEmbedUrl(
-  videoUrl,
-  {
-    preview =
-      false,
-
-    start =
-      0,
-  } = {},
+function safeNumber(
+  value,
+  fallback,
 ) {
-  const videoId =
-    getYouTubeVideoId(
-      videoUrl,
+  const number =
+    Number(
+      value,
     );
 
 
-  if (
-    !videoId
-  ) {
-    return null;
-  }
+  return Number.isFinite(
+    number,
+  )
+    ? number
+    : fallback;
+}
 
 
-  const parameters =
-    new URLSearchParams({
-      playsinline:
-        "1",
+/* ==========================================================================
+   CLAMP
+   ========================================================================== */
 
-      rel:
-        "0",
-
-      modestbranding:
-        "1",
-    });
-
-
-  /* ------------------------------------------------------------------------
-     MUTED CARD PREVIEW
-     ------------------------------------------------------------------------ */
-
-  if (
-    preview
-  ) {
-    parameters.set(
-      "autoplay",
-      "1",
-    );
-
-
-    parameters.set(
-      "mute",
-      "1",
-    );
-
-
-    parameters.set(
-      "controls",
-      "0",
-    );
-
-
-    parameters.set(
-      "loop",
-      "1",
-    );
-
-
-    parameters.set(
-      "playlist",
-      videoId,
-    );
-
-
-    parameters.set(
-      "start",
-      String(
-        Math.max(
-          0,
-          Number(
-            start,
-          ) ||
-            0,
-        ),
-      ),
-    );
-  }
-
-
-  /* ------------------------------------------------------------------------
-     FULL MODAL VIDEO
-     ------------------------------------------------------------------------ */
-
-  else {
-    parameters.set(
-      "autoplay",
-      "1",
-    );
-
-
-    parameters.set(
-      "controls",
-      "1",
-    );
-
-
-    /*
-     * Every popup opening starts from the beginning.
-     */
-
-    parameters.set(
-      "start",
-      "0",
-    );
-  }
-
-
-  return (
-    `https://www.youtube-nocookie.com/embed/` +
-    `${videoId}?${parameters.toString()}`
+function clamp(
+  value,
+  min,
+  max,
+) {
+  return Math.min(
+    max,
+    Math.max(
+      min,
+      value,
+    ),
   );
 }
 
 
 /* ==========================================================================
-   CARD PLAY BUTTON
+   DIRECT MEDIA URL
+
+   Supported:
+   - /public assets
+   - HTTPS direct media
+   - HTTP direct media
+
+   YouTube is intentionally rejected.
    ========================================================================== */
 
-function CardPlayButton() {
+function mediaUrl(
+  value,
+  fallback = "",
+) {
+  const source =
+    textValue(
+      value,
+    );
+
+
+  if (!source) {
+    return fallback;
+  }
+
+
+  /*
+   * Next.js public asset.
+   */
+  if (
+    source.startsWith(
+      "/",
+    )
+  ) {
+    return source;
+  }
+
+
+  try {
+    const url =
+      new URL(
+        source,
+      );
+
+
+    if (
+      url.protocol !== "https:" &&
+      url.protocol !== "http:"
+    ) {
+      return fallback;
+    }
+
+
+    const hostname =
+      url.hostname.toLowerCase();
+
+
+    /*
+     * Direct media files only.
+     */
+    if (
+      hostname.includes(
+        "youtube.com",
+      ) ||
+      hostname.includes(
+        "youtu.be",
+      )
+    ) {
+      return fallback;
+    }
+
+
+    return url.toString();
+  } catch {
+    return fallback;
+  }
+}
+
+
+/* ==========================================================================
+   NORMALIZE TESTIMONIAL
+   ========================================================================== */
+
+function normalizeTestimonial(
+  testimonial,
+  index,
+) {
+  if (
+    !testimonial ||
+    typeof testimonial !==
+      "object"
+  ) {
+    return null;
+  }
+
+
+  const video =
+    mediaUrl(
+      testimonial.video,
+    );
+
+
+  /*
+   * Don't create an unusable card without a direct video.
+   */
+  if (!video) {
+    return null;
+  }
+
+
+  const name =
+    textValue(
+      testimonial.name,
+    ) ||
+    `Client ${index + 1}`;
+
+
+  const poster =
+    mediaUrl(
+      testimonial.poster ||
+      testimonial.image ||
+      testimonial.thumbnail,
+      DEFAULT_POSTER,
+    );
+
+
+  return {
+    id:
+      textValue(
+        testimonial.id,
+      ) ||
+      `testimonial-${index + 1}`,
+
+    name,
+
+    role:
+      textValue(
+        testimonial.role,
+      ),
+
+    company:
+      textValue(
+        testimonial.company,
+      ),
+
+    video,
+
+    poster,
+
+    description:
+      textValue(
+        testimonial.description,
+      ) ||
+      `${name} shares their experience of working with TekCorp.`,
+
+    objectPosition:
+      textValue(
+        testimonial.objectPosition,
+      ) ||
+      "50% 50%",
+
+    defaultVolume:
+      clamp(
+        safeNumber(
+          testimonial.defaultVolume,
+          0.75,
+        ),
+        0,
+        1,
+      ),
+
+    uploadDate:
+      textValue(
+        testimonial.uploadDate,
+      ),
+  };
+}
+
+
+/* ==========================================================================
+   NORMALIZE LIST
+   ========================================================================== */
+
+function normalizeTestimonials(
+  testimonials,
+) {
+  if (
+    !Array.isArray(
+      testimonials,
+    )
+  ) {
+    return [];
+  }
+
+
+  return testimonials
+    .map(
+      normalizeTestimonial,
+    )
+    .filter(
+      Boolean,
+    );
+}
+
+
+/* ==========================================================================
+   PERSON META
+
+   Current clients render as:
+
+   Moosa Khan
+   Founder
+
+   Haris Siddique
+   Founder & CEO
+
+   If a genuine company is added later:
+
+   Founder · Company Name
+
+   We never create:
+   "Founder at Client"
+   ========================================================================== */
+
+function PersonMeta({
+  testimonial,
+}) {
+  const role =
+    textValue(
+      testimonial.role,
+    );
+
+
+  const company =
+    textValue(
+      testimonial.company,
+    );
+
+
+  if (
+    !role &&
+    !company
+  ) {
+    return null;
+  }
+
+
   return (
-    <span
-      className="video-testimonials__play"
-      aria-hidden="true"
-    >
-      <Play
-        size={19}
-        strokeWidth={1.8}
-        fill="currentColor"
+    <p className="video-testimonials__role">
+
+      {role ? (
+        <strong>
+          {role}
+        </strong>
+      ) : null}
+
+
+      {role &&
+      company ? (
+        <span
+          aria-hidden="true"
+        >
+          ·
+        </span>
+      ) : null}
+
+
+      {company ? (
+        <em>
+          {company}
+        </em>
+      ) : null}
+
+    </p>
+  );
+}
+
+
+/* ==========================================================================
+   AUDIO ICON
+   ========================================================================== */
+
+function AudioIcon({
+  muted,
+  volume,
+}) {
+  if (
+    muted ||
+    volume === 0
+  ) {
+    return (
+      <VolumeX
+        size={17}
+        strokeWidth={1.9}
       />
-    </span>
+    );
+  }
+
+
+  if (
+    volume <
+    0.45
+  ) {
+    return (
+      <Volume1
+        size={17}
+        strokeWidth={1.9}
+      />
+    );
+  }
+
+
+  return (
+    <Volume2
+      size={17}
+      strokeWidth={1.9}
+    />
+  );
+}
+
+
+/* ==========================================================================
+   TESTIMONIAL CARD
+
+   FULL VIDEO — NO PREVIEW CONCEPT
+   --------------------------------------------------------------------------
+
+   The actual testimonial video:
+
+   - starts at 0
+   - plays normally
+   - reaches the real end
+   - loops naturally using <video loop>
+   - is never manually shortened
+   - is never reset after 5 seconds
+   - never seeks to a preview position
+
+   PERFORMANCE
+   --------------------------------------------------------------------------
+
+   Poster:
+   Immediately available.
+
+   Video:
+   Source attaches shortly before the card reaches the viewport.
+
+   Visible:
+   Play.
+
+   Offscreen:
+   Pause.
+
+   This allows future testimonial lists to grow without downloading and
+   decoding every MP4 on the page simultaneously.
+   ========================================================================== */
+
+function TestimonialCard({
+  testimonial,
+  index,
+  audible,
+  onActivateAudio,
+  onDeactivateAudio,
+}) {
+  const cardRef =
+    useRef(null);
+
+
+  const videoRef =
+    useRef(null);
+
+
+  const [
+    shouldLoad,
+    setShouldLoad,
+  ] =
+    useState(false);
+
+
+  const [
+    visible,
+    setVisible,
+  ] =
+    useState(false);
+
+
+  const [
+    ready,
+    setReady,
+  ] =
+    useState(false);
+
+
+  const [
+    failed,
+    setFailed,
+  ] =
+    useState(false);
+
+
+  const [
+    volume,
+    setVolume,
+  ] =
+    useState(
+      testimonial.defaultVolume,
+    );
+
+
+  /* ==========================================================================
+     RESET
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      setReady(
+        false,
+      );
+
+
+      setFailed(
+        false,
+      );
+
+
+      setVolume(
+        testimonial.defaultVolume,
+      );
+    },
+    [
+      testimonial.id,
+      testimonial.video,
+      testimonial.defaultVolume,
+    ],
+  );
+
+
+  /* ==========================================================================
+     PRELOAD BEFORE VIEWPORT
+
+     We begin loading before the user reaches this section.
+
+     This keeps playback feeling immediate while avoiding aggressive loading
+     of testimonial videos that may be far below the fold.
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const card =
+        cardRef.current;
+
+
+      if (!card) {
+        return undefined;
+      }
+
+
+      const observer =
+        new IntersectionObserver(
+          ([entry]) => {
+            if (
+              entry.isIntersecting
+            ) {
+              setShouldLoad(
+                true,
+              );
+
+
+              observer.disconnect();
+            }
+          },
+          {
+            rootMargin:
+              "1100px 0px 1100px 0px",
+
+            threshold:
+              0.01,
+          },
+        );
+
+
+      observer.observe(
+        card,
+      );
+
+
+      return () => {
+        observer.disconnect();
+      };
+    },
+    [],
+  );
+
+
+  /* ==========================================================================
+     ACTUAL VISIBILITY
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const card =
+        cardRef.current;
+
+
+      if (!card) {
+        return undefined;
+      }
+
+
+      const observer =
+        new IntersectionObserver(
+          ([entry]) => {
+            setVisible(
+              Boolean(
+                entry.isIntersecting &&
+                entry.intersectionRatio >=
+                  0.12,
+              ),
+            );
+          },
+          {
+            threshold: [
+              0,
+              0.12,
+              0.35,
+            ],
+
+            rootMargin:
+              "80px 0px 80px 0px",
+          },
+        );
+
+
+      observer.observe(
+        card,
+      );
+
+
+      return () => {
+        observer.disconnect();
+      };
+    },
+    [],
+  );
+
+
+  /* ==========================================================================
+     PLAY / PAUSE
+
+     Full video plays from wherever it naturally is.
+
+     We do NOT:
+     - modify currentTime
+     - create preview ranges
+     - restart every 5 seconds
+
+     Native `loop` handles the complete-video loop.
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const video =
+        videoRef.current;
+
+
+      if (
+        !video ||
+        !shouldLoad ||
+        failed
+      ) {
+        return;
+      }
+
+
+      if (!visible) {
+        video.pause();
+
+        return;
+      }
+
+
+      video
+        .play()
+        .catch(
+          () => {},
+        );
+    },
+    [
+      shouldLoad,
+      visible,
+      failed,
+    ],
+  );
+
+
+  /* ==========================================================================
+     AUDIO STATE
+
+     Parent controls which card is currently audible.
+
+     Only one testimonial can output sound at a time.
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const video =
+        videoRef.current;
+
+
+      if (!video) {
+        return;
+      }
+
+
+      video.volume =
+        clamp(
+          volume,
+          0,
+          1,
+        );
+
+
+      video.muted =
+        !audible ||
+        volume === 0;
+
+
+      /*
+       * defaultMuted remains true because the video must initially qualify
+       * for reliable browser autoplay.
+       */
+      video.defaultMuted =
+        true;
+    },
+    [
+      audible,
+      volume,
+    ],
+  );
+
+
+  /* ==========================================================================
+     DOCUMENT VISIBILITY
+
+     Prevent videos continuing to decode when the browser tab is hidden.
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      function handleVisibilityChange() {
+        const video =
+          videoRef.current;
+
+
+        if (!video) {
+          return;
+        }
+
+
+        if (
+          document.hidden
+        ) {
+          video.pause();
+
+          return;
+        }
+
+
+        if (
+          visible &&
+          shouldLoad &&
+          !failed
+        ) {
+          video
+            .play()
+            .catch(
+              () => {},
+            );
+        }
+      }
+
+
+      document.addEventListener(
+        "visibilitychange",
+        handleVisibilityChange,
+      );
+
+
+      return () => {
+        document.removeEventListener(
+          "visibilitychange",
+          handleVisibilityChange,
+        );
+      };
+    },
+    [
+      visible,
+      shouldLoad,
+      failed,
+    ],
+  );
+
+
+  /* ==========================================================================
+     TOGGLE AUDIO
+     ========================================================================== */
+
+  function toggleAudio() {
+    const video =
+      videoRef.current;
+
+
+    if (!video) {
+      return;
+    }
+
+
+    /*
+     * Currently audible -> mute it.
+     */
+    if (
+      audible &&
+      volume >
+        0
+    ) {
+      video.muted =
+        true;
+
+
+      onDeactivateAudio(
+        testimonial.id,
+      );
+
+
+      return;
+    }
+
+
+    /*
+     * If slider was previously set to zero, restore a useful listening
+     * volume when the visitor taps the audio button.
+     */
+    let nextVolume =
+      volume;
+
+
+    if (
+      nextVolume <=
+      0
+    ) {
+      nextVolume =
+        0.65;
+
+
+      setVolume(
+        nextVolume,
+      );
+    }
+
+
+    /*
+     * This occurs directly from a user interaction, so browsers allow
+     * sound to be enabled here.
+     */
+    video.volume =
+      nextVolume;
+
+
+    video.muted =
+      false;
+
+
+    onActivateAudio(
+      testimonial.id,
+    );
+
+
+    if (
+      video.paused &&
+      visible
+    ) {
+      video
+        .play()
+        .catch(
+          () => {},
+        );
+    }
+  }
+
+
+  /* ==========================================================================
+     VOLUME
+     ========================================================================== */
+
+  function handleVolumeChange(
+    event,
+  ) {
+    const video =
+      videoRef.current;
+
+
+    if (!video) {
+      return;
+    }
+
+
+    const nextVolume =
+      clamp(
+        Number(
+          event.target.value,
+        ),
+        0,
+        1,
+      );
+
+
+    setVolume(
+      nextVolume,
+    );
+
+
+    video.volume =
+      nextVolume;
+
+
+    if (
+      nextVolume ===
+      0
+    ) {
+      video.muted =
+        true;
+
+
+      onDeactivateAudio(
+        testimonial.id,
+      );
+
+
+      return;
+    }
+
+
+    /*
+     * Moving the slider above 0 explicitly activates this video's audio.
+     * Parent automatically mutes any other testimonial.
+     */
+    video.muted =
+      false;
+
+
+    onActivateAudio(
+      testimonial.id,
+    );
+
+
+    if (
+      video.paused &&
+      visible
+    ) {
+      video
+        .play()
+        .catch(
+          () => {},
+        );
+    }
+  }
+
+
+  /* ==========================================================================
+     VIDEO READY
+     ========================================================================== */
+
+  function handleReady() {
+    setReady(
+      true,
+    );
+  }
+
+
+  /* ==========================================================================
+     VIDEO FAILURE
+     ========================================================================== */
+
+  function handleFailure() {
+    setFailed(
+      true,
+    );
+
+
+    setReady(
+      false,
+    );
+
+
+    onDeactivateAudio(
+      testimonial.id,
+    );
+  }
+
+
+  /* ==========================================================================
+     RENDER
+     ========================================================================== */
+
+  return (
+    <article
+      ref={
+        cardRef
+      }
+      className={[
+        "video-testimonials__card",
+
+        ready
+          ? "is-ready"
+          : "is-loading",
+
+        failed
+          ? "is-failed"
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      data-reveal={
+        index % 2 ===
+        0
+          ? "left"
+          : "right"
+      }
+      itemScope
+      itemType="https://schema.org/VideoObject"
+    >
+
+      {/* ====================================================================
+          VIDEO SEO
+          ==================================================================== */}
+
+      <meta
+        itemProp="contentUrl"
+        content={
+          testimonial.video
+        }
+      />
+
+
+      <meta
+        itemProp="name"
+        content={`${testimonial.name} — TekCorp Client Story`}
+      />
+
+
+      <meta
+        itemProp="description"
+        content={
+          testimonial.description
+        }
+      />
+
+
+      <meta
+        itemProp="thumbnailUrl"
+        content={
+          testimonial.poster
+        }
+      />
+
+
+      {testimonial.uploadDate ? (
+        <meta
+          itemProp="uploadDate"
+          content={
+            testimonial.uploadDate
+          }
+        />
+      ) : null}
+
+
+      {/* ====================================================================
+          MEDIA
+          ==================================================================== */}
+
+      <div className="video-testimonials__media">
+
+        <div className="video-testimonials__stage">
+
+          <video
+            ref={
+              videoRef
+            }
+            className="video-testimonials__video"
+
+            /*
+             * Don't attach remote MP4 until the card approaches viewport.
+             */
+            src={
+              shouldLoad &&
+              !failed
+                ? testimonial.video
+                : undefined
+            }
+
+            poster={
+              testimonial.poster
+            }
+
+            /*
+             * COMPLETE VIDEO AUTOPLAY.
+             */
+            autoPlay
+
+            /*
+             * Required for reliable initial autoplay.
+             *
+             * The custom audio control can then unmute it after user input.
+             */
+            muted={
+              !audible
+            }
+
+            /*
+             * Native loop = complete video reaches the end, then restarts.
+             */
+            loop
+
+            playsInline
+
+            /*
+             * Once we're close to viewport, prioritise actual playback bytes.
+             */
+            preload={
+              shouldLoad
+                ? "auto"
+                : "none"
+            }
+
+            disablePictureInPicture
+
+            controlsList="nodownload"
+
+            aria-label={`${testimonial.name} client testimonial`}
+
+            style={{
+              objectPosition:
+                testimonial.objectPosition,
+            }}
+
+            onLoadedData={
+              handleReady
+            }
+
+            onCanPlay={
+              handleReady
+            }
+
+            onPlaying={
+              handleReady
+            }
+
+            onError={
+              handleFailure
+            }
+          />
+
+        </div>
+
+
+        {/* ==================================================================
+            VERY LIGHT LOWER FADE
+            ================================================================== */}
+
+        <span
+          className="video-testimonials__media-shade"
+          aria-hidden="true"
+        />
+
+
+        <span
+          className="video-testimonials__media-glow"
+          aria-hidden="true"
+        />
+
+
+        {/* ==================================================================
+            AUDIO CONTROL
+
+            ONLY USER MEDIA CONTROL:
+            - mute
+            - unmute
+            - volume up
+            - volume down
+
+            No:
+            - popup
+            - play
+            - pause
+            - seek bar
+            - fullscreen control
+            ================================================================== */}
+
+        {!failed ? (
+          <div
+            className={[
+              "video-testimonials__audio",
+
+              audible &&
+              volume >
+                0
+                ? "is-audible"
+                : "is-muted",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+
+            <div className="video-testimonials__audio-slider-wrap">
+
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={
+                  audible
+                    ? volume
+                    : 0
+                }
+                onChange={
+                  handleVolumeChange
+                }
+                className="video-testimonials__audio-slider"
+                aria-label={`${testimonial.name} testimonial volume`}
+              />
+
+            </div>
+
+
+            <button
+              type="button"
+              className="video-testimonials__audio-button"
+              onClick={
+                toggleAudio
+              }
+              aria-label={
+                audible &&
+                volume > 0
+                  ? `Mute ${testimonial.name} testimonial`
+                  : `Unmute ${testimonial.name} testimonial`
+              }
+              aria-pressed={
+                audible &&
+                volume > 0
+              }
+            >
+              <AudioIcon
+                muted={
+                  !audible ||
+                  volume === 0
+                }
+                volume={
+                  volume
+                }
+              />
+            </button>
+
+          </div>
+        ) : null}
+
+      </div>
+
+
+      {/* ====================================================================
+          CLIENT INFORMATION
+          ==================================================================== */}
+
+      <div className="video-testimonials__card-footer">
+
+        <div>
+
+          <h3>
+            {testimonial.name}
+          </h3>
+
+
+          <PersonMeta
+            testimonial={
+              testimonial
+            }
+          />
+
+        </div>
+
+      </div>
+
+    </article>
   );
 }
 
@@ -355,8 +1434,7 @@ function CardPlayButton() {
    ========================================================================== */
 
 export default function VideoTestimonials({
-  testimonials =
-    DEFAULT_TESTIMONIALS,
+  testimonials,
 
   eyebrow =
     "Client Stories",
@@ -370,33 +1448,36 @@ export default function VideoTestimonials({
   className =
     "",
 }) {
+  const generatedId =
+    useId();
+
+
+  const headingId =
+    `video-testimonials-${generatedId.replace(
+      /:/g,
+      "",
+    )}`;
+
 
   /* ==========================================================================
-     ONLY TWO VIDEOS
+     TESTIMONIAL SOURCE
 
-     Even if somebody accidentally provides 3, 4 or 10 items later, this
-     component intentionally displays the first two only.
+     If no testimonials prop is supplied, TESTIMONIALS[] above is used.
 
-     This protects the two-card design.
+     Home.jsx deliberately supplies no testimonial data, making this file the
+     single place where future clients are managed.
      ========================================================================== */
 
-  const visibleTestimonials =
+  const normalizedTestimonials =
     useMemo(
-      () => {
-        if (
-          !Array.isArray(
+      () =>
+        normalizeTestimonials(
+          Array.isArray(
             testimonials,
           )
-        ) {
-          return [];
-        }
-
-
-        return testimonials.slice(
-          0,
-          2,
-        );
-      },
+            ? testimonials
+            : TESTIMONIALS,
+        ),
       [
         testimonials,
       ],
@@ -404,680 +1485,84 @@ export default function VideoTestimonials({
 
 
   /* ==========================================================================
-     STATE
+     ACTIVE AUDIO
+
+     Browser autoplay begins muted.
+
+     Once a visitor enables one client's sound:
+
+     Moosa audible
+         ↓ user unmutes Haris
+     Moosa automatically muted
+         ↓
+     Haris audible
+
+     This prevents multiple testimonials speaking simultaneously.
      ========================================================================== */
 
   const [
-    selectedVideo,
-    setSelectedVideo,
+    activeAudioId,
+    setActiveAudioId,
   ] =
     useState(null);
 
 
-  const [
-    modalPlaying,
-    setModalPlaying,
-  ] =
-    useState(false);
-
-
-  /* ==========================================================================
-     REFS
-     ========================================================================== */
-
-  const sectionRef =
-    useRef(null);
-
-
-  const previewRefs =
-    useRef([]);
-
-
-  const modalVideoRef =
-    useRef(null);
-
-
-  const closeButtonRef =
-    useRef(null);
-
-
-  /* ==========================================================================
-     RESET NATIVE PREVIEW
-     ========================================================================== */
-
-  const resetPreview =
+  const activateAudio =
     useCallback(
       (
-        video,
-        testimonial,
+        testimonialId,
       ) => {
-        if (
-          !video ||
-          !testimonial
-        ) {
-          return;
-        }
-
-
-        video.pause();
-
-
-        video.muted =
-          true;
-
-
-        try {
-          video.currentTime =
-            testimonial.previewStart ??
-            0;
-        } catch {
-          /*
-           * Metadata may not yet be available.
-           */
-        }
+        setActiveAudioId(
+          testimonialId,
+        );
       },
       [],
     );
 
 
-  /* ==========================================================================
-     NATIVE VIDEO PREVIEWS
-
-     Direct MP4/WebM videos:
-
-     - play muted
-     - only while the section is visible
-     - stop when modal is opened
-     - restart from previewStart when returning
-     ========================================================================== */
-
-  useEffect(
-    () => {
-      if (
-        selectedVideo !==
-        null
-      ) {
-        previewRefs.current.forEach(
-          (
-            video,
-            index,
-          ) => {
-            resetPreview(
-              video,
-              visibleTestimonials[
-                index
-              ],
-            );
-          },
-        );
-
-
-        return undefined;
-      }
-
-
-      const reducedMotion =
-        window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
-
-
-      if (
-        reducedMotion
-      ) {
-        return undefined;
-      }
-
-
-      const section =
-        sectionRef.current;
-
-
-      if (
-        !section
-      ) {
-        return undefined;
-      }
-
-
-      let visible =
-        false;
-
-
-      /* ----------------------------------------------------------------------
-         START
-         ---------------------------------------------------------------------- */
-
-      const startPreview =
-        () => {
-          previewRefs.current.forEach(
-            (
-              video,
-              index,
-            ) => {
-              const testimonial =
-                visibleTestimonials[
-                  index
-                ];
-
-
-              if (
-                !video ||
-                !testimonial
-              ) {
-                return;
-              }
-
-
-              video.muted =
-                true;
-
-
-              video.volume =
-                0;
-
-
-              const startAt =
-                testimonial.previewStart ??
-                0;
-
-
-              try {
-                if (
-                  Math.abs(
-                    video.currentTime -
-                    startAt,
-                  ) >
-                  .8
-                ) {
-                  video.currentTime =
-                    startAt;
-                }
-              } catch {
-                /*
-                 * Metadata may not yet exist.
-                 */
-              }
-
-
-              const playPromise =
-                video.play();
-
-
-              if (
-                playPromise
-                  ?.catch
-              ) {
-                playPromise.catch(
-                  () => {},
-                );
-              }
-            },
-          );
-        };
-
-
-      /* ----------------------------------------------------------------------
-         STOP
-         ---------------------------------------------------------------------- */
-
-      const stopPreview =
-        () => {
-          previewRefs.current.forEach(
-            (
-              video,
-              index,
-            ) => {
-              resetPreview(
-                video,
-                visibleTestimonials[
-                  index
-                ],
-              );
-            },
-          );
-        };
-
-
-      /* ----------------------------------------------------------------------
-         OBSERVER
-         ---------------------------------------------------------------------- */
-
-      const observer =
-        new IntersectionObserver(
-          (
-            entries,
-          ) => {
-            const entry =
-              entries[0];
-
-
-            visible =
-              Boolean(
-                entry?.isIntersecting,
-              );
-
-
-            if (
-              visible
-            ) {
-              startPreview();
-            } else {
-              stopPreview();
-            }
-          },
-          {
-            threshold:
-              .28,
-          },
-        );
-
-
-      observer.observe(
-        section,
-      );
-
-
-      return () => {
-        observer.disconnect();
-
-
-        if (
-          !visible
-        ) {
-          stopPreview();
-        }
-      };
-    },
-    [
-      resetPreview,
-      selectedVideo,
-      visibleTestimonials,
-    ],
-  );
-
-
-  /* ==========================================================================
-     LOOP SHORT NATIVE PREVIEW
-     ========================================================================== */
-
-  function handlePreviewTimeUpdate(
-    event,
-    testimonial,
-  ) {
-    const video =
-      event.currentTarget;
-
-
-    const start =
-      testimonial.previewStart ??
-      0;
-
-
-    const duration =
-      testimonial.previewDuration ??
-      4.5;
-
-
-    if (
-      video.currentTime >=
-      start +
-        duration
-    ) {
-      video.currentTime =
-        start;
-
-
-      const playPromise =
-        video.play();
-
-
-      if (
-        playPromise
-          ?.catch
-      ) {
-        playPromise.catch(
-          () => {},
-        );
-      }
-    }
-  }
-
-
-  /* ==========================================================================
-     OPEN VIDEO
-     ========================================================================== */
-
-  function openVideo(
-    index,
-  ) {
-    const previewVideo =
-      previewRefs.current[
-        index
-      ];
-
-
-    if (
-      previewVideo
-    ) {
-      previewVideo.pause();
-    }
-
-
-    setModalPlaying(
-      false,
-    );
-
-
-    setSelectedVideo(
-      index,
-    );
-  }
-
-
-  /* ==========================================================================
-     CLOSE VIDEO
-     ========================================================================== */
-
-  const closeVideo =
+  const deactivateAudio =
     useCallback(
-      () => {
-        const video =
-          modalVideoRef.current;
-
-
-        if (
-          video
-        ) {
-          video.pause();
-
-
-          video.muted =
-            true;
-
-
-          video.volume =
-            0;
-
-
-          try {
-            video.currentTime =
-              0;
-          } catch {
-            /*
-             * Ignore if metadata isn't ready.
-             */
-          }
-        }
-
-
-        setModalPlaying(
-          false,
-        );
-
-
-        setSelectedVideo(
-          null,
+      (
+        testimonialId,
+      ) => {
+        setActiveAudioId(
+          (
+            current,
+          ) =>
+            current ===
+            testimonialId
+              ? null
+              : current,
         );
       },
       [],
     );
 
-
-  /* ==========================================================================
-     MODAL INITIALIZATION
-
-     When opened:
-     - lock body scroll
-     - direct video starts from 0
-     - direct video starts with audio
-     - YouTube iframe starts from 0 through its fresh iframe URL
-
-     When closed:
-     - component unmounts modal
-     - playback stops
-     - reopening starts from beginning
-     ========================================================================== */
-
-  useEffect(
-    () => {
-      if (
-        selectedVideo ===
-        null
-      ) {
-        return undefined;
-      }
-
-
-      const previousOverflow =
-        document.body.style
-          .overflow;
-
-
-      document.body.style.overflow =
-        "hidden";
-
-
-      const video =
-        modalVideoRef.current;
-
-
-      if (
-        video
-      ) {
-        try {
-          video.currentTime =
-            0;
-        } catch {
-          /*
-           * Metadata may still be loading.
-           */
-        }
-
-
-        video.muted =
-          false;
-
-
-        video.volume =
-          1;
-
-
-        const playPromise =
-          video.play();
-
-
-        if (
-          playPromise
-            ?.then
-        ) {
-          playPromise
-            .then(
-              () => {
-                setModalPlaying(
-                  true,
-                );
-              },
-            )
-            .catch(
-              () => {
-                /*
-                 * Browser autoplay restrictions can still apply.
-                 * Native controls remain available.
-                 */
-
-                setModalPlaying(
-                  false,
-                );
-              },
-            );
-        }
-      }
-
-
-      requestAnimationFrame(
-        () => {
-          closeButtonRef.current
-            ?.focus();
-        },
-      );
-
-
-      /* ----------------------------------------------------------------------
-         ESCAPE
-         ---------------------------------------------------------------------- */
-
-      function handleKeyDown(
-        event,
-      ) {
-        if (
-          event.key ===
-          "Escape"
-        ) {
-          closeVideo();
-        }
-      }
-
-
-      document.addEventListener(
-        "keydown",
-        handleKeyDown,
-      );
-
-
-      return () => {
-        document.body.style.overflow =
-          previousOverflow;
-
-
-        document.removeEventListener(
-          "keydown",
-          handleKeyDown,
-        );
-      };
-    },
-    [
-      closeVideo,
-      selectedVideo,
-    ],
-  );
-
-
-  /* ==========================================================================
-     NATIVE MODAL PLAY / PAUSE
-     ========================================================================== */
-
-  function toggleModalPlayback() {
-    const video =
-      modalVideoRef.current;
-
-
-    if (
-      !video
-    ) {
-      return;
-    }
-
-
-    if (
-      video.paused
-    ) {
-      video.muted =
-        false;
-
-
-      video.volume =
-        1;
-
-
-      video
-        .play()
-        .then(
-          () => {
-            setModalPlaying(
-              true,
-            );
-          },
-        )
-        .catch(
-          () => {},
-        );
-    }
-
-
-    else {
-      video.pause();
-
-
-      setModalPlaying(
-        false,
-      );
-    }
-  }
-
-
-  /* ==========================================================================
-     EMPTY STATE
-     ========================================================================== */
 
   if (
-    visibleTestimonials.length ===
-    0
+    !normalizedTestimonials.length
   ) {
     return null;
   }
 
 
-  /* ==========================================================================
-     SELECTED TESTIMONIAL
-     ========================================================================== */
-
-  const selectedTestimonial =
-    selectedVideo ===
-    null
-      ? null
-      : visibleTestimonials[
-          selectedVideo
-        ];
-
-
-  const selectedYouTubeEmbedUrl =
-    getYouTubeEmbedUrl(
-      selectedTestimonial?.video,
-      {
-        start:
-          0,
-      },
-    );
-
-
-  /* ==========================================================================
-     RENDER
-     ========================================================================== */
-
   return (
     <section
-      ref={
-        sectionRef
-      }
       className={[
         "video-testimonials",
 
-        visibleTestimonials.length ===
+        normalizedTestimonials.length ===
           1
           ? "video-testimonials--single"
-          : "",
-
-        visibleTestimonials.length ===
-          2
-          ? "video-testimonials--pair"
-          : "",
+          : "video-testimonials--multiple",
 
         className,
       ]
         .filter(Boolean)
         .join(" ")}
-      aria-labelledby="video-testimonials-title"
+      aria-labelledby={
+        headingId
+      }
     >
 
       <div className="video-testimonials__shell">
@@ -1101,7 +1586,11 @@ export default function VideoTestimonials({
             ) : null}
 
 
-            <h2 id="video-testimonials-title">
+            <h2
+              id={
+                headingId
+              }
+            >
               {title}
             </h2>
 
@@ -1119,451 +1608,43 @@ export default function VideoTestimonials({
 
 
         {/* ==================================================================
-            TWO VIDEO CARDS
+            AUTOMATIC CLIENT GRID
             ================================================================== */}
 
         <div className="video-testimonials__grid">
 
-          {visibleTestimonials.map(
+          {normalizedTestimonials.map(
             (
               testimonial,
               index,
-            ) => {
-              const youtubePreviewUrl =
-                getYouTubeEmbedUrl(
-                  testimonial.video,
-                  {
-                    preview:
-                      true,
-
-                    start:
-                      testimonial.previewStart,
-                  },
-                );
-
-
-              return (
-                <article
-                  key={
-                    testimonial.id ||
-                    `${testimonial.name}-${index}`
-                  }
-                  className="video-testimonials__card"
-                  data-reveal={
-                    index === 0
-                      ? "left"
-                      : "right"
-                  }
-                >
-
-                  <button
-                    type="button"
-                    className="video-testimonials__card-button"
-                    onClick={() =>
-                      openVideo(
-                        index,
-                      )
-                    }
-                    aria-label={`Play testimonial from ${testimonial.name}`}
-                  >
-
-                    {/* ======================================================
-                        VIDEO AREA
-                        ====================================================== */}
-
-                    <div className="video-testimonials__media">
-
-
-                      {/* ----------------------------------------------------
-                          YOUTUBE
-                          ---------------------------------------------------- */}
-
-                      {youtubePreviewUrl ? (
-
-                        <iframe
-                          className="video-testimonials__youtube"
-                          src={
-                            youtubePreviewUrl
-                          }
-                          title={`Muted preview of ${testimonial.name}'s testimonial`}
-                          loading="lazy"
-                          tabIndex={-1}
-                          aria-hidden="true"
-                          allow="autoplay; encrypted-media; picture-in-picture"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                        />
-
-                      ) : (
-
-                        /* --------------------------------------------------
-                           DIRECT VIDEO
-                           -------------------------------------------------- */
-
-                        <video
-                          ref={
-                            (
-                              element,
-                            ) => {
-                              previewRefs.current[
-                                index
-                              ] =
-                                element;
-                            }
-                          }
-                          className="video-testimonials__video"
-                          src={
-                            testimonial.video
-                          }
-                          poster={
-                            testimonial.poster
-                          }
-                          muted
-                          playsInline
-                          preload="metadata"
-                          disablePictureInPicture
-                          onLoadedMetadata={
-                            (
-                              event,
-                            ) => {
-                              try {
-                                event.currentTarget.currentTime =
-                                  testimonial.previewStart ??
-                                  0;
-                              } catch {
-                                /*
-                                 * Ignore.
-                                 */
-                              }
-                            }
-                          }
-                          onTimeUpdate={
-                            (
-                              event,
-                            ) =>
-                              handlePreviewTimeUpdate(
-                                event,
-                                testimonial,
-                              )
-                          }
-                        />
-
-                      )}
-
-
-                      {/* ====================================================
-                          OVERLAYS
-                          ==================================================== */}
-
-                      <span
-                        className="video-testimonials__media-shade"
-                        aria-hidden="true"
-                      />
-
-
-                      <span
-                        className="video-testimonials__media-glow"
-                        aria-hidden="true"
-                      />
-
-
-                      {/* ====================================================
-                          PLAY BUTTON
-                          ==================================================== */}
-
-                      <CardPlayButton />
-
-                    </div>
-
-
-                    {/* ======================================================
-                        PERSON INFORMATION
-                        ====================================================== */}
-
-                    <div className="video-testimonials__card-footer">
-
-                      <div>
-
-                        <h3>
-                          {testimonial.name}
-                        </h3>
-
-
-                        <p>
-                          {testimonial.role}
-
-
-                          {testimonial.company ? (
-                            <>
-                              {" "}
-
-                              <span>
-                                at
-                              </span>
-
-                              {" "}
-
-                              {testimonial.company}
-                            </>
-                          ) : null}
-                        </p>
-
-                      </div>
-
-
-                      <span className="video-testimonials__card-arrow">
-                        ↗
-                      </span>
-
-                    </div>
-
-                  </button>
-
-                </article>
-              );
-            },
+            ) => (
+              <TestimonialCard
+                key={
+                  testimonial.id
+                }
+                testimonial={
+                  testimonial
+                }
+                index={
+                  index
+                }
+                audible={
+                  activeAudioId ===
+                  testimonial.id
+                }
+                onActivateAudio={
+                  activateAudio
+                }
+                onDeactivateAudio={
+                  deactivateAudio
+                }
+              />
+            ),
           )}
 
         </div>
 
       </div>
-
-
-      {/* ====================================================================
-          MODAL
-          ==================================================================== */}
-
-      {selectedVideo !==
-        null &&
-      selectedTestimonial ? (
-
-        <div
-          className="video-testimonials-modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Video testimonial from ${selectedTestimonial.name}`}
-          onMouseDown={
-            (
-              event,
-            ) => {
-              if (
-                event.target ===
-                event.currentTarget
-              ) {
-                closeVideo();
-              }
-            }
-          }
-        >
-
-          <div className="video-testimonials-modal__dialog">
-
-
-            {/* ==============================================================
-                MODAL TOP
-                ============================================================== */}
-
-            <div className="video-testimonials-modal__top">
-
-              <div className="video-testimonials-modal__person">
-
-                <span>
-                  Client Story
-                </span>
-
-
-                <strong>
-                  {selectedTestimonial.name}
-                </strong>
-
-              </div>
-
-
-              <button
-                ref={
-                  closeButtonRef
-                }
-                type="button"
-                className="video-testimonials-modal__close"
-                onClick={
-                  closeVideo
-                }
-                aria-label="Close testimonial video"
-              >
-                <X
-                  size={18}
-                  strokeWidth={1.8}
-                />
-              </button>
-
-            </div>
-
-
-            {/* ==============================================================
-                MODAL VIDEO
-                ============================================================== */}
-
-            <div className="video-testimonials-modal__media">
-
-
-              {/* ------------------------------------------------------------
-                  YOUTUBE
-                  ------------------------------------------------------------ */}
-
-              {selectedYouTubeEmbedUrl ? (
-
-                <iframe
-                  key={`modal-youtube-${selectedTestimonial.id || selectedVideo}`}
-                  className="video-testimonials-modal__youtube"
-                  src={
-                    selectedYouTubeEmbedUrl
-                  }
-                  title={`Full testimonial from ${selectedTestimonial.name}`}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-
-              ) : (
-
-                /* ----------------------------------------------------------
-                   DIRECT VIDEO
-                   ---------------------------------------------------------- */
-
-                <>
-                  <video
-                    key={`modal-video-${selectedTestimonial.id || selectedVideo}`}
-                    ref={
-                      modalVideoRef
-                    }
-                    className="video-testimonials-modal__video"
-                    src={
-                      selectedTestimonial.video
-                    }
-                    poster={
-                      selectedTestimonial.poster
-                    }
-                    controls
-                    autoPlay
-                    playsInline
-                    preload="auto"
-                    onLoadedMetadata={
-                      (
-                        event,
-                      ) => {
-                        try {
-                          /*
-                           * Always begin from zero when opened.
-                           */
-
-                          event.currentTarget.currentTime =
-                            0;
-                        } catch {
-                          /*
-                           * Metadata can briefly be unavailable.
-                           */
-                        }
-                      }
-                    }
-                    onPlay={() =>
-                      setModalPlaying(
-                        true,
-                      )
-                    }
-                    onPause={() =>
-                      setModalPlaying(
-                        false,
-                      )
-                    }
-                    onEnded={() =>
-                      setModalPlaying(
-                        false,
-                      )
-                    }
-                  />
-
-
-                  <button
-                    type="button"
-                    className={[
-                      "video-testimonials-modal__center-control",
-
-                      modalPlaying
-                        ? "is-playing"
-                        : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={
-                      toggleModalPlayback
-                    }
-                    aria-label={
-                      modalPlaying
-                        ? "Pause testimonial"
-                        : "Play testimonial"
-                    }
-                  >
-
-                    {modalPlaying ? (
-                      <Pause
-                        size={22}
-                        strokeWidth={1.7}
-                      />
-                    ) : (
-                      <Play
-                        size={22}
-                        strokeWidth={1.7}
-                        fill="currentColor"
-                      />
-                    )}
-
-                  </button>
-                </>
-
-              )}
-
-            </div>
-
-
-            {/* ==============================================================
-                MODAL FOOTER
-                ============================================================== */}
-
-            <div className="video-testimonials-modal__footer">
-
-              <div>
-
-                <strong>
-                  {selectedTestimonial.name}
-                </strong>
-
-
-                <span>
-                  {selectedTestimonial.role}
-
-                  {selectedTestimonial.company
-                    ? ` · ${selectedTestimonial.company}`
-                    : ""}
-                </span>
-
-              </div>
-
-
-              <button
-                type="button"
-                onClick={
-                  closeVideo
-                }
-              >
-                Close Story
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      ) : null}
 
     </section>
   );

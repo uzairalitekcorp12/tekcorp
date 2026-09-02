@@ -1,13 +1,4 @@
-/* ========================================================================== 
-   TEKCORP — PRODUCT + SOLUTION IMAGE MAP
-   ========================================================================== 
 
-   This is the single source of truth for the supplied page imagery. To swap
-   an image later, replace the file in /public or update only its `src` here;
-   no page component needs to change.
-
-   The source directory is intentionally named `soloution-assets` on disk.
-   ========================================================================== */
 
 const PRODUCT_ASSET_ROOT = "/assets/product-assets";
 const SOLUTION_ASSET_ROOT = "/assets/soloution-assets";

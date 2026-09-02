@@ -60,13 +60,13 @@ const reviews = [
     rating: 5,
 
     paragraphs: [
-      "I recently hired TekCorp to develop a website and LMS portal for my business, and I couldn't be more satisfied with the results.",
+      "I recently hired Tekcorp to develop a website and LMS portal for my business, and I couldn't be more satisfied with the results.",
 
       "Taha and his team were incredibly professional throughout the entire process, ensuring that every detail was handled with care. They delivered exactly what we asked for, meeting all of our requirements and completing the project within the agreed-upon deadline.",
 
       "The LMS portal they built has been a game-changer for us. I can now easily manage all my students, conduct online classes, and track student progress with the comprehensive admin portal they provided.",
 
-      "TekCorp truly solved our online presence problem, and I highly recommend them for any project. If you're looking for a reliable and skilled team, TekCorp is the way to go!",
+      "Tekcorp truly solved our online presence problem, and I highly recommend them for any project. If you're looking for a reliable and skilled team, Tekcorp is the way to go!",
     ],
 
     name: "Moosa Khan",
@@ -86,11 +86,11 @@ const reviews = [
     rating: 5,
 
     paragraphs: [
-      "I hired TekCorp to develop my business website, which operates across Saudi Arabia. They delivered exactly what I needed within the agreed timelines.",
+      "I hired Tekcorp to develop my business website, which operates across Saudi Arabia. They delivered exactly what I needed within the agreed timelines.",
 
-      "Taha from TekCorp was an outstanding professional throughout the process, offering valuable insights both on the technical and business sides. His expertise helped me achieve my online presence goals seamlessly.",
+      "Taha from Tekcorp was an outstanding professional throughout the process, offering valuable insights both on the technical and business sides. His expertise helped me achieve my online presence goals seamlessly.",
 
-      "The team's commitment to understanding my requirements and delivering a high-quality website was impressive. I highly recommend TekCorp for anyone looking for reliable and expert web development services!",
+      "The team's commitment to understanding my requirements and delivering a high-quality website was impressive. I highly recommend Tekcorp for anyone looking for reliable and expert web development services!",
     ],
 
     name: "Farooq Khan",
@@ -112,11 +112,11 @@ const reviews = [
     paragraphs: [
       "As Salam o Alaikum",
 
-      "We are currently utilizing TekCorp's services to develop our global welfare website, and they have met our expectations perfectly.",
+      "We are currently utilizing Tekcorp's services to develop our global welfare website, and they have met our expectations perfectly.",
 
-      "Taha Sheikh from TekCorp has been exceptional throughout the process, offering valuable insights on both technical and business aspects. His availability and expertise have been instrumental in helping us achieve our goals.",
+      "Taha Sheikh from Tekcorp has been exceptional throughout the process, offering valuable insights on both technical and business aspects. His availability and expertise have been instrumental in helping us achieve our goals.",
 
-      "The team is dedicated to understanding our needs and delivering a high-quality solution. I highly recommend TekCorp for anyone seeking reliable and expert web development services.",
+      "The team is dedicated to understanding our needs and delivering a high-quality solution. I highly recommend Tekcorp for anyone seeking reliable and expert web development services.",
     ],
 
     signoff: [
@@ -393,7 +393,7 @@ function GoogleRating() {
         }
       }}
       className="testimonials-google-rating"
-      aria-label="View TekCorp reviews on Google"
+      aria-label="View Tekcorp reviews on Google"
     >
       <div className="testimonials-google-top">
 
@@ -807,7 +807,7 @@ export default function Testimonials() {
 
 
             <p className="testimonials-subheading">
-              Experiences shared by clients who have worked with TekCorp.
+              Experiences shared by clients who have worked with Tekcorp.
             </p>
 
           </div>

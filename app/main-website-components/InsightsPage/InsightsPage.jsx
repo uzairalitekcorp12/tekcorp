@@ -101,7 +101,7 @@ function ArticleImage({
       fallbackClassName="insights-page__image-fallback"
       fallbackLabel={
         textValue(article?.title) ||
-        "TekCorp Insight"
+        "Tekcorp Insight"
       }
       priority={priority}
       sizes={sizes}
@@ -170,7 +170,7 @@ function TrendingCard({
           </strong>
 
           <span className="insights-page__trend-date">
-            {dateLabel || "TekCorp Journal"}
+            {dateLabel || "Tekcorp Journal"}
           </span>
         </span>
       </Link>
@@ -296,7 +296,7 @@ export default function InsightsPage({
             aria-label="Breadcrumb"
           >
             <Link href="/home">
-              TekCorp
+              Tekcorp
             </Link>
 
             <span aria-hidden="true">
@@ -422,7 +422,7 @@ export default function InsightsPage({
               </h3>
 
               <p>
-                Try another keyword or browse the complete TekCorp journal.
+                Try another keyword or browse the complete Tekcorp journal.
               </p>
 
               <Button href="/insights" appearance="text">

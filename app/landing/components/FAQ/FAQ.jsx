@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "What services do TekCorp provide?",
+    q: "What services do Tekcorp provide?",
     a: "We provide end-to-end digital engineering including AI automation systems, custom web platform development, high-converting SEO architectures, cohesive brand design systems, and specialized EdTech solutions.",
   },
   {

@@ -38,7 +38,7 @@ const solutions = [
       "Engineering",
 
     href:
-      "/service/web-engineering",
+      "/services/web-development",
 
     description:
       "High-performance websites and scalable web platforms built around your brand, users, and business goals.",
@@ -54,7 +54,7 @@ const solutions = [
       "Product Engineering",
 
     href:
-      "/service/application-engineering",
+      "/services/application-development",
 
     description:
       "Purpose-built web and mobile applications that simplify workflows, integrate systems, and scale with your operations.",
@@ -70,7 +70,7 @@ const solutions = [
       "Conversational AI",
 
     href:
-      "/service/ai-chatbots-assistants",
+      "/services/ai-chatbot-development",
 
     description:
       "Helpful conversational AI for customer support, lead qualification, internal assistance, and always-on engagement.",
@@ -86,7 +86,7 @@ const solutions = [
       "Intelligent Automation",
 
     href:
-      "/service/ai-agents-automation",
+      "/services/ai-agent-development",
 
     description:
       "Autonomous AI workflows that connect tools, coordinate tasks, and automate repeatable work with human oversight.",
@@ -102,7 +102,7 @@ const solutions = [
       "Digital Growth",
 
     href:
-      "/service/social-media-marketing",
+      "/services/social-media-marketing",
 
     description:
       "Platform-ready content, community management, and campaigns designed to grow reach and meaningful engagement.",
@@ -118,7 +118,7 @@ const solutions = [
       "Growth Strategy",
 
     href:
-      "/service/marketing-strategy",
+      "/services/marketing-strategy",
 
     description:
       "Research-led positioning, channel planning, and measurable roadmaps that turn marketing activity into business growth.",

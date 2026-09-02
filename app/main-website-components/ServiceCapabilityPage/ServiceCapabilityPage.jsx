@@ -126,9 +126,9 @@ export default function ServiceCapabilityPage({ config }) {
           <h1 id={`service-${config.slug}-title`}>{title}</h1>
           <p>{summary}</p>
           <nav className="service-capability__breadcrumb" aria-label="Breadcrumb">
-            <Link href="/home">TekCorp</Link>
+            <Link href="/home">Tekcorp</Link>
             <span>›</span>
-            <Link href="/home#digital-solutions">Our Solutions</Link>
+            <Link href="/home#digital-solutions">Solutions</Link>
             <span>›</span>
             <strong>{shortTitle || title}</strong>
             <ArrowUpRight size={10} strokeWidth={1.8} aria-hidden="true" />

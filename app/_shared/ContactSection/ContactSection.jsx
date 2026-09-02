@@ -71,18 +71,18 @@ export default function ContactSection({
 
             <div className="tek-contact-section__bottom-copy">
               <p>
-                At <strong>TekCorp</strong>, we focus on useful technology,
+                At <strong>Tekcorp</strong>, we focus on useful technology,
                 clear communication and practical next steps.
               </p>
 
-              <div className="tek-contact-section__socials" aria-label="TekCorp social links">
-                <a href={TEKCORP_SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="TekCorp on Facebook">
+              <div className="tek-contact-section__socials" aria-label="Tekcorp social links">
+                <a href={TEKCORP_SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Tekcorp on Facebook">
                   <FacebookIcon />
                 </a>
-                <a href={TEKCORP_SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="TekCorp on Instagram">
+                <a href={TEKCORP_SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Tekcorp on Instagram">
                   <InstagramIcon />
                 </a>
-                <a href={TEKCORP_SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="TekCorp on LinkedIn">
+                <a href={TEKCORP_SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Tekcorp on LinkedIn">
                   <LinkedInIcon />
                 </a>
               </div>

@@ -2,7 +2,7 @@ import "./ContentRouteLoading.css";
 
 
 export default function ContentRouteLoading({
-  label = "Loading TekCorp content",
+  label = "Loading Tekcorp content",
 }) {
   return (
     <div

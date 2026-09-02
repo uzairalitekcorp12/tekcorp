@@ -14,16 +14,6 @@ import {
   textValue,
 } from "./mongoContent";
 
-import {
-  runContentQuery,
-} from "./dataSource";
-
-import {
-  LOCAL_CASE_STUDIES,
-  cloneLocalData,
-} from "./localContent";
-
-
 const SLUG_PATTERN =
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -134,11 +124,6 @@ async function getDatabaseCaseStudies() {
 }
 
 
-function getLocalCaseStudies() {
-  return cloneLocalData(LOCAL_CASE_STUDIES);
-}
-
-
 function sortCategories(values) {
   const preferred = new Map(
     PREFERRED_FILTER_ORDER.map((value, index) => [
@@ -188,31 +173,16 @@ export async function getCaseStudies({
   const safePage = toPositiveInteger(page, 1, 100000);
   const safeLimit = toPositiveInteger(limit, 6, 24);
 
-  return runContentQuery({
-    label: "case-studies:list",
-    database: async () =>
-      paginatedCaseStudies(await getDatabaseCaseStudies(), {
-        category: safeCategory,
-        page: safePage,
-        limit: safeLimit,
-      }),
-    local: () =>
-      paginatedCaseStudies(getLocalCaseStudies(), {
-        category: safeCategory,
-        page: safePage,
-        limit: safeLimit,
-      }),
+  return paginatedCaseStudies(await getDatabaseCaseStudies(), {
+    category: safeCategory,
+    page: safePage,
+    limit: safeLimit,
   });
 }
 
 
 export async function getCaseStudyCategories() {
-  return runContentQuery({
-    label: "case-studies:categories",
-    database: async () =>
-      categoriesFor(await getDatabaseCaseStudies()),
-    local: () => categoriesFor(getLocalCaseStudies()),
-  });
+  return categoriesFor(await getDatabaseCaseStudies());
 }
 
 
@@ -223,22 +193,11 @@ async function findCaseStudyBySlug(slug) {
     return null;
   }
 
-  return runContentQuery({
-    label: `case-studies:slug:${safeSlug}`,
-    database: async () => {
-      const caseStudies = await getDatabaseCaseStudies();
+  const caseStudies = await getDatabaseCaseStudies();
 
-      return caseStudies.find(
-        (caseStudy) => caseStudy.slug === safeSlug,
-      ) || null;
-    },
-    local: () =>
-      getLocalCaseStudies().find(
-        (caseStudy) =>
-          caseStudy.slug === safeSlug &&
-          caseStudy.status === "published",
-      ) || null,
-  });
+  return caseStudies.find(
+    (caseStudy) => caseStudy.slug === safeSlug,
+  ) || null;
 }
 
 

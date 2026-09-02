@@ -1,11 +1,3 @@
-/* ========================================================================== 
-   TEKCORP — SOLUTION + PRODUCT PAGE CONTENT
-   ========================================================================== 
-
-   Keep page content here so the presentation components stay reusable.
-   Images are intentionally local paths. Replace the files in /public without
-   changing JSX.
-   ========================================================================== */
 
 import {
   PRODUCT_PAGE_ASSETS,

@@ -76,9 +76,9 @@
 
   padding:
     clamp(
-      72px,
+      22px,
       7.5vw,
-      104px
+      24px
     )
     0;
 

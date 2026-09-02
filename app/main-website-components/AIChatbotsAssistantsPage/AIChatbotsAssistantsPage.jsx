@@ -1,6 +1,7 @@
 import "../CapabilityFoundation/CapabilityFoundation.css";
 import "./AIChatbotsAssistantsPage.css";
 import "../AICapabilityRefinements/AICapabilityRefinements.css";
+import "./AIChatbotsAssistantsPage.polish.css";
 
 import Link from "next/link";
 import {

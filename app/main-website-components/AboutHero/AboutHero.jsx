@@ -14,9 +14,9 @@ import {
    LEADING THE WAY IN IT SOLUTIONS
 
    Empowering Innovation
-   with TekCorp
+   with Tekcorp
 
-   TekCorp > Company ↗
+   Tekcorp > Company ↗
 
 
    REUSABLE EXAMPLES
@@ -28,7 +28,7 @@ import {
        "Engineering Digital",
        "Experiences That Scale",
      ]}
-     breadcrumb="TekCorp > Solutions"
+     breadcrumb="Tekcorp > Solutions"
      breadcrumbHref="/solutions"
    />
 
@@ -39,7 +39,7 @@ import {
        "Digital Products",
        "Built for Growth",
      ]}
-     breadcrumb="TekCorp > Case Studies"
+     breadcrumb="Tekcorp > Case Studies"
      breadcrumbHref="/case-studies"
    />
 
@@ -82,11 +82,11 @@ export default function AboutHero({
 
   titleLines = [
     "Empowering Innovation",
-    "with TekCorp",
+    "with Tekcorp",
   ],
 
   breadcrumb =
-    "TekCorp > Company",
+    "Tekcorp > Company",
 
   breadcrumbHref =
     "#about-company",

@@ -278,7 +278,7 @@ function ArticleVisual({
         fallbackClassName="article-detail__image-fallback"
         fallbackLabel={
           alt ||
-          "TekCorp Insight"
+          "Tekcorp Insight"
         }
         priority={
           priority
@@ -749,7 +749,7 @@ export default function ArticleDetail({
     textValue(
       article.title,
     ) ||
-    "TekCorp Insight";
+    "Tekcorp Insight";
 
 
   const slug =
@@ -784,7 +784,7 @@ export default function ArticleDetail({
     textValue(
       article.author?.name,
     ) ||
-    "TekCorp Editorial";
+    "Tekcorp Editorial";
 
 
   const authorImage =
@@ -902,7 +902,7 @@ export default function ArticleDetail({
             >
 
               <Link href="/home">
-                TekCorp
+                Tekcorp
               </Link>
 
 
@@ -1006,7 +1006,7 @@ export default function ArticleDetail({
 
             <ContentSocialBar
               title={title}
-              ariaLabel="TekCorp social links and copy article link"
+              ariaLabel="Tekcorp social links and copy article link"
             />
 
           </div>

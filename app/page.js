@@ -22,13 +22,13 @@
  * SERVICES
  * --------------------------------------------------------------------------
  *
- * /service/...
+ * /services/...
  *
  *
  * SOLUTIONS
  * --------------------------------------------------------------------------
  *
- * Legacy solution pages are exposed through /service/...
+ * Legacy solution pages remain exposed through /service/...
  *
  *
  * PRODUCTS
@@ -451,7 +451,7 @@ const PAGE_METADATA = {
       "Web Engineering Services",
 
     canonical:
-      "/service/web-engineering",
+      "/services/web-development",
 
     description:
       "Build scalable, secure and high-performance web platforms with TekCorp web engineering services.",
@@ -463,7 +463,7 @@ const PAGE_METADATA = {
       "Application Engineering Services",
 
     canonical:
-      "/service/application-engineering",
+      "/services/application-development",
 
     description:
       "Build reliable mobile, desktop and cross-platform applications with TekCorp.",
@@ -487,7 +487,7 @@ const PAGE_METADATA = {
       "Prototyping & UI/UX Design",
 
     canonical:
-      "/service/prototyping-ui-ux-design",
+      "/services/ui-ux-design",
 
     description:
       "Create intuitive digital experiences with TekCorp UI/UX design, research and prototyping services.",
@@ -511,7 +511,7 @@ const PAGE_METADATA = {
       "CMS Development Services",
 
     canonical:
-      "/service/cms-development",
+      "/services/cms-development",
 
     description:
       "Build flexible content management systems for publishing, governance, integrations and business growth.",
@@ -523,7 +523,7 @@ const PAGE_METADATA = {
       "Ecommerce Development Services",
 
     canonical:
-      "/service/ecommerce-development",
+      "/services/ecommerce-development",
 
     description:
       "Build secure and conversion-focused ecommerce platforms with integrated operations and payments.",
@@ -535,7 +535,7 @@ const PAGE_METADATA = {
       "Logo & Branding Services",
 
     canonical:
-      "/service/branding",
+      "/services/logo-branding",
 
     description:
       "Create a distinctive logo and brand system connecting strategy, visual identity, messaging and digital experiences.",
@@ -551,7 +551,7 @@ const PAGE_METADATA = {
       "Search Engine Optimization",
 
     canonical:
-      "/service/search-engine-optimization",
+      "/services/search-engine-optimization",
 
     description:
       "Increase organic visibility through technical SEO, content optimization and measurable search strategies.",
@@ -563,7 +563,7 @@ const PAGE_METADATA = {
       "Social Media Marketing",
 
     canonical:
-      "/service/social-media-marketing",
+      "/services/social-media-marketing",
 
     description:
       "Build stronger audiences through strategic social media campaigns, content and performance optimization.",
@@ -575,7 +575,7 @@ const PAGE_METADATA = {
       "Marketing Strategy",
 
     canonical:
-      "/service/marketing-strategy",
+      "/services/marketing-strategy",
 
     description:
       "Create focused marketing strategies connecting positioning, audiences, channels and measurable business growth.",
@@ -587,7 +587,7 @@ const PAGE_METADATA = {
       "Google Ads Management",
 
     canonical:
-      "/service/google-ads",
+      "/services/google-ads",
 
     description:
       "Reach high-intent customers with structured Google Ads campaigns focused on measurable performance.",
@@ -599,7 +599,7 @@ const PAGE_METADATA = {
       "Content Marketing",
 
     canonical:
-      "/service/content-marketing",
+      "/services/content-marketing",
 
     description:
       "Build authority and customer demand through research-led content strategy and execution.",
@@ -615,7 +615,7 @@ const PAGE_METADATA = {
       "AI Chatbots & Assistants",
 
     canonical:
-      "/service/ai-chatbots-assistants",
+      "/services/ai-chatbot-development",
 
     description:
       "Build intelligent AI assistants that help customers and teams retrieve information and complete workflows.",
@@ -627,7 +627,7 @@ const PAGE_METADATA = {
       "AI Agents & Automation",
 
     canonical:
-      "/service/ai-agents-automation",
+      "/services/ai-agent-development",
 
     description:
       "Automate multi-step operational workflows using AI agents integrated with approved systems and tools.",
@@ -639,7 +639,7 @@ const PAGE_METADATA = {
       "Voice AI & Conversational Agents",
 
     canonical:
-      "/service/voice-ai-conversational-agents",
+      "/services/voice-ai-agents",
 
     description:
       "Create natural voice AI experiences for customer service, qualification and operational workflows.",
@@ -651,7 +651,7 @@ const PAGE_METADATA = {
       "RAG & Knowledge Base Solutions",
 
     canonical:
-      "/service/rag-knowledge-base-solutions",
+      "/services/rag-solutions",
 
     description:
       "Connect AI systems to trusted organizational knowledge using retrieval augmented generation.",
@@ -663,7 +663,7 @@ const PAGE_METADATA = {
       "MCP Server Development & Integrations",
 
     canonical:
-      "/service/mcp-server-development-integrations",
+      "/services/mcp-server-development",
 
     description:
       "Develop Model Context Protocol servers and integrations connecting AI applications to approved tools and data.",

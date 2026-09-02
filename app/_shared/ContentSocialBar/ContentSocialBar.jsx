@@ -37,7 +37,7 @@ import {
    - Case-study detail pages
    - Any future content/detail page
 
-   Social buttons open TekCorp's configured social profiles.
+   Social buttons open Tekcorp's configured social profiles.
 
    Copy button copies the CURRENT browser URL.
 
@@ -48,7 +48,7 @@ import {
 
 export default function ContentSocialBar({
   title = "",
-  ariaLabel = "TekCorp social links",
+  ariaLabel = "Tekcorp social links",
   align = "start",
   className = "",
 }) {
@@ -240,7 +240,7 @@ export default function ContentSocialBar({
         }
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Open TekCorp on Facebook"
+        aria-label="Open Tekcorp on Facebook"
         title="Facebook"
       >
 
@@ -263,7 +263,7 @@ export default function ContentSocialBar({
         }
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Open TekCorp on LinkedIn"
+        aria-label="Open Tekcorp on LinkedIn"
         title="LinkedIn"
       >
 
@@ -286,7 +286,7 @@ export default function ContentSocialBar({
         }
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Open TekCorp on Instagram"
+        aria-label="Open Tekcorp on Instagram"
         title="Instagram"
       >
 

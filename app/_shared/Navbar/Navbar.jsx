@@ -40,32 +40,32 @@ import {
    DESIGN & ENGINEERING
    --------------------------------------------------------------------------
 
-   /service/web-engineering
-   /service/application-engineering
-   /service/cms-development
-   /service/ecommerce-development
-   /service/prototyping-ui-ux-design
-   /service/branding
+   /services/web-development
+   /services/application-development
+   /services/cms-development
+   /services/ecommerce-development
+   /services/ui-ux-design
+   /services/logo-branding
 
 
    GROWTH & MARKETING
    --------------------------------------------------------------------------
 
-   /service/search-engine-optimization
-   /service/social-media-marketing
-   /service/marketing-strategy
-   /service/google-ads
-   /service/content-marketing
+   /services/search-engine-optimization
+   /services/social-media-marketing
+   /services/marketing-strategy
+   /services/google-ads
+   /services/content-marketing
 
 
    AI & AUTOMATION
    --------------------------------------------------------------------------
 
-   /service/ai-chatbots-assistants
-   /service/ai-agents-automation
-   /service/voice-ai-conversational-agents
-   /service/rag-knowledge-base-solutions
-   /service/mcp-server-development-integrations
+   /services/ai-chatbot-development
+   /services/ai-agent-development
+   /services/voice-ai-agents
+   /services/rag-solutions
+   /services/mcp-server-development
 
 
    PRODUCTS
@@ -102,7 +102,7 @@ const OFFERING_GROUPS = [
           "Custom Web Development",
 
         href:
-          "/service/web-engineering",
+          "/services/web-development",
 
         implemented:
           true,
@@ -113,7 +113,7 @@ const OFFERING_GROUPS = [
           "Application Development",
 
         href:
-          "/service/application-engineering",
+          "/services/application-development",
 
         implemented:
           true,
@@ -124,7 +124,7 @@ const OFFERING_GROUPS = [
           "CMS Development",
 
         href:
-          "/service/cms-development",
+          "/services/cms-development",
 
         implemented:
           true,
@@ -135,7 +135,7 @@ const OFFERING_GROUPS = [
           "Ecommerce Development",
 
         href:
-          "/service/ecommerce-development",
+          "/services/ecommerce-development",
 
         implemented:
           true,
@@ -146,7 +146,7 @@ const OFFERING_GROUPS = [
           "UI/UX Design",
 
         href:
-          "/service/prototyping-ui-ux-design",
+          "/services/ui-ux-design",
 
         implemented:
           true,
@@ -157,7 +157,7 @@ const OFFERING_GROUPS = [
           "Logo & Branding",
 
         href:
-          "/service/branding",
+          "/services/logo-branding",
 
         implemented:
           true,
@@ -189,7 +189,7 @@ const OFFERING_GROUPS = [
           "Search Engine Optimization",
 
         href:
-          "/service/search-engine-optimization",
+          "/services/search-engine-optimization",
 
         implemented:
           true,
@@ -200,7 +200,7 @@ const OFFERING_GROUPS = [
           "Social Media Marketing",
 
         href:
-          "/service/social-media-marketing",
+          "/services/social-media-marketing",
 
         implemented:
           true,
@@ -211,7 +211,7 @@ const OFFERING_GROUPS = [
           "Marketing Strategy",
 
         href:
-          "/service/marketing-strategy",
+          "/services/marketing-strategy",
 
         implemented:
           true,
@@ -222,7 +222,7 @@ const OFFERING_GROUPS = [
           "Google Ads",
 
         href:
-          "/service/google-ads",
+          "/services/google-ads",
 
         implemented:
           true,
@@ -233,7 +233,7 @@ const OFFERING_GROUPS = [
           "Content Marketing",
 
         href:
-          "/service/content-marketing",
+          "/services/content-marketing",
 
         implemented:
           true,
@@ -265,7 +265,7 @@ const OFFERING_GROUPS = [
           "AI Chatbots & Assistants",
 
         href:
-          "/service/ai-chatbots-assistants",
+          "/services/ai-chatbot-development",
 
         implemented:
           true,
@@ -276,7 +276,7 @@ const OFFERING_GROUPS = [
           "AI Agents & Automation",
 
         href:
-          "/service/ai-agents-automation",
+          "/services/ai-agent-development",
 
         implemented:
           true,
@@ -287,7 +287,7 @@ const OFFERING_GROUPS = [
           "Voice AI & Conversational Agents",
 
         href:
-          "/service/voice-ai-conversational-agents",
+          "/services/voice-ai-agents",
 
         implemented:
           true,
@@ -298,7 +298,7 @@ const OFFERING_GROUPS = [
           "RAG & Knowledge Base Solutions",
 
         href:
-          "/service/rag-knowledge-base-solutions",
+          "/services/rag-solutions",
 
         implemented:
           true,
@@ -309,7 +309,7 @@ const OFFERING_GROUPS = [
           "MCP Server Development & Integrations",
 
         href:
-          "/service/mcp-server-development-integrations",
+          "/services/mcp-server-development",
 
         implemented:
           true,
@@ -705,11 +705,11 @@ function getActiveTab(
 
      We support BOTH:
 
-     /service/...
+     /services/...
      /products/...
 
      Legacy namespaces remain recognized while redirects move visitors to the
-     canonical /service/... and /products/... URLs.
+     canonical /services/... and /products/... URLs.
      ------------------------------------------------------------------------ */
 
   if (
@@ -727,7 +727,7 @@ function getActiveTab(
         ),
     )
   ) {
-    return "Our Solutions";
+    return "Solutions";
   }
 
 
@@ -947,7 +947,7 @@ export default function Navbar({
 
     {
       name:
-        "Our Solutions",
+        "Solutions",
 
       mega:
         true,
@@ -1575,7 +1575,7 @@ export default function Navbar({
                 homeHref
               }
               className="navbar-logo-link"
-              aria-label="TekCorp Home"
+              aria-label="Tekcorp Home"
               onClick={
                 handleNavigation
               }
@@ -1585,7 +1585,7 @@ export default function Navbar({
 
                 <Image
                   src="/assets/shared/blacklogo.png"
-                  alt="TekCorp - Empowering Innovation"
+                  alt="Tekcorp - Empowering Innovation"
                   fill
                   priority
                   sizes="(max-width: 480px) 125px, (max-width: 767px) 138px, 155px"
@@ -1695,7 +1695,7 @@ export default function Navbar({
                           >
 
                             <span>
-                              Our Solutions
+                              Solutions
                             </span>
 
 
@@ -2245,7 +2245,7 @@ export default function Navbar({
                       "mobile-solutions-trigger",
 
                       activeTab ===
-                        "Our Solutions"
+                        "Solutions"
                         ? "active"
                         : "",
                     ]
@@ -2264,14 +2264,14 @@ export default function Navbar({
                     aria-controls="mobile-solutions"
                     aria-current={
                       activeTab ===
-                      "Our Solutions"
+                      "Solutions"
                         ? "page"
                         : undefined
                     }
                   >
 
                     <span>
-                      Our Solutions
+                      Solutions
                     </span>
 
 

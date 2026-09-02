@@ -1010,9 +1010,17 @@
 
 .lp1-success-card__description {
   margin:
-    10px
+    0
     0
     18px !important;
+
+  max-height: 5.15rem;
+
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+
+  padding-right: 4px;
 
   color:
     #6f7472 !important;
@@ -1025,7 +1033,7 @@
     ) !important;
 
   font-size:
-    9px !important;
+    12px !important;
 
   font-weight: 400;
 
@@ -1034,6 +1042,21 @@
 
   -webkit-text-fill-color:
     #6f7472 !important;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+}
+
+
+.lp1-success-card__description::-webkit-scrollbar {
+  display: none;
+}
+
+
+.lp1-success-card__description:focus-visible {
+  outline: 2px solid rgba(20, 156, 133, .42);
+  outline-offset: 3px;
 }
 
 
@@ -1615,7 +1638,7 @@
 
   .lp1-success-card__description {
     font-size:
-      8.5px !important;
+      11.5px !important;
   }
 
 

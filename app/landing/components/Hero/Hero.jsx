@@ -126,7 +126,7 @@ export default function Hero() {
             </p>
 
             <p className="hero-reference__description">
-              At TekCorp, we design and develop digital platforms that help
+              At Tekcorp, we design and develop digital platforms that help
               businesses automate operations, strengthen their online
               presence, and scale confidently.
             </p>

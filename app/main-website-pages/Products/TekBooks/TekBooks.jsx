@@ -3,7 +3,12 @@ import TekBooksPage from "@/app/main-website-components/TekBooksPage/TekBooksPag
 
 export default function TekBooks() {
   return (
-    <ServicePageLayout page="tekbooks" contactId="tekbooks-contact" navbarProps={{ ctaHref: "#tekbooks-contact" }} footerProps={{ ctaHref: "#tekbooks-contact" }}>
+    <ServicePageLayout
+      page="tekbooks"
+      contactId="tekbooks-contact"
+      navbarProps={{ ctaHref: "#tekbooks-contact" }}
+      footerProps={{ ctaHref: "#tekbooks-contact" }}
+    >
       <TekBooksPage />
     </ServicePageLayout>
   );

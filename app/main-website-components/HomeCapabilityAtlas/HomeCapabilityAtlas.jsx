@@ -69,14 +69,14 @@ const CAPABILITY_GROUPS = [
       {
         name: "Custom Web Development",
         meta: "Web platforms",
-        href: "/services/web-engineering",
+        href: "/services/web-development",
         icon: Code2,
       },
 
       {
         name: "Application Development",
         meta: "Digital applications",
-        href: "/services/application-engineering",
+        href: "/services/application-development",
         icon: Smartphone,
       },
 
@@ -97,14 +97,14 @@ const CAPABILITY_GROUPS = [
       {
         name: "UI/UX Design",
         meta: "Digital experiences",
-        href: "/services/prototyping-ui-ux-design",
+        href: "/services/ui-ux-design",
         icon: PenTool,
       },
 
       {
         name: "Logo & Branding",
         meta: "Brand systems",
-        href: "/services/branding",
+        href: "/services/logo-branding",
         icon: Palette,
       },
     ],
@@ -198,35 +198,35 @@ const CAPABILITY_GROUPS = [
       {
         name: "AI Chatbots & Assistants",
         meta: "Conversational AI",
-        href: "/services/ai-chatbots-assistants",
+        href: "/services/ai-chatbot-development",
         icon: Bot,
       },
 
       {
         name: "AI Agents & Automation",
         meta: "Intelligent workflows",
-        href: "/services/ai-agents-automation",
+        href: "/services/ai-agent-development",
         icon: Workflow,
       },
 
       {
         name: "Voice AI & Conversational Agents",
         meta: "Voice experiences",
-        href: "/services/voice-ai-conversational-agents",
+        href: "/services/voice-ai-agents",
         icon: Mic,
       },
 
       {
         name: "RAG & Knowledge Base Solutions",
         meta: "Grounded knowledge",
-        href: "/services/rag-knowledge-base-solutions",
+        href: "/services/rag-solutions",
         icon: Database,
       },
 
       {
         name: "MCP Server Development & Integrations",
         meta: "AI integrations",
-        href: "/services/mcp-server-development-integrations",
+        href: "/services/mcp-server-development",
         icon: Plug,
       },
     ],
@@ -248,7 +248,7 @@ const CAPABILITY_GROUPS = [
       "Focused products built around work businesses need to manage every day.",
 
     description:
-      "Alongside custom solutions, TekCorp develops purpose-built software that simplifies important operational workflows while leaving room for businesses to grow.",
+      "Alongside custom solutions, Tekcorp develops purpose-built software that simplifies important operational workflows while leaving room for businesses to grow.",
 
     image:
       "/assets/Home-assets/CapabilityMosaic/products.jpg",
@@ -263,7 +263,7 @@ const CAPABILITY_GROUPS = [
         description:
           "A practical bookkeeping workspace bringing customers, suppliers, transactions and reporting together in one connected system.",
 
-        href: "/product/tekbooks",
+        href: "/products/tekbooks",
 
         icon: BookOpen,
       },
@@ -275,7 +275,7 @@ const CAPABILITY_GROUPS = [
         description:
           "A focused learning platform designed for institutes, academies, educators and the students they serve.",
 
-        href: "/product/teklms",
+        href: "/products/teklms",
 
         icon: GraduationCap,
       },
@@ -590,7 +590,7 @@ export default function HomeCapabilityAtlas() {
             <span className="cap-mosaic__eyebrow">
               <i />
 
-              Explore TekCorp
+              Explore Tekcorp
             </span>
 
 
@@ -607,7 +607,7 @@ export default function HomeCapabilityAtlas() {
           >
             <p>
               Discover how design, engineering, growth, AI and
-              TekCorp products connect to solve different parts
+              Tekcorp products connect to solve different parts
               of the same business journey.
             </p>
 
@@ -676,7 +676,7 @@ export default function HomeCapabilityAtlas() {
         <div
           className="cap-mosaic__categories"
           role="tablist"
-          aria-label="TekCorp capability categories"
+          aria-label="Tekcorp capability categories"
         >
 
           {CAPABILITY_GROUPS.map(

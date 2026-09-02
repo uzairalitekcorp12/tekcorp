@@ -36,10 +36,10 @@ const PHONE_IMAGE =
 const CONTACT_DETAILS = {
   email: {
     label:
-      "support@tekcorpllc.com",
+      "support@tekcorpllc.ae",
 
     href:
-      "mailto:support@tekcorpllc.com",
+      "mailto:support@tekcorpllc.ae",
   },
 
 
@@ -430,7 +430,7 @@ export default function Footer2({
 
 
               <Link
-                href="/service/web-engineering"
+                href="/services/web-development"
                 className="footer2__link"
               >
                 <span>
@@ -440,7 +440,7 @@ export default function Footer2({
 
 
               <Link
-                href="/service/application-engineering"
+                href="/services/application-development"
                 className="footer2__link"
               >
                 <span>
@@ -450,7 +450,7 @@ export default function Footer2({
 
 
               <Link
-                href="/service/ai-chatbots-assistants"
+                href="/services/ai-chatbot-development"
                 className="footer2__link"
               >
                 <span>
@@ -467,7 +467,7 @@ export default function Footer2({
                */}
 
               <Link
-                href="/service/ai-agents-automation"
+                href="/services/ai-agent-development"
                 className="footer2__link"
               >
                 <span>
@@ -477,7 +477,7 @@ export default function Footer2({
 
 
               <Link
-                href="/service/social-media-marketing"
+                href="/services/social-media-marketing"
                 className="footer2__link"
               >
                 <span>
@@ -486,7 +486,7 @@ export default function Footer2({
               </Link>
 
               <Link
-                href="/service/marketing-strategy"
+                href="/services/marketing-strategy"
                 className="footer2__link"
               >
                 <span>
@@ -563,7 +563,7 @@ export default function Footer2({
                   href={TEKCORP_SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="TekCorp LinkedIn"
+                  aria-label="Tekcorp LinkedIn"
                 >
                   <LinkedInIcon />
                 </a>
@@ -573,7 +573,7 @@ export default function Footer2({
                   href={TEKCORP_SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="TekCorp Facebook"
+                  aria-label="Tekcorp Facebook"
                 >
                   <FacebookIcon />
                 </a>
@@ -583,7 +583,7 @@ export default function Footer2({
                   href={TEKCORP_SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="TekCorp Instagram"
+                  aria-label="Tekcorp Instagram"
                 >
                   <InstagramIcon />
                 </a>

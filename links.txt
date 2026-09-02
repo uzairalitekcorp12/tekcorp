@@ -1,23 +1,25 @@
-All 13 pages return `200` locally with no error overlays.
+All 18 primary service and product URLs return `200` locally.
 
 **Services**
 
-- [Web Engineering](http://localhost:3000/service/web-engineering)
-- [Application Engineering](http://localhost:3000/service/application-engineering)
-- [Maintenance & Support](http://localhost:3000/service/maintenance-support)
-- [Prototyping & UI/UX Design](http://localhost:3000/service/prototyping-ui-ux-design)
-- [Quality Assurance & Testing](http://localhost:3000/service/quality-assurance-testing)
+- [Web Development](http://localhost:3000/services/web-development)
+- [Application Development](http://localhost:3000/services/application-development)
+- [CMS Development](http://localhost:3000/services/cms-development)
+- [Ecommerce Development](http://localhost:3000/services/ecommerce-development)
+- [UI/UX Design](http://localhost:3000/services/ui-ux-design)
+- [Logo & Branding](http://localhost:3000/services/logo-branding)
+- [Search Engine Optimization](http://localhost:3000/services/search-engine-optimization)
+- [Social Media Marketing](http://localhost:3000/services/social-media-marketing)
+- [Marketing Strategy](http://localhost:3000/services/marketing-strategy)
+- [Google Ads](http://localhost:3000/services/google-ads)
+- [Content Marketing](http://localhost:3000/services/content-marketing)
+- [AI Chatbot Development](http://localhost:3000/services/ai-chatbot-development)
+- [AI Agent Development](http://localhost:3000/services/ai-agent-development)
+- [Voice AI Agents](http://localhost:3000/services/voice-ai-agents)
+- [RAG Solutions](http://localhost:3000/services/rag-solutions)
+- [MCP Server Development](http://localhost:3000/services/mcp-server-development)
 
 **Products**
 
-- [Digital Commerce Software](http://localhost:3000/products/digital-commerce-software)
-- [Task Management Portal](http://localhost:3000/products/task-management-portal)
-- [Employee Management & Onboarding Portal](http://localhost:3000/products/employee-management-onboarding-portal)
-
-**Solutions**
-
-- [CRM Integration](http://localhost:3000/service/crm-integration)
-- [ERP Integration](http://localhost:3000/service/erp-integration)
-- [Cloud & DevOps](http://localhost:3000/service/cloud-devops)
-- [Reports Development & Data Analysis](http://localhost:3000/service/reports-data-analysis)
-- [API Integration](http://localhost:3000/service/api-integration)
+- [TekLMS](http://localhost:3000/products/teklms)
+- [TekBooks](http://localhost:3000/products/tekbooks)

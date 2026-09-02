@@ -97,7 +97,7 @@ export default function HomePartners() {
 
             <img
               src={PARTNER_IMAGE}
-              alt="TekCorp strategic technology partner"
+              alt="Tekcorp strategic technology partner"
             />
 
           </div>

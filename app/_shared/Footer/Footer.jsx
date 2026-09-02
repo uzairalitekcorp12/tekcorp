@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="footer-brand-logo">
               <Image
                 src="/assets/shared/whitelogo.png"
-                alt="TekCorp - Empowering Innovation"
+                alt="Tekcorp - Empowering Innovation"
                 fill
                 className="footer-image-contain"
                 priority
@@ -172,7 +172,7 @@ export default function Footer() {
         ===================================================== */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © 2026 TekCorp LLC. All rights reserved.
+            © 2026 Tekcorp LLC. All rights reserved.
           </p>
 
           <div className="footer-legal">

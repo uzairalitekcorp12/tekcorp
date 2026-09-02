@@ -18,19 +18,17 @@
   --vt-ink:
     #171a18;
 
-  --vt-text:
-    #555c58;
+  --vt-copy:
+    #626965;
 
   --vt-muted:
-    #8d9390;
+    #8a918d;
 
   --vt-border:
-    rgba(
-      15,
-      23,
-      42,
-      .08
-    );
+    #e3e8e5;
+
+  --vt-soft:
+    #f6f9f7;
 
   --vt-ease:
     cubic-bezier(
@@ -52,9 +50,9 @@
 
   padding:
     clamp(
-      52px,
+      54px,
       5vw,
-      64px
+      68px
     )
     0;
 
@@ -92,11 +90,11 @@
   grid-template-columns:
     minmax(
       0,
-      1.25fr
+      1.22fr
     )
     minmax(
       280px,
-      .72fr
+      .78fr
     );
 
   align-items:
@@ -116,7 +114,7 @@
 
 .video-testimonials__heading {
   max-width:
-    670px;
+    680px;
 }
 
 
@@ -142,7 +140,7 @@
     9px;
 
   font-weight:
-    600;
+    650;
 
   line-height:
     1;
@@ -157,7 +155,7 @@
 
 .video-testimonials__eyebrow::after {
   width:
-    31px;
+    32px;
 
   height:
     1px;
@@ -231,10 +229,14 @@
   margin:
     0
     0
-    5px
+    4px
     !important;
 
   color:
+    #6d736f
+    !important;
+
+  -webkit-text-fill-color:
     #6d736f
     !important;
 
@@ -242,12 +244,20 @@
     13px;
 
   line-height:
-    1.58;
+    1.62;
 }
 
 
 /* ==========================================================================
-   TWO-CARD GRID
+   GRID
+
+   Dynamic client behaviour:
+
+   1 client  -> centered
+   2 clients -> one row
+   3 clients -> third centered
+   4 clients -> two rows
+   etc.
    ========================================================================== */
 
 .video-testimonials__grid {
@@ -259,7 +269,7 @@
       2,
       minmax(
         0,
-        360px
+        350px
       )
     );
 
@@ -267,77 +277,50 @@
     center;
 
   gap:
-    26px;
+    28px;
 
   width:
     100%;
 
   max-width:
-    780px;
+    760px;
 
   margin-inline:
     auto;
 }
 
 
-/*
- * Explicit two-card mode.
- *
- * Keeping this class means the styling is protected even if the generic
- * component is reused elsewhere later.
- */
-
-.video-testimonials--pair
-.video-testimonials__grid {
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        360px
-      )
-    );
-
-  justify-content:
-    center;
-
-  max-width:
-    780px;
-}
-
-
-/* ==========================================================================
-   SINGLE
-   ========================================================================== */
-
 .video-testimonials--single
 .video-testimonials__grid {
   grid-template-columns:
     minmax(
       0,
-      420px
+      390px
     );
 
-  justify-content:
-    center;
-
   max-width:
-    420px;
+    390px;
 }
 
 
-.video-testimonials--single
-.video-testimonials__card-footer {
-  padding:
-    20px
-    22px;
+.video-testimonials--multiple
+.video-testimonials__card:last-child:nth-child(odd) {
+  grid-column:
+    1 / -1;
+
+  width:
+    100%;
+
+  max-width:
+    350px;
+
+  justify-self:
+    center;
 }
 
 
 /* ==========================================================================
    HOME VARIANT
-
-   Two centered vertical client videos.
    ========================================================================== */
 
 .home-video-testimonials {
@@ -345,7 +328,7 @@
     clamp(
       52px,
       5vw,
-      64px
+      66px
     )
     0;
 }
@@ -363,10 +346,6 @@
 }
 
 
-/* ==========================================================================
-   HOME HEADER
-   ========================================================================== */
-
 .home-video-testimonials
 .video-testimonials__header {
   grid-template-columns:
@@ -379,6 +358,9 @@
       .78fr
     );
 
+  align-items:
+    center;
+
   gap:
     clamp(
       42px,
@@ -388,13 +370,10 @@
 
   margin-bottom:
     clamp(
-      26px,
+      28px,
       3vw,
-      38px
+      39px
     );
-
-  align-items:
-    center;
 }
 
 
@@ -425,290 +404,6 @@
   margin-bottom:
     8px
     !important;
-
-  color:
-    #747873
-    !important;
-
-  font-size:
-    13px;
-}
-
-
-/* ==========================================================================
-   HOME TWO-CARD LAYOUT
-   ========================================================================== */
-
-.home-video-testimonials
-.video-testimonials__grid {
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        340px
-      )
-    );
-
-  justify-content:
-    center;
-
-  gap:
-    clamp(
-      20px,
-      3vw,
-      28px
-    );
-
-  width:
-    100%;
-
-  max-width:
-    720px;
-
-  margin-inline:
-    auto;
-}
-
-
-/* ==========================================================================
-   HOME CARD
-   ========================================================================== */
-
-.home-video-testimonials
-.video-testimonials__card {
-  width:
-    100%;
-
-  border-color:
-    rgba(
-      0,
-      0,
-      0,
-      .06
-    );
-
-  border-radius:
-    20px;
-
-  box-shadow:
-    0
-    10px
-    24px
-    rgba(
-      15,
-      23,
-      42,
-      .07
-    );
-}
-
-
-.home-video-testimonials
-.video-testimonials__card:hover,
-.home-video-testimonials
-.video-testimonials__card:focus-within {
-  border-color:
-    rgba(
-      27,
-      219,
-      186,
-      .42
-    );
-
-  box-shadow:
-    0
-    24px
-    46px
-    rgba(
-      15,
-      23,
-      42,
-      .16
-    );
-
-  transform:
-    translateY(
-      -8px
-    );
-}
-
-
-/* ==========================================================================
-   HOME MEDIA
-   ========================================================================== */
-
-.home-video-testimonials
-.video-testimonials__media {
-  aspect-ratio:
-    4 / 6.18;
-}
-
-
-.home-video-testimonials
-.video-testimonials__media::before {
-  position:
-    absolute;
-
-  z-index:
-    4;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  left:
-    0;
-
-  height:
-    72px;
-
-  background:
-    #030403;
-
-  content:
-    "";
-
-  pointer-events:
-    none;
-}
-
-
-.home-video-testimonials
-.video-testimonials__video {
-  inset:
-    72px
-    0
-    0;
-
-  height:
-    auto;
-}
-
-
-.home-video-testimonials
-.video-testimonials__youtube {
-  top:
-    72px;
-
-  right:
-    auto;
-
-  bottom:
-    auto;
-
-  left:
-    50%;
-
-  width:
-    320%;
-
-  height:
-    calc(
-      100% - 72px
-    );
-
-  transform:
-    translateX(
-      -50%
-    );
-}
-
-
-.home-video-testimonials
-.video-testimonials__media-shade {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(
-        0,
-        0,
-        0,
-        .03
-      )
-      0%,
-      rgba(
-        0,
-        0,
-        0,
-        .02
-      )
-      53%,
-      rgba(
-        0,
-        0,
-        0,
-        .62
-      )
-      100%
-    );
-}
-
-
-.home-video-testimonials
-.video-testimonials__play {
-  bottom:
-    18px;
-
-  left:
-    22px;
-
-  width:
-    44px;
-
-  height:
-    44px;
-
-  border-radius:
-    12px;
-
-  background:
-    rgba(
-      10,
-      13,
-      11,
-      .22
-    );
-}
-
-
-.home-video-testimonials
-.video-testimonials__card-footer {
-  min-height:
-    75px;
-
-  padding:
-    13px
-    24px
-    14px;
-}
-
-
-.home-video-testimonials
-.video-testimonials__card-footer h3 {
-  font-size:
-    20px
-    !important;
-}
-
-
-.home-video-testimonials
-.video-testimonials__card-footer p {
-  margin-top:
-    3px
-    !important;
-
-  font-size:
-    10.5px;
-}
-
-
-.home-video-testimonials
-.video-testimonials__card-arrow {
-  display:
-    none;
 }
 
 
@@ -729,28 +424,25 @@
   border:
     1px
     solid
-    rgba(
-      15,
-      23,
-      42,
-      .06
+    var(
+      --vt-border
     );
 
   border-radius:
     22px;
 
   background:
-    #080a09;
+    #ffffff;
 
   box-shadow:
     0
-    8px
-    26px
+    10px
+    34px
     rgba(
-      15,
-      23,
-      42,
-      .08
+      18,
+      35,
+      27,
+      .07
     );
 
   transform:
@@ -760,7 +452,7 @@
 
   transition:
     border-color
-      .28s
+      .3s
       ease,
     box-shadow
       .35s
@@ -773,24 +465,75 @@
 }
 
 
-.video-testimonials__card:hover,
-.video-testimonials__card:focus-within {
+.video-testimonials__card::after {
+  position:
+    absolute;
+
+  right:
+    20px;
+
+  bottom:
+    0;
+
+  left:
+    20px;
+
+  height:
+    2px;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(
+        --vt-teal
+      ),
+      transparent
+    );
+
+  content:
+    "";
+
+  opacity:
+    0;
+
+  transform:
+    scaleX(
+      .4
+    );
+
+  transition:
+    opacity
+      .3s
+      ease,
+    transform
+      .4s
+      var(
+        --vt-ease
+      );
+}
+
+
+.video-testimonials__card:hover {
   border-color:
     rgba(
       27,
       219,
       186,
-      .24
+      .5
     );
 
   box-shadow:
     0
-    22px
-    48px
+    26px
+    58px
     rgba(
-      15,
-      23,
-      42,
+      17,
+      40,
+      31,
       .13
     );
 
@@ -801,42 +544,29 @@
 }
 
 
-/* ==========================================================================
-   CARD BUTTON
-   ========================================================================== */
+.video-testimonials__card:hover::after {
+  opacity:
+    1;
 
-.video-testimonials__card-button {
-  display:
-    block;
-
-  width:
-    100%;
-
-  padding:
-    0;
-
-  border:
-    0;
-
-  background:
-    transparent;
-
-  color:
-    inherit;
-
-  cursor:
-    pointer;
-
-  font:
-    inherit;
-
-  text-align:
-    left;
+  transform:
+    scaleX(
+      1
+    );
 }
 
 
 /* ==========================================================================
    MEDIA
+
+   Exact portrait-friendly frame.
+
+   The full video is preserved with object-fit: contain.
+
+   Nothing:
+   - zooms
+   - scales
+   - crops
+   - offsets the video
    ========================================================================== */
 
 .video-testimonials__media {
@@ -847,20 +577,120 @@
     100%;
 
   aspect-ratio:
-    4 / 5.15;
+    9 / 16;
+
+  box-sizing:
+    border-box;
 
   overflow:
     hidden;
 
+  padding:
+    13px
+    13px
+    0;
+
   background:
-    #111412;
+    linear-gradient(
+      180deg,
+      #fbfcfb 0%,
+      #f4f7f5 100%
+    );
+
+  isolation:
+    isolate;
 }
 
+
+/* ==========================================================================
+   MEDIA STAGE
+   ========================================================================== */
+
+.video-testimonials__stage {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  overflow:
+    hidden;
+
+  border:
+    1px
+    solid
+    rgba(
+      18,
+      34,
+      27,
+      .045
+    );
+
+  border-bottom:
+    0;
+
+  border-radius:
+    14px
+    14px
+    0
+    0;
+
+  background:
+    #ffffff;
+}
+
+
+/* ==========================================================================
+   FULL VIDEO
+   ========================================================================== */
 
 .video-testimonials__video {
   position:
     absolute;
 
+  inset:
+    0;
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    contain
+    !important;
+
+  object-position:
+    center;
+
+  background:
+    #ffffff;
+
+  transform:
+    none
+    !important;
+
+  opacity:
+    1;
+}
+
+
+/*
+ * Force Home variant to obey the same complete-frame behaviour.
+ */
+
+.home-video-testimonials
+.video-testimonials__video,
+.home-video-testimonials
+.video-testimonials__card:hover
+.video-testimonials__video {
   inset:
     0;
 
@@ -871,116 +701,64 @@
     100%;
 
   object-fit:
-    cover;
-
-  object-position:
-    center;
+    contain
+    !important;
 
   transform:
-    scale(
-      1.005
-    );
-
-  transition:
-    transform
-      .7s
-      var(
-        --vt-ease
-      );
+    none
+    !important;
 }
 
 
-.video-testimonials__youtube {
-  position:
-    absolute;
+/*
+ * Remove any previous artificial top band implementation.
+ */
 
-  top:
-    0;
+.home-video-testimonials
+.video-testimonials__media::before {
+  display:
+    none
+    !important;
 
-  right:
-    auto;
-
-  bottom:
-    0;
-
-  left:
-    50%;
-
-  width:
-    320%;
-
-  height:
-    100%;
-
-  border:
-    0;
-
-  pointer-events:
-    none;
-
-  transform:
-    translateX(
-      -50%
-    );
-}
-
-
-.video-testimonials__card:hover
-.video-testimonials__video,
-.video-testimonials__card:focus-within
-.video-testimonials__video {
-  transform:
-    scale(
-      1.025
-    );
+  content:
+    none
+    !important;
 }
 
 
 /* ==========================================================================
-   SHADE
+   SUBTLE LOWER FADE
    ========================================================================== */
 
 .video-testimonials__media-shade {
   position:
     absolute;
 
-  inset:
+  z-index:
+    3;
+
+  right:
+    13px;
+
+  bottom:
     0;
 
-  z-index:
-    2;
+  left:
+    13px;
+
+  height:
+    16%;
 
   background:
     linear-gradient(
       180deg,
+      transparent,
       rgba(
-        0,
-        0,
-        0,
-        .05
+        8,
+        30,
+        22,
+        .11
       )
-      0%,
-      rgba(
-        0,
-        0,
-        0,
-        .02
-      )
-      42%,
-      rgba(
-        0,
-        0,
-        0,
-        .18
-      )
-      67%,
-      rgba(
-        0,
-        0,
-        0,
-        .72
-      )
-      100%
     );
 
   pointer-events:
@@ -997,19 +775,19 @@
     absolute;
 
   z-index:
-    3;
+    4;
 
   right:
-    -50px;
+    -60px;
 
   bottom:
-    -70px;
+    -75px;
 
   width:
-    180px;
+    200px;
 
   height:
-    180px;
+    200px;
 
   border-radius:
     50%;
@@ -1021,7 +799,7 @@
         27,
         219,
         186,
-        .13
+        .18
       ),
       transparent
       68%
@@ -1050,33 +828,46 @@
 
 
 /* ==========================================================================
-   PLAY BUTTON
+   AUDIO CONTROL
+
+   Desktop:
+   Speaker button by default.
+   Volume slider expands on hover/focus.
+
+   Tablet / mobile:
+   Slider remains visible so touch users can directly control volume.
    ========================================================================== */
 
-.video-testimonials__play {
+.video-testimonials__audio {
   position:
     absolute;
 
-  bottom:
-    21px;
-
-  left:
-    20px;
-
   z-index:
-    6;
+    8;
+
+  right:
+    30px;
+
+  bottom:
+    33px;
 
   display:
-    grid;
+    flex;
 
-  width:
-    50px;
+  min-height:
+    43px;
 
-  height:
-    50px;
-
-  place-items:
+  align-items:
     center;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    6px;
+
+  padding:
+    2px;
 
   border:
     1px
@@ -1085,114 +876,459 @@
       255,
       255,
       255,
-      .54
+      .72
     );
 
   border-radius:
-    14px;
+    999px;
 
   background:
     rgba(
-      8,
-      12,
-      10,
-      .28
+      17,
+      47,
+      37,
+      .72
     );
 
-  color:
-    #ffffff;
-
   box-shadow:
-    inset
     0
-    1px
-    0
+    8px
+    26px
     rgba(
-      255,
-      255,
-      255,
-      .08
+      8,
+      31,
+      23,
+      .18
     );
 
   backdrop-filter:
     blur(
-      13px
+      12px
     );
 
   -webkit-backdrop-filter:
     blur(
-      13px
+      12px
     );
 
   transition:
-    border-color
-      .25s
-      ease,
     background
       .25s
       ease,
-    color
+    border-color
       .25s
       ease,
-    transform
-      .32s
-      var(
-        --vt-ease
-      );
+    box-shadow
+      .25s
+      ease;
 }
 
 
-.video-testimonials__card:hover
-.video-testimonials__play,
-.video-testimonials__card:focus-within
-.video-testimonials__play {
+.video-testimonials__audio:hover,
+.video-testimonials__audio:focus-within,
+.video-testimonials__audio.is-audible {
   border-color:
-    var(
-      --vt-teal
+    rgba(
+      27,
+      219,
+      186,
+      .65
     );
 
   background:
-    var(
-      --vt-teal
+    rgba(
+      8,
+      39,
+      30,
+      .9
     );
 
-  color:
-    #07110f;
-
-  transform:
-    translateY(
-      -3px
+  box-shadow:
+    0
+    10px
+    30px
+    rgba(
+      8,
+      41,
+      30,
+      .22
     );
 }
 
 
 /* ==========================================================================
-   CARD INFORMATION
+   AUDIO SLIDER WRAPPER
    ========================================================================== */
 
-.video-testimonials__card-footer {
+.video-testimonials__audio-slider-wrap {
   display:
     flex;
 
-  min-height:
-    92px;
+  width:
+    0;
 
   align-items:
     center;
 
-  justify-content:
-    space-between;
+  overflow:
+    hidden;
+
+  opacity:
+    0;
+
+  transition:
+    width
+      .3s
+      var(
+        --vt-ease
+      ),
+    opacity
+      .2s
+      ease;
+}
+
+
+.video-testimonials__audio:hover
+.video-testimonials__audio-slider-wrap,
+.video-testimonials__audio:focus-within
+.video-testimonials__audio-slider-wrap,
+.video-testimonials__audio.is-audible
+.video-testimonials__audio-slider-wrap {
+  width:
+    92px;
+
+  opacity:
+    1;
+}
+
+
+/* ==========================================================================
+   VOLUME RANGE
+   ========================================================================== */
+
+.video-testimonials__audio-slider {
+  width:
+    84px;
+
+  height:
+    20px;
+
+  margin:
+    0
+    4px
+    0
+    8px;
+
+  padding:
+    0;
+
+  appearance:
+    none;
+
+  -webkit-appearance:
+    none;
+
+  background:
+    transparent;
+
+  cursor:
+    pointer;
+}
+
+
+/* WebKit track */
+
+.video-testimonials__audio-slider::-webkit-slider-runnable-track {
+  width:
+    100%;
+
+  height:
+    4px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .45
+    );
+}
+
+
+/* WebKit thumb */
+
+.video-testimonials__audio-slider::-webkit-slider-thumb {
+  width:
+    13px;
+
+  height:
+    13px;
+
+  margin-top:
+    -4.5px;
+
+  appearance:
+    none;
+
+  -webkit-appearance:
+    none;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --vt-teal
+    );
+
+  box-shadow:
+    0
+    2px
+    8px
+    rgba(
+      27,
+      219,
+      186,
+      .38
+    );
+}
+
+
+/* Firefox track */
+
+.video-testimonials__audio-slider::-moz-range-track {
+  width:
+    100%;
+
+  height:
+    4px;
+
+  border:
+    0;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .45
+    );
+}
+
+
+/* Firefox progress */
+
+.video-testimonials__audio-slider::-moz-range-progress {
+  height:
+    4px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(
+      --vt-teal
+    );
+}
+
+
+/* Firefox thumb */
+
+.video-testimonials__audio-slider::-moz-range-thumb {
+  width:
+    13px;
+
+  height:
+    13px;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --vt-teal
+    );
+}
+
+
+.video-testimonials__audio-slider:focus-visible {
+  outline:
+    none;
+}
+
+
+/* ==========================================================================
+   AUDIO BUTTON
+   ========================================================================== */
+
+.video-testimonials__audio-button {
+  display:
+    grid;
+
+  width:
+    39px;
+
+  height:
+    39px;
+
+  flex:
+    0
+    0
+    39px;
+
+  place-items:
+    center;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .1
+    );
+
+  color:
+    #ffffff;
+
+  cursor:
+    pointer;
+
+  transition:
+    background
+      .24s
+      ease,
+    color
+      .24s
+      ease,
+    transform
+      .28s
+      var(
+        --vt-ease
+      ),
+    box-shadow
+      .24s
+      ease;
+}
+
+
+.video-testimonials__audio-button:hover,
+.video-testimonials__audio.is-audible
+.video-testimonials__audio-button {
+  background:
+    var(
+      --vt-teal
+    );
+
+  color:
+    #06251f;
+
+  box-shadow:
+    0
+    5px
+    18px
+    rgba(
+      27,
+      219,
+      186,
+      .32
+    );
+}
+
+
+.video-testimonials__audio-button:hover {
+  transform:
+    scale(
+      1.06
+    );
+}
+
+
+.video-testimonials__audio-button svg {
+  display:
+    block;
+
+  width:
+    17px;
+
+  height:
+    17px;
+
+  pointer-events:
+    none;
+}
+
+
+.video-testimonials__audio-button:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --vt-teal
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   WHITE CARD FOOTER
+   ========================================================================== */
+
+.video-testimonials__card-footer {
+  position:
+    relative;
+
+  display:
+    flex;
+
+  min-height:
+    88px;
+
+  align-items:
+    center;
 
   gap:
     18px;
 
   padding:
-    17px
-    19px
-    18px;
+    16px
+    20px
+    17px;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      18,
+      34,
+      27,
+      .06
+    );
 
   background:
-    #080a09;
+    #ffffff;
 }
 
 
@@ -1203,21 +1339,25 @@
 }
 
 
+/* ==========================================================================
+   CLIENT NAME
+   ========================================================================== */
+
 .video-testimonials__card-footer h3 {
   margin:
     0
     !important;
 
   color:
-    #ffffff
+    #1e2421
     !important;
 
   -webkit-text-fill-color:
-    #ffffff
+    #1e2421
     !important;
 
   font-size:
-    18px
+    20px
     !important;
 
   font-weight:
@@ -1229,823 +1369,84 @@
     !important;
 
   letter-spacing:
-    -.025em
+    -.035em
     !important;
 }
 
 
-.video-testimonials__card-footer p {
-  margin:
-    5px
-    0
-    0
-    !important;
+/* ==========================================================================
+   ROLE
+   ========================================================================== */
 
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .53
-    )
+.video-testimonials__role {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  align-items:
+    center;
+
+  gap:
+    5px;
+
+  margin:
+    6px
+    0
+    0
     !important;
 
   font-size:
-    10px;
+    11px;
 
   line-height:
-    1.35;
+    1.3;
 }
 
 
-.video-testimonials__card-footer p
-span {
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .31
-    );
-}
-
-
-/* ==========================================================================
-   CARD ARROW
-   ========================================================================== */
-
-.video-testimonials__card-arrow {
-  display:
-    grid;
-
-  width:
-    31px;
-
-  height:
-    31px;
-
-  flex:
-    0
-    0
-    31px;
-
-  place-items:
-    center;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .11
-    );
-
-  border-radius:
-    50%;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .46
-    );
-
-  font-size:
-    12px;
-
-  transition:
-    border-color
-      .25s
-      ease,
-    background
-      .25s
-      ease,
-    color
-      .25s
-      ease,
-    transform
-      .3s
-      var(
-        --vt-ease
-      );
-}
-
-
-.video-testimonials__card:hover
-.video-testimonials__card-arrow {
-  border-color:
-    var(
-      --vt-teal
-    );
-
-  background:
-    var(
-      --vt-teal
-    );
-
-  color:
-    #07110f;
-
-  transform:
-    rotate(
-      45deg
-    );
-}
-
-
-/* ==========================================================================
-   MODAL
-   ========================================================================== */
-
-.video-testimonials-modal {
-  position:
-    fixed;
-
-  inset:
-    0;
-
-  z-index:
-    99999;
-
-  display:
-    grid;
-
-  place-items:
-    center;
-
-  padding:
-    26px;
-
-  background:
-    rgba(
-      3,
-      7,
-      6,
-      .82
-    );
-
-  backdrop-filter:
-    blur(
-      18px
-    )
-    saturate(
-      115%
-    );
-
-  -webkit-backdrop-filter:
-    blur(
-      18px
-    )
-    saturate(
-      115%
-    );
-
-  animation:
-    videoTestimonialModalBackdrop
-    .24s
-    ease
-    both;
-}
-
-
-/* ==========================================================================
-   MODAL DIALOG
-   ========================================================================== */
-
-.video-testimonials-modal__dialog {
-  display:
-    flex;
-
-  width:
-    min(
-      430px,
-      calc(
-        100vw - 32px
-      )
-    );
-
-  max-height:
-    calc(
-      100dvh - 32px
-    );
-
-  flex-direction:
-    column;
-
-  overflow:
-    hidden;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .11
-    );
-
-  border-radius:
-    20px;
-
-  background:
-    #080a09;
-
-  box-shadow:
-    0
-    35px
-    100px
-    rgba(
-      0,
-      0,
-      0,
-      .48
-    );
-
-  animation:
-    videoTestimonialModalEnter
-    .34s
-    var(
-      --vt-ease
-    )
-    both;
-}
-
-
-/* ==========================================================================
-   MODAL TOP
-   ========================================================================== */
-
-.video-testimonials-modal__top {
-  display:
-    flex;
-
-  min-height:
-    57px;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
-
-  padding:
-    12px
-    14px
-    12px
-    19px;
-
-  border-bottom:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .075
-    );
-}
-
-
-.video-testimonials-modal__person {
-  display:
-    flex;
-
-  min-width:
-    0;
-
-  flex-direction:
-    column;
-}
-
-
-.video-testimonials-modal__person
-span {
+.video-testimonials__role strong {
   color:
     var(
-      --vt-teal
+      --vt-teal-dark
     );
 
-  font-size:
-    8px;
+  -webkit-text-fill-color:
+    var(
+      --vt-teal-dark
+    );
 
   font-weight:
-    600;
-
-  letter-spacing:
-    .065em;
-
-  text-transform:
-    uppercase;
+    650;
 }
 
 
-.video-testimonials-modal__person
-strong {
-  margin-top:
-    2px;
-
+.video-testimonials__role span {
   color:
-    #ffffff;
+    #afb5b1;
 
-  font-size:
-    13px;
-
-  font-weight:
-    600;
+  -webkit-text-fill-color:
+    #afb5b1;
 }
 
 
-/* ==========================================================================
-   CLOSE
-   ========================================================================== */
-
-.video-testimonials-modal__close {
-  display:
-    grid;
-
-  width:
-    38px;
-
-  height:
-    38px;
-
-  place-items:
-    center;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .14
-    );
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .035
-    );
-
+.video-testimonials__role em {
   color:
-    #ffffff;
+    #747c77;
 
-  cursor:
-    pointer;
+  -webkit-text-fill-color:
+    #747c77;
 
-  transition:
-    border-color
-      .22s
-      ease,
-    background
-      .22s
-      ease,
-    color
-      .22s
-      ease,
-    transform
-      .28s
-      var(
-        --vt-ease
-      );
-}
-
-
-.video-testimonials-modal__close:hover {
-  border-color:
-    var(
-      --vt-teal
-    );
-
-  background:
-    var(
-      --vt-teal
-    );
-
-  color:
-    #07110f;
-
-  transform:
-    rotate(
-      90deg
-    );
-}
-
-
-/* ==========================================================================
-   MODAL MEDIA
-   ========================================================================== */
-
-.video-testimonials-modal__media {
-  position:
-    relative;
-
-  aspect-ratio:
-    9 / 16;
-
-  max-height:
-    calc(
-      100dvh - 134px
-    );
-
-  flex:
-    1
-    1
-    auto;
-
-  overflow:
-    hidden;
-
-  background:
-    #000000;
-}
-
-
-.video-testimonials-modal__video {
-  display:
-    block;
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  object-fit:
-    cover;
-
-  background:
-    #000000;
-}
-
-
-.video-testimonials-modal__youtube {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    auto;
-
-  bottom:
-    0;
-
-  left:
-    50%;
-
-  width:
-    320%;
-
-  height:
-    100%;
-
-  border:
-    0;
-
-  background:
-    #000000;
-
-  transform:
-    translateX(
-      -50%
-    );
-}
-
-
-/* ==========================================================================
-   MODAL CENTER CONTROL
-   ========================================================================== */
-
-.video-testimonials-modal__center-control {
-  position:
-    absolute;
-
-  top:
-    50%;
-
-  left:
-    50%;
-
-  display:
-    grid;
-
-  width:
-    58px;
-
-  height:
-    58px;
-
-  place-items:
-    center;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .62
-    );
-
-  border-radius:
-    17px;
-
-  background:
-    rgba(
-      7,
-      11,
-      9,
-      .48
-    );
-
-  color:
-    #ffffff;
-
-  cursor:
-    pointer;
-
-  opacity:
-    1;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  backdrop-filter:
-    blur(
-      12px
-    );
-
-  transition:
-    background
-      .22s
-      ease,
-    border-color
-      .22s
-      ease,
-    color
-      .22s
-      ease,
-    opacity
-      .22s
-      ease;
-}
-
-
-.video-testimonials-modal__center-control.is-playing {
-  opacity:
-    0;
-}
-
-
-.video-testimonials-modal__media:hover
-.video-testimonials-modal__center-control.is-playing,
-.video-testimonials-modal__center-control:focus-visible {
-  opacity:
-    1;
-}
-
-
-.video-testimonials-modal__center-control:hover {
-  border-color:
-    var(
-      --vt-teal
-    );
-
-  background:
-    var(
-      --vt-teal
-    );
-
-  color:
-    #07110f;
-}
-
-
-/* ==========================================================================
-   MODAL FOOTER
-   ========================================================================== */
-
-.video-testimonials-modal__footer {
-  display:
-    flex;
-
-  min-height:
-    69px;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
-
-  padding:
-    13px
-    18px;
-}
-
-
-.video-testimonials-modal__footer
-> div {
-  display:
-    flex;
-
-  min-width:
-    0;
-
-  flex-direction:
-    column;
-}
-
-
-.video-testimonials-modal__footer
-strong {
-  color:
-    #ffffff;
-
-  font-size:
-    12px;
-
-  font-weight:
-    600;
-}
-
-
-.video-testimonials-modal__footer
-span {
-  margin-top:
-    2px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .44
-    );
-
-  font-size:
-    9px;
-}
-
-
-.video-testimonials-modal__footer
-button {
-  flex:
-    0
-    0
-    auto;
-
-  min-height:
-    33px;
-
-  padding:
-    0
-    13px;
-
-  border:
-    1px
-    solid
-    rgba(
-      255,
-      255,
-      255,
-      .14
-    );
-
-  border-radius:
-    999px;
-
-  background:
-    transparent;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      .70
-    );
-
-  cursor:
-    pointer;
-
-  font-size:
-    9px;
+  font-style:
+    normal;
 
   font-weight:
     500;
-
-  transition:
-    border-color
-      .2s
-      ease,
-    color
-      .2s
-      ease,
-    background
-      .2s
-      ease;
-}
-
-
-.video-testimonials-modal__footer
-button:hover {
-  border-color:
-    var(
-      --vt-teal
-    );
-
-  background:
-    rgba(
-      27,
-      219,
-      186,
-      .08
-    );
-
-  color:
-    var(
-      --vt-teal
-    );
 }
 
 
 /* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-@keyframes videoTestimonialModalBackdrop {
-
-  from {
-    opacity:
-      0;
-  }
-
-
-  to {
-    opacity:
-      1;
-  }
-
-}
-
-
-@keyframes videoTestimonialModalEnter {
-
-  from {
-    opacity:
-      0;
-
-    transform:
-      translateY(
-        20px
-      )
-      scale(
-        .97
-      );
-  }
-
-
-  to {
-    opacity:
-      1;
-
-    transform:
-      translateY(
-        0
-      )
-      scale(
-        1
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   <= 900
+   TABLET
    ========================================================================== */
 
 @media (
@@ -2060,7 +1461,7 @@ button:hover {
       1fr;
 
     gap:
-      18px;
+      19px;
   }
 
 
@@ -2089,14 +1490,6 @@ button:hover {
   }
 
 
-  /*
-   * Still two cards on tablet.
-   */
-
-  .video-testimonials__grid,
-  .video-testimonials--pair
-  .video-testimonials__grid,
-  .home-video-testimonials
   .video-testimonials__grid {
     grid-template-columns:
       repeat(
@@ -2111,31 +1504,44 @@ button:hover {
       700px;
 
     gap:
-      18px;
+      20px;
   }
 
 
-  .video-testimonials__card-footer {
-    min-height:
-      83px;
+  /*
+   * Touch devices should not need hover to discover the slider.
+   */
 
-    padding:
-      14px;
+  .video-testimonials__audio-slider-wrap {
+    width:
+      82px;
+
+    opacity:
+      1;
   }
 
 
-  .video-testimonials__card-footer
-  h3 {
-    font-size:
-      15px
-      !important;
+  .video-testimonials__audio:hover
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio:focus-within
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio.is-audible
+  .video-testimonials__audio-slider-wrap {
+    width:
+      82px;
+  }
+
+
+  .video-testimonials__audio-slider {
+    width:
+      74px;
   }
 
 }
 
 
 /* ==========================================================================
-   <= 720
+   MOBILE
    ========================================================================== */
 
 @media (
@@ -2150,6 +1556,8 @@ button:hover {
   }
 
 
+  .video-testimonials__shell,
+  .home-video-testimonials
   .video-testimonials__shell {
     width:
       calc(
@@ -2158,74 +1566,20 @@ button:hover {
   }
 
 
-  /* ------------------------------------------------------------------------
-     HEADER
-     ------------------------------------------------------------------------ */
-
-  .home-video-testimonials
-  .video-testimonials__header {
-    gap:
-      18px;
-
-    margin-bottom:
-      34px;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__heading h2 {
-    max-width:
-      680px;
-
-    margin-right:
-      auto;
-
-    margin-left:
-      auto;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__intro {
-    max-width:
-      520px;
-
-    margin:
-      0
-      auto
-      !important;
-  }
-
-
-  /* ------------------------------------------------------------------------
-     TWO CARDS STACK CLEANLY ON MOBILE
-
-     No sideways page overflow.
-     No oversized full-tablet card.
-     ------------------------------------------------------------------------ */
-
-  .video-testimonials__grid,
-  .video-testimonials--pair
   .video-testimonials__grid,
   .home-video-testimonials
   .video-testimonials__grid {
-    display:
-      grid;
-
     grid-template-columns:
       minmax(
         0,
         390px
       );
 
-    grid-auto-flow:
-      row;
-
     justify-content:
       center;
 
     gap:
-      18px;
+      20px;
 
     width:
       100%;
@@ -2235,20 +1589,19 @@ button:hover {
 
     margin-inline:
       auto;
-
-    overflow:
-      visible;
-
-    padding:
-      0;
-
-    scroll-snap-type:
-      none;
   }
 
 
-  .video-testimonials__card,
-  .home-video-testimonials
+  .video-testimonials--multiple
+  .video-testimonials__card:last-child:nth-child(odd) {
+    grid-column:
+      auto;
+
+    max-width:
+      390px;
+  }
+
+
   .video-testimonials__card {
     width:
       100%;
@@ -2261,87 +1614,64 @@ button:hover {
   }
 
 
-  .video-testimonials__card:hover,
-  .video-testimonials__card:focus-within {
+  .video-testimonials__card:hover {
     transform:
-      translateY(
-        -3px
-      );
+      none;
   }
 
 
-  /* ------------------------------------------------------------------------
-     HOME MEDIA
-     ------------------------------------------------------------------------ */
-
-  .home-video-testimonials
   .video-testimonials__media {
     aspect-ratio:
-      4 / 5.65;
+      9 / 16;
   }
 
 
-  .home-video-testimonials
-  .video-testimonials__media::before {
-    height:
-      58px;
-  }
+  .video-testimonials__audio {
+    right:
+      21px;
 
-
-  .home-video-testimonials
-  .video-testimonials__video {
-    inset:
-      58px
-      0
-      0;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__youtube {
-    top:
-      58px;
-
-    height:
-      calc(
-        100% - 58px
-      );
-  }
-
-
-  /* ------------------------------------------------------------------------
-     MODAL
-     ------------------------------------------------------------------------ */
-
-  .video-testimonials-modal {
-    padding:
+    bottom:
       15px;
+
+    min-height:
+      40px;
   }
 
 
-  .video-testimonials-modal__dialog {
+  .video-testimonials__audio-button {
     width:
-      min(
-        430px,
-        calc(
-          100vw - 30px
-        )
-      );
+      36px;
 
-    max-height:
-      calc(
-        100dvh - 30px
-      );
+    height:
+      36px;
 
-    border-radius:
-      15px;
+    flex-basis:
+      36px;
+  }
+
+
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio:hover
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio:focus-within
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio.is-audible
+  .video-testimonials__audio-slider-wrap {
+    width:
+      76px;
+  }
+
+
+  .video-testimonials__audio-slider {
+    width:
+      68px;
   }
 
 }
 
 
 /* ==========================================================================
-   <= 520
+   SMALL MOBILE
    ========================================================================== */
 
 @media (
@@ -2353,15 +1683,6 @@ button:hover {
     padding:
       44px
       0;
-  }
-
-
-  .home-video-testimonials
-  .video-testimonials__shell {
-    width:
-      calc(
-        100% - 30px
-      );
   }
 
 
@@ -2392,65 +1713,69 @@ button:hover {
   }
 
 
-  .home-video-testimonials
-  .video-testimonials__intro {
-    font-size:
-      14px;
-
-    line-height:
-      1.55;
-  }
-
-
-  /* ------------------------------------------------------------------------
-     CARDS
-     ------------------------------------------------------------------------ */
-
-  .video-testimonials__grid,
-  .video-testimonials--pair
-  .video-testimonials__grid,
-  .home-video-testimonials
   .video-testimonials__grid {
-    grid-template-columns:
-      minmax(
-        0,
-        100%
-      );
-
     max-width:
       360px;
 
     gap:
-      16px;
+      17px;
   }
 
 
-  .video-testimonials__card,
-  .home-video-testimonials
   .video-testimonials__card {
     max-width:
       360px;
+
+    border-radius:
+      18px;
   }
 
 
   .video-testimonials__media {
-    aspect-ratio:
-      4 / 5;
+    padding:
+      10px
+      10px
+      0;
   }
 
 
-  .home-video-testimonials
-  .video-testimonials__card-footer {
-    min-height:
-      70px;
-
-    padding:
+  .video-testimonials__stage {
+    border-radius:
       12px
+      12px
+      0
+      0;
+  }
+
+
+  .video-testimonials__media-shade {
+    right:
+      10px;
+
+    left:
+      10px;
+  }
+
+
+  .video-testimonials__audio {
+    right:
+      18px;
+
+    bottom:
       14px;
   }
 
 
-  .home-video-testimonials
+  .video-testimonials__card-footer {
+    min-height:
+      82px;
+
+    padding:
+      14px
+      16px;
+  }
+
+
   .video-testimonials__card-footer h3 {
     font-size:
       18px
@@ -2458,83 +1783,18 @@ button:hover {
   }
 
 
-  .video-testimonials__play {
-    bottom:
-      16px;
-
-    left:
-      15px;
-
-    width:
-      45px;
-
-    height:
-      45px;
-
-    border-radius:
-      12px;
-  }
-
-
-  /* ------------------------------------------------------------------------
-     MODAL
-     ------------------------------------------------------------------------ */
-
-  .video-testimonials-modal__top {
-    min-height:
-      57px;
-
-    padding:
-      9px
-      10px
-      9px
-      14px;
-  }
-
-
-  .video-testimonials-modal__media {
-    aspect-ratio:
-      9 / 16;
-
-    max-height:
-      calc(
-        100dvh - 128px
-      );
-  }
-
-
-  .video-testimonials-modal__video {
-    object-fit:
-      cover;
-  }
-
-
-  .video-testimonials-modal__center-control {
-    width:
-      52px;
-
-    height:
-      52px;
-
-    border-radius:
-      15px;
-  }
-
-
-  .video-testimonials-modal__footer {
-    min-height:
-      65px;
-
-    padding:
-      11px
-      13px;
+  .video-testimonials__role {
+    font-size:
+      10.5px;
   }
 
 }
 
 
 /* ==========================================================================
-   <= 380
+   VERY SMALL PHONES
+
+   Keep both speaker and usable volume range, but tighten them.
    ========================================================================== */
 
 @media (
@@ -2553,20 +1813,6 @@ button:hover {
 
 
   .video-testimonials__grid,
-  .video-testimonials--pair
-  .video-testimonials__grid,
-  .home-video-testimonials
-  .video-testimonials__grid {
-    width:
-      100%;
-
-    max-width:
-      100%;
-  }
-
-
-  .video-testimonials__card,
-  .home-video-testimonials
   .video-testimonials__card {
     width:
       100%;
@@ -2576,48 +1822,35 @@ button:hover {
   }
 
 
-  .video-testimonials__card-footer
-  h3 {
-    font-size:
-      14px
-      !important;
+  .video-testimonials__audio {
+    right:
+      16px;
+
+    gap:
+      3px;
   }
 
 
-  .video-testimonials-modal {
-    padding:
-      8px;
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio:hover
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio:focus-within
+  .video-testimonials__audio-slider-wrap,
+  .video-testimonials__audio.is-audible
+  .video-testimonials__audio-slider-wrap {
+    width:
+      62px;
   }
 
 
-  .video-testimonials-modal__dialog {
-    max-height:
-      calc(
-        100dvh - 16px
-      );
+  .video-testimonials__audio-slider {
+    width:
+      56px;
+
+    margin-left:
+      6px;
   }
 
-}
-
-
-/* ==========================================================================
-   FOCUS
-   ========================================================================== */
-
-.video-testimonials__card-button:focus-visible,
-.video-testimonials-modal__close:focus-visible,
-.video-testimonials-modal__center-control:focus-visible,
-.video-testimonials-modal__footer
-button:focus-visible {
-  outline:
-    2px
-    solid
-    var(
-      --vt-teal
-    );
-
-  outline-offset:
-    3px;
 }
 
 
@@ -2641,6 +1874,10 @@ button:focus-visible {
 
 /* ==========================================================================
    REDUCED MOTION
+
+   The user requested autoplay video, so this only removes decorative
+   interface transitions. It does not replace the requested testimonial
+   playback behaviour.
    ========================================================================== */
 
 @media (
@@ -2650,20 +1887,13 @@ button:focus-visible {
 
   .video-testimonials *,
   .video-testimonials *::before,
-  .video-testimonials *::after,
-  .video-testimonials-modal *,
-  .video-testimonials-modal *::before,
-  .video-testimonials-modal *::after {
-    scroll-behavior:
-      auto
-      !important;
-
+  .video-testimonials *::after {
     animation:
       none
       !important;
 
-    transition-duration:
-      .01ms
+    transition:
+      none
       !important;
   }
 

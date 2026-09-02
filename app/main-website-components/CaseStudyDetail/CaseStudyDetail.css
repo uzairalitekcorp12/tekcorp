@@ -5,32 +5,72 @@
 }
 
 
-/* HERO TITLE */
+/* ==========================================================================
+   HERO / CASE STUDY INTRO
+   ========================================================================== */
 
 .case-detail__masthead {
+  position: relative;
   min-height: 430px;
-  display: grid;
-  place-items: center;
+  overflow: hidden;
   background: linear-gradient(180deg, #fbfcfb, #f7f8f7);
 }
 
 
-.case-detail__masthead-inner {
-  display: flex;
-  min-height: inherit;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 49px 0 52px;
-  text-align: center;
+.case-detail__masthead::after {
+  position: absolute;
+  top: -220px;
+  right: -190px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(27, 219, 186, 0.06),
+    transparent 68%
+  );
+  content: "";
+  pointer-events: none;
 }
 
 
-.case-detail__masthead-inner > p {
-  margin: 0 0 13px !important;
+.case-detail__masthead-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: inherit;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(44px, 7vw, 84px);
+  padding: 62px 0;
+}
+
+
+.case-detail__masthead--with-video
+.case-detail__masthead-inner {
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(350px, 1.1fr);
+}
+
+
+.case-detail__masthead--without-video
+.case-detail__masthead-copy {
+  max-width: 760px;
+}
+
+
+.case-detail__masthead-copy {
+  min-width: 0;
+}
+
+
+.case-detail__masthead-copy > p {
+  margin: 0 0 12px !important;
   color: var(--tek-green-dark) !important;
   font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   -webkit-text-fill-color: var(--tek-green-dark) !important;
 }
@@ -38,13 +78,13 @@
 
 .case-detail__masthead h1 {
   min-width: 0;
-  max-width: 960px;
+  max-width: 760px;
   margin: 0 !important;
   background: var(--tek-heading-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent !important;
-  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-size: clamp(3rem, 5.7vw, 5rem);
   font-weight: 600 !important;
   letter-spacing: -0.06em !important;
   line-height: 0.99 !important;
@@ -54,41 +94,233 @@
 }
 
 
-.case-detail__breadcrumb {
-  display: flex;
-  min-width: 0;
-  max-width: 780px;
+/* ==========================================================================
+   INDUSTRY
+   ========================================================================== */
+
+.case-detail__hero-industry {
+  display: inline-flex;
+  max-width: 100%;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
-  margin-top: 19px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid currentColor;
-  color: #171918;
-  font-size: 0.56rem;
-  font-weight: 600;
+  gap: 4px;
+  margin-top: 17px;
+  padding: 6px 9px;
+  border: 1px solid rgba(27, 219, 186, 0.65);
+  border-radius: 5px;
+  background: rgba(27, 219, 186, 0.045);
+  color: #343936;
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.32;
 }
 
 
-.case-detail__breadcrumb a {
-  color: inherit;
+.case-detail__hero-industry strong {
+  color: #1c211e;
+  font-weight: 700;
 }
 
 
-.case-detail__breadcrumb strong {
-  min-width: 0;
-  max-width: 280px;
+.case-detail__hero-industry span {
+  color: #343936;
+  -webkit-text-fill-color: #343936;
+}
+
+
+.case-detail__hero-context {
+  max-width: 560px;
+  margin: 13px 0 0 !important;
+  color: #6d7470 !important;
+  font-size: 0.68rem;
+  line-height: 1.62;
+  -webkit-text-fill-color: #6d7470 !important;
+}
+
+
+/* ==========================================================================
+   HERO TECHNOLOGY BADGES
+   ========================================================================== */
+
+.case-detail__hero-technologies {
+  margin-top: 22px;
+}
+
+
+.case-detail__hero-technologies > strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #343936;
+  font-size: 0.65rem;
+  font-weight: 650;
+}
+
+
+.case-detail__hero-technologies ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+.case-detail__hero-technologies li {
+  display: inline-flex;
+  min-height: 43px;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 11px 4px 4px;
+  border: 1px solid rgba(22, 93, 78, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #313633;
+  box-shadow: 0 4px 14px rgba(12, 38, 31, 0.025);
+  transition:
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 300ms ease,
+    transform 320ms var(--tek-ease);
+}
+
+
+.case-detail__hero-technologies li:hover {
+  border-color: rgba(27, 219, 186, 0.45);
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(12, 38, 31, 0.08);
+  transform: translateY(-3px);
+}
+
+
+.case-detail__hero-technology-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  border: 1px solid rgba(22, 93, 78, 0.1);
+  border-radius: 50%;
+  background: #edf5f1;
+  color: var(--tek-green-dark);
+  font-size: 0.45rem;
+  font-weight: 700;
+  transition:
+    background 260ms ease,
+    border-color 260ms ease,
+    transform 320ms var(--tek-ease);
 }
 
 
-/* CONTENT */
+.case-detail__hero-technologies li:hover
+.case-detail__hero-technology-icon {
+  border-color: rgba(27, 219, 186, 0.36);
+  background: #e9f8f3;
+  transform: scale(1.04);
+}
+
+
+.case-detail__hero-technology-icon .tek-cms-image,
+.case-detail__hero-technology-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.case-detail__hero-technology-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #343a36;
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.25;
+  -webkit-text-fill-color: #343a36;
+}
+
+
+/* ==========================================================================
+   HERO VIDEO
+
+   Loading video is removed from visual layout.
+   It enters the grid only after it can actually load/play.
+   ========================================================================== */
+
+.case-detail__hero-video {
+  width: 100%;
+  margin: 0;
+}
+
+
+.case-detail__hero-video.is-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.case-detail__hero-video.is-ready {
+  position: relative;
+  opacity: 1;
+  animation: caseVideoReveal 420ms var(--tek-ease) both;
+}
+
+
+.case-detail__hero-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #e2e5e3;
+  border-radius: 18px;
+  background: #080b09;
+  box-shadow: 0 24px 58px rgba(12, 38, 31, 0.12);
+}
+
+
+.case-detail__hero-video-frame iframe,
+.case-detail__hero-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  background: #080b09;
+}
+
+
+@keyframes caseVideoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
 
 .case-detail__content {
   padding: 49px 0 73px;
 }
 
+
+/* ==========================================================================
+   EXISTING HERO / LEGACY IMAGE
+   ========================================================================== */
 
 .case-detail__hero-image {
   position: relative;
@@ -111,10 +343,13 @@
 }
 
 
-.case-detail__image > img {
+.case-detail__image > img,
+.case-detail__image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 720ms var(--tek-ease);
 }
 
@@ -139,12 +374,14 @@
 
 
 .case-detail__hero-image:hover
-.case-detail__image > img {
+.case-detail__image img {
   transform: scale(1.025);
 }
 
 
-/* TEXT TWO-COLUMN */
+/* ==========================================================================
+   LEGACY TEXT
+   ========================================================================== */
 
 .case-detail__story {
   display: grid;
@@ -183,34 +420,6 @@
   line-height: 1.68;
   white-space: pre-line;
   -webkit-text-fill-color: #6d7470 !important;
-}
-
-
-.case-detail__contact {
-  display: inline-flex;
-  min-height: 41px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 3px;
-  padding-inline: 17px;
-  border-radius: 4px;
-  background: var(--tek-green);
-  color: #08251f;
-  font-size: 0.57rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition:
-    background 220ms ease,
-    color 220ms ease,
-    transform 250ms var(--tek-ease);
-}
-
-
-.case-detail__contact:hover {
-  background: #171918;
-  color: #ffffff;
-  transform: translateY(-2px);
 }
 
 
@@ -257,18 +466,22 @@
 }
 
 
-/* STRUCTURED CMS CASE STUDIES */
+/* ==========================================================================
+   STRUCTURED CMS CASE STUDIES
+   ========================================================================== */
 
 .case-detail__structured {
   display: grid;
   gap: 70px;
-  margin-top: 56px;
+  margin-top: 0;
 }
 
 
 .case-detail__overview {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(0, 1.2fr);
   gap: 54px;
   padding-bottom: 55px;
   border-bottom: 1px solid #e2e5e3;
@@ -323,6 +536,10 @@
   max-width: 650px;
 }
 
+
+/* ==========================================================================
+   CHALLENGES
+   ========================================================================== */
 
 .case-detail__challenge-grid {
   display: grid;
@@ -423,9 +640,17 @@
 }
 
 
+/* ==========================================================================
+   METRICS
+   ========================================================================== */
+
 .case-detail__metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    );
   gap: 0;
   margin: 29px 0;
   border-top: 1px solid #dfe5e1;
@@ -502,9 +727,14 @@
 }
 
 
+/* ==========================================================================
+   IMPACT
+   ========================================================================== */
+
 .case-detail__impact-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -515,7 +745,14 @@
 }
 
 
+/* ==========================================================================
+   MAIN DATABASE IMAGES
+
+   Both images now fully fill their media boundaries.
+   ========================================================================== */
+
 .case-detail__section-media {
+  position: relative;
   width: 100%;
   aspect-ratio: 1.82 / 1;
   margin: 25px 0 0;
@@ -524,8 +761,44 @@
 }
 
 
-.case-detail__section-media .case-detail__image {
+.case-detail__section-media
+.case-detail__image {
+  width: 100%;
   height: 100%;
+}
+
+
+.case-detail__section-media
+.case-detail__image > img,
+.case-detail__section-media
+.case-detail__image img,
+.case-detail__section-media
+.case-detail__image .tek-cms-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: center;
+}
+
+
+/* FIRST IMAGE */
+
+.case-detail__section-media--banner {
+  margin-bottom: 26px;
+}
+
+
+/* SECOND IMAGE */
+
+.case-detail__section-media--result {
+  margin-top: -44px;
+}
+
+
+.case-detail__section-media:hover
+.case-detail__image img {
+  transform: scale(1.018);
 }
 
 
@@ -541,12 +814,17 @@
 }
 
 
-.case-detail__block-icon .tek-cms-image {
+.case-detail__block-icon
+.tek-cms-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
+
+/* ==========================================================================
+   SOLUTIONS
+   ========================================================================== */
 
 .case-detail__solutions-list {
   display: grid;
@@ -572,9 +850,15 @@
 }
 
 
+/* ==========================================================================
+   RESULTS
+   ========================================================================== */
+
 .case-detail__results {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(0, 1.2fr);
   gap: 54px;
   padding: 42px 0;
   border-top: 1px solid #e2e5e3;
@@ -583,74 +867,21 @@
 }
 
 
-.case-detail__results .case-detail__metrics {
+.case-detail__results
+.case-detail__metrics {
   grid-column: 1 / -1;
   margin: 6px 0 0;
 }
 
 
-.case-detail__results .case-detail__section-media {
-  grid-column: 1 / -1;
-  margin: 0;
-}
-
-
-.case-detail__technologies ul {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 25px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-
-.case-detail__technologies li {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 10px;
-  padding: 15px;
-  border: 1px solid #e2e5e3;
-  color: #313633;
-  font-size: 0.63rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-
-.case-detail__technology-icon {
-  display: grid;
-  flex: 0 0 38px;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-  background: #edf5f1;
-  color: var(--tek-green-dark);
-  font-size: 0.48rem;
-  font-weight: 700;
-}
-
-
-.case-detail__technology-icon .tek-cms-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-
-.case-detail__structured + .case-detail__contact {
-  margin-top: 44px;
-}
-
-
-/* GALLERY */
+/* ==========================================================================
+   GALLERY
+   ========================================================================== */
 
 .case-detail__gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
   gap: 18px;
   margin-top: 47px;
 }
@@ -666,7 +897,8 @@
 }
 
 
-.case-detail__gallery-item figcaption {
+.case-detail__gallery-item
+figcaption {
   max-width: calc(100% - 22px);
   overflow-wrap: anywhere;
   position: absolute;
@@ -683,17 +915,43 @@
 
 
 .case-detail__gallery-item:hover
-.case-detail__image > img {
+.case-detail__image img {
   transform: scale(1.045);
 }
 
 
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  .case-detail__masthead--with-video
+  .case-detail__masthead-inner {
+    grid-template-columns: 1fr;
+  }
+
+
+  .case-detail__masthead-copy {
+    max-width: 720px;
+  }
+
+
+  .case-detail__hero-video.is-ready {
+    max-width: 720px;
+  }
+
+}
+
+
 @media (max-width: 860px) {
+
   .case-detail__story,
   .case-detail__story.has-sections {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
 
   .case-detail__overview,
   .case-detail__results {
@@ -701,90 +959,240 @@
     gap: 30px;
   }
 
-  .case-detail__technologies ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
 @media (max-width: 680px) {
+
   .case-detail__masthead {
-    min-height: 365px;
+    min-height: 0;
   }
+
+
+  .case-detail__masthead-inner {
+    gap: 30px;
+    padding: 44px 0 48px;
+  }
+
 
   .case-detail__masthead h1 {
-    font-size: clamp(2.5rem, 11.7vw, 3.45rem);
+    font-size:
+      clamp(
+        2.5rem,
+        11.7vw,
+        3.45rem
+      );
   }
 
-  .case-detail__breadcrumb strong {
-    max-width: 160px;
+
+  .case-detail__hero-industry {
+    margin-top: 15px;
+    padding: 6px 8px;
+    font-size: 0.63rem;
   }
+
+
+  .case-detail__hero-context {
+    font-size: 0.67rem;
+  }
+
+
+  .case-detail__hero-video-frame {
+    aspect-ratio: 16 / 10;
+    border-radius: 13px;
+  }
+
+
+  .case-detail__hero-technologies {
+    margin-top: 18px;
+  }
+
+
+  .case-detail__hero-technologies
+  > strong {
+    font-size: 0.62rem;
+  }
+
+
+  .case-detail__hero-technologies ul {
+    gap: 7px;
+  }
+
+
+  .case-detail__hero-technologies li {
+    min-height: 40px;
+    padding:
+      3px
+      10px
+      3px
+      3px;
+  }
+
+
+  .case-detail__hero-technology-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+
+  .case-detail__hero-technology-name {
+    font-size: 0.59rem;
+  }
+
 
   .case-detail__content {
     padding-top: 35px;
   }
+
 
   .case-detail__hero-image {
     aspect-ratio: 1.15 / 1;
     padding: 11px;
   }
 
-  .case-detail__hero-image figcaption {
+
+  .case-detail__hero-image
+  figcaption {
     right: 20px;
     bottom: 20px;
   }
+
 
   .case-detail__story {
     margin-top: 31px;
   }
 
+
   .case-detail__structured {
     gap: 52px;
-    margin-top: 38px;
   }
+
 
   .case-detail__overview {
     gap: 24px;
     padding-bottom: 40px;
   }
 
+
   .case-detail__challenge-grid,
   .case-detail__impact-grid {
     grid-template-columns: 1fr;
   }
 
+
   .case-detail__challenge-card {
     min-height: 0;
   }
+
 
   .case-detail__results {
     gap: 24px;
     padding: 30px 0;
   }
 
+
   .case-detail__metrics {
     grid-template-columns: 1fr;
   }
 
-  .case-detail__metrics > div + div {
+
+  .case-detail__metrics
+  > div
+  +
+  div {
     border-top: 1px solid #dfe5e1;
     border-left: 0;
   }
 
-  .case-detail__technologies ul {
-    grid-template-columns: 1fr;
+
+  /*
+   * Mobile media remains tall enough for readability,
+   * while images continue filling all available boundaries.
+   */
+
+  .case-detail__section-media {
+    aspect-ratio: 1.15 / 1;
   }
+
+
+  .case-detail__section-media--banner {
+    margin-bottom: 22px;
+  }
+
+
+  .case-detail__section-media--result {
+    margin-top: -28px;
+  }
+
 
   .case-detail__gallery {
     grid-template-columns: 1fr;
     margin-top: 39px;
   }
 
+
   .case-detail__gallery-item {
     aspect-ratio: 1.1 / 1;
   }
 
-  .case-detail__contact {
-    width: 100%;
+}
+
+
+/* ==========================================================================
+   VERY SMALL PHONE
+   ========================================================================== */
+
+@media (max-width: 420px) {
+
+  .case-detail__masthead h1 {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3rem
+      );
   }
+
+
+  .case-detail__hero-industry {
+    font-size: 0.6rem;
+  }
+
+
+  .case-detail__hero-video-frame {
+    aspect-ratio: 1.2 / 1;
+  }
+
+
+  .case-detail__hero-technologies li {
+    max-width: 100%;
+  }
+
+
+  .case-detail__hero-technology-name {
+    font-size: 0.57rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .case-detail *,
+  .case-detail *::before,
+  .case-detail *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
 }

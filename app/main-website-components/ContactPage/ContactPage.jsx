@@ -1102,7 +1102,7 @@ export default function ContactPage() {
               href="#project-details"
             >
               <span>
-                TekCorp &gt; Contact Us
+                Tekcorp &gt; Contact Us
               </span>
 
               <ArrowUpRight

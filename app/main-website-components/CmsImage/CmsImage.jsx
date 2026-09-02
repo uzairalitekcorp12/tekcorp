@@ -46,7 +46,7 @@ export default function CmsImage({
   alt = "",
   className = "",
   fallbackClassName = "",
-  fallbackLabel = "TekCorp",
+  fallbackLabel = "Tekcorp",
   fallbackText = "",
   priority = false,
   sizes,

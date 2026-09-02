@@ -379,6 +379,64 @@ const fallbackProjects = [
 ];
 
 
+function firstParagraph(
+  value,
+) {
+  if (
+    typeof value !==
+    "string"
+  ) {
+    return "";
+  }
+
+  return value
+    .split(
+      /\r?\n\s*\r?\n/,
+      1,
+    )[0]
+    .trim();
+}
+
+
+function projectContext(
+  project,
+) {
+  const structuredParagraph =
+    project?.structuredSections?.problems?.leftParas?.[0] ||
+    project?.sections?.problems?.leftParas?.[0];
+
+  const legacyParagraph =
+    Array.isArray(
+      project?.sections,
+    )
+      ? firstParagraph(
+          project.sections.find(
+            (section) =>
+              typeof section?.content ===
+              "string",
+          )?.content,
+        )
+      : "";
+
+  return (
+    firstParagraph(
+      structuredParagraph,
+    ) ||
+    legacyParagraph ||
+    firstParagraph(
+      project?.description,
+    ) ||
+    firstParagraph(
+      project?.summary,
+    ) ||
+    firstParagraph(
+      project?.excerpt,
+    ) ||
+    "Explore the challenge, solution, and outcome behind this project."
+  );
+}
+
+
 /* ==========================================================================
    PROJECT CARD
    ========================================================================== */
@@ -397,7 +455,7 @@ function ProjectCard({
       <a
         className="lp1-success-card__visual"
         href={project.href}
-        aria-label={`View ${project.client} case study`}
+        aria-label={`View ${project.title} case study`}
       >
 
         <img
@@ -476,19 +534,10 @@ function ProjectCard({
 
       <div className="lp1-success-card__body">
 
-        <div className="lp1-success-card__meta">
-
-          <strong className="lp1-success-card__client">
-            {project.client}
-          </strong>
-
-
-          <span className="lp1-success-card__meta-line" />
-
-        </div>
-
-
-        <p className="lp1-success-card__description">
+        <p
+          className="lp1-success-card__description"
+          tabIndex={0}
+        >
           {project.description}
         </p>
 
@@ -541,11 +590,10 @@ export default function HomePortfolio({
   const projectCards = Array.isArray(projects) && projects.length
     ? projects.map((project) => ({
         id: project._id || project.slug,
-        client: project.client || project.category || "TEKCORP",
         title: project.title,
         category: project.category || "Digital Product",
         image: project.thumbnail || project.heroImage || project.image || "",
-        description: project.shortDescription || project.excerpt || project.summary || project.description || "Explore how TekCorp transformed this digital product.",
+        description: projectContext(project),
         href: `/case-studies/${encodeURIComponent(project.slug)}`,
       }))
     : useFallback

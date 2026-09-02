@@ -34,7 +34,7 @@ export default function Impact() {
             </h2>
 
             <p className="impact-intro">
-              Organizations working with TekCorp often
+              Organizations working with Tekcorp often
               <br className="impact-intro-break" />
               experience:
             </p>

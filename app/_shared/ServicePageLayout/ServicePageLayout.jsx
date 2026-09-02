@@ -47,7 +47,7 @@ export default async function ServicePageLayout({
       dataPage={page}
       navbarProps={{
         variant: "default",
-        initialActiveTab: "Our Solutions",
+        initialActiveTab: "Solutions",
         homeHref: "/home",
         ctaHref: "/contact",
         ...navbarProps,

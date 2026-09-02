@@ -12,7 +12,7 @@ import {
 
 
 export default function ContentRouteState({
-  eyebrow = "TekCorp",
+  eyebrow = "Tekcorp",
   title,
   description,
   backHref = "/home",

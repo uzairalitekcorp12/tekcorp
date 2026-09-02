@@ -8,7 +8,7 @@ const items = [
     n: "01",
     t: "Outdated Websites That Fail To Convert",
     desc:
-      "Legacy web designs lose potential leads due to poor mobile optimization, slow load times, and confusing UI/UX. TekCorp rebuilds high-converting digital storefronts tailored to turn traffic into revenue.",
+      "Legacy web designs lose potential leads due to poor mobile optimization, slow load times, and confusing UI/UX. Tekcorp rebuilds high-converting digital storefronts tailored to turn traffic into revenue.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
     alt: "Analytics dashboard showing web conversion rates",

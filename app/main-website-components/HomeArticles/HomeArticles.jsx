@@ -366,7 +366,7 @@ export default function HomeArticles({
           >
             <p>
               New insights are being prepared. Explore the insights
-              library for every published TekCorp article.
+              library for every published Tekcorp article.
             </p>
 
             <Button

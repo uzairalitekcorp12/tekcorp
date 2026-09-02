@@ -124,7 +124,7 @@ export default function LegalPolicyPage({ policy }) {
           <section className="legal-policy__contact" aria-labelledby="legal-contact-title">
             <div>
               <span>Questions about this policy?</span>
-              <h2 id="legal-contact-title">Contact TekCorp</h2>
+              <h2 id="legal-contact-title">Contact Tekcorp</h2>
               <p>{contactText}</p>
             </div>
 

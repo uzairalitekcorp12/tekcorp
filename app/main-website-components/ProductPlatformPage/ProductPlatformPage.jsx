@@ -44,7 +44,7 @@ export default function ProductPlatformPage({ config }) {
           <p>{config.summary}</p>
           <div className="product-platform__hero-actions">
             <Link href="/contact" className="product-platform__primary-cta">Request a Demo <ArrowUpRight size={13} strokeWidth={1.8} /></Link>
-            <span>Product by TekCorp</span>
+            <span>Product by Tekcorp</span>
           </div>
         </div>
         <div className="product-platform__hero-visual">

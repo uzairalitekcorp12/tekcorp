@@ -37,7 +37,7 @@ const highlights = [
       "Our Mission",
 
     text:
-      "Our mission at TekCorp is to empower businesses through transformative IT solutions. We are committed to developing state-of-the-art technology services that enhance operational efficiency, ensure security, and drive growth.",
+      "Our mission at Tekcorp is to empower businesses through transformative IT solutions. We are committed to developing state-of-the-art technology services that enhance operational efficiency, ensure security, and drive growth.",
   },
 ];
 
@@ -72,7 +72,7 @@ export default function AboutAbout() {
               aria-hidden="true"
             />
 
-            About TekCorp
+            About Tekcorp
 
           </p>
 
@@ -80,7 +80,7 @@ export default function AboutAbout() {
           {/* MAIN HEADING */}
 
           <h2 className="tek-About-about__headline">
-            TekCorp delivers comprehensive, efficient,
+            Tekcorp delivers comprehensive, efficient,
             <br className="tek-About-about__headline-break" />
             and scalable technology solutions tailored to
             <br className="tek-About-about__headline-break" />
@@ -95,7 +95,7 @@ export default function AboutAbout() {
           <div className="tek-About-about__intro">
 
             <p>
-              At TekCorp, we specialize in cutting-edge IT solutions
+              At Tekcorp, we specialize in cutting-edge IT solutions
               that drive digital transformation. Our expertise spans
               across various domains. we empower organizations to
               achieve greater efficiency, security, and growth

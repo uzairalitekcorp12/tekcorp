@@ -10,7 +10,7 @@ export default function ServiceBreadcrumb({
   return (
     <Breadcrumb
       className={className}
-      items={["TekCorp", "Our Solutions", current]}
+      items={["Tekcorp", "Solutions", current]}
       separator={separator}
       sectionHref="/home#digital-solutions"
       trailing={showArrow ? arrow : null}

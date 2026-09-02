@@ -11,31 +11,7 @@ import VideoTestimonials from "../../main-website-components/VideoTestimonials/V
 
 
 /* ==========================================================================
-   VIDEO TESTIMONIAL FALLBACKS
-
-   Environment variables remain the primary source.
-
-   These URLs are only used when a configured testimonial URL/poster
-   is unavailable.
-   ========================================================================== */
-
-const PLACEHOLDER_VIDEO_URLS = [
-  "https://www.youtube.com/shorts/ImsFH9bjtCI",
-
-  "https://youtube.com/shorts/FQagzMsmJfo?si=_dv2jxEufndTxdaS",
-];
-
-
-const PLACEHOLDER_POSTER_URLS = [
-  "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200",
-
-  "https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=1200",
-];
-
-
-/* ==========================================================================
    HOME
-   ==========================================================================
 
    Canonical TekCorp homepage composition.
 
@@ -51,48 +27,38 @@ const PLACEHOLDER_POSTER_URLS = [
    07 — Articles / Insights
    08 — Contact
 
+   TESTIMONIAL ARCHITECTURE
+   --------------------------------------------------------------------------
+
+   Testimonial data lives ONLY inside:
+
+   VideoTestimonials.jsx
+
+   To add a future client:
+   - add one object to TESTIMONIALS[]
+   - do not edit this Home component
+
    ========================================================================== */
 
 export default function Home({
   articles = [],
   projects = [],
 }) {
-
-  /* ==========================================================================
-     VIDEO TESTIMONIAL 01
-     ========================================================================== */
-
-  const firstVideoUrl =
-    process.env.VIDEO_TESTIMONIAL_1_URL?.trim() ||
-    process.env.VIDEO_TESTIMONIAL_1_S3_URL?.trim() ||
-    process.env.VIDEO_TESTIMONIAL_S3_URL?.trim() ||
-    PLACEHOLDER_VIDEO_URLS[0];
+  const safeArticles =
+    Array.isArray(
+      articles,
+    )
+      ? articles
+      : [];
 
 
-  const firstPosterUrl =
-    process.env.VIDEO_TESTIMONIAL_1_POSTER_S3_URL?.trim() ||
-    process.env.VIDEO_TESTIMONIAL_POSTER_S3_URL?.trim() ||
-    PLACEHOLDER_POSTER_URLS[0];
+  const safeProjects =
+    Array.isArray(
+      projects,
+    )
+      ? projects
+      : [];
 
-
-  /* ==========================================================================
-     VIDEO TESTIMONIAL 02
-     ========================================================================== */
-
-  const secondVideoUrl =
-    process.env.VIDEO_TESTIMONIAL_2_URL?.trim() ||
-    process.env.VIDEO_TESTIMONIAL_2_S3_URL?.trim() ||
-    PLACEHOLDER_VIDEO_URLS[1];
-
-
-  const secondPosterUrl =
-    process.env.VIDEO_TESTIMONIAL_2_POSTER_S3_URL?.trim() ||
-    PLACEHOLDER_POSTER_URLS[1];
-
-
-  /* ==========================================================================
-     RENDER
-     ========================================================================== */
 
   return (
     <SitePageLayout
@@ -124,14 +90,19 @@ export default function Home({
       {/* ====================================================================
           03 — VIDEO TESTIMONIALS
 
-          Two centered client-story videos.
+          Automatically renders every client defined in TESTIMONIALS[].
 
-          VideoTestimonials handles:
-          - muted card previews
-          - YouTube/direct video support
+          Handles:
+          - direct S3 / CDN media
+          - lazy video loading
+          - viewport preloading
+          - muted previews
+          - offscreen pause
+          - complete uncropped videos
+          - responsive grid
           - popup playback
-          - reset on close
-          - mobile responsiveness
+          - native volume / unmute controls
+          - video SEO metadata
           ==================================================================== */}
 
       <VideoTestimonials
@@ -139,87 +110,23 @@ export default function Home({
         eyebrow=""
         title="Watch What They’re Saying About Us"
         description="We are a 360 software solutions company aiming to ensure your firm's growth. Along with our cutting-edge, worldwide competence and affordable client service."
-        testimonials={[
-          {
-            id:
-              "john-smith",
-
-            name:
-              "John Smith",
-
-            role:
-              "Founder",
-
-            company:
-              "",
-
-            video:
-              firstVideoUrl,
-
-            poster:
-              firstPosterUrl,
-
-            previewStart:
-              0,
-
-            previewDuration:
-              5,
-          },
-
-
-          {
-            id:
-              "michelle-jawing",
-
-            name:
-              "Michelle Jawing",
-
-            role:
-              "Marketing Manager",
-
-            company:
-              "GFO",
-
-            video:
-              secondVideoUrl,
-
-            poster:
-              secondPosterUrl,
-
-            previewStart:
-              0,
-
-            previewDuration:
-              5,
-          },
-        ]}
       />
 
 
       {/* ====================================================================
-          04 — TEKCORP CAPABILITY ATLAS
-
-          Interactive gateway into the rest of the website.
-
-          Covers:
-          - Design & Engineering
-          - Growth & Marketing
-          - AI & Automation
-          - TekCorp Products
-
-          Each capability exposes direct links to deeper service/product pages.
+          04 — CAPABILITY ATLAS
           ==================================================================== */}
 
       <HomeCapabilityAtlas />
 
 
       {/* ====================================================================
-          05 — DIGITAL SYSTEMS / PORTFOLIO
+          05 — PORTFOLIO / CASE STUDIES
           ==================================================================== */}
 
       <HomePortfolio
         projects={
-          projects
+          safeProjects
         }
       />
 
@@ -237,7 +144,7 @@ export default function Home({
 
       <HomeArticles
         articles={
-          articles
+          safeArticles
         }
       />
 

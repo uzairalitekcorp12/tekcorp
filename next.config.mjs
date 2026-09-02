@@ -53,6 +53,45 @@ const IS_PRODUCTION =
   "production";
 
 
+const CANONICAL_SERVICE_ROUTES = [
+  ["web-development", "web-engineering"],
+  ["application-development", "application-engineering"],
+  ["cms-development", "cms-development"],
+  ["ecommerce-development", "ecommerce-development"],
+  ["ui-ux-design", "prototyping-ui-ux-design"],
+  ["logo-branding", "branding"],
+  ["search-engine-optimization", "search-engine-optimization"],
+  ["social-media-marketing", "social-media-marketing"],
+  ["marketing-strategy", "marketing-strategy"],
+  ["google-ads", "google-ads"],
+  ["content-marketing", "content-marketing"],
+  ["ai-chatbot-development", "ai-chatbots-assistants"],
+  ["ai-agent-development", "ai-agents-automation"],
+  ["voice-ai-agents", "voice-ai-conversational-agents"],
+  ["rag-solutions", "rag-knowledge-base-solutions"],
+  ["mcp-server-development", "mcp-server-development-integrations"],
+];
+
+
+const serviceRouteRedirects =
+  CANONICAL_SERVICE_ROUTES.flatMap(([publicSlug, view]) => {
+    const canonical = `/services/${publicSlug}`;
+    const legacyPaths = new Set([
+      `/service/${view}`,
+      `/service/${publicSlug}`,
+      `/services/${view}`,
+    ]);
+
+    legacyPaths.delete(canonical);
+
+    return Array.from(legacyPaths, (source) => ({
+      source,
+      destination: canonical,
+      permanent: true,
+    }));
+  });
+
+
 const nextConfig = {
 
   /* ==========================================================================
@@ -78,7 +117,7 @@ const nextConfig = {
 
      http://localhost:3000
      http://localhost:3000/home
-     http://localhost:3000/service/google-ads
+     http://localhost:3000/services/google-ads
 
      will NEVER be redirected to tekcorp.ae.
 
@@ -87,16 +126,7 @@ const nextConfig = {
   async redirects() {
 
     const routeRedirects = [
-      {
-        source:
-          "/services/:path*",
-
-        destination:
-          "/service/:path*",
-
-        permanent:
-          true,
-      },
+      ...serviceRouteRedirects,
 
 
       {
@@ -204,19 +234,25 @@ const nextConfig = {
      Example:
 
      Browser:
-         /service/google-ads
+         /services/google-ads
 
      Internally:
          /?view=google-ads
 
      Browser continues displaying:
-         /service/google-ads
+         /services/google-ads
 
      ========================================================================== */
 
   async rewrites() {
 
-    return [
+    return {
+      beforeFiles: [
+
+      ...CANONICAL_SERVICE_ROUTES.map(([publicSlug, view]) => ({
+        source: `/services/${publicSlug}`,
+        destination: `/?view=${view}`,
+      })),
 
       /* ======================================================================
          MAIN WEBSITE
@@ -532,7 +568,10 @@ const nextConfig = {
           "/?view=employee-management-onboarding-portal",
       },
 
-    ];
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
 
 };

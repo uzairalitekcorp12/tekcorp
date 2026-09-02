@@ -2,14 +2,6 @@
 
 import "./CaseStudyDetail.css";
 
-import Link from "next/link";
-
-import Button from
-  "@/app/_shared/Button/Button";
-
-import ContentSocialBar from
-  "@/app/_shared/ContentSocialBar/ContentSocialBar";
-
 import {
   useCallback,
   useEffect,
@@ -18,88 +10,51 @@ import {
   useState,
 } from "react";
 
-import {
-  ArrowUpRight,
-} from "lucide-react";
-
-import CmsImage from
-  "../CmsImage/CmsImage";
-
-import {
-  contentImage,
-} from "../CmsImage/contentImages";
+import CmsImage from "../CmsImage/CmsImage";
+import { contentImage } from "../CmsImage/contentImages";
 
 
 /* ==========================================================================
    BASIC HELPERS
    ========================================================================== */
 
-function textValue(
-  value,
-) {
-  return typeof value ===
-    "string"
-      ? value.trim()
-      : "";
+function textValue(value) {
+  return typeof value === "string"
+    ? value.trim()
+    : "";
 }
 
 
-function paragraphs(
-  value,
-) {
+function paragraphs(value) {
+  const source = textValue(value);
 
-  const source =
-    textValue(
-      value,
-    );
-
-
-  if (
-    !source
-  ) {
+  if (!source) {
     return [];
   }
 
-
   return source
-    .split(
-      /\r?\n\s*\r?\n/,
-    )
-    .map(
-      (item) =>
-        item.trim(),
-    )
-    .filter(
-      Boolean,
-    );
+    .split(/\r?\n\s*\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 
 /* ==========================================================================
-   NORMALIZERS
+   LEGACY SECTIONS
    ========================================================================== */
 
-function normalizeSections(
-  sections,
-) {
-
-  return Array.isArray(
-    sections,
-  )
+function normalizeSections(sections) {
+  return Array.isArray(sections)
     ? sections
-        .map(
-          (section) => ({
-            heading:
-              textValue(
-                section?.heading,
-              ),
+        .map((section) => ({
+          heading: textValue(
+            section?.heading,
+          ),
 
-            content:
-              paragraphs(
-                section?.content,
-              ),
-          }),
-        )
+          content: paragraphs(
+            section?.content,
+          ),
+        }))
         .filter(
           (section) =>
             section.heading ||
@@ -109,257 +64,208 @@ function normalizeSections(
 }
 
 
-function normalizeGallery(
-  gallery,
-) {
+/* ==========================================================================
+   GALLERY
+   ========================================================================== */
 
-  if (
-    !Array.isArray(
-      gallery,
-    )
-  ) {
+function normalizeGallery(gallery) {
+  if (!Array.isArray(gallery)) {
     return [];
   }
-
 
   return Array.from(
     new Set(
       gallery
-        .map(
-          (item) =>
-            typeof item ===
-              "string"
-              ? item.trim()
-              : "",
+        .map((item) =>
+          typeof item === "string"
+            ? item.trim()
+            : "",
         )
-        .filter(
-          Boolean,
-        ),
+        .filter(Boolean),
     ),
   );
 }
 
 
-function normalizeStructuredSections(
-  value,
-) {
+/* ==========================================================================
+   STRUCTURED DATABASE SECTIONS
+   ========================================================================== */
 
+function normalizeStructuredSections(value) {
   const source =
     value &&
-    typeof value ===
-      "object"
+    typeof value === "object" &&
+    !Array.isArray(value)
       ? value
       : {};
 
 
-  const normalizeTextItems =
-    (items) =>
-      Array.isArray(
-        items,
-      )
-        ? items
-            .map(
-              (item) => ({
-                title:
-                  textValue(
-                    item?.title,
-                  ),
+  function normalizeTextItems(items) {
+    return Array.isArray(items)
+      ? items
+          .map((item) => ({
+            title: textValue(
+              item?.title,
+            ),
 
-                text:
-                  textValue(
-                    item?.text,
-                  ),
+            text: textValue(
+              item?.text,
+            ),
 
-                icon:
-                  textValue(
-                    item?.icon,
-                  ),
+            icon: textValue(
+              item?.icon,
+            ),
 
-                variant:
-                  textValue(
-                    item?.variant,
-                  ),
+            variant: textValue(
+              item?.variant,
+            ),
 
-                highlighted:
-                  Boolean(
-                    item?.highlighted,
-                  ),
-              }),
-            )
-            .filter(
-              (item) =>
-                item.title ||
-                item.text,
-            )
-        : [];
+            highlighted: Boolean(
+              item?.highlighted,
+            ),
+          }))
+          .filter(
+            (item) =>
+              item.title ||
+              item.text,
+          )
+      : [];
+  }
 
 
-  const normalizeMetrics =
-    (items) =>
-      Array.isArray(
-        items,
-      )
-        ? items
-            .map(
-              (item) => ({
-                value:
-                  textValue(
-                    item?.value,
-                  ),
+  function normalizeMetrics(items) {
+    return Array.isArray(items)
+      ? items
+          .map((item) => ({
+            value: textValue(
+              item?.value,
+            ),
 
-                label:
-                  textValue(
-                    item?.label,
-                  ),
-              }),
-            )
-            .filter(
-              (item) =>
-                item.value ||
-                item.label,
-            )
-        : [];
+            label: textValue(
+              item?.label,
+            ),
+          }))
+          .filter(
+            (item) =>
+              item.value ||
+              item.label,
+          )
+      : [];
+  }
 
 
   const problemSource =
-    source.problems ||
-    {};
-
+    source.problems || {};
 
   const impactSource =
-    source.impact ||
-    {};
-
+    source.impact || {};
 
   const processSource =
-    source.process ||
-    {};
-
+    source.process || {};
 
   const resultSource =
-    source.result ||
-    {};
+    source.result || {};
 
 
   return {
-
     problems: {
+      kicker: textValue(
+        problemSource.kicker,
+      ),
 
-      kicker:
-        textValue(
-          problemSource.kicker,
-        ),
+      heading: textValue(
+        problemSource.heading,
+      ),
 
-      heading:
-        textValue(
-          problemSource.heading,
-        ),
+      leftParas: Array.isArray(
+        problemSource.leftParas,
+      )
+        ? problemSource.leftParas.flatMap(
+            paragraphs,
+          )
+        : [],
 
-      leftParas:
-        Array.isArray(
-          problemSource.leftParas,
-        )
-          ? problemSource.leftParas.flatMap(
-              paragraphs,
-            )
-          : [],
+      rightHeading: textValue(
+        problemSource.rightHeading,
+      ),
 
-      rightHeading:
-        textValue(
-          problemSource.rightHeading,
-        ),
-
-      items:
-        normalizeTextItems(
-          problemSource.problems,
-        ),
+      items: normalizeTextItems(
+        problemSource.problems,
+      ),
     },
 
 
     impact: {
+      metrics: normalizeMetrics(
+        impactSource.metrics,
+      ),
 
-      metrics:
-        normalizeMetrics(
-          impactSource.metrics,
-        ),
+      blocks: normalizeTextItems(
+        impactSource.blocks,
+      ),
 
-      blocks:
-        normalizeTextItems(
-          impactSource.blocks,
-        ),
-
-      collageImage:
-        textValue(
-          impactSource.collageImage,
-        ),
+      collageImage: textValue(
+        impactSource.collageImage,
+      ),
     },
 
 
     process: {
+      heading: textValue(
+        processSource.heading,
+      ),
 
-      heading:
-        textValue(
-          processSource.heading,
-        ),
-
-      steps:
-        normalizeTextItems(
-          processSource.steps,
-        ),
+      steps: normalizeTextItems(
+        processSource.steps,
+      ),
     },
 
 
     result: {
+      heading: textValue(
+        resultSource.heading,
+      ),
 
-      heading:
-        textValue(
-          resultSource.heading,
-        ),
+      paras: Array.isArray(
+        resultSource.paras,
+      )
+        ? resultSource.paras.flatMap(
+            paragraphs,
+          )
+        : [],
 
-      paras:
-        Array.isArray(
-          resultSource.paras,
-        )
-          ? resultSource.paras.flatMap(
-              paragraphs,
-            )
-          : [],
+      metrics: normalizeMetrics(
+        resultSource.metrics,
+      ),
 
-      metrics:
-        normalizeMetrics(
-          resultSource.metrics,
-        ),
+      mediaImage: textValue(
+        resultSource.mediaImage,
+      ),
 
-      mediaImage:
-        textValue(
-          resultSource.mediaImage,
-        ),
+      mediaVideo: textValue(
+        resultSource.mediaVideo,
+      ),
     },
   };
 }
 
 
-function normalizeTechnologies(
-  value,
-) {
+/* ==========================================================================
+   TECHNOLOGIES
+   ========================================================================== */
 
-  return Array.isArray(
-    value,
-  )
+function normalizeTechnologies(value) {
+  return Array.isArray(value)
     ? value
-        .map(
-          (technology) => ({
-            name:
-              textValue(
-                technology?.name,
-              ),
+        .map((technology) => ({
+          name: textValue(
+            technology?.name,
+          ),
 
-            icon:
-              textValue(
-                technology?.icon,
-              ),
-          }),
-        )
+          icon: textValue(
+            technology?.icon,
+          ),
+        }))
         .filter(
           (technology) =>
             technology.name,
@@ -368,21 +274,24 @@ function normalizeTechnologies(
 }
 
 
-function hasStructuredContent(
-  sections,
-  technologies,
-) {
+/* ==========================================================================
+   STRUCTURED CONTENT CHECK
+   ========================================================================== */
 
+function hasStructuredContent(sections) {
   return Boolean(
     sections.problems.heading ||
       sections.problems.leftParas.length ||
       sections.problems.items.length ||
       sections.impact.metrics.length ||
       sections.impact.blocks.length ||
+      sections.impact.collageImage ||
+      sections.process.heading ||
       sections.process.steps.length ||
+      sections.result.heading ||
       sections.result.paras.length ||
       sections.result.metrics.length ||
-      technologies.length,
+      sections.result.mediaImage,
   );
 }
 
@@ -397,37 +306,538 @@ function DetailImage({
   priority = false,
   sizes,
 }) {
-
   return (
     <span className="case-detail__image">
-
       <CmsImage
         src={
           src ||
           contentImage(
             {
-              title:
-                alt,
+              title: alt,
             },
             "case-study",
           )
         }
-        alt={
-          alt
-        }
+        alt={alt}
         fallbackClassName="case-detail__image-fallback"
-        fallbackLabel={
-          alt
-        }
-        priority={
-          priority
-        }
-        sizes={
-          sizes
-        }
+        fallbackLabel={alt}
+        priority={priority}
+        sizes={sizes}
       />
-
     </span>
+  );
+}
+
+
+/* ==========================================================================
+   YOUTUBE
+   ========================================================================== */
+
+function youtubeVideoData(value) {
+  const source =
+    textValue(value);
+
+  if (!source) {
+    return null;
+  }
+
+  try {
+    const url =
+      new URL(source);
+
+    let id = "";
+
+
+    if (
+      url.hostname.includes(
+        "youtu.be",
+      )
+    ) {
+      id =
+        url.pathname
+          .replace(/^\/+/, "")
+          .split("/")[0];
+    }
+
+
+    if (
+      url.hostname.includes(
+        "youtube.com",
+      )
+    ) {
+      if (
+        url.pathname.startsWith(
+          "/shorts/",
+        )
+      ) {
+        id =
+          url.pathname.split("/")[2] ||
+          "";
+      } else if (
+        url.pathname.startsWith(
+          "/embed/",
+        )
+      ) {
+        id =
+          url.pathname.split("/")[2] ||
+          "";
+      } else {
+        id =
+          url.searchParams.get("v") ||
+          "";
+      }
+    }
+
+
+    if (!id) {
+      return null;
+    }
+
+
+    return {
+      id,
+
+      /*
+       * autoplay=1
+       * mute=1
+       * controls=1
+       * playsinline=1
+       * loop=1
+       *
+       * This means the video starts silently but the visitor
+       * can use YouTube's controls to unmute, pause, seek,
+       * fullscreen, change volume, etc.
+       */
+      embedUrl:
+        `https://www.youtube-nocookie.com/embed/${encodeURIComponent(
+          id,
+        )}?autoplay=1&mute=1&controls=1&playsinline=1&rel=0&modestbranding=1&loop=1&playlist=${encodeURIComponent(
+          id,
+        )}`,
+    };
+  } catch {
+    return null;
+  }
+}
+
+
+/* ==========================================================================
+   HERO VIDEO
+
+   BEHAVIOUR
+   --------------------------------------------------------------------------
+   - Automatically starts when possible
+   - Starts muted
+   - Native controls are visible
+   - Visitor can manually unmute
+   - Visitor can change volume
+   - Visitor can pause/play
+   - Visitor can seek
+   - Visitor can fullscreen
+   - Loops automatically
+   - No poster image
+   - Hidden while loading
+   - Removed when media fails
+   - Slow/broken URLs time out after 12 seconds
+
+   IMPORTANT:
+   --------------------------------------------------------------------------
+   We intentionally DO NOT set `video.volume = 0`.
+
+   Muting should be handled by:
+     video.muted = true
+
+   That preserves autoplay compatibility while allowing the visitor
+   to unmute normally through the browser's native controls.
+   ========================================================================== */
+
+function CaseStudyHeroVideo({
+  src,
+  title,
+  onFailure,
+}) {
+  const videoSource =
+    textValue(src);
+
+  const videoRef =
+    useRef(null);
+
+  const youtube =
+    useMemo(
+      () =>
+        youtubeVideoData(
+          videoSource,
+        ),
+      [videoSource],
+    );
+
+
+  const [
+    status,
+    setStatus,
+  ] =
+    useState(
+      videoSource
+        ? "loading"
+        : "failed",
+    );
+
+
+  /* ==========================================================================
+     RESET WHEN VIDEO URL CHANGES
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      setStatus(
+        videoSource
+          ? "loading"
+          : "failed",
+      );
+    },
+    [videoSource],
+  );
+
+
+  /* ==========================================================================
+     BROKEN / VERY SLOW MEDIA PROTECTION
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      if (
+        !videoSource ||
+        status !== "loading"
+      ) {
+        return undefined;
+      }
+
+
+      const timeout =
+        window.setTimeout(
+          () => {
+            setStatus(
+              (current) => {
+                if (
+                  current !==
+                  "loading"
+                ) {
+                  return current;
+                }
+
+
+                onFailure?.();
+
+
+                return "failed";
+              },
+            );
+          },
+          12000,
+        );
+
+
+      return () => {
+        window.clearTimeout(
+          timeout,
+        );
+      };
+    },
+    [
+      videoSource,
+      status,
+      onFailure,
+    ],
+  );
+
+
+  /* ==========================================================================
+     INITIAL DIRECT VIDEO MUTE STATE
+
+     Muted is required for reliable browser autoplay.
+
+     DO NOT set volume = 0 here.
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const video =
+        videoRef.current;
+
+
+      if (!video) {
+        return;
+      }
+
+
+      video.muted =
+        true;
+
+      video.defaultMuted =
+        true;
+    },
+    [
+      videoSource,
+    ],
+  );
+
+
+  /* ==========================================================================
+     DON'T RENDER FAILED MEDIA
+     ========================================================================== */
+
+  if (
+    !videoSource ||
+    status === "failed"
+  ) {
+    return null;
+  }
+
+
+  function handleReady() {
+    setStatus(
+      "ready",
+    );
+  }
+
+
+  /* ==========================================================================
+     DIRECT MP4 / S3 VIDEO READY
+     ========================================================================== */
+
+  async function handleDirectVideoReady() {
+    const video =
+      videoRef.current;
+
+
+    if (!video) {
+      return;
+    }
+
+
+    /*
+     * Start muted so autoplay works.
+     *
+     * The controls remain available so the visitor can unmute.
+     */
+    video.muted =
+      true;
+
+    video.defaultMuted =
+      true;
+
+
+    /*
+     * Explicitly request playback once the media is ready.
+     *
+     * The autoPlay attribute normally performs this too, but this
+     * provides an additional reliable attempt after the browser
+     * reports the media as playable.
+     */
+    try {
+      if (video.paused) {
+        await video.play();
+      }
+    } catch {
+      /*
+       * Some browsers or user preferences can disable autoplay.
+       *
+       * That does NOT mean the media URL is broken, therefore the
+       * video remains visible with native controls available.
+       */
+    }
+
+
+    handleReady();
+  }
+
+
+  /* ==========================================================================
+     MEDIA FAILURE
+     ========================================================================== */
+
+  function handleFailure() {
+    setStatus(
+      "failed",
+    );
+
+
+    onFailure?.();
+  }
+
+
+  /* ==========================================================================
+     RENDER
+     ========================================================================== */
+
+  return (
+    <figure
+      className={[
+        "case-detail__hero-video",
+
+        status === "ready"
+          ? "is-ready"
+          : "is-loading",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div className="case-detail__hero-video-frame">
+
+        {youtube ? (
+          <iframe
+            src={
+              youtube.embedUrl
+            }
+            title={`${title} project video`}
+            loading="eager"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            onLoad={
+              handleReady
+            }
+            onError={
+              handleFailure
+            }
+          />
+        ) : (
+          <video
+            ref={
+              videoRef
+            }
+
+            /*
+             * Automatically start.
+             */
+            autoPlay
+
+            /*
+             * Browser autoplay requires muted media in most cases.
+             */
+            muted
+
+            /*
+             * Restart automatically after finishing.
+             */
+            loop
+
+            /*
+             * Show native browser controls.
+             *
+             * User can:
+             * - unmute
+             * - adjust volume
+             * - pause/play
+             * - seek
+             * - fullscreen
+             * - use available browser media controls
+             */
+            controls
+
+            /*
+             * Prevent forced fullscreen playback on some mobile browsers.
+             */
+            playsInline
+
+            /*
+             * Avoid requesting the complete remote video before needed.
+             */
+            preload="metadata"
+
+            aria-label={`${title} project video`}
+
+            onLoadedData={
+              handleDirectVideoReady
+            }
+
+            onCanPlay={
+              handleDirectVideoReady
+            }
+
+            onError={
+              handleFailure
+            }
+          >
+            <source
+              src={
+                videoSource
+              }
+            />
+          </video>
+        )}
+
+      </div>
+    </figure>
+  );
+}
+
+
+/* ==========================================================================
+   HERO TECHNOLOGY BADGES
+   ========================================================================== */
+
+function HeroTechnologyBadges({
+  technologies,
+}) {
+  if (!technologies.length) {
+    return null;
+  }
+
+
+  return (
+    <div className="case-detail__hero-technologies">
+
+      <strong>
+        Services
+      </strong>
+
+
+      <ul>
+
+        {technologies.map(
+          (
+            technology,
+            index,
+          ) => (
+            <li
+              key={`${technology.name}-${index}`}
+            >
+
+              <span className="case-detail__hero-technology-icon">
+
+                {technology.icon ? (
+                  <CmsImage
+                    src={
+                      technology.icon
+                    }
+                    alt=""
+                    fallbackText={
+                      technology.name
+                        .slice(0, 2)
+                        .toUpperCase()
+                    }
+                    sizes="38px"
+                  />
+                ) : (
+                  technology.name
+                    .slice(0, 2)
+                    .toUpperCase()
+                )}
+
+              </span>
+
+
+              <span className="case-detail__hero-technology-name">
+                {technology.name}
+              </span>
+
+            </li>
+          ),
+        )}
+
+      </ul>
+
+    </div>
   );
 }
 
@@ -436,14 +846,9 @@ function DetailImage({
    METRIC HELPERS
    ========================================================================== */
 
-function metricParts(
-  value,
-) {
-
+function metricParts(value) {
   const source =
-    textValue(
-      value,
-    );
+    textValue(value);
 
 
   const match =
@@ -452,9 +857,7 @@ function metricParts(
     );
 
 
-  if (
-    !match
-  ) {
+  if (!match) {
     return null;
   }
 
@@ -465,9 +868,7 @@ function metricParts(
     );
 
 
-  return Number.isFinite(
-    target,
-  )
+  return Number.isFinite(target)
     ? {
         prefix:
           match[1],
@@ -480,9 +881,7 @@ function metricParts(
         decimals:
           (
             match[2]
-              .split(
-                ".",
-              )[1] ||
+              .split(".")[1] ||
             ""
           ).length,
       }
@@ -498,16 +897,13 @@ function AnimatedMetric({
   label,
   value,
 }) {
-
   const metric =
     useMemo(
       () =>
         metricParts(
           value,
         ),
-      [
-        value,
-      ],
+      [value],
     );
 
 
@@ -516,30 +912,22 @@ function AnimatedMetric({
     setDisplayValue,
   ] =
     useState(
-      value ||
-      "—",
+      value || "—",
     );
 
 
   const metricRef =
-    useRef(
-      null,
-    );
+    useRef(null);
 
 
   const animationFrameRef =
-    useRef(
-      null,
-    );
+    useRef(null);
 
 
   const animate =
     useCallback(
       () => {
-
-        if (
-          !metric
-        ) {
+        if (!metric) {
           return;
         }
 
@@ -557,10 +945,7 @@ function AnimatedMetric({
           950;
 
 
-        function update(
-          now,
-        ) {
-
+        function update(now) {
           const progress =
             Math.min(
               1,
@@ -603,14 +988,11 @@ function AnimatedMetric({
             progress <
             1
           ) {
-
             animationFrameRef.current =
               window.requestAnimationFrame(
                 update,
               );
-
           }
-
         }
 
 
@@ -631,17 +1013,13 @@ function AnimatedMetric({
           window.requestAnimationFrame(
             update,
           );
-
       },
-      [
-        metric,
-      ],
+      [metric],
     );
 
 
   useEffect(
     () => {
-
       const element =
         metricRef.current;
 
@@ -659,32 +1037,27 @@ function AnimatedMetric({
           "(prefers-reduced-motion: reduce)",
         ).matches
       ) {
+        setDisplayValue(
+          value || "—",
+        );
+
         return undefined;
       }
 
 
       const observer =
         new IntersectionObserver(
-          (
-            [
-              entry,
-            ],
-          ) => {
-
+          ([entry]) => {
             if (
               entry.isIntersecting
             ) {
-
               animate();
 
               observer.disconnect();
-
             }
-
           },
           {
-            threshold:
-              .45,
+            threshold: 0.45,
           },
         );
 
@@ -695,20 +1068,18 @@ function AnimatedMetric({
 
 
       return () => {
-
         observer.disconnect();
 
 
         window.cancelAnimationFrame(
           animationFrameRef.current,
         );
-
       };
-
     },
     [
       animate,
       metric,
+      value,
     ],
   );
 
@@ -734,7 +1105,6 @@ function AnimatedMetric({
         "not available"
       }`}
     >
-
       <dt>
         {label ||
           "Result"}
@@ -744,7 +1114,6 @@ function AnimatedMetric({
       <dd>
         {displayValue}
       </dd>
-
     </div>
   );
 }
@@ -758,10 +1127,7 @@ function Metrics({
   items,
   className = "",
 }) {
-
-  if (
-    !items.length
-  ) {
+  if (!items.length) {
     return null;
   }
 
@@ -770,7 +1136,6 @@ function Metrics({
     <dl
       className={[
         "case-detail__metrics",
-
         className,
       ]
         .filter(Boolean)
@@ -782,7 +1147,6 @@ function Metrics({
           item,
           index,
         ) => (
-
           <AnimatedMetric
             key={`${item.value}-${item.label}-${index}`}
             label={
@@ -792,7 +1156,6 @@ function Metrics({
               item.value
             }
           />
-
         ),
       )}
 
@@ -806,12 +1169,10 @@ function Metrics({
    ========================================================================== */
 
 function StructuredCaseStudy({
-  description,
   sections,
-  technologies,
   title,
+  bannerImage,
 }) {
-
   const {
     problems,
     impact,
@@ -821,12 +1182,133 @@ function StructuredCaseStudy({
     sections;
 
 
+  const primaryProjectImage =
+    bannerImage ||
+    impact.collageImage;
+
+
   return (
     <div className="case-detail__structured">
 
 
       {/* ====================================================================
-          OVERVIEW
+          IMPACT
+          ==================================================================== */}
+
+      {impact.metrics.length ||
+      impact.blocks.length ||
+      primaryProjectImage ? (
+
+        <section className="case-detail__impact">
+
+          <header className="case-detail__structured-heading">
+
+            <p>
+              Impact
+            </p>
+
+
+            <h2>
+              Built for measurable growth
+            </h2>
+
+          </header>
+
+
+          <Metrics
+            items={
+              impact.metrics
+            }
+          />
+
+
+          {primaryProjectImage ? (
+
+            <figure className="case-detail__section-media case-detail__section-media--banner">
+
+              <DetailImage
+                src={
+                  primaryProjectImage
+                }
+                alt={`${title} platform showcase`}
+                priority
+                sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
+              />
+
+            </figure>
+
+          ) : null}
+
+
+          {impact.blocks.length ? (
+
+            <div className="case-detail__impact-grid">
+
+              {impact.blocks.map(
+                (
+                  block,
+                  index,
+                ) => (
+                  <article
+                    key={`${block.title}-${index}`}
+                  >
+
+                    {block.icon ? (
+
+                      <span className="case-detail__block-icon">
+
+                        <CmsImage
+                          src={
+                            block.icon
+                          }
+                          alt=""
+                          fallbackLabel=""
+                          sizes="42px"
+                        />
+
+                      </span>
+
+                    ) : null}
+
+
+                    <h3>
+                      {block.title ||
+                        "Platform capability"}
+                    </h3>
+
+
+                    {paragraphs(
+                      block.text,
+                    ).map(
+                      (
+                        paragraph,
+                        paragraphIndex,
+                      ) => (
+                        <p
+                          key={
+                            paragraphIndex
+                          }
+                        >
+                          {paragraph}
+                        </p>
+                      ),
+                    )}
+
+                  </article>
+                ),
+              )}
+
+            </div>
+
+          ) : null}
+
+        </section>
+
+      ) : null}
+
+
+      {/* ====================================================================
+          CASE STUDY OVERVIEW
           ==================================================================== */}
 
       {problems.heading ||
@@ -837,11 +1319,9 @@ function StructuredCaseStudy({
           <header>
 
             {problems.kicker ? (
-
               <p>
                 {problems.kicker}
               </p>
-
             ) : null}
 
 
@@ -855,21 +1335,11 @@ function StructuredCaseStudy({
 
           <div className="case-detail__overview-copy">
 
-            {description ? (
-
-              <p>
-                {description}
-              </p>
-
-            ) : null}
-
-
             {problems.leftParas.map(
               (
                 paragraph,
                 index,
               ) => (
-
                 <p
                   key={
                     index
@@ -877,7 +1347,6 @@ function StructuredCaseStudy({
                 >
                   {paragraph}
                 </p>
-
               ),
             )}
 
@@ -918,7 +1387,6 @@ function StructuredCaseStudy({
                 problem,
                 index,
               ) => (
-
                 <article
                   className={[
                     "case-detail__challenge-card",
@@ -939,8 +1407,7 @@ function StructuredCaseStudy({
 
                   <span>
                     {String(
-                      index +
-                      1,
+                      index + 1,
                     ).padStart(
                       2,
                       "0",
@@ -961,7 +1428,6 @@ function StructuredCaseStudy({
                       paragraph,
                       paragraphIndex,
                     ) => (
-
                       <p
                         key={
                           paragraphIndex
@@ -969,12 +1435,10 @@ function StructuredCaseStudy({
                       >
                         {paragraph}
                       </p>
-
                     ),
                   )}
 
                 </article>
-
               ),
             )}
 
@@ -986,125 +1450,7 @@ function StructuredCaseStudy({
 
 
       {/* ====================================================================
-          IMPACT
-          ==================================================================== */}
-
-      {impact.metrics.length ||
-      impact.blocks.length ? (
-
-        <section className="case-detail__impact">
-
-          <header className="case-detail__structured-heading">
-
-            <p>
-              Impact
-            </p>
-
-
-            <h2>
-              Built for measurable growth
-            </h2>
-
-          </header>
-
-
-          <Metrics
-            items={
-              impact.metrics
-            }
-          />
-
-
-          {impact.collageImage ? (
-
-            <figure className="case-detail__section-media">
-
-              <DetailImage
-                src={
-                  impact.collageImage
-                }
-                alt={`${title} platform impact`}
-                sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
-              />
-
-            </figure>
-
-          ) : null}
-
-
-          {impact.blocks.length ? (
-
-            <div className="case-detail__impact-grid">
-
-              {impact.blocks.map(
-                (
-                  block,
-                  index,
-                ) => (
-
-                  <article
-                    key={`${block.title}-${index}`}
-                  >
-
-                    {block.icon ? (
-
-                      <span className="case-detail__block-icon">
-
-                        <CmsImage
-                          src={
-                            block.icon
-                          }
-                          alt=""
-                          fallbackLabel=""
-                          sizes="42px"
-                        />
-
-                      </span>
-
-                    ) : null}
-
-
-                    <h3>
-                      {block.title ||
-                        "Platform capability"}
-                    </h3>
-
-
-                    {paragraphs(
-                      block.text,
-                    ).map(
-                      (
-                        paragraph,
-                        paragraphIndex,
-                      ) => (
-
-                        <p
-                          key={
-                            paragraphIndex
-                          }
-                        >
-                          {paragraph}
-                        </p>
-
-                      ),
-                    )}
-
-                  </article>
-
-                ),
-              )}
-
-            </div>
-
-          ) : null}
-
-        </section>
-
-      ) : null}
-
-
-      {/* ====================================================================
-          SOLUTIONS
+          IMPLEMENTED SOLUTIONS
           ==================================================================== */}
 
       {process.steps.length ? (
@@ -1133,15 +1479,13 @@ function StructuredCaseStudy({
                 step,
                 index,
               ) => (
-
                 <li
                   key={`${step.title}-${index}`}
                 >
 
                   <span>
                     {String(
-                      index +
-                      1,
+                      index + 1,
                     ).padStart(
                       2,
                       "0",
@@ -1164,7 +1508,6 @@ function StructuredCaseStudy({
                         paragraph,
                         paragraphIndex,
                       ) => (
-
                         <p
                           key={
                             paragraphIndex
@@ -1172,14 +1515,12 @@ function StructuredCaseStudy({
                         >
                           {paragraph}
                         </p>
-
                       ),
                     )}
 
                   </div>
 
                 </li>
-
               ),
             )}
 
@@ -1222,7 +1563,6 @@ function StructuredCaseStudy({
                 paragraph,
                 index,
               ) => (
-
                 <p
                   key={
                     index
@@ -1230,28 +1570,10 @@ function StructuredCaseStudy({
                 >
                   {paragraph}
                 </p>
-
               ),
             )}
 
           </div>
-
-
-          {result.mediaImage ? (
-
-            <figure className="case-detail__section-media">
-
-              <DetailImage
-                src={
-                  result.mediaImage
-                }
-                alt={`${title} project result`}
-                sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
-              />
-
-            </figure>
-
-          ) : null}
 
 
           <Metrics
@@ -1267,85 +1589,22 @@ function StructuredCaseStudy({
 
 
       {/* ====================================================================
-          TECHNOLOGIES
+          SECOND RESULT IMAGE
           ==================================================================== */}
 
-      {technologies.length ? (
+      {result.mediaImage ? (
 
-        <section className="case-detail__technologies">
+        <figure className="case-detail__section-media case-detail__section-media--result">
 
-          <header className="case-detail__structured-heading">
+          <DetailImage
+            src={
+              result.mediaImage
+            }
+            alt={`${title} project result`}
+            sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
+          />
 
-            <p>
-              Technology
-            </p>
-
-
-            <h2>
-              Technology &amp; integrations
-            </h2>
-
-          </header>
-
-
-          <ul>
-
-            {technologies.map(
-              (
-                technology,
-                index,
-              ) => (
-
-                <li
-                  key={`${technology.name}-${index}`}
-                >
-
-                  <span className="case-detail__technology-icon">
-
-                    {technology.icon ? (
-
-                      <CmsImage
-                        src={
-                          technology.icon
-                        }
-                        alt=""
-                        fallbackText={
-                          technology.name
-                            .slice(
-                              0,
-                              2,
-                            )
-                            .toUpperCase()
-                        }
-                        sizes="42px"
-                      />
-
-                    ) : (
-
-                      technology.name
-                        .slice(
-                          0,
-                          2,
-                        )
-                        .toUpperCase()
-
-                    )}
-
-                  </span>
-
-
-                  <span>
-                    {technology.name}
-                  </span>
-
-                </li>
-
-              ),
-            )}
-
-          </ul>
-
-        </section>
+        </figure>
 
       ) : null}
 
@@ -1355,39 +1614,7 @@ function StructuredCaseStudy({
 
 
 /* ==========================================================================
-   CONTACT BUTTON
-   ========================================================================== */
-
-function ContactButton({
-  title,
-}) {
-
-  return (
-    <Button
-      className="case-detail__contact"
-      appearance="box"
-      href={`/contact?topic=case-study&project=${encodeURIComponent(
-        title,
-      )}`}
-    >
-
-      <span>
-        Contact Now
-      </span>
-
-
-      <ArrowUpRight
-        size={15}
-        strokeWidth={1.8}
-      />
-
-    </Button>
-  );
-}
-
-
-/* ==========================================================================
-   GENERIC CASE STUDY
+   LEGACY CASE STUDY
    ========================================================================== */
 
 function GenericCaseStudy({
@@ -1395,7 +1622,6 @@ function GenericCaseStudy({
   sections,
   title,
 }) {
-
   const primary =
     sections[0] ||
     {
@@ -1435,11 +1661,9 @@ function GenericCaseStudy({
 
 
         {description ? (
-
           <p>
             {description}
           </p>
-
         ) : null}
 
 
@@ -1448,7 +1672,6 @@ function GenericCaseStudy({
             paragraph,
             index,
           ) => (
-
             <p
               key={
                 index
@@ -1456,16 +1679,8 @@ function GenericCaseStudy({
             >
               {paragraph}
             </p>
-
           ),
         )}
-
-
-        <ContactButton
-          title={
-            title
-          }
-        />
 
       </section>
 
@@ -1479,7 +1694,6 @@ function GenericCaseStudy({
               section,
               index,
             ) => (
-
               <section
                 className="case-detail__section"
                 key={`${section.heading}-${index}`}
@@ -1489,8 +1703,7 @@ function GenericCaseStudy({
                   aria-hidden="true"
                 >
                   {String(
-                    index +
-                    1,
+                    index + 1,
                   ).padStart(
                     2,
                     "0",
@@ -1501,11 +1714,9 @@ function GenericCaseStudy({
                 <div>
 
                   {section.heading ? (
-
                     <h3>
                       {section.heading}
                     </h3>
-
                   ) : null}
 
 
@@ -1514,7 +1725,6 @@ function GenericCaseStudy({
                       paragraph,
                       paragraphIndex,
                     ) => (
-
                       <p
                         key={
                           paragraphIndex
@@ -1522,14 +1732,12 @@ function GenericCaseStudy({
                       >
                         {paragraph}
                       </p>
-
                     ),
                   )}
 
                 </div>
 
               </section>
-
             ),
           )}
 
@@ -1549,21 +1757,25 @@ function GenericCaseStudy({
 export default function CaseStudyDetail({
   caseStudy = {},
 }) {
-
   const slug =
     textValue(
       caseStudy.slug,
     );
 
 
+  const [
+    heroVideoFailed,
+    setHeroVideoFailed,
+  ] =
+    useState(false);
+
+
   useEffect(
     () => {
-
       window.scrollTo(
         0,
         0,
       );
-
     },
     [
       slug,
@@ -1571,18 +1783,51 @@ export default function CaseStudyDetail({
   );
 
 
+  /* ==========================================================================
+     DATABASE MAPPING
+     ========================================================================== */
+
   const title =
     textValue(
+      caseStudy.heroHeading,
+    ) ||
+    textValue(
       caseStudy.title,
+    ) ||
+    textValue(
+      caseStudy.clientName,
     ) ||
     "TekCorp Case Study";
 
 
-  const category =
+  const clientName =
+    textValue(
+      caseStudy.clientName,
+    ) ||
+    title;
+
+
+  const industry =
+    textValue(
+      caseStudy.industry,
+    ) ||
     textValue(
       caseStudy.category,
     ) ||
     "Digital Product";
+
+
+  /*
+   * HERO ONLY.
+   *
+   * It is not passed into StructuredCaseStudy,
+   * so industryText does not get repeated inside
+   * the main Case Study overview.
+   */
+  const industryText =
+    textValue(
+      caseStudy.industryText,
+    );
 
 
   const description =
@@ -1591,15 +1836,50 @@ export default function CaseStudyDetail({
     );
 
 
-  const sections =
-    normalizeSections(
-      caseStudy.sections,
+  const bannerImage =
+    textValue(
+      caseStudy.bannerImage,
+    ) ||
+    textValue(
+      caseStudy.heroImage,
+    ) ||
+    textValue(
+      caseStudy.thumbnail,
     );
+
+
+  const heroVideo =
+    textValue(
+      caseStudy.video,
+    );
+
+
+  useEffect(
+    () => {
+      setHeroVideoFailed(
+        false,
+      );
+    },
+    [
+      heroVideo,
+    ],
+  );
+
+
+  const structuredSource =
+    caseStudy.sections &&
+    typeof caseStudy.sections ===
+      "object" &&
+    !Array.isArray(
+      caseStudy.sections,
+    )
+      ? caseStudy.sections
+      : caseStudy.structuredSections;
 
 
   const structuredSections =
     normalizeStructuredSections(
-      caseStudy.structuredSections,
+      structuredSource,
     );
 
 
@@ -1612,7 +1892,16 @@ export default function CaseStudyDetail({
   const structured =
     hasStructuredContent(
       structuredSections,
-      technologies,
+    );
+
+
+  const legacySections =
+    normalizeSections(
+      Array.isArray(
+        caseStudy.sections,
+      )
+        ? caseStudy.sections
+        : [],
     );
 
 
@@ -1622,78 +1911,103 @@ export default function CaseStudyDetail({
     );
 
 
+  /*
+   * Reserve the video column while a valid database URL exists.
+   *
+   * If the video fails to load, the component collapses back to
+   * the text-only hero layout.
+   */
+  const useVideoLayout =
+    Boolean(
+      heroVideo &&
+      !heroVideoFailed,
+    );
+
+
   return (
     <article className="case-detail tek-content-route">
 
 
       {/* ====================================================================
-          MASTHEAD
+          HERO
           ==================================================================== */}
 
       <section
-        className="case-detail__masthead"
+        className={[
+          "case-detail__masthead",
+
+          useVideoLayout
+            ? "case-detail__masthead--with-video"
+            : "case-detail__masthead--without-video",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         aria-labelledby="case-detail-title"
       >
 
         <div className="tek-content-shell case-detail__masthead-inner">
 
-          <p>
-            Leading the way in IT solutions
-          </p>
+
+          <div className="case-detail__masthead-copy">
+
+            <p>
+              Case Study Detail
+            </p>
 
 
-          <h1 id="case-detail-title">
-            {title}
-          </h1>
-
-
-          <nav
-            className="case-detail__breadcrumb"
-            aria-label="Breadcrumb"
-          >
-
-            <Link href="/home">
-              TekCorp
-            </Link>
-
-
-            <span aria-hidden="true">
-              &gt;
-            </span>
-
-
-            <Link href="/case-studies">
-              Case Studies
-            </Link>
-
-
-            <span aria-hidden="true">
-              &gt;
-            </span>
-
-
-            <strong>
+            <h1
+              id="case-detail-title"
+            >
               {title}
-            </strong>
+            </h1>
 
 
-            <ArrowUpRight
-              size={12}
-              strokeWidth={1.8}
+            <div className="case-detail__hero-industry">
+
+              <strong>
+                Industry:
+              </strong>
+
+
+              <span>
+                {industry}
+              </span>
+
+            </div>
+
+
+            {industryText ? (
+              <p className="case-detail__hero-context">
+                {industryText}
+              </p>
+            ) : null}
+
+
+            <HeroTechnologyBadges
+              technologies={
+                technologies
+              }
             />
 
-          </nav>
+          </div>
 
 
-          {/* ================================================================
-              SHARED SOCIAL LINKS
-              ================================================================ */}
-
-          <ContentSocialBar
-            title={title}
-            align="center"
-            ariaLabel="TekCorp social links and copy case study link"
-          />
+          {heroVideo &&
+          !heroVideoFailed ? (
+            <CaseStudyHeroVideo
+              src={
+                heroVideo
+              }
+              title={
+                title
+              }
+              onFailure={() =>
+                setHeroVideoFailed(
+                  true,
+                )
+              }
+            />
+          ) : null}
 
         </div>
 
@@ -1701,86 +2015,69 @@ export default function CaseStudyDetail({
 
 
       {/* ====================================================================
-          CONTENT
+          CASE STUDY CONTENT
           ==================================================================== */}
 
       <main className="tek-content-shell case-detail__content">
 
-
-        {/* HERO */}
-
-        <figure className="case-detail__hero-image">
-
-          <DetailImage
-            src={
-              caseStudy.heroImage ||
-              caseStudy.thumbnail
-            }
-            alt={
-              title
-            }
-            priority
-            sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
-          />
-
-
-          <figcaption>
-            {category}
-          </figcaption>
-
-        </figure>
-
-
-        {/* CONTENT */}
-
         {structured ? (
 
           <StructuredCaseStudy
-            description={
-              description
-            }
             sections={
               structuredSections
             }
-            technologies={
-              technologies
-            }
             title={
-              title
+              clientName
+            }
+            bannerImage={
+              bannerImage
             }
           />
 
         ) : (
 
-          <GenericCaseStudy
-            description={
-              description
-            }
-            sections={
-              sections
-            }
-            title={
-              title
-            }
-          />
+          <>
+            {bannerImage ? (
+
+              <figure className="case-detail__hero-image">
+
+                <DetailImage
+                  src={
+                    bannerImage
+                  }
+                  alt={
+                    title
+                  }
+                  priority
+                  sizes="(max-width: 1240px) calc(100vw - 30px), 1180px"
+                />
+
+
+                <figcaption>
+                  {industry}
+                </figcaption>
+
+              </figure>
+
+            ) : null}
+
+
+            <GenericCaseStudy
+              description={
+                description
+              }
+              sections={
+                legacySections
+              }
+              title={
+                title
+              }
+            />
+
+          </>
 
         )}
 
-
-        {structured ? (
-
-          <ContactButton
-            title={
-              title
-            }
-          />
-
-        ) : null}
-
-
-        {/* ==================================================================
-            GALLERY
-            ================================================================== */}
 
         {gallery.length ? (
 
@@ -1794,7 +2091,6 @@ export default function CaseStudyDetail({
                 source,
                 index,
               ) => (
-
                 <figure
                   className="case-detail__gallery-item"
                   key={`${source}-${index}`}
@@ -1810,21 +2106,17 @@ export default function CaseStudyDetail({
 
 
                   <figcaption>
-
                     Project view{" "}
 
                     {String(
-                      index +
-                      1,
+                      index + 1,
                     ).padStart(
                       2,
                       "0",
                     )}
-
                   </figcaption>
 
                 </figure>
-
               ),
             )}
 

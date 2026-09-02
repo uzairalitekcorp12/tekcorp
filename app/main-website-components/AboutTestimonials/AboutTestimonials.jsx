@@ -8,7 +8,7 @@ import "./AboutTestimonials.css";
 const testimonials = [
   {
     quote:
-      "We love TekCorp! Our designers were using it for their projects, so clients already knew what TekCorp was and how to use it.",
+      "We love Tekcorp! Our designers were using it for their projects, so clients already knew what Tekcorp was and how to use it.",
 
     name:
       "Darlene Robertson",
@@ -19,7 +19,7 @@ const testimonials = [
 
   {
     quote:
-      "I didn’t know designing in Webflow could be this individualized. I’d never considered it before, but TekCorp changed my mind.",
+      "I didn’t know designing in Webflow could be this individualized. I’d never considered it before, but Tekcorp changed my mind.",
 
     name:
       "Bessie Cooper",
@@ -30,7 +30,7 @@ const testimonials = [
 
   {
     quote:
-      "We love TekCorp! Our designers were using it for their projects, so clients already knew what TekCorp was and how to use it.",
+      "We love Tekcorp! Our designers were using it for their projects, so clients already knew what Tekcorp was and how to use it.",
 
     name:
       "Arlene McCoy",
