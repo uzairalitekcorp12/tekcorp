@@ -52,7 +52,7 @@ export default function VoiceAIConversationalAgentsPage() {
               qualification, and operational workflows.
             </p>
             <div className="ai-hero-actions">
-              <Link href="#voice-ai-contact" className="cap-button">
+              <Link href="/contact" className="cap-button">
                 Design a voice workflow <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
               <Link href="#voice-lifecycle" className="cap-button cap-button--ghost">
@@ -194,7 +194,7 @@ export default function VoiceAIConversationalAgentsPage() {
               Start with a conversation your team already handles repeatedly.
             </h2>
           </div>
-          <Link href="#voice-ai-contact" className="cap-button">
+          <Link href="/contact" className="cap-button">
             Explore voice automation <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>

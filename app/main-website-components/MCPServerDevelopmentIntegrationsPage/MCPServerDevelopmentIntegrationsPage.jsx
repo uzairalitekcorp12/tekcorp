@@ -116,7 +116,7 @@ export default function MCPServerDevelopmentIntegrationsPage() {
               contextual data through an explicit capability layer.
             </p>
             <div className="ai-hero-actions">
-              <Link href="#mcp-contact" className="cap-button">
+              <Link href="/contact" className="cap-button">
                 Discuss an MCP integration <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
               <Link href="#mcp-model" className="cap-button cap-button--ghost">
@@ -252,7 +252,7 @@ export default function MCPServerDevelopmentIntegrationsPage() {
               Define the capabilities, boundaries, and adapters before exposing tools.
             </h2>
           </div>
-          <Link href="#mcp-contact" className="cap-button">
+          <Link href="/contact" className="cap-button">
             Plan an MCP server <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>

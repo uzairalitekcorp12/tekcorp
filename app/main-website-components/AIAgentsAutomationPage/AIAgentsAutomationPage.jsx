@@ -69,7 +69,7 @@ export default function AIAgentsAutomationPage() {
               work with clear human oversight.
             </p>
             <div className="ai-hero-actions">
-              <Link href="#ai-agents-contact" className="cap-button">
+              <Link href="/contact" className="cap-button">
                 Explore an agent workflow <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
               <Link href="#agents-anatomy" className="cap-button cap-button--ghost">
@@ -199,7 +199,7 @@ export default function AIAgentsAutomationPage() {
               Map the work first. Then decide where an AI agent should help.
             </h2>
           </div>
-          <Link href="#ai-agents-contact" className="cap-button">
+          <Link href="/contact" className="cap-button">
             Map an agent workflow <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>

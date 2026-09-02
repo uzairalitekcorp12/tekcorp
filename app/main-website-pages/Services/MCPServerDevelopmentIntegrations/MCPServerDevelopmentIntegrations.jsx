@@ -3,7 +3,7 @@ import MCPServerDevelopmentIntegrationsPage from "@/app/main-website-components/
 
 export default function MCPServerDevelopmentIntegrations() {
   return (
-    <ServicePageLayout page="mcp-server-development-integrations" contactId="mcp-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "mcp-hero", ctaHref: "#mcp-contact" }} footerProps={{ ctaHref: "#mcp-contact" }}>
+    <ServicePageLayout page="mcp-server-development-integrations" contactId="mcp-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "mcp-hero", ctaHref: "/contact" }} footerProps={{ ctaHref: "/contact" }}>
       <MCPServerDevelopmentIntegrationsPage />
     </ServicePageLayout>
   );

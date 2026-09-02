@@ -53,7 +53,7 @@ export default function RAGKnowledgeBaseSolutionsPage() {
               and continuous evaluation.
             </p>
             <div className="ai-hero-actions">
-              <Link href="#rag-contact" className="cap-button">
+              <Link href="/contact" className="cap-button">
                 Plan a RAG system <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
               <Link href="#rag-pipeline" className="cap-button cap-button--ghost">
@@ -174,7 +174,7 @@ export default function RAGKnowledgeBaseSolutionsPage() {
               Design the retrieval layer before adding another generic chatbot.
             </h2>
           </div>
-          <Link href="#rag-contact" className="cap-button">
+          <Link href="/contact" className="cap-button">
             Discuss RAG architecture <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>

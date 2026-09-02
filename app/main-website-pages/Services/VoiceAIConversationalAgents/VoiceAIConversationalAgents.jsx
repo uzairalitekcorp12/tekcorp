@@ -3,7 +3,7 @@ import VoiceAIConversationalAgentsPage from "@/app/main-website-components/Voice
 
 export default function VoiceAIConversationalAgents() {
   return (
-    <ServicePageLayout page="voice-ai-conversational-agents" contactId="voice-ai-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "voice-ai-hero", ctaHref: "#voice-ai-contact" }} footerProps={{ ctaHref: "#voice-ai-contact" }}>
+    <ServicePageLayout page="voice-ai-conversational-agents" contactId="voice-ai-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "voice-ai-hero", ctaHref: "/contact" }} footerProps={{ ctaHref: "/contact" }}>
       <VoiceAIConversationalAgentsPage />
     </ServicePageLayout>
   );

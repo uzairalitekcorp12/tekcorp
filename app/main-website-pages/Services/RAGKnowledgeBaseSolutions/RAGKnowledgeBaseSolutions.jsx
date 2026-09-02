@@ -3,7 +3,7 @@ import RAGKnowledgeBaseSolutionsPage from "@/app/main-website-components/RAGKnow
 
 export default function RAGKnowledgeBaseSolutions() {
   return (
-    <ServicePageLayout page="rag-knowledge-base-solutions" contactId="rag-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "rag-hero", ctaHref: "#rag-contact" }} footerProps={{ ctaHref: "#rag-contact" }}>
+    <ServicePageLayout page="rag-knowledge-base-solutions" contactId="rag-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "rag-hero", ctaHref: "/contact" }} footerProps={{ ctaHref: "/contact" }}>
       <RAGKnowledgeBaseSolutionsPage />
     </ServicePageLayout>
   );

@@ -73,7 +73,7 @@ export default function AIChatbotsAssistantsPage() {
               useful, accountable, and on brand.
             </p>
             <div className="ai-hero-actions">
-              <Link href="#ai-chatbots-contact" className="cap-button">
+              <Link href="/contact" className="cap-button">
                 Design your AI assistant <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
               <Link href="#chatbot-layers" className="cap-button cap-button--ghost">
@@ -225,7 +225,7 @@ export default function AIChatbotsAssistantsPage() {
               Start with the workflow, knowledge, and guardrails, not the model name.
             </h2>
           </div>
-          <Link href="#ai-chatbots-contact" className="cap-button">
+          <Link href="/contact" className="cap-button">
             Discuss your AI assistant <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>

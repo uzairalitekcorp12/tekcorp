@@ -3,7 +3,7 @@ import AIChatbotsAssistantsPage from "@/app/main-website-components/AIChatbotsAs
 
 export default function AIChatbotsAssistants() {
   return (
-    <ServicePageLayout page="ai-chatbots-assistants" contactId="ai-chatbots-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "ai-chatbots-hero", ctaHref: "#ai-chatbots-contact" }} footerProps={{ ctaHref: "#ai-chatbots-contact" }}>
+    <ServicePageLayout page="ai-chatbots-assistants" contactId="ai-chatbots-contact" navbarProps={{ variant: "adaptive", transparentTargetId: "ai-chatbots-hero", ctaHref: "/contact" }} footerProps={{ ctaHref: "/contact" }}>
       <AIChatbotsAssistantsPage />
     </ServicePageLayout>
   );
