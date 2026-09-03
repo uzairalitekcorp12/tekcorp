@@ -7,7 +7,7 @@ import HomeCapabilityAtlas from "../../main-website-components/HomeCapabilityAtl
 import HomePortfolio from "../../main-website-components/HomePortfolio/HomePortfolio";
 import HomePartners from "../../main-website-components/HomePartners/HomePartners";
 import HomeArticles from "../../main-website-components/HomeArticles/HomeArticles";
-import VideoTestimonials from "../../main-website-components/VideoTestimonials/VideoTestimonials";
+// import VideoTestimonials from "../../main-website-components/VideoTestimonials/VideoTestimonials";
 
 
 /* ==========================================================================
@@ -103,7 +103,7 @@ export default function Home({
           - popup playback
           - native volume / unmute controls
           - video SEO metadata
-          ==================================================================== */}
+          ==================================================================== }
 
       <VideoTestimonials
         className="home-video-testimonials"
@@ -111,7 +111,7 @@ export default function Home({
         title="Watch What They’re Saying About Us"
         description="We are a 360 software solutions company aiming to ensure your firm's growth. Along with our cutting-edge, worldwide competence and affordable client service."
       />
-
+*/}
 
       {/* ====================================================================
           04 — CAPABILITY ATLAS

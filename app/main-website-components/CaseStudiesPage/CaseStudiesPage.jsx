@@ -522,7 +522,6 @@ export default function CaseStudiesPage({
   categories = [],
   currentPage = 1,
   totalPages = 1,
-  total = 0,
   category = "all",
 }) {
   const router =
@@ -585,21 +584,6 @@ export default function CaseStudiesPage({
         activeCategory.toLowerCase(),
     ) ||
     "All";
-
-
-  const numericTotal =
-    Number(
-      total,
-    );
-
-
-  const visibleTotal =
-    Number.isFinite(
-      numericTotal,
-    ) &&
-    numericTotal > 0
-      ? numericTotal
-      : safeCaseStudies.length;
 
 
   /* ==========================================================================
@@ -716,7 +700,7 @@ export default function CaseStudiesPage({
               aria-hidden="true"
             />
 
-            Updating projects…
+            Filtering projects…
           </div>
         ) : null}
 
@@ -762,16 +746,6 @@ export default function CaseStudiesPage({
 
           </div>
 
-
-          <span
-            className="case-studies-page__count"
-            aria-live="polite"
-          >
-            {visibleTotal}{" "}
-            {visibleTotal === 1
-              ? "project"
-              : "projects"}
-          </span>
 
         </div>
 

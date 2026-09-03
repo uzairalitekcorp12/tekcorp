@@ -102,23 +102,7 @@ export default function AboutAbout() {
             </p>
 
 
-            <Button
-              appearance="box"
-              className="tek-About-about__cta"
-              href="/contact"
-            >
-
-              <span>
-                Contact Us
-              </span>
-
-
-              <ArrowUpRight
-                size={13}
-                strokeWidth={1.8}
-              />
-
-            </Button>
+            
 
           </div>
 

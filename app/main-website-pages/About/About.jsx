@@ -5,8 +5,8 @@ import AboutHero from "../../main-website-components/AboutHero/AboutHero";
 import AboutOverview from "../../main-website-components/AboutOverview/AboutOverview";
 import AboutBrands from "../../main-website-components/AboutBrands/AboutBrands";
 import AboutCaseStudy from "../../main-website-components/AboutCaseStudy/AboutCaseStudy";
-import AboutTeam from "../../main-website-components/AboutTeam/AboutTeam";
-import AboutTestimonials from "../../main-website-components/AboutTestimonials/AboutTestimonials";
+// import AboutTeam from "../../main-website-components/AboutTeam/AboutTeam";
+// import AboutTestimonials from "../../main-website-components/AboutTestimonials/AboutTestimonials";
 
 
 /*
@@ -17,12 +17,12 @@ import AboutTestimonials from "../../main-website-components/AboutTestimonials/A
 export default function About() {
   return (
     <SitePageLayout className="About" dataPage="about">
-      <AboutHero />
+      <AboutHero breadcrumb="" />
       <AboutOverview />
       <AboutBrands />
       <AboutCaseStudy />
-      <AboutTeam />
-      <AboutTestimonials />
+      {/* <AboutTeam /> */}
+      {/* <AboutTestimonials /> */}
       <ContactSection />
     </SitePageLayout>
   );

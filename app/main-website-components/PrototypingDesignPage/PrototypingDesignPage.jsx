@@ -2,7 +2,6 @@ import "./PrototypingDesignPage.css";
 
 import Image from "next/image";
 import Button from "@/app/_shared/Button/Button";
-import ArrowUpRightIcon from "@/app/_shared/Icons/ArrowUpRightIcon";
 import ServiceBreadcrumb from "@/app/_shared/ServiceBreadcrumb/ServiceBreadcrumb";
 import SplitContent from "@/app/_shared/SplitContent/SplitContent";
 import SectionHeading from "@/app/_shared/SectionHeading/SectionHeading";
@@ -112,9 +111,6 @@ export default function PrototypingDesignPage() {
           <ServiceBreadcrumb
             className="prototyping-design-breadcrumb"
             current="Prototyping & UI/UX Design"
-            separator="›"
-            showArrow
-            arrow={<ArrowUpRightIcon size={9} />}
           />
         </div>
       </section>

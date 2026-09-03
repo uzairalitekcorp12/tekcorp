@@ -109,7 +109,7 @@
 .site-button:hover:not(:disabled) {
   background: var(--site-button-hover-background) !important;
   border-color: var(--site-button-hover-border) !important;
-  box-shadow: var(--site-button-hover-shadow) !important;
+  box-shadow: none !important;
   color: var(--site-button-hover-color) !important;
   transform: translate3d(0, -3px, 0) scale(1.015) !important;
 }

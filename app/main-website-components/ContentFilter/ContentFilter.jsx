@@ -186,7 +186,6 @@ export default function ContentFilter({
         >
           <div className="content-filter__menu-heading">
             <span>Choose an option</span>
-            <small>{safeOptions.length} available</small>
           </div>
 
           <div className="content-filter__options">

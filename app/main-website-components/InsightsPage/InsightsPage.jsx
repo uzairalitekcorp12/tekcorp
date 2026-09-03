@@ -291,30 +291,6 @@ export default function InsightsPage({
             Discover Articles
           </h1>
 
-          <nav
-            className="insights-page__breadcrumb"
-            aria-label="Breadcrumb"
-          >
-            <Link href="/home">
-              Tekcorp
-            </Link>
-
-            <span aria-hidden="true">
-              &gt;
-            </span>
-
-            <strong>
-              Insights
-            </strong>
-
-            <ArrowUpRight
-              size={12}
-              strokeWidth={1.8}
-              aria-hidden="true"
-            />
-          </nav>
-
-
           <InsightsSearch
             initialSearch={safeSearch}
             featuredArticles={

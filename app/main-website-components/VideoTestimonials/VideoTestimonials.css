@@ -586,8 +586,8 @@
     hidden;
 
   padding:
-    13px
-    13px
+    0px
+    0px
     0;
 
   background:
@@ -701,13 +701,23 @@
     100%;
 
   object-fit:
-    contain
+    cover
     !important;
 
   transform:
     none
     !important;
 }
+
+
+.home-video-testimonials
+.video-testimonials__media {
+  aspect-ratio:
+    9 / 16;
+}
+
+
+
 
 
 /*
@@ -1687,6 +1697,19 @@
 
 
   .home-video-testimonials
+  .video-testimonials__card {
+    box-shadow:
+      none;
+  }
+
+
+  .home-video-testimonials
+  .video-testimonials__card:hover {
+    box-shadow:
+      none;
+  }
+
+  .home-video-testimonials
   .video-testimonials__heading h2 {
     font-size:
       clamp(
@@ -1733,8 +1756,8 @@
 
   .video-testimonials__media {
     padding:
-      10px
-      10px
+      0px
+      0px
       0;
   }
 

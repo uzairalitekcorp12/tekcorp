@@ -1,18 +1,17 @@
 /* ==========================================================================
    LANDINGPAGE 1
    SUCCESS STORIES / PORTFOLIO
-   ==========================================================================
 
-   MAJOR CHANGES
+   DESCRIPTION BEHAVIOUR
+   --------------------------------------------------------------------------
 
-   - 15 cards
-   - Full-bleed slider
-   - No left/right viewport gap
-   - 3700ms autoplay
-   - Premium hover effects
-   - Continuous looping
-   - Improved slide depth
-   - Improved responsive behavior
+   Every project description:
+
+   - displays up to 4 lines
+   - never becomes scrollable
+   - automatically shows an ellipsis when overflowing
+   - reserves the same text height across cards
+   - keeps Read More aligned toward the card bottom
 
    ========================================================================== */
 
@@ -57,6 +56,7 @@
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
   margin-bottom: 28px;
@@ -91,7 +91,8 @@
   font-weight:
     700 !important;
 
-  line-height: 1;
+  line-height:
+    1;
 
   letter-spacing:
     0.22em;
@@ -109,9 +110,11 @@
    ========================================================================== */
 
 .lp1-portfolio__title {
-  margin: 0 !important;
+  margin:
+    0 !important;
 
-  padding: 0 !important;
+  padding:
+    0 !important;
 
   font-family:
     var(
@@ -138,8 +141,6 @@
 }
 
 
-/* DIGITAL */
-
 .lp1-portfolio__title span {
   background:
     linear-gradient(
@@ -149,7 +150,8 @@
       #505050 100%
     );
 
-  background-clip: text;
+  background-clip:
+    text;
 
   color:
     transparent !important;
@@ -162,8 +164,6 @@
 }
 
 
-/* MARKETING */
-
 .lp1-portfolio__title em {
   color:
     var(
@@ -171,9 +171,11 @@
       #1bdbba
     ) !important;
 
-  font-style: normal;
+  font-style:
+    normal;
 
-  font-weight: inherit;
+  font-weight:
+    inherit;
 
   -webkit-text-fill-color:
     var(
@@ -188,7 +190,8 @@
    ========================================================================== */
 
 .lp1-portfolio__subtitle {
-  max-width: 600px;
+  max-width:
+    600px;
 
   margin:
     11px
@@ -201,7 +204,8 @@
   font-size:
     11px !important;
 
-  line-height: 1.55;
+  line-height:
+    1.55;
 
   -webkit-text-fill-color:
     #858987 !important;
@@ -209,43 +213,36 @@
 
 
 /* ==========================================================================
-   FULL-BLEED SLIDER STAGE
-
-   IMPORTANT
-   ---------
-
-   This is intentionally 100vw.
-
-   It does not inherit .lp1-shell width.
-
-   Therefore:
-
-   |CARD| GAP |CARD| GAP |CARD| GAP |CARD|
-
-   begins at the LEFT VIEWPORT EDGE and continues all the
-   way to the RIGHT VIEWPORT EDGE.
-
+   SLIDER STAGE
    ========================================================================== */
 
 .lp1-portfolio__slider-stage {
-  position: relative;
+  position:
+    relative;
 
-  z-index: 3;
+  z-index:
+    3;
 
-  width: 100%;
+  width:
+    100%;
 
-  max-width: 100%;
+  max-width:
+    100%;
 
-  margin: 0;
+  margin:
+    0;
 
-  padding: 0;
+  padding:
+    0;
 
-  overflow: hidden;
+  overflow:
+    hidden;
 }
 
 
 .lp1-portfolio__slider-shell {
-  position: relative;
+  position:
+    relative;
 }
 
 
@@ -254,20 +251,29 @@
    ========================================================================== */
 
 .lp1-portfolio__glow {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 0;
+  z-index:
+    0;
 
-  top: 50%;
+  top:
+    50%;
 
-  left: 50%;
+  left:
+    50%;
 
-  width: 72%;
-  height: 82%;
+  width:
+    72%;
 
-  border-radius: 50%;
+  height:
+    82%;
 
-  pointer-events: none;
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
 
   background:
     radial-gradient(
@@ -286,11 +292,14 @@
         0.025
       )
       42%,
-      transparent 72%
+      transparent
+      72%
     );
 
   filter:
-    blur(38px);
+    blur(
+      38px
+    );
 
   transform:
     translate(
@@ -302,27 +311,20 @@
 
 /* ==========================================================================
    SWIPER
-
-   IMPORTANT:
-   ZERO HORIZONTAL PADDING.
-
-   Previous CSS had:
-
-   padding: 8px 4px 48px;
-
-   That produces visible edge spacing.
-
-   It is removed now.
    ========================================================================== */
 
 .lp1-portfolio-swiper {
-  position: relative;
+  position:
+    relative;
 
-  z-index: 4;
+  z-index:
+    4;
 
-  width: 100%;
+  width:
+    100%;
 
-  margin: 0 !important;
+  margin:
+    0 !important;
 
   overflow:
     visible !important;
@@ -332,12 +334,14 @@
     0
     32px !important;
 
-  cursor: grab;
+  cursor:
+    grab;
 }
 
 
 .lp1-portfolio-swiper:active {
-  cursor: grabbing;
+  cursor:
+    grabbing;
 }
 
 
@@ -347,7 +351,8 @@
 
 .lp1-portfolio-swiper
 .swiper-wrapper {
-  align-items: stretch;
+  align-items:
+    stretch;
 
   transition-timing-function:
     cubic-bezier(
@@ -360,20 +365,24 @@
 
 
 /* ==========================================================================
-   INDIVIDUAL SLIDE
+   SLIDE
    ========================================================================== */
 
 .lp1-portfolio-swiper
 .swiper-slide {
-  display: flex;
+  display:
+    flex;
 
   height:
     auto !important;
 
-  opacity: 0.68;
+  opacity:
+    0.68;
 
   transform:
-    scale(0.965);
+    scale(
+      0.965
+    );
 
   transform-origin:
     center;
@@ -396,31 +405,30 @@
 }
 
 
-/*
-   Visible slides gradually feel more active.
-*/
-
 .lp1-portfolio-swiper
 .swiper-slide-visible {
-  opacity: 0.9;
+  opacity:
+    0.9;
 
   transform:
-    scale(0.985);
+    scale(
+      0.985
+    );
 }
 
 
-/*
-   Active card receives the clearest presentation.
-*/
-
 .lp1-portfolio-swiper
 .swiper-slide-active {
-  z-index: 5;
+  z-index:
+    5;
 
-  opacity: 1;
+  opacity:
+    1;
 
   transform:
-    scale(1);
+    scale(
+      1
+    );
 }
 
 
@@ -429,25 +437,36 @@
    ========================================================================== */
 
 .lp1-success-card {
-  position: relative;
+  position:
+    relative;
 
-  isolation: isolate;
+  isolation:
+    isolate;
 
-  display: flex;
+  display:
+    flex;
 
-  width: 100%;
-  height: 100%;
+  width:
+    100%;
 
-  min-width: 0;
+  height:
+    100%;
 
-  min-height: 410px;
+  min-width:
+    0;
 
-  overflow: hidden;
+  min-height:
+    410px;
 
-  flex-direction: column;
+  overflow:
+    hidden;
+
+  flex-direction:
+    column;
 
   border:
-    1px solid
+    1px
+    solid
     rgba(
       37,
       43,
@@ -455,7 +474,8 @@
       0.66
     );
 
-  border-radius: 2px;
+  border-radius:
+    2px;
 
   background:
     #ffffff;
@@ -472,7 +492,9 @@
     );
 
   transform:
-    translateZ(0);
+    translateZ(
+      0
+    );
 
   transition:
     transform
@@ -497,18 +519,22 @@
    ========================================================================== */
 
 .lp1-success-card__visual {
-  position: relative;
+  position:
+    relative;
 
-  display: block;
+  display:
+    block;
 
-  height: 202px;
+  height:
+    202px;
 
   flex:
     0
     0
     202px;
 
-  overflow: hidden;
+  overflow:
+    hidden;
 
   background:
     #13cdb0;
@@ -516,7 +542,8 @@
   color:
     #ffffff;
 
-  text-decoration: none;
+  text-decoration:
+    none;
 }
 
 
@@ -525,23 +552,36 @@
    ========================================================================== */
 
 .lp1-success-card__visual img {
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  inset:
+    0;
 
-  display: block;
+  display:
+    block;
 
-  width: 100%;
-  height: 100%;
+  width:
+    100%;
 
-  object-fit: cover;
+  height:
+    100%;
+
+  object-fit:
+    cover;
 
   filter:
-    saturate(0.9)
-    contrast(1.03);
+    saturate(
+      0.9
+    )
+    contrast(
+      1.03
+    );
 
   transform:
-    scale(1.025);
+    scale(
+      1.025
+    );
 
   transition:
     transform
@@ -563,11 +603,14 @@
    ========================================================================== */
 
 .lp1-success-card__teal {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 1;
+  z-index:
+    1;
 
-  inset: 0;
+  inset:
+    0;
 
   background:
     linear-gradient(
@@ -617,11 +660,14 @@
    ========================================================================== */
 
 .lp1-success-card__shade {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 2;
+  z-index:
+    2;
 
-  inset: 0;
+  inset:
+    0;
 
   background:
     linear-gradient(
@@ -656,18 +702,26 @@
    ========================================================================== */
 
 .lp1-success-card__sweep {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 3;
+  z-index:
+    3;
 
-  top: -30%;
+  top:
+    -30%;
 
-  left: -70%;
+  left:
+    -70%;
 
-  width: 40%;
-  height: 170%;
+  width:
+    40%;
 
-  pointer-events: none;
+  height:
+    170%;
+
+  pointer-events:
+    none;
 
   background:
     linear-gradient(
@@ -682,10 +736,13 @@
       transparent
     );
 
-  opacity: 0;
+  opacity:
+    0;
 
   transform:
-    rotate(13deg);
+    rotate(
+      13deg
+    );
 
   transition:
     left
@@ -707,13 +764,17 @@
    ========================================================================== */
 
 .lp1-success-card__number {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 5;
+  z-index:
+    5;
 
-  top: 17px;
+  top:
+    17px;
 
-  right: 17px;
+  right:
+    17px;
 
   color:
     rgba(
@@ -730,9 +791,11 @@
       sans-serif
     );
 
-  font-size: 8px;
+  font-size:
+    8px;
 
-  font-weight: 600;
+  font-weight:
+    600;
 
   letter-spacing:
     0.08em;
@@ -744,19 +807,31 @@
    ========================================================================== */
 
 .lp1-success-card__category {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 5;
+  z-index:
+    5;
 
-  top: 17px;
+  top:
+    17px;
 
-  left: 18px;
+  left:
+    18px;
 
-  display: inline-flex;
+  display:
+    inline-flex;
 
-  align-items: center;
+  align-items:
+    center;
 
-  gap: 6px;
+  gap:
+    6px;
+
+  max-width:
+    calc(
+      100% - 70px
+    );
 
   color:
     rgba(
@@ -766,12 +841,17 @@
       0.89
     );
 
-  font-size: 7px;
+  font-size:
+    7px;
 
-  font-weight: 600;
+  font-weight:
+    600;
 
   letter-spacing:
     0.06em;
+
+  line-height:
+    1.2;
 
   text-transform:
     uppercase;
@@ -779,15 +859,25 @@
 
 
 .lp1-success-card__category::before {
-  width: 5px;
-  height: 5px;
+  width:
+    5px;
 
-  border-radius: 50%;
+  height:
+    5px;
+
+  flex:
+    0
+    0
+    5px;
+
+  border-radius:
+    50%;
 
   background:
     #ffffff;
 
-  content: "";
+  content:
+    "";
 }
 
 
@@ -796,20 +886,25 @@
    ========================================================================== */
 
 .lp1-success-card__image-title {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 5;
+  z-index:
+    5;
 
-  left: 18px;
+  left:
+    18px;
 
-  bottom: 19px;
+  bottom:
+    19px;
 
   width:
     calc(
       100% - 44px
     );
 
-  max-width: 300px;
+  max-width:
+    300px;
 
   margin:
     0 !important;
@@ -856,23 +951,33 @@
    ========================================================================== */
 
 .lp1-success-card__floating-arrow {
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 6;
+  z-index:
+    6;
 
-  right: 15px;
+  right:
+    15px;
 
-  bottom: 15px;
+  bottom:
+    15px;
 
-  display: grid;
+  display:
+    grid;
 
-  width: 34px;
-  height: 34px;
+  width:
+    34px;
 
-  place-items: center;
+  height:
+    34px;
+
+  place-items:
+    center;
 
   border:
-    1px solid
+    1px
+    solid
     rgba(
       255,
       255,
@@ -880,7 +985,8 @@
       0.62
     );
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
   background:
     rgba(
@@ -893,18 +999,29 @@
   color:
     #ffffff;
 
-  opacity: 0;
+  opacity:
+    0;
 
   backdrop-filter:
-    blur(9px);
+    blur(
+      9px
+    );
 
   -webkit-backdrop-filter:
-    blur(9px);
+    blur(
+      9px
+    );
 
   transform:
-    translateY(9px)
-    rotate(-20deg)
-    scale(0.88);
+    translateY(
+      9px
+    )
+    rotate(
+      -20deg
+    )
+    scale(
+      0.88
+    );
 
   transition:
     opacity
@@ -926,18 +1043,25 @@
 
 /* ==========================================================================
    BODY
+
+   Read More remains at the bottom through margin-top:auto.
    ========================================================================== */
 
 .lp1-success-card__body {
-  position: relative;
+  position:
+    relative;
 
-  display: flex;
+  display:
+    flex;
 
-  min-height: 208px;
+  min-height:
+    208px;
 
-  flex: 1;
+  flex:
+    1;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
   padding:
     18px
@@ -954,16 +1078,22 @@
    ========================================================================== */
 
 .lp1-success-card__meta {
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
+  align-items:
+    center;
 
-  gap: 10px;
+  gap:
+    10px;
 }
 
 
 .lp1-success-card__client {
-  flex: 0 0 auto;
+  flex:
+    0
+    0
+    auto;
 
   color:
     #151817;
@@ -975,9 +1105,11 @@
       sans-serif
     );
 
-  font-size: 10px;
+  font-size:
+    10px;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
   letter-spacing:
     0.018em;
@@ -985,8 +1117,11 @@
 
 
 .lp1-success-card__meta-line {
-  width: 24px;
-  height: 1px;
+  width:
+    24px;
+
+  height:
+    1px;
 
   background:
     var(
@@ -1005,22 +1140,43 @@
 
 
 /* ==========================================================================
-   DESCRIPTION
-   ========================================================================== */
+   DESCRIPTION — FIXED
 
+   PREVIOUSLY:
+   --------------------------------------------------------------------------
+   max-height + overflow-y:auto
+
+   That caused:
+   - scrollable descriptions
+   - hidden scroll bars
+   - inconsistent text endings
+
+   NOW:
+   --------------------------------------------------------------------------
+   - exactly up to 4 visual lines
+   - excess content is hidden
+   - browser adds …
+   - no scrollbar
+   - consistent text space
+   - database content itself remains untouched
+   ========================================================================== */
 .lp1-success-card__description {
+  display:
+    -webkit-box;
+
+  width:
+    100%;
+
   margin:
     0
     0
-    18px !important;
+    14px !important;
 
-  max-height: 5.15rem;
+  padding:
+    0;
 
-  overflow-y: auto;
-
-  overscroll-behavior: contain;
-
-  padding-right: 4px;
+  overflow:
+    hidden;
 
   color:
     #6f7472 !important;
@@ -1035,28 +1191,30 @@
   font-size:
     12px !important;
 
-  font-weight: 400;
+  font-weight:
+    400;
 
   line-height:
     1.58 !important;
 
+  text-overflow:
+    ellipsis;
+
+  -webkit-box-orient:
+    vertical;
+
+  /*
+   * Uses almost the complete available body height
+   * while leaving room for Read More.
+   */
+  -webkit-line-clamp:
+    8;
+
+  line-clamp:
+    8;
+
   -webkit-text-fill-color:
     #6f7472 !important;
-
-  scrollbar-width: none;
-
-  -ms-overflow-style: none;
-}
-
-
-.lp1-success-card__description::-webkit-scrollbar {
-  display: none;
-}
-
-
-.lp1-success-card__description:focus-visible {
-  outline: 2px solid rgba(20, 156, 133, .42);
-  outline-offset: 3px;
 }
 
 
@@ -1065,17 +1223,26 @@
    ========================================================================== */
 
 .lp1-success-card__read {
-  display: inline-flex;
+  display:
+    inline-flex;
 
-  width: max-content;
+  width:
+    max-content;
 
-  align-items: center;
+  align-items:
+    center;
 
-  gap: 5px;
+  gap:
+    5px;
 
-  margin-top: auto;
+  /*
+   * Pushes Read More to the bottom of every card body.
+   */
+  margin-top:
+    auto;
 
-  margin-left: auto;
+  margin-left:
+    auto;
 
   color:
     var(
@@ -1083,11 +1250,17 @@
       #149c85
     );
 
-  font-size: 9px;
+  font-size:
+    9px;
 
-  font-weight: 600;
+  font-weight:
+    600;
 
-  text-decoration: none;
+  line-height:
+    1;
+
+  text-decoration:
+    none;
 
   transition:
     gap
@@ -1100,6 +1273,11 @@
 
 
 .lp1-success-card__read svg {
+  flex:
+    0
+    0
+    auto;
+
   transition:
     transform
       300ms
@@ -1118,7 +1296,8 @@
 ) {
 
   .lp1-success-card:hover {
-    z-index: 10;
+    z-index:
+      10;
 
     border-color:
       rgba(
@@ -1140,72 +1319,94 @@
       );
 
     transform:
-      translateY(-7px);
+      translateY(
+        -7px
+      );
   }
 
 
   .lp1-success-card:hover
-  .lp1-success-card__visual
-  img {
+  .lp1-success-card__visual img {
     filter:
-      saturate(1.06)
-      contrast(1.04);
+      saturate(
+        1.06
+      )
+      contrast(
+        1.04
+      );
 
     transform:
-      scale(1.09);
+      scale(
+        1.09
+      );
   }
 
 
   .lp1-success-card:hover
   .lp1-success-card__teal {
-    opacity: 0.88;
+    opacity:
+      0.88;
   }
 
 
   .lp1-success-card:hover
   .lp1-success-card__sweep {
-    left: 140%;
+    left:
+      140%;
 
-    opacity: 1;
+    opacity:
+      1;
   }
 
 
   .lp1-success-card:hover
   .lp1-success-card__image-title {
     transform:
-      translateY(-4px);
+      translateY(
+        -4px
+      );
   }
 
 
   .lp1-success-card:hover
   .lp1-success-card__floating-arrow {
-    opacity: 1;
+    opacity:
+      1;
 
     transform:
-      translateY(0)
-      rotate(45deg)
-      scale(1);
+      translateY(
+        0
+      )
+      rotate(
+        45deg
+      )
+      scale(
+        1
+      );
   }
 
 
   .lp1-success-card:hover
   .lp1-success-card__meta-line {
-    width: 40px;
+    width:
+      40px;
   }
 
 
   .lp1-success-card__read:hover {
-    gap: 9px;
+    gap:
+      9px;
 
     color:
       #0f806c;
   }
 
 
-  .lp1-success-card__read:hover
-  svg {
+  .lp1-success-card__read:hover svg {
     transform:
-      translateX(3px);
+      translateX(
+        3px
+      );
   }
 
 }
@@ -1220,28 +1421,37 @@
   bottom:
     7px !important;
 
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
+
+  justify-content:
+    center;
 }
 
 
 .lp1-portfolio-swiper
 .swiper-pagination-bullet {
-  width: 6px;
-  height: 6px;
+  width:
+    6px;
+
+  height:
+    6px;
 
   margin:
     0
     4px !important;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
   background:
     #9fa8a5;
 
-  opacity: 0.38;
+  opacity:
+    0.38;
 
   transition:
     width
@@ -1261,9 +1471,11 @@
 
 .lp1-portfolio-swiper
 .swiper-pagination-bullet-active {
-  width: 30px;
+  width:
+    30px;
 
-  opacity: 1;
+  opacity:
+    1;
 
   background:
     linear-gradient(
@@ -1273,7 +1485,9 @@
     );
 
   transform:
-    scaleY(1.1);
+    scaleY(
+      1.1
+    );
 }
 
 
@@ -1282,37 +1496,81 @@
    ========================================================================== */
 
 .lp1-portfolio__footer {
-  display: flex;
+  display:
+    flex;
 
-  justify-content: center;
+  justify-content:
+    center;
 
-  margin-top: 12px;
+  margin-top:
+    12px;
 }
 
 
 .lp1-portfolio__learn {
-  --site-button-hover-background: #12b99e;
-  --site-button-hover-border: #12b99e;
-  --site-button-hover-color: #ffffff;
+  --site-button-hover-background:
+    #12b99e;
+
+  --site-button-hover-border:
+    #12b99e;
+
+  --site-button-hover-color:
+    #ffffff;
+
   --site-button-hover-shadow:
-    0 16px 34px rgba(10, 124, 104, 0.27),
-    0 4px 12px rgba(10, 91, 77, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0
+    16px
+    34px
+    rgba(
+      10,
+      124,
+      104,
+      0.27
+    ),
+    0
+    4px
+    12px
+    rgba(
+      10,
+      91,
+      77,
+      0.14
+    ),
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
 
-  position: relative;
 
-  display: inline-flex;
+  position:
+    relative;
 
-  min-height: 43px;
+  display:
+    inline-flex;
 
-  align-items: center;
-  justify-content: space-between;
+  min-height:
+    43px;
 
-  overflow: hidden;
+  align-items:
+    center;
 
-  isolation: isolate;
+  justify-content:
+    space-between;
 
-  gap: 22px;
+  overflow:
+    hidden;
+
+  isolation:
+    isolate;
+
+  gap:
+    22px;
 
   padding:
     0
@@ -1321,19 +1579,24 @@
     17px;
 
   border:
-    1px solid
+    1px
+    solid
     #686d6b;
 
-  border-radius: 2px;
+  border-radius:
+    2px;
 
   color:
     #262a29;
 
-  font-size: 10px;
+  font-size:
+    10px;
 
-  font-weight: 600;
+  font-weight:
+    600;
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
   transition:
     border-color
@@ -1352,32 +1615,50 @@
 
 
 .lp1-portfolio__learn::before {
-  position: absolute;
+  position:
+    absolute;
 
-  top: -35%;
-  bottom: -35%;
+  top:
+    -35%;
 
-  left: -45%;
+  bottom:
+    -35%;
 
-  z-index: -1;
+  left:
+    -45%;
 
-  width: 34%;
+  z-index:
+    -1;
+
+  width:
+    34%;
 
   background:
     linear-gradient(
       100deg,
       transparent,
-      rgba(255, 255, 255, 0.26),
+      rgba(
+        255,
+        255,
+        255,
+        0.26
+      ),
       transparent
     );
 
-  content: "";
+  content:
+    "";
 
-  pointer-events: none;
+  pointer-events:
+    none;
 
   transform:
-    skewX(-18deg)
-    translateX(0);
+    skewX(
+      -18deg
+    )
+    translateX(
+      0
+    );
 
   transition:
     transform
@@ -1391,15 +1672,22 @@
 }
 
 
-.lp1-portfolio__learn > span {
-  display: grid;
+.lp1-portfolio__learn
+> span {
+  display:
+    grid;
 
-  width: 30px;
-  height: 30px;
+  width:
+    30px;
 
-  place-items: center;
+  height:
+    30px;
 
-  border-radius: 50%;
+  place-items:
+    center;
+
+  border-radius:
+    50%;
 
   background:
     #ffffff;
@@ -1469,14 +1757,20 @@
     );
 
   transform:
-    translateY(-3px);
+    translateY(
+      -3px
+    );
 }
 
 
 .lp1-portfolio__learn:hover::before {
   transform:
-    skewX(-18deg)
-    translateX(560%);
+    skewX(
+      -18deg
+    )
+    translateX(
+      560%
+    );
 }
 
 
@@ -1500,9 +1794,15 @@
     );
 
   transform:
-    translateX(-2px)
-    rotate(-42deg)
-    scale(1.08);
+    translateX(
+      -2px
+    )
+    rotate(
+      -42deg
+    )
+    scale(
+      1.08
+    );
 }
 
 
@@ -1511,7 +1811,8 @@
    ========================================================================== */
 
 @media (
-  max-width: 900px
+  max-width:
+    900px
 ) {
 
   .lp1-portfolio {
@@ -1523,19 +1824,23 @@
 
 
   .lp1-portfolio__heading {
-    margin-bottom: 28px;
+    margin-bottom:
+      28px;
   }
 
 
   .lp1-success-card {
-    min-height: 395px;
+    min-height:
+      395px;
   }
 
 
   .lp1-success-card__visual {
-    height: 188px;
+    height:
+      188px;
 
-    flex-basis: 188px;
+    flex-basis:
+      188px;
   }
 
 }
@@ -1546,7 +1851,8 @@
    ========================================================================== */
 
 @media (
-  max-width: 640px
+  max-width:
+    640px
 ) {
 
   .lp1-portfolio {
@@ -1558,7 +1864,8 @@
 
 
   .lp1-portfolio__heading {
-    margin-bottom: 28px;
+    margin-bottom:
+      28px;
   }
 
 
@@ -1579,16 +1886,13 @@
 
 
   .lp1-portfolio__subtitle {
-    width: 92%;
+    width:
+      92%;
 
     font-size:
       10px !important;
   }
 
-
-  /*
-   * STILL NO LEFT/RIGHT SLIDER PADDING.
-   */
 
   .lp1-portfolio-swiper {
     padding:
@@ -1599,14 +1903,17 @@
 
 
   .lp1-success-card {
-    min-height: 390px;
+    min-height:
+      390px;
   }
 
 
   .lp1-success-card__visual {
-    height: 190px;
+    height:
+      190px;
 
-    flex-basis: 190px;
+    flex-basis:
+      190px;
   }
 
 
@@ -1617,7 +1924,24 @@
 
 
   .lp1-success-card__body {
-    min-height: 190px;
+    min-height:
+      190px;
+  }
+
+
+  /*
+   * Four-line clamp remains on mobile.
+   */
+  .lp1-success-card__description {
+    /*
+     * Mobile body is slightly shorter,
+     * therefore 7 lines fit correctly.
+     */
+    -webkit-line-clamp:
+      8;
+
+    line-clamp:
+      8;
   }
 
 }
@@ -1628,11 +1952,13 @@
    ========================================================================== */
 
 @media (
-  max-width: 380px
+  max-width:
+    380px
 ) {
 
   .lp1-success-card__body {
-    padding: 16px;
+    padding:
+      16px;
   }
 
 
@@ -1655,21 +1981,24 @@
    ========================================================================== */
 
 @media (
-  hover: none
+  hover:
+    none
 ) {
 
-  /*
-   * Keep important action visible because phones
-   * do not have hover.
-   */
-
   .lp1-success-card__floating-arrow {
-    opacity: 0.82;
+    opacity:
+      0.82;
 
     transform:
-      translateY(0)
-      rotate(0)
-      scale(0.9);
+      translateY(
+        0
+      )
+      rotate(
+        0
+      )
+      scale(
+        0.9
+      );
   }
 
 }
@@ -1680,14 +2009,16 @@
    ========================================================================== */
 
 @media (
-  prefers-reduced-motion: reduce
+  prefers-reduced-motion:
+    reduce
 ) {
 
   .lp1-success-card,
   .lp1-success-card *,
   .lp1-portfolio__learn,
   .lp1-portfolio__learn::before,
-  .lp1-portfolio__learn > span,
+  .lp1-portfolio__learn
+  > span,
   .lp1-portfolio-swiper
   .swiper-slide,
   .lp1-portfolio-swiper

@@ -6,8 +6,13 @@ import {
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
+
 import Button from "@/app/_shared/Button/Button";
-import { useEffect, useState } from "react";
+
+import {
+  useEffect,
+  useState,
+} from "react";
 
 import {
   Swiper,
@@ -27,28 +32,34 @@ import "swiper/css/pagination";
 /* ==========================================================================
    SUCCESS STORIES / PORTFOLIO DATA
 
-   15 cards total.
+   15 fallback cards.
 
    IMPORTANT
-   ---------
+   --------------------------------------------------------------------------
 
-   Images are temporary.
+   Database projects remain the primary source.
 
-   Later you can replace every remote image with:
+   These fallback projects are used only when:
+
+   useFallback={true}
+
+   and no database projects are supplied.
+
+   Images can later be changed to:
 
    /public/assets/main-website/Home/portfolio/project-01.webp
 
-   and then use:
+   Browser path:
 
-   image:
-     "/assets/main-website/Home/portfolio/project-01.webp"
+   /assets/main-website/Home/portfolio/project-01.webp
 
-   No component changes will be required.
+   No component restructuring will be required.
    ========================================================================== */
 
 const fallbackProjects = [
   {
-    id: 1,
+    id:
+      1,
 
     client:
       "MOOSA KHAN",
@@ -69,8 +80,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 2,
+    id:
+      2,
 
     client:
       "RAZA",
@@ -91,8 +104,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 3,
+    id:
+      3,
 
     client:
       "TIRE FIXER",
@@ -113,8 +128,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 4,
+    id:
+      4,
 
     client:
       "TAARA",
@@ -135,8 +152,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 5,
+    id:
+      5,
 
     client:
       "EXOMECHA",
@@ -157,8 +176,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 6,
+    id:
+      6,
 
     client:
       "MARHABA PACKAGES",
@@ -179,8 +200,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 7,
+    id:
+      7,
 
     client:
       "UMRE HAJJ",
@@ -201,8 +224,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 8,
+    id:
+      8,
 
     client:
       "NEXA HEALTH",
@@ -223,8 +248,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 9,
+    id:
+      9,
 
     client:
       "ARCHLINE",
@@ -245,8 +272,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 10,
+    id:
+      10,
 
     client:
       "NOVA LOGISTICS",
@@ -267,8 +296,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 11,
+    id:
+      11,
 
     client:
       "URBAN NEST",
@@ -289,8 +320,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 12,
+    id:
+      12,
 
     client:
       "GROWTHLY",
@@ -311,8 +344,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 13,
+    id:
+      13,
 
     client:
       "CLOUDORA",
@@ -333,8 +368,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 14,
+    id:
+      14,
 
     client:
       "AUTOMATE X",
@@ -355,8 +392,10 @@ const fallbackProjects = [
       "#quick-contact",
   },
 
+
   {
-    id: 15,
+    id:
+      15,
 
     client:
       "INTELLI AI",
@@ -379,6 +418,10 @@ const fallbackProjects = [
 ];
 
 
+/* ==========================================================================
+   TEXT HELPERS
+   ========================================================================== */
+
 function firstParagraph(
   value,
 ) {
@@ -389,6 +432,7 @@ function firstParagraph(
     return "";
   }
 
+
   return value
     .split(
       /\r?\n\s*\r?\n/,
@@ -398,12 +442,36 @@ function firstParagraph(
 }
 
 
+/* ==========================================================================
+   PROJECT CONTEXT
+
+   Chooses the most useful first paragraph available.
+
+   Structured case study:
+   sections.problems.leftParas[0]
+
+   Legacy:
+   first text section
+
+   Fallback:
+   description / summary / excerpt
+   ========================================================================== */
+
 function projectContext(
   project,
 ) {
   const structuredParagraph =
-    project?.structuredSections?.problems?.leftParas?.[0] ||
-    project?.sections?.problems?.leftParas?.[0];
+    project
+      ?.structuredSections
+      ?.problems
+      ?.leftParas
+      ?.[0] ||
+    project
+      ?.sections
+      ?.problems
+      ?.leftParas
+      ?.[0];
+
 
   const legacyParagraph =
     Array.isArray(
@@ -411,12 +479,15 @@ function projectContext(
     )
       ? firstParagraph(
           project.sections.find(
-            (section) =>
+            (
+              section,
+            ) =>
               typeof section?.content ===
               "string",
           )?.content,
         )
       : "";
+
 
   return (
     firstParagraph(
@@ -448,18 +519,23 @@ function ProjectCard({
   return (
     <article className="lp1-success-card">
 
-      {/* ================================================================
+
+      {/* ====================================================================
           VISUAL
-          ================================================================ */}
+          ==================================================================== */}
 
       <a
         className="lp1-success-card__visual"
-        href={project.href}
+        href={
+          project.href
+        }
         aria-label={`View ${project.title} case study`}
       >
 
         <img
-          src={project.image}
+          src={
+            project.image
+          }
           alt=""
           loading="lazy"
           decoding="async"
@@ -528,32 +604,60 @@ function ProjectCard({
       </a>
 
 
-      {/* ================================================================
+      {/* ====================================================================
           CONTENT
-          ================================================================ */}
+          ==================================================================== */}
 
       <div className="lp1-success-card__body">
 
+
+        {/* ==================================================================
+            DESCRIPTION
+
+            CSS handles the visual shortening.
+
+            The database content stays unchanged.
+
+            Maximum:
+            4 visual lines.
+
+            When more content exists:
+            automatic "…" ellipsis.
+
+            No scrolling.
+            ================================================================== */}
+
         <p
           className="lp1-success-card__description"
-          tabIndex={0}
+          title={
+            project.description
+          }
         >
           {project.description}
         </p>
 
 
+        {/* ==================================================================
+            READ MORE
+            ================================================================== */}
+
         <a
           className="lp1-success-card__read"
-          href={project.href}
+          href={
+            project.href
+          }
         >
+
           <span>
             Read More
           </span>
+
 
           <ArrowRight
             size={13}
             strokeWidth={1.7}
           />
+
         </a>
 
       </div>
@@ -577,38 +681,108 @@ export default function HomePortfolio({
   ctaLabel = "View All Work",
   useFallback = false,
 }) {
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [
+    reducedMotion,
+    setReducedMotion,
+  ] =
+    useState(false);
 
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setReducedMotion(query.matches);
-    updatePreference();
-    query.addEventListener("change", updatePreference);
-    return () => query.removeEventListener("change", updatePreference);
-  }, []);
 
-  const projectCards = Array.isArray(projects) && projects.length
-    ? projects.map((project) => ({
-        id: project._id || project.slug,
-        title: project.title,
-        category: project.category || "Digital Product",
-        image: project.thumbnail || project.heroImage || project.image || "",
-        description: projectContext(project),
-        href: `/case-studies/${encodeURIComponent(project.slug)}`,
-      }))
-    : useFallback
-      ? fallbackProjects
-      : [];
+  /* ==========================================================================
+     REDUCED MOTION
+     ========================================================================== */
+
+  useEffect(
+    () => {
+      const query =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        );
+
+
+      const updatePreference =
+        () =>
+          setReducedMotion(
+            query.matches,
+          );
+
+
+      updatePreference();
+
+
+      query.addEventListener(
+        "change",
+        updatePreference,
+      );
+
+
+      return () =>
+        query.removeEventListener(
+          "change",
+          updatePreference,
+        );
+    },
+    [],
+  );
+
+
+  /* ==========================================================================
+     NORMALIZE PROJECT DATA
+     ========================================================================== */
+
+  const projectCards =
+    Array.isArray(
+      projects,
+    ) &&
+    projects.length
+      ? projects.map(
+          (
+            project,
+          ) => ({
+            id:
+              project._id ||
+              project.slug,
+
+            title:
+              project.title,
+
+            category:
+              project.category ||
+              "Digital Product",
+
+            image:
+              project.thumbnail ||
+              project.heroImage ||
+              project.image ||
+              "",
+
+            description:
+              projectContext(
+                project,
+              ),
+
+            href:
+              `/case-studies/${encodeURIComponent(
+                project.slug,
+              )}`,
+          }),
+        )
+      : useFallback
+        ? fallbackProjects
+        : [];
+
 
   return (
     <section
       className="lp1-portfolio"
-      id={sectionId}
+      id={
+        sectionId
+      }
     >
 
-      {/* ================================================================
-          HEADING STAYS WITHIN MAIN CONTENT WIDTH
-          ================================================================ */}
+      {/* ====================================================================
+          HEADING
+          ==================================================================== */}
 
       <div className="lp1-shell">
 
@@ -624,7 +798,9 @@ export default function HomePortfolio({
 
           <h2 className="lp1-portfolio__title">
 
-            <span>{title}</span>
+            <span>
+              {title}
+            </span>
 
           </h2>
 
@@ -638,12 +814,9 @@ export default function HomePortfolio({
       </div>
 
 
-      {/* ================================================================
-          SHARED THREE-CARD SLIDER
-
-          This uses the same responsive shell and desktop rhythm as the
-          Insights carousel on Home and every service page.
-          ================================================================ */}
+      {/* ====================================================================
+          PROJECT SLIDER
+          ==================================================================== */}
 
       <div className="lp1-shell lp1-portfolio__slider-shell">
 
@@ -652,111 +825,141 @@ export default function HomePortfolio({
           data-reveal="up"
         >
 
-        <div
-          className="lp1-portfolio__glow"
-          aria-hidden="true"
-        />
+          <div
+            className="lp1-portfolio__glow"
+            aria-hidden="true"
+          />
 
 
-        <Swiper
-          modules={[
-            Autoplay,
-            Pagination,
-            A11y,
-          ]}
+          <Swiper
+            modules={[
+              Autoplay,
+              Pagination,
+              A11y,
+            ]}
 
-          className="lp1-portfolio-swiper"
-
-
-          /* ------------------------------------------------------------
-             LOOP / MOTION
-             ------------------------------------------------------------ */
-
-          loop={projectCards.length > 3}
-
-          loopAdditionalSlides={3}
-
-          speed={900}
-
-          grabCursor={true}
-
-          watchSlidesProgress={true}
-
-          slideToClickedSlide={true}
-
-          roundLengths={true}
+            className="lp1-portfolio-swiper"
 
 
-          /* ------------------------------------------------------------
-             AUTOPLAY
+            /* ==============================================================
+               LOOP / MOTION
+               ============================================================== */
 
-             3700 = 3.7 seconds
-             ------------------------------------------------------------ */
+            loop={
+              projectCards.length >
+              3
+            }
 
-          autoplay={reducedMotion ? false : {
-            delay: 1700,
+            loopAdditionalSlides={
+              3
+            }
 
-            disableOnInteraction:
-              false,
+            speed={
+              900
+            }
 
-            pauseOnMouseEnter:
-              true,
-          }}
+            grabCursor={
+              true
+            }
+
+            watchSlidesProgress={
+              true
+            }
+
+            slideToClickedSlide={
+              true
+            }
+
+            roundLengths={
+              true
+            }
 
 
-          /* ------------------------------------------------------------
-             PAGINATION
-             ------------------------------------------------------------ */
+            /* ==============================================================
+               AUTOPLAY
+               ============================================================== */
 
-          pagination={{
-            clickable: true,
+            autoplay={
+              reducedMotion
+                ? false
+                : {
+                    delay:
+                      1700,
 
-            dynamicBullets: true,
-          }}
+                    disableOnInteraction:
+                      false,
+
+                    pauseOnMouseEnter:
+                      true,
+                  }
+            }
 
 
-          /* ------------------------------------------------------------
-             RESPONSIVE
+            /* ==============================================================
+               PAGINATION
+               ============================================================== */
 
-             No slidesOffsetBefore.
-             No slidesOffsetAfter.
+            pagination={{
+              clickable:
+                true,
 
-             Therefore cards begin directly from screen edges.
-             ------------------------------------------------------------ */
+              dynamicBullets:
+                true,
+            }}
 
-          breakpoints={{
-            0: {
-              slidesPerView: 1.04,
-              spaceBetween: 12,
-            },
 
-            620: {
-              slidesPerView: 2,
-              spaceBetween: 16,
-            },
+            /* ==============================================================
+               RESPONSIVE
+               ============================================================== */
 
-            980: {
-              slidesPerView: 3,
-              spaceBetween: 18,
-            },
-          }}
-        >
+            breakpoints={{
+              0: {
+                slidesPerView:
+                  1.04,
 
-          {projectCards.map(
-            (
-              project,
-              index,
-            ) => (
-              <SwiperSlide
-                key={project.id}
-              >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                />
-              </SwiperSlide>
-            ),
-          )}
+                spaceBetween:
+                  12,
+              },
+
+              620: {
+                slidesPerView:
+                  2,
+
+                spaceBetween:
+                  16,
+              },
+
+              980: {
+                slidesPerView:
+                  3,
+
+                spaceBetween:
+                  18,
+              },
+            }}
+          >
+
+            {projectCards.map(
+              (
+                project,
+                index,
+              ) => (
+                <SwiperSlide
+                  key={
+                    project.id
+                  }
+                >
+                  <ProjectCard
+                    project={
+                      project
+                    }
+                    index={
+                      index
+                    }
+                  />
+                </SwiperSlide>
+              ),
+            )}
 
           </Swiper>
 
@@ -765,9 +968,9 @@ export default function HomePortfolio({
       </div>
 
 
-      {/* ================================================================
+      {/* ====================================================================
           BOTTOM CTA
-          ================================================================ */}
+          ==================================================================== */}
 
       <div className="lp1-shell">
 
@@ -779,9 +982,13 @@ export default function HomePortfolio({
           <Button
             appearance="primary"
             className="lp1-portfolio__learn"
-            href={ctaHref}
+            href={
+              ctaHref
+            }
           >
+
             {ctaLabel}
+
 
             <span>
               <ArrowRight
@@ -789,6 +996,7 @@ export default function HomePortfolio({
                 strokeWidth={1.7}
               />
             </span>
+
           </Button>
 
         </div>
