@@ -2,6 +2,11 @@
    TEKCORP — PREMIUM CAPABILITY MOSAIC
    ========================================================================== */
 
+
+/* ==========================================================================
+   ROOT
+   ========================================================================== */
+
 .cap-mosaic {
   --cm-teal:
     var(
@@ -120,7 +125,7 @@
 
 
 /* ==========================================================================
-   AMBIENT BACKGROUND
+   AMBIENT
    ========================================================================== */
 
 .cap-mosaic__ambient {
@@ -137,8 +142,6 @@
     none;
 }
 
-
-/* cursor-following teal light */
 
 .cap-mosaic__pointer-light {
   position:
@@ -191,16 +194,10 @@
     );
 
   transition:
-    top
-      .07s
-      linear,
-    left
-      .07s
-      linear;
+    top .07s linear,
+    left .07s linear;
 }
 
-
-/* tiny premium texture */
 
 .cap-mosaic__dot-field {
   position:
@@ -283,8 +280,7 @@
         186,
         .075
       ),
-      transparent
-      69%
+      transparent 69%
     );
 
   animation:
@@ -317,8 +313,7 @@
         186,
         .05
       ),
-      transparent
-      68%
+      transparent 68%
     );
 
   animation:
@@ -400,8 +395,7 @@
 }
 
 
-.cap-mosaic__eyebrow
-i {
+.cap-mosaic__eyebrow i {
   width:
     6px;
 
@@ -417,10 +411,7 @@ i {
     );
 
   box-shadow:
-    0
-    0
-    0
-    5px
+    0 0 0 5px
     rgba(
       27,
       219,
@@ -430,8 +421,7 @@ i {
 }
 
 
-.cap-mosaic__heading
-h2 {
+.cap-mosaic__heading h2 {
   margin:
     0
     !important;
@@ -486,8 +476,7 @@ h2 {
 }
 
 
-.cap-mosaic__heading
-h2 span {
+.cap-mosaic__heading h2 span {
   background:
     linear-gradient(
       92deg,
@@ -515,8 +504,7 @@ h2 span {
    INTRO
    ========================================================================== */
 
-.cap-mosaic__intro
-p {
+.cap-mosaic__intro p {
   max-width:
     400px;
 
@@ -567,8 +555,7 @@ p {
 }
 
 
-.cap-mosaic__intro-link
-> span {
+.cap-mosaic__intro-link > span {
   display:
     grid;
 
@@ -582,8 +569,7 @@ p {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       24,
       35,
@@ -603,25 +589,17 @@ p {
     );
 
   transition:
-    border-color
-      .25s
-      ease,
-    background
-      .25s
-      ease,
-    color
-      .25s
-      ease,
-    transform
-      .34s
-      var(
-        --cm-ease
-      );
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease,
+    transform .34s
+    var(
+      --cm-ease
+    );
 }
 
 
-.cap-mosaic__intro-link:hover
-> span {
+.cap-mosaic__intro-link:hover > span {
   border-color:
     var(
       --cm-teal
@@ -668,8 +646,7 @@ p {
 }
 
 
-.cap-mosaic__interaction-row
-> span {
+.cap-mosaic__interaction-row > span {
   display:
     inline-flex;
 
@@ -687,9 +664,7 @@ p {
 }
 
 
-.cap-mosaic__interaction-row
-> span
-svg {
+.cap-mosaic__interaction-row > span svg {
   color:
     var(
       --cm-teal-dark
@@ -697,8 +672,7 @@ svg {
 }
 
 
-.cap-mosaic__interaction-row
-> div {
+.cap-mosaic__interaction-row > div {
   display:
     flex;
 
@@ -710,9 +684,7 @@ svg {
 }
 
 
-.cap-mosaic__interaction-row
-> div
-i {
+.cap-mosaic__interaction-row > div i {
   width:
     5px;
 
@@ -726,20 +698,15 @@ i {
     #cdd2cf;
 
   transition:
-    width
-      .35s
-      var(
-        --cm-ease
-      ),
-    background
-      .25s
-      ease;
+    width .35s
+    var(
+      --cm-ease
+    ),
+    background .25s ease;
 }
 
 
-.cap-mosaic__interaction-row
-> div
-i.is-active {
+.cap-mosaic__interaction-row > div i.is-active {
   width:
     25px;
 
@@ -799,7 +766,7 @@ i.is-active {
 
 
 /* ==========================================================================
-   CATEGORY
+   CATEGORY CARD
    ========================================================================== */
 
 .cap-mosaic-category {
@@ -819,8 +786,7 @@ i.is-active {
     0;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       255,
       255,
@@ -860,17 +826,12 @@ i.is-active {
     );
 
   transition:
-    border-color
-      .28s
-      ease,
-    box-shadow
-      .35s
-      ease,
-    transform
-      .4s
-      var(
-        --cm-ease
-      );
+    border-color .28s ease,
+    box-shadow .35s ease,
+    transform .4s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -941,34 +902,49 @@ i.is-active {
   position:
     absolute;
 
+  z-index:
+    0;
+
   inset:
-    -8px;
+    -10px;
 
   background-image:
     var(
-      --category-image
-    ),
-    linear-gradient(
-      135deg,
-      #113229,
-      #070d0a
+      --category-image,
+      none
     );
 
+  background-repeat:
+    no-repeat;
+
   background-position:
-    center;
+    var(
+      --category-image-x,
+      50%
+    )
+    var(
+      --category-image-y,
+      50%
+    );
 
   background-size:
     cover;
 
   opacity:
-    .52;
+    var(
+      --category-image-opacity,
+      .54
+    );
 
   filter:
     saturate(
-      .72
+      .75
     )
     contrast(
-      1.02
+      1.03
+    )
+    brightness(
+      .80
     );
 
   transform:
@@ -982,21 +958,19 @@ i.is-active {
       0
     )
     scale(
-      1.04
+      var(
+        --category-image-scale,
+        1.04
+      )
     );
 
   transition:
-    opacity
-      .45s
-      ease,
-    filter
-      .45s
-      ease,
-    transform
-      .7s
-      var(
-        --cm-ease
-      );
+    opacity .45s ease,
+    filter .45s ease,
+    transform .7s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -1005,14 +979,20 @@ i.is-active {
 .cap-mosaic-category.is-active
 .cap-mosaic-category__image {
   opacity:
-    .78;
+    var(
+      --category-image-active-opacity,
+      .78
+    );
 
   filter:
     saturate(
-      .92
+      .95
     )
     contrast(
-      1.04
+      1.05
+    )
+    brightness(
+      .88
     );
 
   transform:
@@ -1026,7 +1006,14 @@ i.is-active {
       0
     )
     scale(
-      1.09
+      calc(
+        var(
+          --category-image-scale,
+          1.04
+        )
+        +
+        .045
+      )
     );
 }
 
@@ -1039,11 +1026,11 @@ i.is-active {
   position:
     absolute;
 
-  inset:
-    0;
-
   z-index:
     2;
+
+  inset:
+    0;
 
   background:
     linear-gradient(
@@ -1052,7 +1039,7 @@ i.is-active {
         4,
         8,
         6,
-        .15
+        .17
       )
       0%,
       rgba(
@@ -1066,15 +1053,15 @@ i.is-active {
         4,
         8,
         6,
-        .89
+        .90
       )
       100%
     );
 
   transition:
     background
-      .35s
-      ease;
+    .35s
+    ease;
 }
 
 
@@ -1087,21 +1074,21 @@ i.is-active {
         4,
         9,
         7,
-        .11
+        .10
       )
       0%,
       rgba(
         4,
         9,
         7,
-        .26
+        .25
       )
       38%,
       rgba(
         4,
         9,
         7,
-        .87
+        .86
       )
       100%
     );
@@ -1109,7 +1096,7 @@ i.is-active {
 
 
 /* ==========================================================================
-   ACTIVE LIGHT SWEEP
+   CATEGORY SWEEP
    ========================================================================== */
 
 .cap-mosaic-category__sweep {
@@ -1212,8 +1199,7 @@ i.is-active {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       255,
       255,
@@ -1248,20 +1234,13 @@ i.is-active {
     );
 
   transition:
-    background
-      .27s
-      ease,
-    border-color
-      .27s
-      ease,
-    color
-      .27s
-      ease,
-    transform
-      .36s
-      var(
-        --cm-ease
-      );
+    background .27s ease,
+    border-color .27s ease,
+    color .27s ease,
+    transform .36s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -1344,8 +1323,7 @@ i.is-active {
 }
 
 
-.cap-mosaic-category__copy
-small {
+.cap-mosaic-category__copy small {
   display:
     block;
 
@@ -1368,8 +1346,7 @@ small {
 }
 
 
-.cap-mosaic-category__copy
-strong {
+.cap-mosaic-category__copy strong {
   display:
     block;
 
@@ -1394,22 +1371,10 @@ strong {
 
   letter-spacing:
     -.03em;
-
-  text-shadow:
-    0
-    4px
-    18px
-    rgba(
-      0,
-      0,
-      0,
-      .22
-    );
 }
 
 
-.cap-mosaic-category__copy
-> span {
+.cap-mosaic-category__copy > span {
   display:
     block;
 
@@ -1436,11 +1401,9 @@ strong {
 
 
 .cap-mosaic-category--2
-.cap-mosaic-category__copy
-> span,
+.cap-mosaic-category__copy > span,
 .cap-mosaic-category--3
-.cap-mosaic-category__copy
-> span {
+.cap-mosaic-category__copy > span {
   display:
     none;
 }
@@ -1485,8 +1448,7 @@ strong {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       255,
       255,
@@ -1522,23 +1484,14 @@ strong {
     );
 
   transition:
-    border-color
-      .25s
-      ease,
-    background
-      .25s
-      ease,
-    color
-      .25s
-      ease,
-    opacity
-      .25s
-      ease,
-    transform
-      .34s
-      var(
-        --cm-ease
-      );
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease,
+    opacity .25s ease,
+    transform .34s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -1610,26 +1563,21 @@ strong {
     );
 
   transition:
-    opacity
-      .3s
-      ease,
-    transform
-      .35s
-      var(
-        --cm-ease
-      );
+    opacity .3s ease,
+    transform .35s
+    var(
+      --cm-ease
+    );
 }
 
 
-.cap-mosaic-category__active-pill
-> span {
+.cap-mosaic-category__active-pill > span {
   padding:
     5px
     8px;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       27,
       219,
@@ -1724,14 +1672,11 @@ strong {
     );
 
   transition:
-    opacity
-      .3s
-      ease,
-    transform
-      .55s
-      var(
-        --cm-ease
-      );
+    opacity .3s ease,
+    transform .55s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -1782,12 +1727,15 @@ strong {
 
 
 /* ==========================================================================
-   STORY
+   DARK STORY
    ========================================================================== */
 
 .cap-mosaic__story {
   position:
     relative;
+
+  isolation:
+    isolate;
 
   display:
     flex;
@@ -1805,8 +1753,7 @@ strong {
     27px;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       255,
       255,
@@ -1840,17 +1787,139 @@ strong {
 }
 
 
-/* subtle grid */
+.cap-mosaic__story-image {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  inset:
+    -10px;
+
+  pointer-events:
+    none;
+
+  background-image:
+    var(
+      --story-image,
+      none
+    );
+
+  background-repeat:
+    no-repeat;
+
+  background-position:
+    var(
+      --story-image-x,
+      68%
+    )
+    var(
+      --story-image-y,
+      50%
+    );
+
+  background-size:
+    cover;
+
+  opacity:
+    var(
+      --story-image-opacity,
+      .24
+    );
+
+  filter:
+    saturate(
+      .68
+    )
+    brightness(
+      .67
+    )
+    contrast(
+      1.06
+    );
+
+  transform:
+    scale(
+      var(
+        --story-image-scale,
+        1.12
+      )
+    );
+
+  transform-origin:
+    center;
+
+  animation:
+    cmStoryImageReveal
+    .72s
+    var(
+      --cm-ease
+    )
+    both;
+}
+
+
+.cap-mosaic__story-shade {
+  position:
+    absolute;
+
+  z-index:
+    1;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        5,
+        9,
+        7,
+        .95
+      )
+      0%,
+      rgba(
+        5,
+        9,
+        7,
+        .86
+      )
+      42%,
+      rgba(
+        5,
+        9,
+        7,
+        .55
+      )
+      70%,
+      rgba(
+        5,
+        9,
+        7,
+        .30
+      )
+      100%
+    );
+}
+
 
 .cap-mosaic__story-noise {
   position:
     absolute;
 
+  z-index:
+    2;
+
   inset:
     0;
 
   opacity:
-    .26;
+    .18;
 
   background-image:
     linear-gradient(
@@ -1886,11 +1955,12 @@ strong {
 }
 
 
-/* animated teal glow */
-
 .cap-mosaic__story-light {
   position:
     absolute;
+
+  z-index:
+    2;
 
   top:
     -120px;
@@ -1938,16 +2008,12 @@ strong {
 }
 
 
-/* ==========================================================================
-   STORY TOP
-   ========================================================================== */
-
 .cap-mosaic__story-top {
   position:
     relative;
 
   z-index:
-    3;
+    4;
 
   display:
     flex;
@@ -1974,8 +2040,7 @@ strong {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       27,
       219,
@@ -1999,16 +2064,9 @@ strong {
       --cm-teal-bright
     );
 
-  box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(
-      255,
-      255,
-      255,
-      .035
+  backdrop-filter:
+    blur(
+      8px
     );
 }
 
@@ -2025,8 +2083,7 @@ strong {
 }
 
 
-.cap-mosaic__story-number
-i {
+.cap-mosaic__story-number i {
   margin-left:
     3px;
 
@@ -2043,16 +2100,12 @@ i {
 }
 
 
-/* ==========================================================================
-   STORY COPY
-   ========================================================================== */
-
 .cap-mosaic__story-copy {
   position:
     relative;
 
   z-index:
-    3;
+    4;
 
   margin-top:
     auto;
@@ -2082,13 +2135,12 @@ i {
 }
 
 
-.cap-mosaic__story
-h3 {
+.cap-mosaic__story h3 {
   position:
     relative;
 
   z-index:
-    3;
+    4;
 
   margin:
     8px
@@ -2143,13 +2195,12 @@ h3 {
 }
 
 
-.cap-mosaic__story
-p {
+.cap-mosaic__story p {
   position:
     relative;
 
   z-index:
-    3;
+    4;
 
   max-width:
     490px;
@@ -2186,16 +2237,12 @@ p {
 }
 
 
-/* ==========================================================================
-   STORY BOTTOM
-   ========================================================================== */
-
 .cap-mosaic__story-bottom {
   position:
     relative;
 
   z-index:
-    3;
+    4;
 
   display:
     flex;
@@ -2222,8 +2269,7 @@ p {
 }
 
 
-.cap-mosaic__story-bottom
-i {
+.cap-mosaic__story-bottom i {
   width:
     25px;
 
@@ -2247,7 +2293,7 @@ i {
 
 
 /* ==========================================================================
-   SERVICES
+   SERVICE GRID
    ========================================================================== */
 
 .cap-mosaic__services {
@@ -2268,25 +2314,16 @@ i {
 }
 
 
-.cap-mosaic__services--sparse {
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-}
-
-
 /* ==========================================================================
-   SERVICE
+   SERVICE CARD
    ========================================================================== */
 
 .cap-mosaic-service {
   position:
     relative;
+
+  isolation:
+    isolate;
 
   display:
     flex;
@@ -2304,8 +2341,7 @@ i {
     16px;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       22,
       34,
@@ -2321,7 +2357,7 @@ i {
       255,
       255,
       255,
-      .94
+      .96
     );
 
   color:
@@ -2366,21 +2402,17 @@ i {
       55ms
     );
 
+  /*
+   * Keep the existing card animation.
+   */
   transition:
-    border-color
-      .28s
-      ease,
-    box-shadow
-      .36s
-      ease,
-    transform
-      .4s
-      var(
-        --cm-ease
-      ),
-    background
-      .28s
-      ease;
+    border-color .28s ease,
+    box-shadow .36s ease,
+    transform .4s
+    var(
+      --cm-ease
+    ),
+    background .28s ease;
 }
 
 
@@ -2390,7 +2422,7 @@ i {
       27,
       219,
       186,
-      .36
+      .42
     );
 
   background:
@@ -2415,12 +2447,221 @@ i {
 
 
 /* ==========================================================================
+   SERVICE ART
+
+   IMPORTANT CHANGES
+   --------------------------------------------------------------------------
+
+   OLD:
+   opacity around .11
+   saturation .76
+   strong white fade above the image
+
+   NEW:
+   normal image is clearly visible
+   slightly softened
+   better saturation / contrast
+   less image clipping
+   richer hover
+
+   ========================================================================== */
+
+.cap-mosaic-service__art {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background-image:
+    var(
+      --service-art-image,
+      none
+    );
+
+  background-repeat:
+    no-repeat;
+
+  background-position:
+    var(
+      --service-art-x,
+      101%
+    )
+    var(
+      --service-art-y,
+      50%
+    );
+
+  background-size:
+    var(
+      --service-art-size,
+      70%
+    )
+    auto;
+
+  opacity:
+    var(
+      --service-art-opacity,
+      .34
+    );
+
+  /*
+   * Tiny softness rather than the washed-out treatment.
+   */
+  filter:
+    blur(
+      .18px
+    )
+    saturate(
+      .98
+    )
+    contrast(
+      .98
+    )
+    brightness(
+      1.01
+    );
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    scale(
+      1
+    );
+
+  transform-origin:
+    right center;
+
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    opacity,
+    filter,
+    transform;
+
+  transition:
+    opacity
+      .42s
+      ease,
+    filter
+      .42s
+      ease,
+    transform
+      .62s
+      var(
+        --cm-ease
+      );
+}
+
+
+/* ==========================================================================
+   SERVICE ART READABILITY FADE
+
+   Much lighter than before.
+
+   Text is protected on the left while the right ~50% of the card gets a
+   much cleaner view of the artwork.
+   ========================================================================== */
+
+.cap-mosaic-service__art-fade {
+  position:
+    absolute;
+
+  z-index:
+    1;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      rgba(
+        255,
+        255,
+        255,
+        .98
+      )
+      0%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .90
+      )
+      18%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .72
+      )
+      31%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .34
+      )
+      45%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .09
+      )
+      58%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .015
+      )
+      70%,
+
+      transparent
+      80%
+    );
+
+  transition:
+    opacity
+      .38s
+      ease;
+}
+
+
+/* ==========================================================================
    SERVICE LIGHT
    ========================================================================== */
 
 .cap-mosaic-service__hover-light {
   position:
     absolute;
+
+  z-index:
+    1;
 
   top:
     -80px;
@@ -2444,7 +2685,7 @@ i {
         27,
         219,
         186,
-        .11
+        .13
       ),
       transparent
       69%
@@ -2459,14 +2700,11 @@ i {
     );
 
   transition:
-    opacity
-      .3s
-      ease,
-    transform
-      .5s
-      var(
-        --cm-ease
-      );
+    opacity .3s ease,
+    transform .5s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -2483,6 +2721,71 @@ i {
 
 
 /* ==========================================================================
+   SERVICE ART HOVER
+
+   Hover now:
+   - increases visibility
+   - increases TekCorp teal/color
+   - removes tiny blur
+   - shifts artwork only slightly
+   ========================================================================== */
+
+@media (
+  hover:
+    hover
+) and (
+  pointer:
+    fine
+) {
+
+  .cap-mosaic-service:hover
+  .cap-mosaic-service__art {
+    opacity:
+      var(
+        --service-art-hover-opacity,
+        .50
+      );
+
+    filter:
+      blur(
+        0
+      )
+      saturate(
+        1.16
+      )
+      contrast(
+        1.02
+      )
+      brightness(
+        1
+      );
+
+    transform:
+      translate3d(
+        -4px,
+        -2px,
+        0
+      )
+      scale(
+        1.025
+      );
+  }
+
+
+  /*
+   * Reduce the readability veil slightly on hover as well.
+   * This lets more of the actual artwork color appear.
+   */
+  .cap-mosaic-service:hover
+  .cap-mosaic-service__art-fade {
+    opacity:
+      .86;
+  }
+
+}
+
+
+/* ==========================================================================
    SERVICE TOP
    ========================================================================== */
 
@@ -2491,7 +2794,7 @@ i {
     relative;
 
   z-index:
-    2;
+    3;
 
   display:
     flex;
@@ -2521,8 +2824,7 @@ i {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       27,
       219,
@@ -2547,20 +2849,13 @@ i {
     );
 
   transition:
-    background
-      .26s
-      ease,
-    border-color
-      .26s
-      ease,
-    color
-      .26s
-      ease,
-    transform
-      .34s
-      var(
-        --cm-ease
-      );
+    background .26s ease,
+    border-color .26s ease,
+    color .26s ease,
+    transform .34s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -2613,7 +2908,7 @@ i {
     relative;
 
   z-index:
-    2;
+    3;
 
   margin-top:
     auto;
@@ -2623,8 +2918,7 @@ i {
 }
 
 
-.cap-mosaic-service__copy
-> span {
+.cap-mosaic-service__copy > span {
   display:
     block;
 
@@ -2647,8 +2941,7 @@ i {
 }
 
 
-.cap-mosaic-service__copy
-strong {
+.cap-mosaic-service__copy strong {
   display:
     block;
 
@@ -2677,8 +2970,7 @@ strong {
 }
 
 
-.cap-mosaic-service__copy
-p {
+.cap-mosaic-service__copy p {
   max-width:
     410px;
 
@@ -2713,7 +3005,7 @@ p {
     absolute;
 
   z-index:
-    3;
+    4;
 
   right:
     14px;
@@ -2734,8 +3026,7 @@ p {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       24,
       35,
@@ -2747,26 +3038,34 @@ p {
     50%;
 
   background:
-    #fff;
+    rgba(
+      255,
+      255,
+      255,
+      .91
+    );
 
   color:
     #66706a;
 
+  backdrop-filter:
+    blur(
+      5px
+    );
+
+  -webkit-backdrop-filter:
+    blur(
+      5px
+    );
+
   transition:
-    border-color
-      .25s
-      ease,
-    background
-      .25s
-      ease,
-    color
-      .25s
-      ease,
-    transform
-      .34s
-      var(
-        --cm-ease
-      );
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease,
+    transform .34s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -2799,6 +3098,9 @@ p {
 .cap-mosaic-service__line {
   position:
     absolute;
+
+  z-index:
+    4;
 
   right:
     16px;
@@ -2834,14 +3136,11 @@ p {
     );
 
   transition:
-    opacity
-      .3s
-      ease,
-    transform
-      .45s
-      var(
-        --cm-ease
-      );
+    opacity .3s ease,
+    transform .45s
+    var(
+      --cm-ease
+    );
 }
 
 
@@ -2858,88 +3157,213 @@ p {
 
 
 /* ==========================================================================
-   PRODUCTS / SPARSE
+   PRODUCTS / SPARSE LAYOUT
    ========================================================================== */
+
+.cap-mosaic__services--sparse {
+  grid-template-columns:
+    1fr;
+
+  grid-template-rows:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    9px;
+
+  height:
+    308px;
+
+  min-height:
+    308px;
+}
+
 
 .cap-mosaic__services--sparse
 .cap-mosaic-service {
+  height:
+    100%;
+
   min-height:
-    308px;
+    0;
 
   padding:
-    23px;
+    15px
+    17px;
 }
 
 
 .cap-mosaic__services--sparse
 .cap-mosaic-service__icon {
   width:
-    49px;
+    38px;
 
   height:
-    49px;
+    38px;
 
   border-radius:
-    13px;
-}
-
-
-.cap-mosaic__services--sparse
-.cap-mosaic-service__copy
-> span {
-  font-size:
     10px;
 }
 
 
 .cap-mosaic__services--sparse
-.cap-mosaic-service__copy
-strong {
-  max-width:
-    360px;
+.cap-mosaic-service__copy {
+  margin-top:
+    auto;
 
-  font-size:
-    clamp(
-      18px,
-      1.8vw,
-      22px
-    );
+  padding-top:
+    6px;
 
-  line-height:
-    1.14;
-
-  letter-spacing:
-    -.032em;
+  padding-right:
+    39%;
 }
 
 
 .cap-mosaic__services--sparse
-.cap-mosaic-service__copy
-p {
+.cap-mosaic-service__copy > span {
+  font-size:
+    8px;
+}
+
+
+.cap-mosaic__services--sparse
+.cap-mosaic-service__copy strong {
   max-width:
-    380px;
+    100%;
+
+  margin-top:
+    3px;
 
   font-size:
-    13px;
+    14px;
 
   line-height:
-    1.55;
+    1.18;
+
+  letter-spacing:
+    -.022em;
+}
+
+
+.cap-mosaic__services--sparse
+.cap-mosaic-service__copy p {
+  display:
+    -webkit-box;
+
+  max-width:
+    100%;
+
+  margin-top:
+    4px
+    !important;
+
+  overflow:
+    hidden;
+
+  font-size:
+    9.5px;
+
+  line-height:
+    1.4;
+
+  -webkit-box-orient:
+    vertical;
+
+  -webkit-line-clamp:
+    2;
+
+  line-clamp:
+    2;
 }
 
 
 .cap-mosaic__services--sparse
 .cap-mosaic-service__arrow {
   right:
-    20px;
+    13px;
 
   bottom:
-    20px;
+    13px;
 
   width:
-    35px;
+    30px;
 
   height:
-    35px;
+    30px;
+}
+
+
+/* ==========================================================================
+   PRODUCT ART
+
+   Same improved artwork treatment, but smaller because these are horizontal.
+   ========================================================================== */
+
+.cap-mosaic__services--sparse
+.cap-mosaic-service__art {
+  background-size:
+    var(
+      --service-art-size,
+      52%
+    )
+    auto;
+}
+
+
+.cap-mosaic__services--sparse
+.cap-mosaic-service__art-fade {
+  background:
+    linear-gradient(
+      90deg,
+
+      rgba(
+        255,
+        255,
+        255,
+        .99
+      )
+      0%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .93
+      )
+      27%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .67
+      )
+      42%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .24
+      )
+      58%,
+
+      rgba(
+        255,
+        255,
+        255,
+        .04
+      )
+      72%,
+
+      transparent
+      84%
+    );
 }
 
 
@@ -2976,8 +3400,7 @@ p {
     18px;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       20,
       31,
@@ -3033,8 +3456,7 @@ p {
 }
 
 
-.cap-mosaic__connector-flow
-span {
+.cap-mosaic__connector-flow span {
   color:
     #535c56;
 
@@ -3046,8 +3468,7 @@ span {
 }
 
 
-.cap-mosaic__connector-flow
-i {
+.cap-mosaic__connector-flow i {
   width:
     clamp(
       12px,
@@ -3125,8 +3546,7 @@ i {
     20px;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       27,
       219,
@@ -3185,8 +3605,7 @@ i {
     center;
 
   border:
-    1px
-    solid
+    1px solid
     rgba(
       27,
       219,
@@ -3227,8 +3646,7 @@ i {
 }
 
 
-.cap-mosaic__footer-copy
-span {
+.cap-mosaic__footer-copy span {
   color:
     var(
       --cm-teal-dark
@@ -3242,8 +3660,7 @@ span {
 }
 
 
-.cap-mosaic__footer-copy
-strong {
+.cap-mosaic__footer-copy strong {
   margin-top:
     3px;
 
@@ -3260,10 +3677,6 @@ strong {
     1.4;
 }
 
-
-/* ==========================================================================
-   FOOTER ACTION
-   ========================================================================== */
 
 .cap-mosaic__footer-action {
   display:
@@ -3289,8 +3702,7 @@ strong {
 }
 
 
-.cap-mosaic__footer-action
-> span {
+.cap-mosaic__footer-action > span {
   display:
     grid;
 
@@ -3326,19 +3738,15 @@ strong {
     );
 
   transition:
-    transform
-      .34s
-      var(
-        --cm-ease
-      ),
-    box-shadow
-      .3s
-      ease;
+    transform .34s
+    var(
+      --cm-ease
+    ),
+    box-shadow .3s ease;
 }
 
 
-.cap-mosaic__footer-action:hover
-> span {
+.cap-mosaic__footer-action:hover > span {
   transform:
     translateX(
       4px
@@ -3413,6 +3821,45 @@ strong {
     transform:
       translateY(
         0
+      );
+  }
+
+}
+
+
+@keyframes cmStoryImageReveal {
+
+  from {
+    opacity:
+      0;
+
+    transform:
+      scale(
+        calc(
+          var(
+            --story-image-scale,
+            1.12
+          )
+          +
+          .035
+        )
+      );
+  }
+
+
+  to {
+    opacity:
+      var(
+        --story-image-opacity,
+        .24
+      );
+
+    transform:
+      scale(
+        var(
+          --story-image-scale,
+          1.12
+        )
       );
   }
 
@@ -3584,8 +4031,10 @@ strong {
   }
 
 
-  .cap-mosaic__services--sparse
-  .cap-mosaic-service {
+  .cap-mosaic__services--sparse {
+    height:
+      299px;
+
     min-height:
       299px;
   }
@@ -3641,10 +4090,6 @@ strong {
       24px;
   }
 
-
-  /* ------------------------------------------------------------------------
-     HORIZONTAL CATEGORY EXPERIENCE
-     ------------------------------------------------------------------------ */
 
   .cap-mosaic__categories {
     display:
@@ -3718,11 +4163,9 @@ strong {
 
 
   .cap-mosaic-category--2
-  .cap-mosaic-category__copy
-  > span,
+  .cap-mosaic-category__copy > span,
   .cap-mosaic-category--3
-  .cap-mosaic-category__copy
-  > span {
+  .cap-mosaic-category__copy > span {
     display:
       block;
   }
@@ -3750,10 +4193,6 @@ strong {
       1;
   }
 
-
-  /* ------------------------------------------------------------------------
-     DETAIL STACK
-     ------------------------------------------------------------------------ */
 
   .cap-mosaic__detail {
     grid-template-columns:
@@ -3794,13 +4233,32 @@ strong {
           1fr
         )
       );
+
+    grid-template-rows:
+      none;
+
+    height:
+      auto;
+
+    min-height:
+      0;
   }
 
 
   .cap-mosaic__services--sparse
   .cap-mosaic-service {
     min-height:
-      240px;
+      185px;
+
+    height:
+      auto;
+  }
+
+
+  .cap-mosaic__services--sparse
+  .cap-mosaic-service__copy {
+    padding-right:
+      28%;
   }
 
 }
@@ -3836,8 +4294,7 @@ strong {
   }
 
 
-  .cap-mosaic__heading
-  h2 {
+  .cap-mosaic__heading h2 {
     font-size:
       clamp(
         36px,
@@ -3858,15 +4315,13 @@ strong {
   }
 
 
-  .cap-mosaic__intro
-  p {
+  .cap-mosaic__intro p {
     font-size:
       13px;
   }
 
 
-  .cap-mosaic__interaction-row
-  > span {
+  .cap-mosaic__interaction-row > span {
     font-size:
       9px;
   }
@@ -3888,15 +4343,13 @@ strong {
   }
 
 
-  .cap-mosaic-category__copy
-  strong {
+  .cap-mosaic-category__copy strong {
     font-size:
       19px;
   }
 
 
-  .cap-mosaic-category__copy
-  > span {
+  .cap-mosaic-category__copy > span {
     font-size:
       10px;
   }
@@ -3917,8 +4370,7 @@ strong {
   }
 
 
-  .cap-mosaic__story
-  h3 {
+  .cap-mosaic__story h3 {
     font-size:
       clamp(
         28px,
@@ -3929,8 +4381,7 @@ strong {
   }
 
 
-  .cap-mosaic__story
-  p {
+  .cap-mosaic__story p {
     font-size:
       13px;
   }
@@ -3954,8 +4405,33 @@ strong {
   }
 
 
-  .cap-mosaic-service__copy
-  strong {
+  /*
+   * Mobile artwork is kept somewhat softer so small text remains clean.
+   */
+  .cap-mosaic-service__art {
+    opacity:
+      calc(
+        var(
+          --service-art-opacity,
+          .34
+        )
+        *
+        .88
+      );
+
+    background-size:
+      min(
+        var(
+          --service-art-size,
+          70%
+        ),
+        72%
+      )
+      auto;
+  }
+
+
+  .cap-mosaic-service__copy strong {
     font-size:
       13px;
   }
@@ -3964,21 +4440,29 @@ strong {
   .cap-mosaic__services--sparse {
     grid-template-columns:
       1fr;
+
+    height:
+      auto;
+
+    min-height:
+      0;
   }
 
 
   .cap-mosaic__services--sparse
   .cap-mosaic-service {
     min-height:
-      190px;
+      165px;
+
+    height:
+      auto;
   }
 
 
   .cap-mosaic__services--sparse
-  .cap-mosaic-service__copy
-  strong {
-    font-size:
-      19px;
+  .cap-mosaic-service__copy {
+    padding-right:
+      34%;
   }
 
 
@@ -4003,8 +4487,7 @@ strong {
   }
 
 
-  .cap-mosaic__connector-flow
-  span {
+  .cap-mosaic__connector-flow span {
     white-space:
       nowrap;
   }
@@ -4060,8 +4543,7 @@ strong {
   }
 
 
-  .cap-mosaic__interaction-row
-  > div {
+  .cap-mosaic__interaction-row > div {
     display:
       none;
   }
@@ -4122,8 +4604,7 @@ strong {
   }
 
 
-  .cap-mosaic-service__copy
-  strong {
+  .cap-mosaic-service__copy strong {
     font-size:
       13px;
   }
@@ -4132,23 +4613,28 @@ strong {
   .cap-mosaic__services--sparse
   .cap-mosaic-service {
     min-height:
-      175px;
+      160px;
 
     padding:
-      18px;
+      15px;
   }
 
 
   .cap-mosaic__services--sparse
-  .cap-mosaic-service__copy
-  strong {
-    font-size:
-      17px;
+  .cap-mosaic-service__copy {
+    padding-right:
+      28%;
   }
 
 
-  .cap-mosaic__footer-copy
-  strong {
+  .cap-mosaic__services--sparse
+  .cap-mosaic-service__copy strong {
+    font-size:
+      13px;
+  }
+
+
+  .cap-mosaic__footer-copy strong {
     font-size:
       12px;
   }
@@ -4165,8 +4651,7 @@ button:focus-visible,
 .cap-mosaic
 a:focus-visible {
   outline:
-    3px
-    solid
+    3px solid
     rgba(
       27,
       219,
@@ -4204,8 +4689,17 @@ a:focus-visible {
   .cap-mosaic-category__image {
     transform:
       scale(
-        1.04
+        var(
+          --category-image-scale,
+          1.04
+        )
       );
+  }
+
+
+  .cap-mosaic-service__art {
+    transform:
+      none;
   }
 
 }

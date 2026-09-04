@@ -36,10 +36,10 @@ const PHONE_IMAGE =
 const CONTACT_DETAILS = {
   email: {
     label:
-      "support@tekcorpllc.ae",
+      "support@tekcorp.ae",
 
     href:
-      "mailto:support@tekcorpllc.ae",
+      "mailto:support@tekcorp.ae",
   },
 
 

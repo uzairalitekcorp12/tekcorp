@@ -9,27 +9,37 @@ import {
   Target,
   Workflow,
 } from "lucide-react";
+
 import Button from "@/app/_shared/Button/Button";
 
 
 /* ==========================================================================
-   DIGITAL SOLUTIONS DATA
+   DIGITAL SOLUTIONS
 
-   All cards intentionally share the same structure.
+   ARTWORK
+   --------------------------------------------------------------------------
 
-   There is NO permanently featured card.
+   Artwork uses transparent PNG files from:
 
-   Every card:
-   - starts white
-   - becomes dark on hover
-   - uses the same typography
-   - uses the same spacing
-   - uses the same CTA
+   public/assets/Home-assets/solutions/
+
+   Current source PNGs may remain at their existing high resolutions.
+
+   CSS controls:
+   - displayed size
+   - positioning
+   - visibility
+   - hover treatment
+
+   Every card therefore stays exactly the same size regardless of the
+   original PNG dimensions.
+
    ========================================================================== */
 
 const solutions = [
   {
-    icon: Code2,
+    icon:
+      Code2,
 
     title:
       "Custom Web Development",
@@ -42,10 +52,25 @@ const solutions = [
 
     description:
       "High-performance websites and scalable web platforms built around your brand, users, and business goals.",
+
+    image:
+      "/assets/Home-assets/solutions/web-development.png",
+
+    /*
+     * Large dashboard/tablet composition.
+     * Push slightly toward the bottom-right.
+     */
+    artPosition:
+      "80% 76%",
+
+    artSize:
+      "78% auto",
   },
 
+
   {
-    icon: AppWindow,
+    icon:
+      AppWindow,
 
     title:
       "Application Development",
@@ -58,10 +83,25 @@ const solutions = [
 
     description:
       "Purpose-built web and mobile applications that simplify workflows, integrate systems, and scale with your operations.",
+
+    image:
+      "/assets/Home-assets/solutions/application-development.png",
+
+    /*
+     * This PNG is taller than the others.
+     * Slightly smaller width keeps the phones completely visible.
+     */
+    artPosition:
+      "80% 71%",
+
+    artSize:
+      "67% auto",
   },
 
+
   {
-    icon: Bot,
+    icon:
+      Bot,
 
     title:
       "AI Chatbots & Assistants",
@@ -74,10 +114,21 @@ const solutions = [
 
     description:
       "Helpful conversational AI for customer support, lead qualification, internal assistance, and always-on engagement.",
+
+    image:
+      "/assets/Home-assets/solutions/ai-chatbots.png",
+
+    artPosition:
+      "80% 77%",
+
+    artSize:
+      "74% auto",
   },
 
+
   {
-    icon: Workflow,
+    icon:
+      Workflow,
 
     title:
       "AI Agents & Automation",
@@ -90,10 +141,21 @@ const solutions = [
 
     description:
       "Autonomous AI workflows that connect tools, coordinate tasks, and automate repeatable work with human oversight.",
+
+    image:
+      "/assets/Home-assets/solutions/ai-automation.png",
+
+    artPosition:
+      "80% 80%",
+
+    artSize:
+      "74% auto",
   },
 
+
   {
-    icon: Megaphone,
+    icon:
+      Megaphone,
 
     title:
       "Social Media Marketing",
@@ -106,10 +168,21 @@ const solutions = [
 
     description:
       "Platform-ready content, community management, and campaigns designed to grow reach and meaningful engagement.",
+
+    image:
+      "/assets/Home-assets/solutions/social-media-marketing.png",
+
+    artPosition:
+      "80% 82%",
+
+    artSize:
+      "75% auto",
   },
 
+
   {
-    icon: Target,
+    icon:
+      Target,
 
     title:
       "Marketing Strategy",
@@ -122,6 +195,15 @@ const solutions = [
 
     description:
       "Research-led positioning, channel planning, and measurable roadmaps that turn marketing activity into business growth.",
+
+    image:
+      "/assets/Home-assets/solutions/marketing-strategy.png",
+
+    artPosition:
+      "80% 79%",
+
+    artSize:
+      "75% auto",
   },
 ];
 
@@ -140,15 +222,13 @@ export default function HomeSolutions() {
       <div className="lp1-shell">
 
         {/* ==================================================================
-            SECTION INTRO
+            INTRO
             ================================================================== */}
 
         <header
           className="lp1-solutions__intro"
           data-reveal="up"
         >
-
-          {/* LEFT HEADING */}
 
           <div className="lp1-solutions__heading-block">
 
@@ -161,7 +241,11 @@ export default function HomeSolutions() {
               className="lp1-display-heading"
               id="lp1-solutions-title"
             >
-              Digital Expertise,
+              Digital{" "}
+
+              <span className="lp1-display-heading__accent">
+                Expertise,
+              </span>
 
               <br />
 
@@ -170,8 +254,6 @@ export default function HomeSolutions() {
 
           </div>
 
-
-          {/* RIGHT INTRO COPY */}
 
           <p className="lp1-solutions__lead">
             From custom platforms and intelligent automation
@@ -183,7 +265,7 @@ export default function HomeSolutions() {
 
 
         {/* ==================================================================
-            SOLUTIONS GRID
+            GRID
             ================================================================== */}
 
         <div className="lp1-solutions__grid">
@@ -207,8 +289,48 @@ export default function HomeSolutions() {
                   style={{
                     "--lp1-card-delay":
                       `${index * 65}ms`,
+
+                    "--lp1-art-image":
+                      `url("${solution.image}")`,
+
+                    "--lp1-art-position":
+                      solution.artPosition,
+
+                    "--lp1-art-size":
+                      solution.artSize,
                   }}
                 >
+
+                  {/* ========================================================
+                      SERVICE ARTWORK
+
+                      Background-based artwork:
+                      - never influences layout
+                      - no broken image element
+                      - card dimensions remain fixed
+                      ======================================================== */}
+
+                  <span
+                    className="lp1-solution-card__art"
+                    aria-hidden="true"
+                  />
+
+
+                  {/* ========================================================
+                      ARTWORK READABILITY LAYERS
+
+                      CSS uses ::before and ::after on this element to
+                      smoothly crossfade between white-card readability
+                      and dark-card readability.
+
+                      This avoids gradient snapping/jitter.
+                      ======================================================== */}
+
+                  <span
+                    className="lp1-solution-card__art-fade"
+                    aria-hidden="true"
+                  />
+
 
                   {/* ========================================================
                       HOVER DECORATIONS
@@ -227,7 +349,7 @@ export default function HomeSolutions() {
 
 
                   {/* ========================================================
-                      ICON
+                      ICON / CATEGORY
                       ======================================================== */}
 
                   <div className="lp1-solution-card__icon-wrap">
@@ -275,7 +397,9 @@ export default function HomeSolutions() {
                   <Button
                     appearance="text"
                     className="lp1-solution-card__link"
-                    href={solution.href}
+                    href={
+                      solution.href
+                    }
                     aria-label={`Explore ${solution.title}`}
                   >
 

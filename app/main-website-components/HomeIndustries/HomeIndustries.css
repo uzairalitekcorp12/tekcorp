@@ -1,0 +1,2492 @@
+/* ==========================================================================
+   TEKCORP — INDUSTRIES WE SERVE
+   ==========================================================================
+
+   DESIGN DIRECTION
+   --------------------------------------------------------------------------
+
+   Inspired by the supplied reference while keeping TekCorp's existing
+   visual language.
+
+   - Dark premium section
+   - 4 × 2 desktop grid
+   - Consistent outline icons
+   - Black cards by default
+   - Deep green / teal hover state
+   - TekCorp teal accents
+   - Gradient heading
+   - Subtle technical grid / orbit graphics
+   - Refined card hover
+   - Circular arrow interaction
+   - Fully responsive
+   - Uses TekCorp's existing font variables
+
+   ========================================================================== */
+
+
+/* ==========================================================================
+   ROOT
+   ========================================================================== */
+
+.tek-industries {
+  --industries-teal:
+    var(
+      --tek-green,
+      #1bdbba
+    );
+
+  --industries-teal-dark:
+    var(
+      --tek-green-dark,
+      #149c85
+    );
+
+  --industries-teal-bright:
+    #25e6c7;
+
+  --industries-bg:
+    #050807;
+
+  --industries-card:
+    #0b0f0e;
+
+  --industries-card-soft:
+    #101513;
+
+  --industries-border:
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+
+  --industries-copy:
+    rgba(
+      255,
+      255,
+      255,
+      0.61
+    );
+
+  --industries-ease:
+    var(
+      --tek-ease,
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      )
+    );
+
+
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  width:
+    100%;
+
+  overflow:
+    hidden;
+
+  padding:
+    clamp(
+      72px,
+      7vw,
+      105px
+    )
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #030605 0%,
+      #060a08 46%,
+      #030605 100%
+    );
+
+  color:
+    #ffffff;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    );
+}
+
+
+/* ==========================================================================
+   BACKGROUND
+   ========================================================================== */
+
+.tek-industries__background {
+  position:
+    absolute;
+
+  z-index:
+    -1;
+
+  inset:
+    0;
+
+  overflow:
+    hidden;
+
+  pointer-events:
+    none;
+}
+
+
+/* ==========================================================================
+   BACKGROUND GRID
+   ========================================================================== */
+
+.tek-industries__background-grid {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  opacity:
+    0.13;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        27,
+        219,
+        186,
+        0.055
+      )
+      1px,
+
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+
+      rgba(
+        27,
+        219,
+        186,
+        0.055
+      )
+      1px,
+
+      transparent
+      1px
+    );
+
+  background-size:
+    62px
+    62px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.76
+      )
+      43%,
+      transparent
+      88%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      #000 0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.76
+      )
+      43%,
+      transparent
+      88%
+    );
+}
+
+
+/* ==========================================================================
+   BACKGROUND ORBITS
+   ========================================================================== */
+
+.tek-industries__background-orbit {
+  position:
+    absolute;
+
+  display:
+    block;
+
+  border:
+    1px dashed
+    rgba(
+      27,
+      219,
+      186,
+      0.12
+    );
+
+  border-radius:
+    50%;
+
+  transform:
+    rotate(
+      -24deg
+    );
+
+  animation:
+    industriesOrbit
+    28s
+    linear
+    infinite;
+}
+
+
+.tek-industries__background-orbit--one {
+  top:
+    -480px;
+
+  left:
+    -280px;
+
+  width:
+    980px;
+
+  height:
+    980px;
+}
+
+
+.tek-industries__background-orbit--two {
+  right:
+    -410px;
+
+  bottom:
+    -520px;
+
+  width:
+    1050px;
+
+  height:
+    1050px;
+
+  animation-direction:
+    reverse;
+
+  animation-duration:
+    34s;
+}
+
+
+/* ==========================================================================
+   BACKGROUND GLOWS
+   ========================================================================== */
+
+.tek-industries__background-glow {
+  position:
+    absolute;
+
+  display:
+    block;
+
+  border-radius:
+    50%;
+
+  filter:
+    blur(
+      10px
+    );
+}
+
+
+.tek-industries__background-glow--one {
+  top:
+    14%;
+
+  left:
+    19%;
+
+  width:
+    480px;
+
+  height:
+    480px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        27,
+        219,
+        186,
+        0.08
+      ),
+      transparent
+      70%
+    );
+}
+
+
+.tek-industries__background-glow--two {
+  right:
+    20%;
+
+  bottom:
+    -240px;
+
+  width:
+    560px;
+
+  height:
+    560px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        27,
+        219,
+        186,
+        0.11
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* ==========================================================================
+   SHELL
+   ========================================================================== */
+
+.tek-industries__shell {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.tek-industries__header {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.12fr
+    )
+    minmax(
+      300px,
+      0.64fr
+    );
+
+  align-items:
+    end;
+
+  gap:
+    clamp(
+      54px,
+      8vw,
+      130px
+    );
+
+  margin-bottom:
+    27px;
+}
+
+
+/* ==========================================================================
+   EYEBROW
+   ========================================================================== */
+
+.tek-industries__eyebrow {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    15px;
+
+  color:
+    var(
+      --industries-teal-bright
+    );
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.16em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.tek-industries__eyebrow
+i {
+  display:
+    block;
+
+  width:
+    25px;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(
+        --industries-teal
+      ),
+      transparent
+    );
+}
+
+
+/* ==========================================================================
+   HEADING
+   ========================================================================== */
+
+.tek-industries__heading
+h2 {
+  max-width:
+    720px;
+
+  margin:
+    0
+    !important;
+
+  background:
+    linear-gradient(
+      96deg,
+      #ffffff 0%,
+      #f7f9f8 52%,
+      #818b86 100%
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  color:
+    transparent
+    !important;
+
+  -webkit-text-fill-color:
+    transparent
+    !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+
+  font-size:
+    clamp(
+      3.25rem,
+      5.2vw,
+      5rem
+    )
+    !important;
+
+  font-weight:
+    560
+    !important;
+
+  line-height:
+    0.98
+    !important;
+
+  letter-spacing:
+    -0.058em
+    !important;
+
+  text-wrap:
+    balance;
+}
+
+
+/* ==========================================================================
+   GREEN HEADING WORD
+   ========================================================================== */
+
+.tek-industries__heading
+h2
+> span {
+  background:
+    linear-gradient(
+      95deg,
+      var(
+        --industries-teal-dark
+      )
+      0%,
+      var(
+        --industries-teal
+      )
+      54%,
+      #77f6df
+      100%
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  color:
+    transparent;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+
+/* ==========================================================================
+   INTRO
+   ========================================================================== */
+
+.tek-industries__intro {
+  padding-bottom:
+    5px;
+}
+
+
+.tek-industries__intro
+p {
+  max-width:
+    420px;
+
+  margin:
+    0
+    !important;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.58
+    )
+    !important;
+
+  -webkit-text-fill-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.58
+    )
+    !important;
+
+  font-size:
+    0.79rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.7;
+}
+
+
+/* ==========================================================================
+   HEADER ACTION
+   ========================================================================== */
+
+.tek-industries__intro-action {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  margin-top:
+    20px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    550;
+
+  text-decoration:
+    none;
+}
+
+
+.tek-industries__intro-action
+> span {
+  display:
+    grid;
+
+  width:
+    31px;
+
+  height:
+    31px;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      27,
+      219,
+      186,
+      0.27
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      27,
+      219,
+      186,
+      0.075
+    );
+
+  color:
+    var(
+      --industries-teal
+    );
+
+  transition:
+    border-color
+      250ms
+      ease,
+    background
+      250ms
+      ease,
+    color
+      250ms
+      ease,
+    transform
+      380ms
+      var(
+        --industries-ease
+      );
+}
+
+
+.tek-industries__intro-action:hover
+> span {
+  border-color:
+    var(
+      --industries-teal
+    );
+
+  background:
+    var(
+      --industries-teal
+    );
+
+  color:
+    #04100c;
+
+  transform:
+    rotate(
+      45deg
+    );
+}
+
+
+/* ==========================================================================
+   STATUS LINE
+   ========================================================================== */
+
+.tek-industries__status {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    13px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.31
+    );
+
+  font-size:
+    0.54rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.055em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.tek-industries__status
+i {
+  display:
+    block;
+
+  width:
+    35px;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        27,
+        219,
+        186,
+        0.15
+      ),
+      var(
+        --industries-teal-dark
+      ),
+      rgba(
+        27,
+        219,
+        186,
+        0.15
+      )
+    );
+}
+
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
+.tek-industries__grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    10px;
+}
+
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.tek-industries__card {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  display:
+    flex;
+
+  min-width:
+    0;
+
+  min-height:
+    310px;
+
+  flex-direction:
+    column;
+
+  overflow:
+    hidden;
+
+  padding:
+    23px;
+
+  border:
+    1px solid
+    var(
+      --industries-border
+    );
+
+  border-radius:
+    17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101412 0%,
+      #090c0b 58%,
+      #070a09 100%
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      ),
+    0
+    12px
+    34px
+    rgba(
+      0,
+      0,
+      0,
+      0.11
+    );
+
+  transform:
+    translateZ(
+      0
+    );
+
+  transition:
+    border-color
+      350ms
+      ease,
+    background
+      480ms
+      var(
+        --industries-ease
+      ),
+    box-shadow
+      440ms
+      ease,
+    transform
+      460ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   CARD GRID
+   ========================================================================== */
+
+.tek-industries__card-grid {
+  position:
+    absolute;
+
+  z-index:
+    -4;
+
+  inset:
+    0;
+
+  opacity:
+    0;
+
+  pointer-events:
+    none;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        27,
+        219,
+        186,
+        0.10
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        27,
+        219,
+        186,
+        0.10
+      )
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    32px
+    32px;
+
+  mask-image:
+    linear-gradient(
+      135deg,
+      transparent,
+      #000
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      135deg,
+      transparent,
+      #000
+    );
+
+  transition:
+    opacity
+      420ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CARD GLOW
+   ========================================================================== */
+
+.tek-industries__card-glow {
+  position:
+    absolute;
+
+  z-index:
+    -3;
+
+  top:
+    -120px;
+
+  right:
+    -120px;
+
+  width:
+    300px;
+
+  height:
+    300px;
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        27,
+        219,
+        186,
+        0.40
+      )
+      0%,
+      rgba(
+        27,
+        219,
+        186,
+        0.15
+      )
+      31%,
+      transparent
+      70%
+    );
+
+  opacity:
+    0;
+
+  transform:
+    scale(
+      0.7
+    );
+
+  transition:
+    opacity
+      420ms
+      ease,
+    transform
+      700ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   ORBIT
+   ========================================================================== */
+
+.tek-industries__card-orbit {
+  position:
+    absolute;
+
+  z-index:
+    -2;
+
+  right:
+    -75px;
+
+  bottom:
+    -105px;
+
+  width:
+    220px;
+
+  height:
+    220px;
+
+  border:
+    1px dashed
+    rgba(
+      27,
+      219,
+      186,
+      0.19
+    );
+
+  border-radius:
+    50%;
+
+  opacity:
+    0;
+
+  transform:
+    rotate(
+      -25deg
+    )
+    scale(
+      0.7
+    );
+
+  transition:
+    opacity
+      420ms
+      ease,
+    transform
+      800ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   BOTTOM ACCENT
+   ========================================================================== */
+
+.tek-industries__card-line {
+  position:
+    absolute;
+
+  z-index:
+    4;
+
+  right:
+    20px;
+
+  bottom:
+    0;
+
+  left:
+    20px;
+
+  height:
+    2px;
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(
+        --industries-teal
+      ),
+      transparent
+    );
+
+  opacity:
+    0;
+
+  transform:
+    scaleX(
+      0.2
+    );
+
+  transition:
+    opacity
+      320ms
+      ease,
+    transform
+      520ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   CARD TOP
+   ========================================================================== */
+
+.tek-industries__card-top {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+}
+
+
+/* ==========================================================================
+   ICON
+
+   ALL INDUSTRY ICONS USE THE EXACT SAME DESIGN.
+   ========================================================================== */
+
+.tek-industries__icon {
+  display:
+    grid;
+
+  width:
+    52px;
+
+  height:
+    52px;
+
+  flex:
+    0
+    0
+    52px;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      27,
+      219,
+      186,
+      0.30
+    );
+
+  border-radius:
+    13px;
+
+  background:
+    rgba(
+      27,
+      219,
+      186,
+      0.055
+    );
+
+  color:
+    var(
+      --industries-teal
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.04
+      );
+
+  transition:
+    border-color
+      300ms
+      ease,
+    background
+      300ms
+      ease,
+    color
+      300ms
+      ease,
+    box-shadow
+      350ms
+      ease,
+    transform
+      450ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   NUMBER
+   ========================================================================== */
+
+.tek-industries__number {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.30
+    );
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.04em;
+
+  transition:
+    color
+      300ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
+.tek-industries__card-content {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  margin-top:
+    36px;
+}
+
+
+/* ==========================================================================
+   CATEGORY
+   ========================================================================== */
+
+.tek-industries__category {
+  display:
+    inline-flex;
+
+  min-height:
+    23px;
+
+  align-items:
+    center;
+
+  padding:
+    0
+    8px;
+
+  border:
+    1px solid
+    rgba(
+      27,
+      219,
+      186,
+      0.11
+    );
+
+  border-radius:
+    5px;
+
+  background:
+    rgba(
+      27,
+      219,
+      186,
+      0.075
+    );
+
+  color:
+    var(
+      --industries-teal
+    );
+
+  font-size:
+    0.49rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    border-color
+      300ms
+      ease,
+    background
+      300ms
+      ease,
+    color
+      300ms
+      ease,
+    transform
+      400ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+
+.tek-industries__card
+h3 {
+  margin:
+    12px
+    0
+    0
+    !important;
+
+  color:
+    #ffffff
+    !important;
+
+  -webkit-text-fill-color:
+    #ffffff
+    !important;
+
+  font-family:
+    var(
+      --font-site,
+      "Lufga Regular",
+      sans-serif
+    )
+    !important;
+
+  font-size:
+    clamp(
+      1.2rem,
+      1.6vw,
+      1.48rem
+    )
+    !important;
+
+  font-weight:
+    560
+    !important;
+
+  line-height:
+    1.14
+    !important;
+
+  letter-spacing:
+    -0.035em
+    !important;
+}
+
+
+/* ==========================================================================
+   DESCRIPTION
+   ========================================================================== */
+
+.tek-industries__card
+p {
+  max-width:
+    255px;
+
+  margin:
+    11px
+    0
+    0
+    !important;
+
+  color:
+    var(
+      --industries-copy
+    )
+    !important;
+
+  -webkit-text-fill-color:
+    var(
+      --industries-copy
+    )
+    !important;
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.58;
+
+  transition:
+    color
+      320ms
+      ease,
+    -webkit-text-fill-color
+      320ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CARD ACTION
+   ========================================================================== */
+
+.tek-industries__card-action {
+  position:
+    relative;
+
+  z-index:
+    4;
+
+  display:
+    flex;
+
+  width:
+    100%;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    14px;
+
+  margin-top:
+    auto;
+
+  padding-top:
+    22px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.59
+    );
+
+  font-size:
+    0.61rem;
+
+  font-weight:
+    550;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      300ms
+      ease;
+}
+
+
+/* ==========================================================================
+   CTA COPY
+
+   Hidden initially for the cleaner reference-style treatment.
+   Reveals subtly on wider screens when card is hovered.
+   ========================================================================== */
+
+.tek-industries__card-action-copy {
+  opacity:
+    0.62;
+
+  transform:
+    translateX(
+      0
+    );
+
+  transition:
+    opacity
+      300ms
+      ease,
+    transform
+      400ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   CTA CIRCLE
+   ========================================================================== */
+
+.tek-industries__card-action-icon {
+  display:
+    grid;
+
+  width:
+    36px;
+
+  height:
+    36px;
+
+  flex:
+    0
+    0
+    36px;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  color:
+    var(
+      --industries-teal
+    );
+
+  backdrop-filter:
+    blur(
+      8px
+    );
+
+  -webkit-backdrop-filter:
+    blur(
+      8px
+    );
+
+  transition:
+    border-color
+      280ms
+      ease,
+    background
+      280ms
+      ease,
+    color
+      280ms
+      ease,
+    box-shadow
+      320ms
+      ease,
+    transform
+      430ms
+      var(
+        --industries-ease
+      );
+}
+
+
+/* ==========================================================================
+   DESKTOP CARD HOVER
+
+   BLACK → DEEP TEKCORP GREEN
+   ========================================================================== */
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .tek-industries__card:hover {
+    border-color:
+      rgba(
+        27,
+        219,
+        186,
+        0.72
+      );
+
+    background:
+      linear-gradient(
+        145deg,
+        #113f35 0%,
+        #0b2922 38%,
+        #071511 100%
+      );
+
+    box-shadow:
+      0
+      26px
+      55px
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      ),
+      0
+      0
+      0
+      1px
+      rgba(
+        27,
+        219,
+        186,
+        0.07
+      ),
+      0
+      0
+      38px
+      rgba(
+        27,
+        219,
+        186,
+        0.08
+      );
+
+    transform:
+      translateY(
+        -6px
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     GRID
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__card-grid {
+    opacity:
+      0.42;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     GLOW
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__card-glow {
+    opacity:
+      1;
+
+    transform:
+      scale(
+        1
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     ORBIT
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__card-orbit {
+    opacity:
+      0.72;
+
+    transform:
+      rotate(
+        16deg
+      )
+      scale(
+        1
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     BOTTOM LINE
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__card-line {
+    opacity:
+      1;
+
+    transform:
+      scaleX(
+        1
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     ICON
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__icon {
+    border-color:
+      var(
+        --industries-teal
+      );
+
+    background:
+      var(
+        --industries-teal
+      );
+
+    color:
+      #04110d;
+
+    box-shadow:
+      0
+      10px
+      30px
+      rgba(
+        27,
+        219,
+        186,
+        0.22
+      );
+
+    transform:
+      translateY(
+        -3px
+      )
+      rotate(
+        -4deg
+      )
+      scale(
+        1.04
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     NUMBER
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__number {
+    color:
+      rgba(
+        137,
+        255,
+        233,
+        0.66
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     CATEGORY
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__category {
+    border-color:
+      rgba(
+        86,
+        245,
+        216,
+        0.29
+      );
+
+    background:
+      rgba(
+        27,
+        219,
+        186,
+        0.16
+      );
+
+    color:
+      #7ef6df;
+
+    transform:
+      translateX(
+        2px
+      );
+  }
+
+
+  /* ------------------------------------------------------------------------
+     DESCRIPTION
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  p {
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.75
+      )
+      !important;
+
+    -webkit-text-fill-color:
+      rgba(
+        255,
+        255,
+        255,
+        0.75
+      )
+      !important;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     ACTION
+     ------------------------------------------------------------------------ */
+
+  .tek-industries__card:hover
+  .tek-industries__card-action {
+    color:
+      #ffffff;
+  }
+
+
+  .tek-industries__card:hover
+  .tek-industries__card-action-copy {
+    opacity:
+      1;
+
+    transform:
+      translateX(
+        3px
+      );
+  }
+
+
+  .tek-industries__card:hover
+  .tek-industries__card-action-icon {
+    border-color:
+      var(
+        --industries-teal
+      );
+
+    background:
+      var(
+        --industries-teal
+      );
+
+    color:
+      #04110d;
+
+    box-shadow:
+      0
+      9px
+      24px
+      rgba(
+        27,
+        219,
+        186,
+        0.19
+      );
+
+    transform:
+      rotate(
+        45deg
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   CTA DIRECT HOVER
+   ========================================================================== */
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .tek-industries__card-action:hover
+  .tek-industries__card-action-icon {
+    box-shadow:
+      0
+      12px
+      30px
+      rgba(
+        27,
+        219,
+        186,
+        0.30
+      );
+
+    transform:
+      rotate(
+        45deg
+      )
+      scale(
+        1.08
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   FOCUS
+   ========================================================================== */
+
+.tek-industries__card:focus-within {
+  border-color:
+    rgba(
+      27,
+      219,
+      186,
+      0.65
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      #113f35,
+      #071511
+    );
+}
+
+
+.tek-industries__card-action:focus-visible,
+.tek-industries__intro-action:focus-visible {
+  outline:
+    2px solid
+    var(
+      --industries-teal
+    );
+
+  outline-offset:
+    4px;
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.tek-industries__footer {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    16px;
+
+  margin-top:
+    28px;
+}
+
+
+/* ==========================================================================
+   FOOTER MARKER
+   ========================================================================== */
+
+.tek-industries__footer-marker {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    4px;
+}
+
+
+.tek-industries__footer-marker
+span {
+  display:
+    block;
+
+  width:
+    4px;
+
+  height:
+    4px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --industries-teal-dark
+    );
+}
+
+
+.tek-industries__footer-marker
+span:nth-child(2) {
+  opacity:
+    0.58;
+}
+
+
+.tek-industries__footer-marker
+span:nth-child(3) {
+  opacity:
+    0.26;
+}
+
+
+/* ==========================================================================
+   FOOTER COPY
+   ========================================================================== */
+
+.tek-industries__footer
+p {
+  margin:
+    0
+    !important;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.38
+    )
+    !important;
+
+  -webkit-text-fill-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.38
+    )
+    !important;
+
+  font-size:
+    0.64rem;
+}
+
+
+.tek-industries__footer
+strong {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  -webkit-text-fill-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-weight:
+    500;
+}
+
+
+/* ==========================================================================
+   LARGE LAPTOP
+   ========================================================================== */
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .tek-industries__grid {
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .tek-industries__card {
+    min-height:
+      300px;
+
+    padding:
+      20px;
+  }
+
+
+  .tek-industries__card-content {
+    margin-top:
+      31px;
+  }
+
+
+  .tek-industries__card
+  h3 {
+    font-size:
+      1.18rem
+      !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (
+  max-width:
+    900px
+) {
+
+  .tek-industries__header {
+    grid-template-columns:
+      1fr;
+
+    align-items:
+      start;
+
+    gap:
+      20px;
+  }
+
+
+  .tek-industries__intro {
+    display:
+      flex;
+
+    align-items:
+      flex-end;
+
+    justify-content:
+      space-between;
+
+    gap:
+      30px;
+  }
+
+
+  .tek-industries__intro
+  p {
+    max-width:
+      540px;
+  }
+
+
+  .tek-industries__grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .tek-industries__card {
+    min-height:
+      285px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (
+  max-width:
+    620px
+) {
+
+  .tek-industries {
+    padding:
+      64px
+      0;
+  }
+
+
+  .tek-industries__header {
+    margin-bottom:
+      23px;
+  }
+
+
+  .tek-industries__heading
+  h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        12vw,
+        4rem
+      )
+      !important;
+  }
+
+
+  .tek-industries__intro {
+    display:
+      block;
+  }
+
+
+  .tek-industries__intro
+  p {
+    font-size:
+      0.74rem;
+  }
+
+
+  .tek-industries__status {
+    margin-bottom:
+      11px;
+  }
+
+
+  .tek-industries__grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .tek-industries__card {
+    min-height:
+      255px;
+
+    padding:
+      21px;
+  }
+
+
+  .tek-industries__card-content {
+    margin-top:
+      28px;
+  }
+
+
+  .tek-industries__card
+  h3 {
+    font-size:
+      1.3rem
+      !important;
+  }
+
+
+  .tek-industries__card
+  p {
+    max-width:
+      420px;
+  }
+
+
+  .tek-industries__footer {
+    align-items:
+      flex-start;
+
+    justify-content:
+      flex-start;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (
+  max-width:
+    390px
+) {
+
+  .tek-industries__heading
+  h2 {
+    font-size:
+      2.65rem
+      !important;
+  }
+
+
+  .tek-industries__card {
+    min-height:
+      250px;
+
+    padding:
+      18px;
+  }
+
+
+  .tek-industries__icon {
+    width:
+      46px;
+
+    height:
+      46px;
+
+    flex-basis:
+      46px;
+  }
+
+
+  .tek-industries__card-content {
+    margin-top:
+      25px;
+  }
+
+
+  .tek-industries__footer
+  p {
+    font-size:
+      0.59rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes industriesOrbit {
+
+  from {
+    transform:
+      rotate(
+        -24deg
+      );
+  }
+
+
+  to {
+    transform:
+      rotate(
+        336deg
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TOUCH
+   ========================================================================== */
+
+@media (
+  hover: none
+) {
+
+  .tek-industries__card:hover {
+    transform:
+      none;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .tek-industries *,
+  .tek-industries *::before,
+  .tek-industries *::after {
+    animation:
+      none
+      !important;
+
+    transition-duration:
+      0.01ms
+      !important;
+  }
+
+}

@@ -22,7 +22,7 @@
 
 .content-hero__visual {
   position: relative;
-  min-height: 28rem;
+  min-height: clamp(22rem, 31vw, 26rem);
   overflow: hidden;
   border: 1px solid var(--cap-border);
   border-radius: 1.35rem;
@@ -41,7 +41,7 @@
   bottom: 1rem;
   left: 1rem;
   z-index: 3;
-  padding: 1rem 1.1rem;
+  padding: .85rem 1rem;
   border: 1px solid rgba(255, 255, 255, .12);
   border-radius: .85rem;
   background: rgba(8, 15, 12, .82);
@@ -64,8 +64,8 @@
   display: block;
   max-width: 31rem;
   margin-top: .35rem;
-  font-size: .95rem;
-  line-height: 1.45;
+  font-size: .9rem;
+  line-height: 1.35;
 }
 
 .content-hero__proof {
@@ -165,7 +165,7 @@
   }
 
   .content-hero__visual {
-    min-height: 27rem;
+    min-height: 24rem;
   }
 
   .content-repurpose__rail {
@@ -179,7 +179,7 @@
   }
 
   .content-hero__visual {
-    min-height: 20rem;
+    min-height: 18rem;
   }
 
   .content-hero__proof {
@@ -205,6 +205,11 @@
     right: .65rem;
     bottom: .65rem;
     left: .65rem;
-    padding: .75rem;
+    padding: .7rem .75rem;
+  }
+
+  .content-hero__visual-note strong {
+    font-size: .84rem;
+    line-height: 1.3;
   }
 }

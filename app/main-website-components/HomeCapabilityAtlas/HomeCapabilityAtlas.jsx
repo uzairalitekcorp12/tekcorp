@@ -39,20 +39,106 @@ import {
 
 
 /* ==========================================================================
-   TEKCORP CAPABILITIES
+   IMAGE CONTROL GUIDE
+   ==========================================================================
+
+   DARK CATEGORY CARDS
+   --------------------------------------------------------------------------
+
+   categoryX
+   ----------
+   50% = center
+   60% = move focus right
+   40% = move focus left
+
+   categoryY
+   ----------
+   50% = center
+   35% = move image up
+   65% = move image down
+
+   categoryScale
+   -------------
+   1.00 = normal
+   1.10 = zoom in
+   0.95 = zoom out
+
+   categoryOpacity
+   ----------------
+   Normal image visibility.
+
+   categoryActiveOpacity
+   -----------------------
+   Hover / active visibility.
+
+
+   DARK STORY PANEL
+   --------------------------------------------------------------------------
+
+   storyX / storyY
+   storyScale
+   storyOpacity
+
+   Work exactly the same way.
+
+
+   WHITE SERVICE / PRODUCT CARDS
+   --------------------------------------------------------------------------
+
+   artX
+   ----
+   100% = image sits against right edge
+   105% = move slightly right
+   95% = move slightly left
+
+   artY
+   ----
+   50% = vertical center
+   40% = move up
+   60% = move down
+
+   artSize
+   -------
+   65% = smaller
+   75% = larger
+
+   artOpacity
+   ----------
+   Normal visibility.
+
+   artHoverOpacity
+   ----------------
+   Visibility when hovered.
+
+   IMPORTANT
+   --------------------------------------------------------------------------
+
+   These values are intentionally stored here instead of CSS so every
+   individual artwork can be adjusted without touching layout styles.
+
    ========================================================================== */
 
+
 const CAPABILITY_GROUPS = [
+  /* =========================================================================
+     01 — DESIGN & ENGINEERING
+     ========================================================================= */
+
   {
-    key: "designEngineering",
+    key:
+      "designEngineering",
 
-    number: "01",
+    number:
+      "01",
 
-    label: "Build",
+    label:
+      "Build",
 
-    title: "Design & Engineering",
+    title:
+      "Design & Engineering",
 
-    subtitle: "Build and launch digital experiences.",
+    subtitle:
+      "Build and launch digital experiences.",
 
     heading:
       "Ideas become stronger when design and engineering move together.",
@@ -60,67 +146,276 @@ const CAPABILITY_GROUPS = [
     description:
       "We combine product thinking, user experience and modern engineering to create digital systems that look considered, work beautifully and remain ready for what comes next.",
 
-    image:
-      "/assets/Home-assets/CapabilityMosaic/design-engineering.jpg",
+    icon:
+      Code2,
 
-    icon: Code2,
+
+    /* =======================================================================
+       DARK CATEGORY IMAGE
+       ======================================================================= */
+
+    categoryImage:
+      "/assets/Home-assets/CapabilityMosaic/categories/design-engineering.webp",
+
+    categoryX:
+      "54%",
+
+    categoryY:
+      "50%",
+
+    categoryScale:
+      "1.05",
+
+    categoryOpacity:
+      "0.56",
+
+    categoryActiveOpacity:
+      "0.80",
+
+
+    /* =======================================================================
+       DARK STORY IMAGE
+       ======================================================================= */
+
+    storyImage:
+      "/assets/Home-assets/CapabilityMosaic/stories/design-engineering-story.webp",
+
+    storyX:
+      "68%",
+
+    storyY:
+      "50%",
+
+    storyScale:
+      "1.12",
+
+    storyOpacity:
+      "0.90",
+
 
     services: [
       {
-        name: "Custom Web Development",
-        meta: "Web platforms",
-        href: "/services/web-development",
-        icon: Code2,
+        name:
+          "Custom Web Development",
+
+        meta:
+          "Web platforms",
+
+        href:
+          "/services/web-development",
+
+        icon:
+          Code2,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/custom-web-development.png",
+
+        /*
+         * Pulled inward so the complete composition is more visible.
+         */
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "Application Development",
-        meta: "Digital applications",
-        href: "/services/application-development",
-        icon: Smartphone,
-      },
 
       {
-        name: "CMS Development",
-        meta: "Content systems",
-        href: "/services/cms-development",
-        icon: FileText,
+        name:
+          "Application Development",
+
+        meta:
+          "Digital applications",
+
+        href:
+          "/services/application-development",
+
+        icon:
+          Smartphone,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/application-development.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "Ecommerce Development",
-        meta: "Digital commerce",
-        href: "/services/ecommerce-development",
-        icon: ShoppingCart,
-      },
 
       {
-        name: "UI/UX Design",
-        meta: "Digital experiences",
-        href: "/services/ui-ux-design",
-        icon: PenTool,
+        name:
+          "CMS Development",
+
+        meta:
+          "Content systems",
+
+        href:
+          "/services/cms-development",
+
+        icon:
+          FileText,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/cms-development.png",
+
+       artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
+
       {
-        name: "Logo & Branding",
-        meta: "Brand systems",
-        href: "/services/logo-branding",
-        icon: Palette,
+        name:
+          "Ecommerce Development",
+
+        meta:
+          "Digital commerce",
+
+        href:
+          "/services/ecommerce-development",
+
+        icon:
+          ShoppingCart,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/ecommerce-development.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "UI/UX Design",
+
+        meta:
+          "Digital experiences",
+
+        href:
+          "/services/ui-ux-design",
+
+        icon:
+          PenTool,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/ui-ux-design.png",
+
+       artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "Logo & Branding",
+
+        meta:
+          "Brand systems",
+
+        href:
+          "/services/logo-branding",
+
+        icon:
+          Palette,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/logo-branding.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
     ],
   },
 
 
+  /* =========================================================================
+     02 — GROWTH & MARKETING
+     ========================================================================= */
+
   {
-    key: "growthMarketing",
+    key:
+      "growthMarketing",
 
-    number: "02",
+    number:
+      "02",
 
-    label: "Grow",
+    label:
+      "Grow",
 
-    title: "Growth & Marketing",
+    title:
+      "Growth & Marketing",
 
-    subtitle: "Turn visibility into measurable growth.",
+    subtitle:
+      "Turn visibility into measurable growth.",
 
     heading:
       "Turn attention into a growth system your business can actually measure.",
@@ -128,60 +423,232 @@ const CAPABILITY_GROUPS = [
     description:
       "Search, social, paid acquisition, content and strategy work together around one goal: bringing the right audience closer to your business and creating measurable demand.",
 
-    image:
-      "/assets/Home-assets/CapabilityMosaic/growth-marketing.jpg",
+    icon:
+      BarChart3,
 
-    icon: BarChart3,
+
+    categoryImage:
+      "/assets/Home-assets/CapabilityMosaic/categories/growth-marketing.webp",
+
+    categoryX:
+      "53%",
+
+    categoryY:
+      "49%",
+
+    categoryScale:
+      "1.05",
+
+    categoryOpacity:
+      "0.54",
+
+    categoryActiveOpacity:
+      "0.78",
+
+
+    storyImage:
+      "/assets/Home-assets/CapabilityMosaic/stories/growth-marketing-story.webp",
+
+    storyX:
+      "67%",
+
+    storyY:
+      "48%",
+
+    storyScale:
+      "1.12",
+
+    storyOpacity:
+      "0.90",
+
 
     services: [
       {
-        name: "Search Engine Optimization",
-        meta: "Organic visibility",
-        href: "/services/search-engine-optimization",
-        icon: Search,
+        name:
+          "Search Engine Optimization",
+
+        meta:
+          "Organic visibility",
+
+        href:
+          "/services/search-engine-optimization",
+
+        icon:
+          Search,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/search-engine-optimization.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "Social Media Marketing",
-        meta: "Audience growth",
-        href: "/services/social-media-marketing",
-        icon: Share2,
-      },
 
       {
-        name: "Marketing Strategy",
-        meta: "Growth direction",
-        href: "/services/marketing-strategy",
-        icon: Compass,
+        name:
+          "Social Media Marketing",
+
+        meta:
+          "Audience growth",
+
+        href:
+          "/services/social-media-marketing",
+
+        icon:
+          Share2,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/social-media-marketing.png",
+
+       artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "Google Ads",
-        meta: "Paid acquisition",
-        href: "/services/google-ads",
-        icon: BarChart3,
-      },
 
       {
-        name: "Content Marketing",
-        meta: "Authority & demand",
-        href: "/services/content-marketing",
-        icon: Megaphone,
+        name:
+          "Marketing Strategy",
+
+        meta:
+          "Growth direction",
+
+        href:
+          "/services/marketing-strategy",
+
+        icon:
+          Compass,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/marketing-strategy.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "Google Ads",
+
+        meta:
+          "Paid acquisition",
+
+        href:
+          "/services/google-ads",
+
+        icon:
+          BarChart3,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/google-ads.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "Content Marketing",
+
+        meta:
+          "Authority & demand",
+
+        href:
+          "/services/content-marketing",
+
+        icon:
+          Megaphone,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/content-marketing.png",
+
+       artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
     ],
   },
 
 
+  /* =========================================================================
+     03 — AI & AUTOMATION
+     ========================================================================= */
+
   {
-    key: "aiAutomation",
+    key:
+      "aiAutomation",
 
-    number: "03",
+    number:
+      "03",
 
-    label: "Automate",
+    label:
+      "Automate",
 
-    title: "AI & Automation",
+    title:
+      "AI & Automation",
 
-    subtitle: "Smarter systems powered by AI.",
+    subtitle:
+      "Smarter systems powered by AI.",
 
     heading:
       "Bring intelligence into the workflows your teams already depend on.",
@@ -189,60 +656,232 @@ const CAPABILITY_GROUPS = [
     description:
       "We connect AI with business knowledge, tools and operational workflows to create useful assistants and automation without turning everything into an experiment.",
 
-    image:
-      "/assets/Home-assets/CapabilityMosaic/ai-automation.jpg",
+    icon:
+      Bot,
 
-    icon: Bot,
+
+    categoryImage:
+      "/assets/Home-assets/CapabilityMosaic/categories/ai-automation.webp",
+
+    categoryX:
+      "54%",
+
+    categoryY:
+      "50%",
+
+    categoryScale:
+      "1.05",
+
+    categoryOpacity:
+      "0.52",
+
+    categoryActiveOpacity:
+      "0.78",
+
+
+    storyImage:
+      "/assets/Home-assets/CapabilityMosaic/stories/ai-automation-story.webp",
+
+    storyX:
+      "69%",
+
+    storyY:
+      "49%",
+
+    storyScale:
+      "1.13",
+
+    storyOpacity:
+      "0.90",
+
 
     services: [
       {
-        name: "AI Chatbots & Assistants",
-        meta: "Conversational AI",
-        href: "/services/ai-chatbot-development",
-        icon: Bot,
+        name:
+          "AI Chatbots & Assistants",
+
+        meta:
+          "Conversational AI",
+
+        href:
+          "/services/ai-chatbot-development",
+
+        icon:
+          Bot,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/ai-chatbots.png",
+
+        artX:
+          "80%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "AI Agents & Automation",
-        meta: "Intelligent workflows",
-        href: "/services/ai-agent-development",
-        icon: Workflow,
-      },
 
       {
-        name: "Voice AI & Conversational Agents",
-        meta: "Voice experiences",
-        href: "/services/voice-ai-agents",
-        icon: Mic,
+        name:
+          "AI Agents & Automation",
+
+        meta:
+          "Intelligent workflows",
+
+        href:
+          "/services/ai-agent-development",
+
+        icon:
+          Workflow,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/ai-agents-automation.png",
+
+        artX:
+          "112%",
+
+        artY:
+          "30%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
-      {
-        name: "RAG & Knowledge Base Solutions",
-        meta: "Grounded knowledge",
-        href: "/services/rag-solutions",
-        icon: Database,
-      },
 
       {
-        name: "MCP Server Development & Integrations",
-        meta: "AI integrations",
-        href: "/services/mcp-server-development",
-        icon: Plug,
+        name:
+          "Voice AI & Conversational Agents",
+
+        meta:
+          "Voice experiences",
+
+        href:
+          "/services/voice-ai-agents",
+
+        icon:
+          Mic,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/voice-ai.png",
+
+       artX:
+          "112%",
+
+        artY:
+          "30%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "RAG & Knowledge Base Solutions",
+
+        meta:
+          "Grounded knowledge",
+
+        href:
+          "/services/rag-solutions",
+
+        icon:
+          Database,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/rag-knowledge-base.png",
+
+        artX:
+          "116%",
+
+        artY:
+          "32%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
+      },
+
+
+      {
+        name:
+          "MCP Server Development & Integrations",
+
+        meta:
+          "AI integrations",
+
+        href:
+          "/services/mcp-server-development",
+
+        icon:
+          Plug,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/mcp-integrations.png",
+
+       artX:
+          "116%",
+
+        artY:
+          "32%",
+
+        artSize:
+          "70%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
     ],
   },
 
 
+  /* =========================================================================
+     04 — PRODUCTS
+     ========================================================================= */
+
   {
-    key: "products",
+    key:
+      "products",
 
-    number: "04",
+    number:
+      "04",
 
-    label: "Operate",
+    label:
+      "Operate",
 
-    title: "Products",
+    title:
+      "Products",
 
-    subtitle: "Ready-to-use platforms for modern businesses.",
+    subtitle:
+      "Ready-to-use platforms for modern businesses.",
 
     heading:
       "Focused products built around work businesses need to manage every day.",
@@ -250,34 +889,115 @@ const CAPABILITY_GROUPS = [
     description:
       "Alongside custom solutions, Tekcorp develops purpose-built software that simplifies important operational workflows while leaving room for businesses to grow.",
 
-    image:
-      "/assets/Home-assets/CapabilityMosaic/products.jpg",
+    icon:
+      Boxes,
 
-    icon: Boxes,
+
+    categoryImage:
+      "/assets/Home-assets/CapabilityMosaic/categories/products.webp",
+
+    categoryX:
+      "57%",
+
+    categoryY:
+      "50%",
+
+    categoryScale:
+      "1.03",
+
+    categoryOpacity:
+      "0.54",
+
+    categoryActiveOpacity:
+      "0.80",
+
+
+    storyImage:
+      "/assets/Home-assets/CapabilityMosaic/stories/products-story.webp",
+
+    storyX:
+      "69%",
+
+    storyY:
+      "49%",
+
+    storyScale:
+      "1.10",
+
+    storyOpacity:
+      "0.90",
+
 
     services: [
       {
-        name: "TekBooks — Bookkeeping Software for SMEs",
-        meta: "Business finance",
+        name:
+          "TekBooks — Bookkeeping Software for SMEs",
+
+        meta:
+          "Business finance",
 
         description:
           "A practical bookkeeping workspace bringing customers, suppliers, transactions and reporting together in one connected system.",
 
-        href: "/products/tekbooks",
+        href:
+          "/products/tekbooks",
 
-        icon: BookOpen,
+        icon:
+          BookOpen,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/tekbooks.png",
+
+        artX:
+          "98%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "32%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
 
+
       {
-        name: "TekLMS — Learning Management System",
-        meta: "Learning operations",
+        name:
+          "TekLMS — Learning Management System",
+
+        meta:
+          "Learning operations",
 
         description:
           "A focused learning platform designed for institutes, academies, educators and the students they serve.",
 
-        href: "/products/teklms",
+        href:
+          "/products/teklms",
 
-        icon: GraduationCap,
+        icon:
+          GraduationCap,
+
+        image:
+          "/assets/Home-assets/CapabilityMosaic/services/teklms.png",
+
+        artX:
+          "98%",
+
+        artY:
+          "38%",
+
+        artSize:
+          "32%",
+
+        artOpacity:
+          "0.10",
+
+        artHoverOpacity:
+          "0.80",
       },
     ],
   },
@@ -321,8 +1041,7 @@ export default function HomeCapabilityAtlas() {
       () =>
         CAPABILITY_GROUPS.find(
           (group) =>
-            group.key ===
-            activeKey,
+            group.key === activeKey,
         ) ||
         CAPABILITY_GROUPS[0],
       [
@@ -336,12 +1055,11 @@ export default function HomeCapabilityAtlas() {
 
 
   const sparseServices =
-    activeGroup.services.length <=
-    2;
+    activeGroup.services.length <= 2;
 
 
   /* ==========================================================================
-     POINTER LIGHT
+     POINTER LIGHT / PARALLAX
      ========================================================================== */
 
   useEffect(
@@ -436,11 +1154,7 @@ export default function HomeCapabilityAtlas() {
 
 
   /* ==========================================================================
-     PASSIVE ROTATION
-
-     Stops once the visitor manually selects anything.
-
-     Also pauses while the user is hovering / focusing the section.
+     AUTOMATIC CAPABILITY ROTATION
      ========================================================================== */
 
   useEffect(
@@ -472,8 +1186,7 @@ export default function HomeCapabilityAtlas() {
                 const currentIndex =
                   CAPABILITY_GROUPS.findIndex(
                     (group) =>
-                      group.key ===
-                      currentKey,
+                      group.key === currentKey,
                   );
 
 
@@ -508,10 +1221,6 @@ export default function HomeCapabilityAtlas() {
   );
 
 
-  /* ==========================================================================
-     SELECT CATEGORY
-     ========================================================================== */
-
   function selectCapability(
     key,
   ) {
@@ -519,16 +1228,11 @@ export default function HomeCapabilityAtlas() {
       true,
     );
 
-
     setActiveKey(
       key,
     );
   }
 
-
-  /* ==========================================================================
-     RENDER
-     ========================================================================== */
 
   return (
     <section
@@ -566,11 +1270,8 @@ export default function HomeCapabilityAtlas() {
         aria-hidden="true"
       >
         <span className="cap-mosaic__pointer-light" />
-
         <span className="cap-mosaic__dot-field" />
-
         <span className="cap-mosaic__glow cap-mosaic__glow--one" />
-
         <span className="cap-mosaic__glow cap-mosaic__glow--two" />
       </div>
 
@@ -587,6 +1288,7 @@ export default function HomeCapabilityAtlas() {
             className="cap-mosaic__heading"
             data-reveal="left"
           >
+
             <span className="cap-mosaic__eyebrow">
               <i />
 
@@ -596,8 +1298,12 @@ export default function HomeCapabilityAtlas() {
 
             <h2 id="cap-mosaic-title">
               The capabilities behind
-              <span> better digital businesses.</span>
+
+              <span>
+                {" "}better digital businesses.
+              </span>
             </h2>
+
           </div>
 
 
@@ -605,6 +1311,7 @@ export default function HomeCapabilityAtlas() {
             className="cap-mosaic__intro"
             data-reveal="right"
           >
+
             <p>
               Discover how design, engineering, growth, AI and
               Tekcorp products connect to solve different parts
@@ -626,13 +1333,14 @@ export default function HomeCapabilityAtlas() {
                 />
               </span>
             </Link>
+
           </div>
 
         </header>
 
 
         {/* ==================================================================
-            INTERACTION LABEL
+            INTERACTION ROW
             ================================================================== */}
 
         <div className="cap-mosaic__interaction-row">
@@ -650,14 +1358,11 @@ export default function HomeCapabilityAtlas() {
 
           <div>
             {CAPABILITY_GROUPS.map(
-              (
-                group,
-              ) => (
+              (group) => (
                 <i
                   key={group.key}
                   className={
-                    activeKey ===
-                    group.key
+                    activeKey === group.key
                       ? "is-active"
                       : ""
                   }
@@ -670,7 +1375,7 @@ export default function HomeCapabilityAtlas() {
 
 
         {/* ==================================================================
-            CATEGORY MOSAIC
+            DARK CAPABILITY MOSAIC
             ================================================================== */}
 
         <div
@@ -689,8 +1394,7 @@ export default function HomeCapabilityAtlas() {
 
 
               const active =
-                group.key ===
-                activeKey;
+                group.key === activeKey;
 
 
               return (
@@ -703,9 +1407,7 @@ export default function HomeCapabilityAtlas() {
                   aria-controls="cap-mosaic-panel"
                   className={[
                     "cap-mosaic-category",
-
                     `cap-mosaic-category--${index + 1}`,
-
                     active
                       ? "is-active"
                       : "",
@@ -714,7 +1416,22 @@ export default function HomeCapabilityAtlas() {
                     .join(" ")}
                   style={{
                     "--category-image":
-                      `url("${group.image}")`,
+                      `url("${group.categoryImage}")`,
+
+                    "--category-image-x":
+                      group.categoryX,
+
+                    "--category-image-y":
+                      group.categoryY,
+
+                    "--category-image-scale":
+                      group.categoryScale,
+
+                    "--category-image-opacity":
+                      group.categoryOpacity,
+
+                    "--category-image-active-opacity":
+                      group.categoryActiveOpacity,
                   }}
                   onClick={() =>
                     selectCapability(
@@ -722,10 +1439,6 @@ export default function HomeCapabilityAtlas() {
                     )
                   }
                 >
-
-                  {/* ========================================================
-                      IMAGE
-                      ======================================================== */}
 
                   <span
                     className="cap-mosaic-category__image"
@@ -744,10 +1457,6 @@ export default function HomeCapabilityAtlas() {
                     aria-hidden="true"
                   />
 
-
-                  {/* ========================================================
-                      TOP
-                      ======================================================== */}
 
                   <span className="cap-mosaic-category__top">
 
@@ -769,10 +1478,6 @@ export default function HomeCapabilityAtlas() {
                   </span>
 
 
-                  {/* ========================================================
-                      COPY
-                      ======================================================== */}
-
                   <span className="cap-mosaic-category__copy">
 
                     <small>
@@ -792,10 +1497,6 @@ export default function HomeCapabilityAtlas() {
                   </span>
 
 
-                  {/* ========================================================
-                      ACTION
-                      ======================================================== */}
-
                   <span className="cap-mosaic-category__arrow">
 
                     <ArrowUpRight
@@ -808,11 +1509,9 @@ export default function HomeCapabilityAtlas() {
 
 
                   <span className="cap-mosaic-category__active-pill">
-
                     <span>
                       Exploring
                     </span>
-
                   </span>
 
 
@@ -830,7 +1529,7 @@ export default function HomeCapabilityAtlas() {
 
 
         {/* ==================================================================
-            ACTIVE EXPERIENCE
+            ACTIVE DETAIL
             ================================================================== */}
 
         <div
@@ -842,12 +1541,45 @@ export default function HomeCapabilityAtlas() {
         >
 
           {/* ================================================================
-              STORY
+              DARK STORY CARD
               ================================================================ */}
 
-          <article className="cap-mosaic__story">
+          <article
+            className="cap-mosaic__story"
+            style={{
+              "--story-image":
+                `url("${activeGroup.storyImage}")`,
 
-            <div className="cap-mosaic__story-noise" />
+              "--story-image-x":
+                activeGroup.storyX,
+
+              "--story-image-y":
+                activeGroup.storyY,
+
+              "--story-image-scale":
+                activeGroup.storyScale,
+
+              "--story-image-opacity":
+                activeGroup.storyOpacity,
+            }}
+          >
+
+            <span
+              className="cap-mosaic__story-image"
+              aria-hidden="true"
+            />
+
+
+            <span
+              className="cap-mosaic__story-shade"
+              aria-hidden="true"
+            />
+
+
+            <div
+              className="cap-mosaic__story-noise"
+              aria-hidden="true"
+            />
 
 
             <div className="cap-mosaic__story-top">
@@ -864,13 +1596,11 @@ export default function HomeCapabilityAtlas() {
 
 
               <span className="cap-mosaic__story-number">
-
                 {activeGroup.number}
 
                 <i>
                   /04
                 </i>
-
               </span>
 
             </div>
@@ -906,7 +1636,6 @@ export default function HomeCapabilityAtlas() {
 
 
               <span>
-
                 {String(
                   activeGroup.services.length,
                 ).padStart(
@@ -914,7 +1643,6 @@ export default function HomeCapabilityAtlas() {
                   "0",
                 )}{" "}
                 pathways
-
               </span>
 
             </div>
@@ -929,13 +1657,12 @@ export default function HomeCapabilityAtlas() {
 
 
           {/* ================================================================
-              SERVICES
+              WHITE SERVICE / PRODUCT CARDS
               ================================================================ */}
 
           <div
             className={[
               "cap-mosaic__services",
-
               sparseServices
                 ? "cap-mosaic__services--sparse"
                 : "",
@@ -961,8 +1688,38 @@ export default function HomeCapabilityAtlas() {
                     style={{
                       "--service-index":
                         index,
+
+                      "--service-art-image":
+                        `url("${service.image}")`,
+
+                      "--service-art-x":
+                        service.artX,
+
+                      "--service-art-y":
+                        service.artY,
+
+                      "--service-art-size":
+                        service.artSize,
+
+                      "--service-art-opacity":
+                        service.artOpacity,
+
+                      "--service-art-hover-opacity":
+                        service.artHoverOpacity,
                     }}
                   >
+
+                    <span
+                      className="cap-mosaic-service__art"
+                      aria-hidden="true"
+                    />
+
+
+                    <span
+                      className="cap-mosaic-service__art-fade"
+                      aria-hidden="true"
+                    />
+
 
                     <span
                       className="cap-mosaic-service__hover-light"
@@ -984,15 +1741,12 @@ export default function HomeCapabilityAtlas() {
 
 
                       <span className="cap-mosaic-service__number">
-
                         {String(
-                          index +
-                          1,
+                          index + 1,
                         ).padStart(
                           2,
                           "0",
                         )}
-
                       </span>
 
                     </div>
@@ -1046,7 +1800,7 @@ export default function HomeCapabilityAtlas() {
 
 
         {/* ==================================================================
-            CONNECTOR / NEXT STEP
+            CONNECTOR
             ================================================================== */}
 
         <div className="cap-mosaic__connector">
@@ -1091,7 +1845,7 @@ export default function HomeCapabilityAtlas() {
 
 
         {/* ==================================================================
-            FOOTER CTA
+            FOOTER
             ================================================================== */}
 
         <footer className="cap-mosaic__footer">

@@ -3,115 +3,92 @@
 import "./HomeHero.css";
 
 import {
-  ArrowUpRight,
-  ChevronDown,
+  useState,
+} from "react";
+
+import {
+  ArrowRight,
 } from "lucide-react";
 
- 
-/* ==========================================================================
-   HERO MEDIA
+import Button from "@/app/_shared/Button/Button";
 
-   Keep your existing video.
+
+/* ==========================================================================
+   HERO VIDEO
    ========================================================================== */
 
 const HERO_VIDEO_URL =
   "https://tekcorp-prod.s3.ap-south-1.amazonaws.com/video-skyline-2.mp4";
 
 
-const HERO_FALLBACK_IMAGE =
-  "/assets/landing/metahero.png";
-
-
 /* ==========================================================================
-   YOUTUBE HELPER
+   HERO FALLBACK IMAGE
 
-   Allows the same component to support:
-   - Direct MP4 video
-   - YouTube URL
-   - Fallback image
+   Temporary web fallback:
+   Free night-city image from Unsplash.
+
+   IMPORTANT FOR PRODUCTION
+   --------------------------------------------------------------------------
+   For the best production performance, download/compress this image later
+   as WebP/AVIF and place it inside /public, for example:
+
+   /public/assets/Home-assets/hero-city-fallback.webp
+
+   Then replace this URL with:
+
+   "/assets/Home-assets/hero-city-fallback.webp"
+
+   The component does not need any other change.
    ========================================================================== */
 
-function getYouTubeEmbedUrl(url) {
-  if (!url) {
-    return "";
-  }
+const HERO_FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1767693333492-33fee3ea7fd1?auto=format&fit=crop&fm=jpg&q=78&w=2400";
 
 
-  try {
-    const parsed =
-      new URL(url);
+/* ========================================================================== 
+   TRUST LOGOS
 
-    let videoId =
-      "";
+   Keep these aligned with the approved brand marks used in AboutBrands.
+   Simple Icons gives the small circular frames crisp, lightweight artwork.
+   ========================================================================== */
 
+const TRUSTED_BRANDS = [
+  {
+    name:
+      "Yelp",
 
-    if (
-      parsed.hostname.includes(
-        "youtu.be",
-      )
-    ) {
-      videoId =
-        parsed.pathname.replace(
-          "/",
-          "",
-        );
-    }
+    logo:
+      "https://cdn.simpleicons.org/yelp/181818",
+  },
 
+  {
+    name:
+      "Odoo",
 
-    if (
-      parsed.hostname.includes(
-        "youtube.com",
-      )
-    ) {
-      videoId =
-        parsed.searchParams.get(
-          "v",
-        ) ||
-        parsed.pathname
-          .split("/")
-          .filter(Boolean)
-          .pop();
-    }
+    logo:
+      "https://cdn.simpleicons.org/odoo/714B67",
+  },
 
+  {
+    name:
+      "Shopify",
 
-    if (!videoId) {
-      return "";
-    }
-
-
-    return (
-      `https://www.youtube.com/embed/${videoId}` +
-      `?autoplay=1` +
-      `&mute=1` +
-      `&loop=1` +
-      `&playlist=${videoId}` +
-      `&controls=0` +
-      `&modestbranding=1` +
-      `&rel=0` +
-      `&playsinline=1`
-    );
-  } catch {
-    return "";
-  }
-}
+    logo:
+      "https://cdn.simpleicons.org/shopify/95BF47",
+  },
+];
 
 
 /* ==========================================================================
-   COMPONENT
+   HOME HERO
    ========================================================================== */
 
 export default function HomeHero() {
-  const youtubeEmbed =
-    getYouTubeEmbedUrl(
-      HERO_VIDEO_URL,
-    );
-
-
-  const hasDirectVideo =
-    Boolean(
-      HERO_VIDEO_URL &&
-      !youtubeEmbed,
-    );
+  const [
+    videoFailed,
+    setVideoFailed,
+  ] =
+    useState(false);
 
 
   return (
@@ -119,10 +96,24 @@ export default function HomeHero() {
       className="lp1-hero"
       id="Home-hero"
       data-navbar-transparent-target="true"
+      aria-labelledby="home-hero-title"
     >
 
       {/* ====================================================================
           BACKGROUND MEDIA
+
+          Fallback image remains underneath the video at all times.
+
+          This provides:
+          - immediate visual paint
+          - no empty background before MP4 is ready
+          - graceful fallback if S3 video fails
+
+          Video:
+          - autoplay
+          - muted
+          - loop
+          - plays inline
           ==================================================================== */}
 
       <div
@@ -130,47 +121,46 @@ export default function HomeHero() {
         aria-hidden="true"
       >
 
-        {youtubeEmbed ? (
-          <iframe
-            className="lp1-hero__video lp1-hero__video--embed"
-            src={youtubeEmbed}
-            title=""
-            tabIndex="-1"
-            allow="autoplay; encrypted-media; picture-in-picture"
-          />
-        ) : hasDirectVideo ? (
+        <img
+          className="lp1-hero__fallback"
+          src={
+            HERO_FALLBACK_IMAGE
+          }
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
+
+
+        {!videoFailed ? (
           <video
             className="lp1-hero__video"
+            src={
+              HERO_VIDEO_URL
+            }
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster={
               HERO_FALLBACK_IMAGE
             }
-          >
-            <source
-              src={
-                HERO_VIDEO_URL
-              }
-            />
-          </video>
-        ) : (
-          <img
-            className="lp1-hero__fallback"
-            src={
-              HERO_FALLBACK_IMAGE
+            disablePictureInPicture
+            tabIndex={-1}
+            onError={() =>
+              setVideoFailed(
+                true,
+              )
             }
-            alt=""
           />
-        )}
+        ) : null}
 
       </div>
 
 
       {/* ====================================================================
-          DARK VIDEO OVERLAY
+          VISUAL OVERLAYS
           ==================================================================== */}
 
       <div
@@ -179,19 +169,11 @@ export default function HomeHero() {
       />
 
 
-      {/* ====================================================================
-          SUBTLE TEXTURE
-          ==================================================================== */}
-
       <div
         className="lp1-hero__noise"
         aria-hidden="true"
       />
 
-
-      {/* ====================================================================
-          VERY LIGHT BRAND AURA
-          ==================================================================== */}
 
       <div
         className="lp1-hero__aura"
@@ -200,7 +182,7 @@ export default function HomeHero() {
 
 
       {/* ====================================================================
-          MAIN HERO CONTENT
+          CONTENT
           ==================================================================== */}
 
       <div className="lp1-shell lp1-hero__inner">
@@ -215,97 +197,177 @@ export default function HomeHero() {
               ================================================================ */}
 
           <p className="lp1-hero__eyebrow">
-            CRAFTING SOLUTIONS, FUELLING COLLABORATIONS.
+            Building Digital Excellence
           </p>
 
 
           {/* ================================================================
-              MAIN TITLE
-
-              Wording and line structure closely follows
-              the supplied design reference.
+              TITLE
               ================================================================ */}
 
-          <h1 className="lp1-hero__title">
+          <h1
+            className="lp1-hero__title"
+            id="home-hero-title"
+          >
 
             <span>
-              Tekcorp - Your
+              Innovative IT Solutions
             </span>
 
-            <span>
-              Partner in Digital
-            </span>
 
             <span>
-              Transformation
+              For Smarter Businesses
             </span>
 
           </h1>
 
 
           {/* ================================================================
-              SUPPORTING COPY
+              COPY
               ================================================================ */}
 
           <p className="lp1-hero__copy">
-
-            Explore Services, Products, and Integrations
-            for a Future-Ready Business Ecosystem.
-            Tailored Services, Proven Products, Seamless
-            Integrations – Elevating Your Business,
-            Empowering Your Growth.
-
+            We help businesses transform, scale and thrive in the digital era
+            with custom software, AI solutions, and strategic IT consulting.
           </p>
 
 
           {/* ================================================================
-              SINGLE CTA
-
-              No extra buttons.
-              No proof statistics.
-              No video-control button.
+              ACTIONS
               ================================================================ */}
 
-          <a
-            className="lp1-hero__contact"
-            href="#quick-contact"
-          >
-            <span>
-              Contact Now
-            </span>
+          <div className="lp1-hero__actions">
 
-            <ArrowUpRight
-              size={12}
-              strokeWidth={2}
-            />
-          </a>
+            <Button
+              className="lp1-hero__action lp1-hero__action--primary"
+              appearance="primary"
+              href="#digital-solutions"
+            >
+              <span>
+                Explore Services
+              </span>
+
+
+              <ArrowRight
+                size={15}
+                strokeWidth={1.8}
+              />
+            </Button>
+
+
+            <Button
+              className="lp1-hero__action lp1-hero__action--secondary"
+              appearance="box"
+              href="#quick-contact"
+            >
+              <span>
+                Contact Now
+              </span>
+            </Button>
+
+          </div>
+
+
+          {/* ================================================================
+              TRUSTED-BRAND PROOF
+
+              Hover intentionally DOES NOT:
+              - add a box
+              - add a background pill
+              - add a shadow around the complete line
+
+              Premium interaction instead:
+              - logos gently fan apart
+              - logos lift individually
+              - teal underline grows below copy
+              - 150+ highlights
+              - + icon rotates
+              ================================================================ */}
+
+          <div
+            className="lp1-hero__trust"
+            aria-label="Trusted by more than 150 businesses worldwide"
+          >
+
+            <div className="lp1-hero__trust-logos">
+
+              {TRUSTED_BRANDS.map(
+                (
+                  brand,
+                  index,
+                ) => (
+                  <span
+                    className="lp1-hero__trust-logo"
+                    key={
+                      brand.name
+                    }
+                    style={{
+                      "--trust-logo-index":
+                        index,
+                    }}
+                  >
+
+                    <img
+                      src={
+                        brand.logo
+                      }
+                      alt=""
+                      width="256"
+                      height="256"
+                      loading="eager"
+                      decoding="async"
+                    />
+
+                  </span>
+                ),
+              )}
+
+
+              <span
+                className="lp1-hero__trust-more"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </div>
+
+
+            <div className="lp1-hero__trust-copy-wrap">
+
+              <p className="lp1-hero__trust-copy">
+
+                <span>
+                  Trusted by
+                </span>
+
+                {" "}
+
+                <strong>
+                  150+
+                </strong>
+
+                {" "}
+
+                <span>
+                  businesses worldwide
+                </span>
+
+              </p>
+
+
+              <span
+                className="lp1-hero__trust-line"
+                aria-hidden="true"
+              />
+
+            </div>
+
+          </div>
 
         </div>
 
       </div>
-
-
-      {/* ====================================================================
-          SCROLL DOWN
-
-          Matches the small bottom-left text treatment
-          in the supplied reference.
-          ==================================================================== */}
-
-      <a
-        className="lp1-hero__scroll"
-        href="#digital-solutions"
-        aria-label="Scroll to next section"
-      >
-        <span>
-          Scroll Down
-        </span>
-
-        <ChevronDown
-          size={13}
-          strokeWidth={1.7}
-        />
-      </a>
 
     </section>
   );
